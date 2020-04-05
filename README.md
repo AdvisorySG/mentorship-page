@@ -1,3 +1,5 @@
+# mentorship-page ![Run Tests](https://github.com/AdvisorySG/mentorship-page/workflows/Run%20Tests/badge.svg)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
