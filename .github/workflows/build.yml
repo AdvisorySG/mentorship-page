@@ -1,9 +1,9 @@
-name: Run Tests
+name: Build
 on:
     pull_request:
     push:
 jobs:
-    test:
+    build:
         runs-on: ubuntu-latest
         strategy:
             matrix:
@@ -22,8 +22,16 @@ jobs:
               uses: actions/setup-node@v1
               with:
                   node-version: ${{ matrix.node-version }}
+
             - run: npm install
             - run: npm test --watchAll=false
               env:
                   CI: true
             - run: npm run build
+
+            - run: tar -czf build.tar.gz build/
+            - name: Upload build
+              uses: actions/upload-artifact@v1
+              with:
+                name: mentorship-page-${{ github.sha }}
+                path: build.tar.gz
