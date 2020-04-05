@@ -1,0 +1,27 @@
+name: Run Tests
+on:
+    pull_request:
+    push:
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [12.x]
+        steps:
+            - uses: actions/checkout@v2
+            - name: Cache npm
+              uses: actions/cache@v1
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-json.lock') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node-
+
+            - name: Setup Node
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - run: npm install
+            - run: npm test --watchAll=false
+            - run: npm run build
