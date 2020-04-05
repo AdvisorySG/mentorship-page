@@ -1,3 +1,5 @@
+# mentorship-page ![Build](https://github.com/AdvisorySG/mentorship-page/workflows/Build/badge.svg) [![Netlify Status](https://api.netlify.com/api/v1/badges/f73b3513-e3ed-451b-b013-f70b023dce6a/deploy-status)](https://app.netlify.com/sites/wizardly-meninsky-4c65bd/deploys)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
