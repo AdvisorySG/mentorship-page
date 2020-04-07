@@ -13,7 +13,9 @@ const ProfileCard = (props) => {
         <div className="desc-text">{props.organization}</div>
       </div>
       <div>
-        <button className="button">Read More</button>
+        <button className="button" onClick={props.onReadMore}>
+          Read More
+        </button>
       </div>
     </div>
   );

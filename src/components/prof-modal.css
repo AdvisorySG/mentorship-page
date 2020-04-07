@@ -1,0 +1,52 @@
+.modal {
+  flex: 1;
+  width: 70%;
+  padding: 3%;
+
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -30%);
+
+  text-align: center;
+
+  background: white;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  transition: 1.1s ease-in-out;
+}
+.close-cross {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background-color: transparent;
+}
+.content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.left-half {
+  width: 35%;
+  float: left;
+  padding-right: 5%;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-right-color: #ccc;
+}
+.right-half {
+  width: 55%;
+  float: right;
+  padding-left: 5%;
+  padding: 30px;
+  vertical-align: middle;
+}
+.image {
+  height: 250px;
+  margin: auto;
+}
+.bio {
+  text-align: center justify;
+}

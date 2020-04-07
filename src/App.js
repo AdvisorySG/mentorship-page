@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import ProfileCard from "./components/profile-card";
 import NavBarAndIntro from "./components/nav-bar-and-intro";
+import ProfModal from "./components/prof-modal";
 // import jsonData from "./mentor-data/mentor-data.json";
 
 function App() {
@@ -28,15 +29,50 @@ function App() {
       school: "Waverly Place",
       course_of_study: "Meteor Alchemy",
       full_bio:
-        "Peter Pan is a meteor conjurer at the Association of Waverly Place, 0:0:1132:124932 Solar System 33148293",
+        "Peter Pan is a meteor conjurer at the Association of Waverly Place, 0:0:1132:124932 Solar System 33148293.",
       image_url:
         "https://i.pinimg.com/originals/42/9e/9f/429e9f32eb7d0213342a4e447e6e93ae.jpg",
     },
   ];
 
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalID, setModalID] = useState(null);
+
+  const dynamicModal = (someID) => {
+    if (!modalVisible) {
+      return;
+    }
+
+    return (
+      <ProfModal
+        id={someID}
+        name={mentorData[someID].name}
+        role={mentorData[someID].role}
+        organization={mentorData[someID].organization}
+        course_of_study={mentorData[someID].course_of_study}
+        full_bio={mentorData[someID].full_bio}
+        image_url={mentorData[someID].image_url}
+        onClose={closeHandler}
+      />
+    );
+  };
+
+  const readMoreHandler = (someID) => {
+    setModalVisible(true);
+    setModalID(someID);
+  };
+
+  const closeHandler = () => {
+    setModalVisible(false);
+    setModalID(null);
+  };
+
   return (
     <div className="page-layout">
       <NavBarAndIntro />
+
+      {dynamicModal(modalID)}
+
       <div className="profile-cards">
         {mentorData.map((mentor) => (
           <ProfileCard
@@ -45,6 +81,9 @@ function App() {
             name={mentor.name}
             role={mentor.role}
             organization={mentor.organization}
+            onReadMore={() => {
+              readMoreHandler(mentor.id);
+            }}
           />
         ))}
       </div>
