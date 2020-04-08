@@ -5,7 +5,11 @@ import { MdClose } from "react-icons/md";
 const ProfModal = (props) => {
   return (
     <div className="modal">
-      <button className="close-cross" onClick={props.onClose}>
+      <button
+        style={{ cursor: "pointer" }}
+        className="close-cross"
+        onClick={props.onClose}
+      >
         <MdClose />
       </button>
       <div className="content">
