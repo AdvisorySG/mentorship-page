@@ -15,11 +15,12 @@
   transition: 1.1s ease-in-out;
 }
 .close-cross {
+  cursor: pointer;
   position: absolute;
   top: 10px;
   right: 10px;
   border: none;
-  background-color: blue;
+  background-color: red;
 }
 @media only screen and (min-width: 601px) {
   .content {
@@ -33,7 +34,7 @@
     width: 35%;
     float: left;
     padding-right: 5%;
-    padding-bottom: 10px;
+    padding-bottom: 5%;
     border-right-style: solid;
     border-right-width: 1px;
     border-right-color: #ccc;
@@ -56,7 +57,7 @@
   }
   .left-half {
     float: top;
-    padding-bottom: 5%;
+    padding-bottom: 10px;
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: #ccc;
