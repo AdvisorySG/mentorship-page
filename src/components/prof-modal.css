@@ -19,7 +19,7 @@
   top: 10px;
   right: 10px;
   border: none;
-  background-color: transparent;
+  background-color: blue;
 }
 @media only screen and (min-width: 601px) {
   .content {
@@ -33,6 +33,7 @@
     width: 35%;
     float: left;
     padding-right: 5%;
+    padding-bottom: 2%;
     border-right-style: solid;
     border-right-width: 1px;
     border-right-color: #ccc;
