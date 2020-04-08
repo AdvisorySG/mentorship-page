@@ -20,7 +20,7 @@
   top: 10px;
   right: 10px;
   border: none;
-  background-color: yellow;
+  background-color: green;
 }
 @media only screen and (min-width: 601px) {
   .content {
@@ -43,8 +43,14 @@
     width: 55%;
     float: right;
     padding-left: 5%;
-    padding-top: 2%;
     vertical-align: middle;
+  }
+  .bio {
+    padding-top: 30px;
+    margin-left: 10%;
+    width: 80%;
+    float: center;
+    text-align: center justify;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -61,20 +67,26 @@
   }
   .right-half {
     flex-direction: row;
-    width: 80%;
+    width: 100%;
     float: bottom;
-    padding-top: 5%;
     margin-top: 5%;
+    padding-right: 50px;
     vertical-align: middle;
     border-top-style: solid;
     border-top-width: 1px;
     border-top-color: #ccc;
+    text-align: center justify;
+    justify-content: center;
+  }
+  .bio {
+    padding-top: 30px;
+    margin-left: 10%;
+    width: 80%;
+    float: center;
+    text-align: center justify;
   }
 }
 .image {
   height: 250px;
   margin: auto;
-}
-.bio {
-  text-align: center justify;
 }
