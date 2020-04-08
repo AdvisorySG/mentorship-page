@@ -29,31 +29,43 @@
     overflow: hidden;
     position: relative;
   }
+  .left-half {
+    width: 35%;
+    float: left;
+    padding-right: 5%;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-right-color: #ccc;
+  }
+  .right-half {
+    width: 55%;
+    float: right;
+    padding-left: 5%;
+    padding-top: 2%;
+    vertical-align: middle;
+  }
 }
 @media only screen and (max-width: 600px) {
   .content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     background-color: red;
     width: 100%;
     overflow: hidden;
     position: relative;
   }
-}
-.left-half {
-  width: 35%;
-  float: left;
-  padding-right: 5%;
-  border-right-style: solid;
-  border-right-width: 1px;
-  border-right-color: #ccc;
-}
-.right-half {
-  width: 55%;
-  float: right;
-  padding-left: 5%;
-  padding: 30px;
-  vertical-align: middle;
+  .left-half {
+    float: top;
+    padding-bottom: 5%;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #ccc;
+  }
+  .right-half {
+    float: bottom;
+    padding-top: 5%;
+    vertical-align: middle;
+  }
 }
 .image {
   height: 250px;
