@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import "./profile-card.css";
 
 const ProfileCard = (props) => {
   return (
     <div className="profile-card">
       <div className="image-region">
-        <img className="image" src={props.img_url} />
+        <img className="image" src={props.img_url} alt={props.name} />
       </div>
       <div className="card-descriptors">
         <div className="name-text">{props.name}</div>
