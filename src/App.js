@@ -4,20 +4,20 @@ import ProfileCard from "./components/profile-card";
 import Header from "./components/header";
 import ProfileModal from "./components/profile-modal";
 
-import mentorData from "./mentorData.json";
+import mentors from "./mentors";
 
 function App() {
   const [modalVisible, setModalVisible] = useState(false);
-  const [modalId, setModalId] = useState(null);
+  const [activeMentorId, setActiveMentorId] = useState(null);
 
-  const readMoreHandler = (modalId) => {
+  const readMoreHandler = (mentorId) => {
     setModalVisible(true);
-    setModalId(modalId);
+    setActiveMentorId(mentorId);
   };
 
   const closeHandler = () => {
     setModalVisible(false);
-    setModalId(null);
+    setActiveMentorId(null);
   };
 
   return (
@@ -26,17 +26,17 @@ function App() {
 
       {modalVisible && (
         <ProfileModal
-          id={modalId}
+          id={activeMentorId}
           onClose={closeHandler}
-          {...mentorData.data[modalId]}
+          {...mentors[activeMentorId]}
         />
       )}
 
       <div className="profile-cards">
-        {mentorData.data.map((mentor) => (
+        {mentors.map((mentor) => (
           <ProfileCard
             key={mentor.id}
-            img_url={mentor.image_url}
+            img_url={mentor.imageUrl}
             name={mentor.name}
             role={mentor.role}
             organization={mentor.organization}
