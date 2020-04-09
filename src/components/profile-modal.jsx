@@ -1,10 +1,10 @@
 import React from "react";
-import "./prof-modal.css";
+import "./profile-modal.css";
 import { MdClose } from "react-icons/md";
 
-const ProfModal = (props) => {
+const ProfileModal = (props) => {
   return (
-    <div className="modal">
+    <div className="profile-modal">
       <button
         style={{ cursor: "pointer" }}
         className="close-cross"
@@ -14,7 +14,7 @@ const ProfModal = (props) => {
       </button>
       <div className="content">
         <div className="left-half">
-          <img className="image" src={props.image_url} />
+          <img className="image" src={props.image_url} alt={props.name} />
           <h2>{props.name}</h2>
           <div className="metadata">Role: {props.role}</div>
           <div className="metadata">Organization: {props.organization}</div>
@@ -31,4 +31,4 @@ const ProfModal = (props) => {
   );
 };
 
-export default ProfModal;
+export default ProfileModal;

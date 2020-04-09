@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import ProfileCard from "./components/profile-card";
 import Header from "./components/header";
-import ProfModal from "./components/prof-modal";
+import ProfileModal from "./components/profile-modal";
 // import jsonData from "./mentor-data/mentor-data.json";
 
 function App() {
@@ -44,7 +44,7 @@ function App() {
     }
 
     return (
-      <ProfModal
+      <ProfileModal
         id={someID}
         name={mentorData[someID].name}
         role={mentorData[someID].role}
