@@ -2,6 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Git LFS with Netlify Large Media
+
+This project relies on [Netlify Large Media](https://docs.netlify.com/large-media/overview/) and [Git LFS](https://git-lfs.github.com/) for the storage of images in `public/images/`.
+To modify the files in that directory, please see the [Large Media setup](https://docs.netlify.com/large-media/setup/) page for more details.
+
 ## Available Scripts
 
 In the project directory, you can run:

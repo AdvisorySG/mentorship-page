@@ -36,7 +36,7 @@ function App() {
         {mentorData.data.map((mentor) => (
           <ProfileCard
             key={mentor.id}
-            img_url={mentor.image_url}
+            img_url={process.env.PUBLIC_URL + mentor.image_url}
             name={mentor.name}
             role={mentor.role}
             organization={mentor.organization}
