@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Git LFS
+
+This project uses [Git LFS](https://git-lfs.github.com/) for the management of assets. If you wish to download or modify any assets, please set up Git LFS before cloning the repository.
+
 ## Available Scripts
 
 In the project directory, you can run:
