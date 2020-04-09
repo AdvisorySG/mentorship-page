@@ -3,11 +3,8 @@ import "./App.css";
 import ProfileCard from "./components/profile-card";
 import Header from "./components/header";
 import ProfileModal from "./components/profile-modal";
-// import jsonData from "./mentor-data/mentor-data.json";
 
 function App() {
-  //let mentorData = JSON.parse({ name: "puta" });
-
   const mentorData = [
     {
       id: 0,
@@ -36,42 +33,29 @@ function App() {
   ];
 
   const [modalVisible, setModalVisible] = useState(false);
-  const [modalID, setModalID] = useState(null);
+  const [modalId, setModalId] = useState(null);
 
-  const dynamicModal = (someID) => {
-    if (!modalVisible) {
-      return;
-    }
-
-    return (
-      <ProfileModal
-        id={someID}
-        name={mentorData[someID].name}
-        role={mentorData[someID].role}
-        organization={mentorData[someID].organization}
-        course_of_study={mentorData[someID].course_of_study}
-        full_bio={mentorData[someID].full_bio}
-        image_url={mentorData[someID].image_url}
-        onClose={closeHandler}
-      />
-    );
-  };
-
-  const readMoreHandler = (someID) => {
+  const readMoreHandler = (modalId) => {
     setModalVisible(true);
-    setModalID(someID);
+    setModalId(modalId);
   };
 
   const closeHandler = () => {
     setModalVisible(false);
-    setModalID(null);
+    setModalId(null);
   };
 
   return (
     <div className="page-layout">
       <Header />
 
-      {dynamicModal(modalID)}
+      {modalVisible && (
+        <ProfileModal
+          id={modalId}
+          onClose={closeHandler}
+          {...mentorData[modalId]}
+        />
+      )}
 
       <div className="profile-cards">
         {mentorData.map((mentor) => (
@@ -81,9 +65,7 @@ function App() {
             name={mentor.name}
             role={mentor.role}
             organization={mentor.organization}
-            onReadMore={() => {
-              readMoreHandler(mentor.id);
-            }}
+            onReadMore={() => readMoreHandler(mentor.id)}
           />
         ))}
       </div>
