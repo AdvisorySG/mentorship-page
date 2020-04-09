@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import "./nav-bar-and-intro.css";
+import React from "react";
+import "./header.css";
 import logo from "../assets/advisory-logo.png";
 import { IoIosArrowBack } from "react-icons/io";
 
-const NavBarAndIntro = (props) => {
+const Header = (props) => {
   return (
     <div>
       <div className="nav-bar">
@@ -26,4 +26,4 @@ const NavBarAndIntro = (props) => {
   );
 };
 
-export default NavBarAndIntro;
+export default Header;

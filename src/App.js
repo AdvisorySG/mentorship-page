@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import ProfileCard from "./components/profile-card";
-import NavBarAndIntro from "./components/nav-bar-and-intro";
+import Header from "./components/header";
 import ProfModal from "./components/prof-modal";
 // import jsonData from "./mentor-data/mentor-data.json";
 
@@ -69,7 +69,7 @@ function App() {
 
   return (
     <div className="page-layout">
-      <NavBarAndIntro />
+      <Header />
 
       {dynamicModal(modalID)}
 
