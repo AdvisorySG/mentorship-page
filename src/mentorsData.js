@@ -1,3 +1,5 @@
+import Fuse from "fuse.js";
+
 import { JaneDoe, PeterPan } from "./assets/profile_images";
 
 export const mentors = [
@@ -24,3 +26,16 @@ export const mentors = [
     imageUrl: PeterPan,
   },
 ];
+
+const fuseKeys = ["name", "role", "organization"];
+const fuseIndex = Fuse.createIndex(fuseKeys, mentors);
+const fuseOptions = {
+  isCaseSensitive: false,
+  includeScore: false,
+  includeMatches: true,
+  shouldSort: false,
+  findAllMatches: true,
+  keys: fuseKeys,
+};
+
+export const fuse = new Fuse(mentors, fuseOptions, fuseIndex);
