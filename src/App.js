@@ -4,7 +4,7 @@ import ProfileCard from "./components/profile-card";
 import Header from "./components/header";
 import ProfileModal from "./components/profile-modal";
 
-import mentors from "./mentors";
+import { mentors } from "./mentorsData";
 
 function App() {
   const [modalVisible, setModalVisible] = useState(false);

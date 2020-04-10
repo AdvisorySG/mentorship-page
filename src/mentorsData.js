@@ -1,6 +1,6 @@
 import { JaneDoe, PeterPan } from "./assets/profile_images";
 
-export default [
+export const mentors = [
   {
     id: 0,
     name: "Jane Doe",
