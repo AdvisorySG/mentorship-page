@@ -25,17 +25,27 @@ export const mentors = [
       "Peter Pan is a meteor conjurer at the Association of Waverly Place, 0:0:1132:124932 Solar System 33148293.",
     imageUrl: PeterPan,
   },
-];
+].sort((a, b) => a.name.localeCompare(b.name));
 
-const fuseKeys = ["name", "role", "organization"];
-const fuseIndex = Fuse.createIndex(fuseKeys, mentors);
 const fuseOptions = {
   isCaseSensitive: false,
-  includeScore: false,
+  findAllMatches: false,
   includeMatches: true,
-  shouldSort: false,
-  findAllMatches: true,
-  keys: fuseKeys,
+  shouldSort: true,
+  threshold: 0.2,
+  keys: [
+    {
+      name: "name",
+      weight: 0.6,
+    },
+    {
+      name: "role",
+      weight: 0.2,
+    },
+    {
+      name: "organization",
+      weight: 0.2,
+    },
+  ],
 };
-
-export const fuse = new Fuse(mentors, fuseOptions, fuseIndex);
+export const fuse = new Fuse(mentors, fuseOptions);

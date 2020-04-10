@@ -4,23 +4,31 @@ import ProfileCard from "./components/profile-card";
 import Header from "./components/header";
 import ProfileModal from "./components/profile-modal";
 
-import { mentors } from "./mentorsData";
+import { fuse, mentors } from "./mentorsData";
 
 function App() {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [activeMentorId, setActiveMentorId] = useState(null);
+  const [visibleMentors, setVisibleMentors] = useState(mentors);
 
   const searchHandler = (input) => {
-    console.log(input);
+    const processedInput = input.trim();
+    if (processedInput.length <= 0) {
+      setVisibleMentors(mentors);
+      return;
+    }
+    const searchResults = fuse.search(processedInput);
+    setVisibleMentors(searchResults.map((result) => result.item));
   };
 
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [activeMentorId, setActiveMentorId] = useState(null);
+
   const readMoreHandler = (mentorId) => {
-    setModalVisible(true);
+    setIsModalVisible(true);
     setActiveMentorId(mentorId);
   };
 
   const closeHandler = () => {
-    setModalVisible(false);
+    setIsModalVisible(false);
     setActiveMentorId(null);
   };
 
@@ -28,7 +36,7 @@ function App() {
     <div className="page-layout">
       <Header onSearch={searchHandler} />
 
-      {modalVisible && (
+      {isModalVisible && (
         <ProfileModal
           key={activeMentorId}
           mentor={mentors[activeMentorId]}
@@ -37,7 +45,7 @@ function App() {
       )}
 
       <div className="profile-cards">
-        {mentors.map((mentor) => (
+        {visibleMentors.map((mentor) => (
           <ProfileCard
             key={mentor.id}
             mentor={mentor}
