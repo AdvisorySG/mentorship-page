@@ -2,16 +2,20 @@ import React from "react";
 import "./profile-modal.css";
 import { MdClose } from "react-icons/md";
 
+const CloseButton = ({ onClose }) => (
+  <button
+    style={{ cursor: "pointer" }}
+    className="close-cross"
+    onClick={onClose}
+  >
+    <MdClose />
+  </button>
+);
+
 const ProfileModal = ({ mentor, onClose }) => {
   return (
     <div className="profile-modal">
-      <button
-        style={{ cursor: "pointer" }}
-        className="close-cross"
-        onClick={onClose}
-      >
-        <MdClose />
-      </button>
+      <CloseButton onClose={onClose} />
       <div className="content">
         <div className="left-half">
           <img className="image" src={mentor.imageUrl} alt={mentor.name} />

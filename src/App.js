@@ -10,6 +10,10 @@ function App() {
   const [modalVisible, setModalVisible] = useState(false);
   const [activeMentorId, setActiveMentorId] = useState(null);
 
+  const searchHandler = (input) => {
+    console.log(input);
+  };
+
   const readMoreHandler = (mentorId) => {
     setModalVisible(true);
     setActiveMentorId(mentorId);
@@ -22,7 +26,7 @@ function App() {
 
   return (
     <div className="page-layout">
-      <Header />
+      <Header onSearch={searchHandler} />
 
       {modalVisible && (
         <ProfileModal
