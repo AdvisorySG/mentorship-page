@@ -26,9 +26,9 @@ function App() {
 
       {modalVisible && (
         <ProfileModal
-          id={activeMentorId}
+          key={activeMentorId}
+          mentor={mentors[activeMentorId]}
           onClose={closeHandler}
-          {...mentors[activeMentorId]}
         />
       )}
 
@@ -36,10 +36,7 @@ function App() {
         {mentors.map((mentor) => (
           <ProfileCard
             key={mentor.id}
-            img_url={mentor.imageUrl}
-            name={mentor.name}
-            role={mentor.role}
-            organization={mentor.organization}
+            mentor={mentor}
             onReadMore={() => readMoreHandler(mentor.id)}
           />
         ))}

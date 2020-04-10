@@ -3,7 +3,7 @@ import "./header.css";
 import logo from "../assets/advisory-logo.png";
 import { IoIosArrowBack } from "react-icons/io";
 
-const Header = (props) => {
+const Header = () => {
   return (
     <div>
       <div className="nav-bar">
