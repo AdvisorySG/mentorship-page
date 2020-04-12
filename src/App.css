@@ -5,6 +5,9 @@
 .profile-cards {
   display: flex;
   flex-flow: row wrap;
+  width: 60%;
+  max-width: 1024px;
   padding: 20px;
+  margin: auto;
   justify-content: center;
 }
