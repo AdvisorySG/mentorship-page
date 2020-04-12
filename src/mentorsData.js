@@ -4,7 +4,6 @@ import { JaneDoe, PeterPan } from "./assets/profile_images";
 
 export const mentors = [
   {
-    id: 0,
     name: "Jane Doe",
     role: "MFA Student",
     organization: "SVA, New York City",
@@ -15,7 +14,6 @@ export const mentors = [
     imageUrl: JaneDoe,
   },
   {
-    id: 1,
     name: "Peter Pan",
     role: "Wizard",
     organization: "Asteroid Belt Infinity Enterprises",
@@ -26,7 +24,6 @@ export const mentors = [
     imageUrl: PeterPan,
   },
   {
-    id: 2,
     name: "Jane Doe",
     role: "MFA Student",
     organization: "SVA, New York City",
@@ -37,7 +34,6 @@ export const mentors = [
     imageUrl: JaneDoe,
   },
   {
-    id: 3,
     name: "Peter Pan",
     role: "Wizard",
     organization: "Asteroid Belt Infinity Enterprises",
@@ -48,7 +44,6 @@ export const mentors = [
     imageUrl: PeterPan,
   },
   {
-    id: 4,
     name: "Jane Doe",
     role: "MFA Student",
     organization: "SVA, New York City",
@@ -59,7 +54,6 @@ export const mentors = [
     imageUrl: JaneDoe,
   },
   {
-    id: 5,
     name: "Peter Pan",
     role: "Wizard",
     organization: "Asteroid Belt Infinity Enterprises",
@@ -70,7 +64,6 @@ export const mentors = [
     imageUrl: PeterPan,
   },
   {
-    id: 6,
     name: "Jane Doe",
     role: "MFA Student",
     organization: "SVA, New York City",
@@ -81,7 +74,6 @@ export const mentors = [
     imageUrl: JaneDoe,
   },
   {
-    id: 7,
     name: "Peter Pan",
     role: "Wizard",
     organization: "Asteroid Belt Infinity Enterprises",
@@ -92,7 +84,6 @@ export const mentors = [
     imageUrl: PeterPan,
   },
   {
-    id: 8,
     name: "Jane Doe",
     role: "MFA Student",
     organization: "SVA, New York City",
@@ -103,7 +94,6 @@ export const mentors = [
     imageUrl: JaneDoe,
   },
   {
-    id: 9,
     name: "Peter Pan",
     role: "Wizard",
     organization: "Asteroid Belt Infinity Enterprises",
@@ -114,7 +104,6 @@ export const mentors = [
     imageUrl: PeterPan,
   },
   {
-    id: 10,
     name: "Jane Doe",
     role: "MFA Student",
     organization: "SVA, New York City",
@@ -125,7 +114,6 @@ export const mentors = [
     imageUrl: JaneDoe,
   },
   {
-    id: 11,
     name: "Peter Pan",
     role: "Wizard",
     organization: "Asteroid Belt Infinity Enterprises",
@@ -136,7 +124,6 @@ export const mentors = [
     imageUrl: PeterPan,
   },
   {
-    id: 12,
     name: "Jane Doe",
     role: "MFA Student",
     organization: "SVA, New York City",
@@ -147,7 +134,6 @@ export const mentors = [
     imageUrl: JaneDoe,
   },
   {
-    id: 13,
     name: "Peter Pan",
     role: "Wizard",
     organization: "Asteroid Belt Infinity Enterprises",
@@ -158,7 +144,6 @@ export const mentors = [
     imageUrl: PeterPan,
   },
   {
-    id: 14,
     name: "Jane Doe",
     role: "MFA Student",
     organization: "SVA, New York City",
@@ -169,7 +154,6 @@ export const mentors = [
     imageUrl: JaneDoe,
   },
   {
-    id: 15,
     name: "Peter Pan",
     role: "Wizard",
     organization: "Asteroid Belt Infinity Enterprises",
@@ -180,7 +164,6 @@ export const mentors = [
     imageUrl: PeterPan,
   },
   {
-    id: 16,
     name: "Jane Doe",
     role: "MFA Student",
     organization: "SVA, New York City",
@@ -191,7 +174,6 @@ export const mentors = [
     imageUrl: JaneDoe,
   },
   {
-    id: 17,
     name: "Peter Pan",
     role: "Wizard",
     organization: "Asteroid Belt Infinity Enterprises",
@@ -202,7 +184,6 @@ export const mentors = [
     imageUrl: PeterPan,
   },
   {
-    id: 18,
     name: "Jane Doe",
     role: "MFA Student",
     organization: "SVA, New York City",
@@ -213,7 +194,6 @@ export const mentors = [
     imageUrl: JaneDoe,
   },
   {
-    id: 19,
     name: "Peter Pan",
     role: "Wizard",
     organization: "Asteroid Belt Infinity Enterprises",
@@ -223,7 +203,9 @@ export const mentors = [
       "Peter Pan is a meteor conjurer at the Association of Waverly Place, 0:0:1132:124932 Solar System 33148293.",
     imageUrl: PeterPan,
   },
-].sort((a, b) => a.name.localeCompare(b.name));
+]
+  .sort((a, b) => a.name.localeCompare(b.name))
+  .map((mentor, index) => Object.assign(mentor, { id: index }));
 
 const fuseOptions = {
   isCaseSensitive: false,
