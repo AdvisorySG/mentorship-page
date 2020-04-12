@@ -1,7 +1,7 @@
 /* Six cards side by side 
    Add some shadows to create a card effect and make edges rounded
    */
-.profile-card {
+.card {
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px;
@@ -15,12 +15,12 @@
   flex-flow: column nowrap;
   justify-content: space-between;
 }
-.image-region {
+.card-image-region {
   height: 160px;
   overflow: hidden;
   background-size: cover;
 }
-.image {
+.card-image {
   height: 250px;
   margin: auto;
 }
@@ -29,17 +29,17 @@
   padding: 10px;
   vertical-align: middle;
 }
-.name-text {
+.card-name {
   margin-bottom: 10px;
   font-weight: bold;
   text-align: center;
 }
-.desc-text {
+.card-desc {
   font-size: 90%;
   text-align: center;
   padding-top: 5px;
 }
-.button {
+.card-read-more {
   height: 40px;
   width: 100%;
   border: none;
@@ -51,13 +51,13 @@
   border-radius: 10px;
   opacity: 0.6;
 }
-.button-container {
+.card-read-more-container {
   background-color: white;
   width: 80%;
   margin: auto;
   padding-bottom: 15px;
 }
-.button:hover {
+.card-read-more:hover {
   background-color: black;
   color: white;
   opacity: 1;
