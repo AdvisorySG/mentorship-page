@@ -2,7 +2,7 @@ import React from "react";
 import "./profile-card.css";
 
 const ReadMore = ({ onReadMore }) => (
-  <div>
+  <div className="button-container">
     <button className="button" onClick={onReadMore}>
       Read More
     </button>
