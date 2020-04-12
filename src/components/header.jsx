@@ -1,7 +1,8 @@
 import React from "react";
 import { IoIosArrowBack } from "react-icons/io";
 
-import logo from "../assets/advisory-logo.png";
+import { advisoryLogo, advisoryMentorshipLogo } from "../assets";
+
 import "./header.css";
 
 const NavBar = () => (
@@ -10,7 +11,7 @@ const NavBar = () => (
       <IoIosArrowBack className="nav-arrow-icon" />
       back to main site
     </a>
-    <img className="nav-logo" src={logo} alt="Advisory" />
+    <img className="nav-logo" src={advisoryLogo} alt="Advisory" />
   </div>
 );
 
@@ -21,14 +22,27 @@ const SearchBar = ({ onSearch }) => (
 );
 
 const Header = ({ onSearch }) => (
-  <div>
+  <div className="header">
     <NavBar />
     <div className="header-bottom">
-      <h2>PLACEHOLDER TITLE</h2>
+      <img
+        className="header-mentorship-logo"
+        src={advisoryMentorshipLogo}
+        alt="Advisory Mentorship Programme"
+      />
       <div className="header-mentorship-intro">
         <p>
-          Lorem ipsum dolor sit amet something something. Scroll on to view the
-          mentors that have kindly offered their time to speak with you!
+          With the spread of COVID-19, and as many students face concerns,
+          frustration and uncertainty about their studies, graduation, and
+          career opportunities - Advisory is looking to support affected
+          students. By matching students aged 16-25 with industry mentors from
+          their field of interest one-to-one on a three-month basis from May to
+          July, we hope to assist students to make informed career choices, and
+          provide students with support and advice in these uncertain times.
+        </p>
+        <p>
+          Click <a href="https://advisorysg.typeform.com/to/qZFetT">here</a> to
+          apply as a mentee.
         </p>
       </div>
       <SearchBar onSearch={onSearch} />

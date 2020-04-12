@@ -4,6 +4,9 @@
   width: 100%;
   height: 55px;
   background-color: white;
+  border-bottom-style: solid;
+  border-width: 1px;
+  border-color: #cccccc;
 }
 .nav-arrow-icon {
   position: relative;
@@ -45,15 +48,13 @@ a:hover {
   margin: 20px;
 }
 .header-bottom {
-  background-color: #f0f0f0;
-  border-top-style: solid;
-  border-bottom-style: solid;
-  border-width: 1px;
-  border-color: #cccccc;
   text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.header-mentorship-logo {
+  width: 80%;
 }
 .header-mentorship-intro {
   text-align: justify;
-  width: 50%;
-  transform: translateX(50%);
 }
