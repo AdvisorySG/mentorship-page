@@ -2,7 +2,7 @@ import Fuse from "fuse.js";
 
 import { JaneDoe, PeterPan } from "./assets/profile_images";
 
-export const mentors = [
+const mentors = [
   {
     id: 0,
     name: "Jane Doe",
@@ -48,4 +48,6 @@ const fuseOptions = {
     },
   ],
 };
-export const fuse = new Fuse(mentors, fuseOptions);
+const fuse = new Fuse(mentors, fuseOptions);
+
+export { fuse, mentors };

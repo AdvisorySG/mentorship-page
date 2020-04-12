@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import "./App.css";
-import ProfileCard from "./components/profile-card";
-import Header from "./components/header";
-import ProfileModal from "./components/profile-modal";
 
+import Header from "./components/header";
+import ProfileCard from "./components/profile-card";
+import ProfileModal from "./components/profile-modal";
 import { fuse, mentors } from "./mentorsData";
+
+import "./App.css";
 
 function App() {
   const [visibleMentors, setVisibleMentors] = useState(mentors);
