@@ -3,22 +3,22 @@ import React from "react";
 import "./profile-card.css";
 
 const ReadMore = ({ onReadMore }) => (
-  <div className="button-container">
-    <button className="button" onClick={onReadMore}>
+  <div className="card-read-more-container">
+    <button className="card-read-more" onClick={onReadMore}>
       Read More
     </button>
   </div>
 );
 
 const ProfileCard = ({ mentor, onReadMore }) => (
-  <div className="profile-card">
-    <div className="image-region">
-      <img className="image" src={mentor.imageUrl} alt={mentor.name} />
+  <div className="card">
+    <div className="card-image-region">
+      <img className="card-image" src={mentor.imageUrl} alt={mentor.name} />
     </div>
     <div className="card-descriptors">
-      <div className="name-text">{mentor.name}</div>
-      <div className="desc-text">{mentor.role}</div>
-      <div className="desc-text">{mentor.organization}</div>
+      <div className="card-name">{mentor.name}</div>
+      <div className="card-desc">{mentor.role}</div>
+      <div className="card-desc">{mentor.organization}</div>
     </div>
     <ReadMore onReadMore={onReadMore} />
   </div>
