@@ -1,3 +1,4 @@
+import LazyLoad from "react-lazyload";
 import React from "react";
 import "./profile-card.css";
 
