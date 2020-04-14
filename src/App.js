@@ -35,7 +35,7 @@ function App() {
   };
 
   return (
-    <div className="container">
+    <div className="page-layout">
       <Header onSearch={searchHandler} />
 
       {isModalActive && (
@@ -46,7 +46,7 @@ function App() {
         />
       )}
 
-      <div className="card-container">
+      <div className="profile-cards">
         {visibleMentorIds.map((mentorId) => (
           <ProfileCard
             key={mentorId}

@@ -1,15 +1,8 @@
-
-/* Six cards side by side 
-   Add some shadows to create a card effect and make edges rounded
-   */
-.card {
-  /*
 .profile-card {
   display: flex;
   flex: 1 0 160px;
   flex-flow: column nowrap;
   justify-content: space-between;
-  */
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px;
@@ -17,31 +10,29 @@
   margin: 8px 8px;
 }
 .card-image-region {
-  height: 160px;
-  /*width: 100%;*/
+  width: 100%;
   overflow: hidden;
   background-size: cover;
 }
 .card-image {
-  height: 250px;
-  /*width: 100%;*/
+  width: 100%;
   margin: auto;
 }
 .card-descriptors {
   padding: 10px;
   vertical-align: middle;
 }
-.card-name {
+.name-text {
   margin-bottom: 10px;
   font-weight: bold;
   text-align: center;
 }
-.card-desc {
+.desc-text {
   font-size: 90%;
   text-align: center;
   padding-top: 5px;
 }
-.card-read-more {
+.button {
   height: 40px;
   width: 100%;
   border: none;
@@ -53,13 +44,13 @@
   border-radius: 10px;
   opacity: 0.6;
 }
-.card-read-more-container {
+.button-container {
   background-color: white;
   width: 80%;
   margin: auto;
   padding-bottom: 15px;
 }
-.card-read-more:hover {
+.button:hover {
   background-color: black;
   color: white;
   opacity: 1;

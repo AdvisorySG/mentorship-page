@@ -1,4 +1,4 @@
-.nav {
+.nav-bar {
   position: relative;
   flex: 1;
   width: 100%;
@@ -7,12 +7,12 @@
   background-color: white;
   box-shadow: 0px 1px 50px 1px #dddddd;
 }
-.nav-arrow-icon {
+.arrow-icon {
   position: relative;
   top: 5%;
   padding-right: 10px;
 }
-.nav-back-to-main-site {
+.back-to-main-site {
   position: relative;
   left: 5%;
   top: 25%;
@@ -23,7 +23,7 @@ a:hover {
   text-decoration: underline;
 }
 @media only screen and (max-width: 600px) {
-  .nav-logo {
+  .logo {
     position: absolute;
     height: 60%;
 
@@ -32,7 +32,7 @@ a:hover {
   }
 }
 @media only screen and (min-width: 601px) {
-  .nav-logo {
+  .logo {
     position: absolute;
     height: 60%;
 
@@ -43,7 +43,7 @@ a:hover {
     margin: auto auto;
   }
 }
-.header-bottom {
+.bottom-layer {
   height: 200px;
   background-color: white;
 
@@ -58,7 +58,7 @@ a:hover {
 
   text-align: center;
 }
-.header-mentorship-intro {
+.mentorship-intro {
   text-align: justify;
   width: 50%;
   transform: translateX(50%);
