@@ -1,8 +1,8 @@
 import React from "react";
-import "./header.css";
+import { IoIosArrowBack } from "react-icons/io";
 
 import logo from "../assets/advisory-logo.png";
-import { IoIosArrowBack } from "react-icons/io";
+import "./header.css";
 
 const NavBar = () => (
   <div className="nav-bar">
