@@ -5,12 +5,12 @@ import logo from "../assets/advisory-logo.png";
 import "./header.css";
 
 const NavBar = () => (
-  <div className="nav-bar">
-    <a className="back-to-main-site" href="https://advisory.sg">
-      <IoIosArrowBack className="arrow-icon" />
+  <div className="nav">
+    <a className="nav-back-to-main-site" href="https://advisory.sg">
+      <IoIosArrowBack className="nav-arrow-icon" />
       back to main site
     </a>
-    <img className="logo" src={logo} alt="Logo" />
+    <img className="nav-logo" src={logo} alt="Advisory" />
   </div>
 );
 
@@ -23,9 +23,9 @@ const SearchBar = ({ onSearch }) => (
 const Header = ({ onSearch }) => (
   <div>
     <NavBar />
-    <div className="bottom-layer">
+    <div className="header-bottom">
       <h2>PLACEHOLDER TITLE</h2>
-      <div className="mentorship-intro">
+      <div className="header-mentorship-intro">
         <p>
           Lorem ipsum dolor sit amet something something. Scroll on to view the
           mentors that have kindly offered their time to speak with you!
