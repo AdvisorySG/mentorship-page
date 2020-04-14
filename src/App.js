@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-
-import Header from "./components/header";
+import "./App.css";
 import ProfileCard from "./components/profile-card";
+import Header from "./components/header";
 import ProfileModal from "./components/profile-modal";
+
 import { fuse, mentors } from "./mentorsData";
 
-import "./App.css";
 const mentorIds = mentors.map((mentor) => mentor.id);
 
 function App() {

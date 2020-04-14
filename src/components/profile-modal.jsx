@@ -1,7 +1,6 @@
 import React from "react";
-import { MdClose } from "react-icons/md";
-
 import "./profile-modal.css";
+import { MdClose } from "react-icons/md";
 
 const CloseButton = ({ onClose }) => (
   <button
