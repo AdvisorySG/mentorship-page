@@ -1,8 +1,8 @@
-.page-layout {
+.container {
   height: 100%;
   background-color: white;
 }
-.profile-cards {
+.card-container {
   display: flex;
   flex-flow: row wrap;
   width: 60%;
