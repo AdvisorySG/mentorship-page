@@ -12,10 +12,8 @@ const ReadMore = ({ onReadMore }) => (
 
 const ProfileCard = ({ mentor, onReadMore }) => (
   <div className="profile-card">
-    <div className="image-region">
-      <LazyLoad height="100%" offset={100} once>
-        <img className="image" src={mentor.imageUrl} alt={mentor.name} />
-      </LazyLoad>
+    <div className="card-image-region">
+      <img className="card-image" src={mentor.imageUrl} alt={mentor.name} />
     </div>
     <div className="card-descriptors">
       <div className="name-text">{mentor.name}</div>
