@@ -1,9 +1,30 @@
 import React from "react";
+import SelectSearch from "react-select-search";
 import { IoIosArrowBack } from "react-icons/io";
 
 import { advisoryLogo, advisoryMentorshipLogo } from "../assets";
+import { mentors } from "../mentors.json";
 
 import "./header.css";
+
+const searchOptions = [
+  { groupName: "Name", key: "name" },
+  { groupName: "Role", key: "role" },
+  { groupName: "Organization", key: "organization" },
+  { groupName: "School", key: "school" },
+  { groupName: "Course of Study", key: "courseOfStudy" },
+].map(({ groupName, key }) => ({
+  type: "group",
+  name: groupName,
+  items: [...new Set(mentors.map((mentor) => mentor[key]))].map((value) => ({
+    name: value,
+    value: value
+      .toLowerCase()
+      .split(" ")
+      .map((term) => `${key}:${term}`)
+      .join(" "),
+  })),
+}));
 
 const NavBar = () => (
   <div className="nav">
@@ -15,18 +36,19 @@ const NavBar = () => (
   </div>
 );
 
-const SearchBar = ({ onSearch }) => (
+const SearchBar = ({ onChange }) => (
   <div className="search-bar">
-    <input
+    <SelectSearch
       className="search-input"
-      type="text"
-      placeholder="Search for a mentor"
-      onChange={(e) => onSearch(e.target.value)}
+      options={searchOptions}
+      onChange={onChange}
+      placeholder="Type for more suggestions..."
+      search={true}
     />
   </div>
 );
 
-const Header = ({ onSearch }) => (
+const Header = ({ onChange }) => (
   <div className="header">
     <NavBar />
     <div className="header-bottom">
@@ -57,7 +79,7 @@ const Header = ({ onSearch }) => (
           to apply as a mentee.
         </p>
       </div>
-      <SearchBar onSearch={onSearch} />
+      <SearchBar onChange={onChange} />
     </div>
   </div>
 );
