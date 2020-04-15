@@ -16,7 +16,12 @@ const NavBar = () => (
 
 const SearchBar = ({ onSearch }) => (
   <div className="search-bar">
-    <input type="text" onChange={(e) => onSearch(e.target.value)} />
+    <input
+      className="search-input"
+      type="text"
+      placeholder="Search for a mentor"
+      onChange={(e) => onSearch(e.target.value)}
+    />
   </div>
 );
 
