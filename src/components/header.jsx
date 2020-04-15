@@ -1,6 +1,7 @@
 import React from "react";
 import { IoIosArrowBack } from "react-icons/io";
 
+import SearchBar from "./search-bar";
 import { advisoryLogo, advisoryMentorshipLogo } from "../assets";
 
 import "./header.css";
@@ -12,17 +13,6 @@ const NavBar = () => (
       back to main site
     </a>
     <img className="nav-logo" src={advisoryLogo} alt="Advisory" />
-  </div>
-);
-
-const SearchBar = ({ onSearch }) => (
-  <div className="search-bar">
-    <input
-      className="search-input"
-      type="text"
-      placeholder="Search for a mentor"
-      onChange={(e) => onSearch(e.target.value)}
-    />
   </div>
 );
 

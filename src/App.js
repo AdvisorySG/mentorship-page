@@ -4,6 +4,7 @@ import Header from "./components/header";
 import ProfileCard from "./components/profile-card";
 import ProfileModal from "./components/profile-modal";
 import { mentors } from "./mentors.json";
+import { search } from "./search";
 
 import "./App.css";
 
@@ -11,15 +12,7 @@ const mentorIds = mentors.map((mentor, index) => index);
 
 function App() {
   const [visibleMentorIds, setVisibleMentorIds] = useState(mentorIds);
-
-  const searchHandler = (input) => {
-    const processedInput = input.trim();
-    if (processedInput.length <= 0) {
-      setVisibleMentorIds(mentorIds);
-      return;
-    }
-    // TODO: add filter feature
-  };
+  const searchHandler = (input) => setVisibleMentorIds(search(input));
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeMentorId, setActiveMentorId] = useState(0);
