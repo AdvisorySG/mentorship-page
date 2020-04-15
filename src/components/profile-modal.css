@@ -7,12 +7,11 @@
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
   outline: 0;
   position: absolute;
-  /* width: 70%;
-  height: 50%; */
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding-top: 3%;
   top: 50%;
   left: 50%;
+  height: 70%;
+  width: 80%;
   transform: translate(-50%, -50%) !important;
   z-index: 9998;
 }
@@ -31,23 +30,27 @@
     flex-direction: row;
     width: 100%;
     overflow: hidden;
-    position: relative;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
   .modal-left {
-    width: 35%;
+    width: 45%;
     float: left;
-    padding: 5%;
     border-right-style: solid;
     border-right-width: 1px;
     border-right-color: #ccc;
+    height: 100%;
   }
   .modal-right {
     flex-direction: row;
     width: 55%;
     float: right;
-    padding: 5%;
     vertical-align: middle;
     text-align: justify;
+    height: 100%;
   }
   .modal-bio {
     padding-top: 30px;
