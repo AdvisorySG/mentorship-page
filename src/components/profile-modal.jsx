@@ -19,6 +19,7 @@ const ProfileModal = ({ isOpen, mentor, onClose }) => {
     <ReactModal
       className="modal-container"
       shouldCloseOnOverlayClick={true}
+      onRequestClose={onClose}
       isOpen={isOpen}
       contentLabel="View Details"
     >
