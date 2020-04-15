@@ -5,11 +5,7 @@ import { MdClose } from "react-icons/md";
 import "./profile-modal.css";
 
 const CloseButton = ({ onClose }) => (
-  <button
-    style={{ cursor: "pointer" }}
-    className="modal-close"
-    onClick={onClose}
-  >
+  <button className="modal-close" onClick={onClose}>
     <MdClose />
   </button>
 );
@@ -18,6 +14,7 @@ const ProfileModal = ({ isOpen, mentor, onClose }) => {
   return (
     <ReactModal
       className="modal-container"
+      overlayClassName="modal-overlay"
       shouldCloseOnOverlayClick={true}
       onRequestClose={onClose}
       isOpen={isOpen}
