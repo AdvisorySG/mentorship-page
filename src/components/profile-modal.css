@@ -1,19 +1,39 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
 .modal-container {
-  flex: 1;
+  position: absolute;
+  top: 12%;
+  bottom: 12%;
+  left: 10%;
+  right: 10%;
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  z-index: 9998;
+  overflow: auto;
   text-align: center;
   background: white;
   border-radius: 10px;
   transition: 1.1s ease-in-out;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
   outline: 0;
-  position: absolute;
-  padding-top: 3%;
-  top: 50%;
-  left: 50%;
-  height: 70%;
-  width: 80%;
-  transform: translate(-50%, -50%) !important;
-  z-index: 9998;
+}
+@media only screen and (max-width: 600px) {
+  /* Increase the modal size on smaller devices */
+  .modal-container {
+    top: 5%;
+    bottom: 5%;
+    left: 5%;
+    right: 5%;
+  }
 }
 .modal-close {
   cursor: pointer;
@@ -24,74 +44,50 @@
   border: none;
   background-color: transparent;
 }
+.modal-close:active {
+  outline: none;
+}
+.modal-left {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.modal-bio {
+  width: 80%;
+  margin: 20px auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: justify;
+  font-size: 90%;
+}
+@media only screen and (max-width: 600px) {
+  .modal-left {
+    border-bottom: 1px solid #ccc;
+  }
+  .modal-bio {
+    font-size: 100%; /* Larger font size on mobile */
+  }
+}
+/*
+ * Default to normal document positioning for modal (top to bottom) on smaller viewports
+ * and only switch to flexbox on larger viewports.
+ */
 @media only screen and (min-width: 601px) {
   .modal-content {
     display: flex;
     flex-direction: row;
-    width: 100%;
-    overflow: hidden;
     justify-content: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    align-items: center;
   }
   .modal-left {
+    flex: 45 1 auto;
     width: 45%;
-    float: left;
-    border-right-style: solid;
-    border-right-width: 1px;
-    border-right-color: #ccc;
     height: 100%;
+    border-right: 1px solid #ccc;
   }
   .modal-right {
-    flex-direction: row;
+    flex: 55 1 auto;
     width: 55%;
-    float: right;
-    vertical-align: middle;
-    text-align: justify;
     height: 100%;
-  }
-  .modal-bio {
-    padding-top: 30px;
-    margin-left: 10%;
-    width: 80%;
-    text-align: center justify;
-    font-size: 90%;
-  }
-}
-@media only screen and (max-width: 600px) {
-  .modal-content {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-  }
-  .modal-left {
-    float: top;
-    padding-bottom: 30px;
-  }
-  .modal-right {
-    flex-direction: row;
-    width: 100%;
-    float: bottom;
-    margin-top: 5%;
-    padding-right: 50px;
-    vertical-align: middle;
-    border-top-style: solid;
-    border-top-width: 1px;
-    border-top-color: #ccc;
-    text-align: center justify;
-    justify-content: center;
-  }
-  .modal-bio {
-    padding-top: 30px;
-    margin-left: 10%;
-    width: 80%;
-    float: center;
-    text-align: center justify;
-    font-size: 90%;
   }
 }
 .modal-image {
