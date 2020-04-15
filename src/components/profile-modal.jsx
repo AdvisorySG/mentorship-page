@@ -14,12 +14,12 @@ const CloseButton = ({ onClose }) => (
   </button>
 );
 
-const ProfileModal = ({ isModalActive, mentor, onClose }) => {
+const ProfileModal = ({ isOpen, mentor, onClose }) => {
   return (
     <ReactModal
       className="modal-container"
       shouldCloseOnOverlayClick={true}
-      isOpen={isModalActive}
+      isOpen={isOpen}
       contentLabel="View Details"
     >
       <CloseButton onClose={onClose} />
