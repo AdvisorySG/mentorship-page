@@ -42,6 +42,7 @@ function App() {
       {isModalActive && (
         <ProfileModal
           key={activeMentorId}
+          isModalActive={isModalActive}
           mentor={mentors[activeMentorId]}
           onClose={closeHandler}
         />
