@@ -26,9 +26,10 @@
   object-fit: cover;
   margin: auto;
 }
-.card-descriptors {
-  flex: 1;
-  padding: 10px;
+@media only screen and (max-width: 600px) {
+  .card-image {
+    height: 120px;
+  }
 }
 .card-name {
   margin-bottom: 10px;
