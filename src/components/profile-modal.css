@@ -7,6 +7,7 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 .modal-container {
+  display: flex;
   position: absolute;
   top: 12%;
   bottom: 12%;
@@ -49,7 +50,7 @@
 }
 /* Allow content to overflow, without affecting positioning of close button. */
 .modal-content {
-  max-height: 100%;
+  flex: 1;
   overflow: auto;
 }
 .modal-close {
@@ -65,21 +66,29 @@
 .modal-close:active {
   outline: none;
 }
-.modal-left {
-  padding-top: 30px;
-  padding-bottom: 30px;
+.modal-image {
+  height: 250px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.modal-metadata-container {
+  width: 80%;
+  margin: 10px auto;
 }
 .modal-bio {
   width: 80%;
   margin: 20px auto;
-  padding-top: 30px;
-  padding-bottom: 30px;
   text-align: justify;
   font-size: 90%;
 }
 @media only screen and (max-width: 600px) {
   .modal-left {
+    padding: 20px 0;
+    margin: 0 auto;
     border-bottom: 1px solid #ccc;
+  }
+  .modal-right {
+    margin: 20px 0;
   }
   .modal-bio {
     font-size: 100%; /* Larger font size on mobile */
@@ -94,21 +103,22 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
   }
   .modal-left {
     flex: 45 1 auto;
     width: 45%;
-    height: 100%;
     border-right: 1px solid #ccc;
   }
   .modal-right {
     flex: 55 1 auto;
     width: 55%;
-    height: 100%;
   }
-}
-.modal-image {
-  height: 250px;
-  margin: auto;
+  .modal-left,
+  .modal-right {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }

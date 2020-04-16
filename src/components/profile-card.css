@@ -32,6 +32,7 @@
   margin-bottom: 10px;
   font-weight: bold;
   text-align: center;
+  overflow-wrap: break-word;
 }
 .card-desc {
   font-size: 90%;
