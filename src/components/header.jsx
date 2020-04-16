@@ -58,9 +58,14 @@ const Header = ({ onSearch }) => (
         </p>
         <p>
           Click{" "}
-          <a href="/assets/resumeguide.pdf">here</a>{" "}
-          to view the
-          application guide on CVs and resumes.
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="/assets/resumeguide.pdf"
+          >
+            here
+          </a>{" "}
+          to view the application guide on CVs and resumes.
         </p>
       </div>
       <SearchBar onSearch={onSearch} />
