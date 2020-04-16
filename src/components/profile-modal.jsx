@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import ReactModal from "react-modal";
 import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 import { MdClose } from "react-icons/md";
@@ -14,9 +14,11 @@ const CloseButton = ({ onClose }) => (
 const ProfileModal = ({ isOpen, mentor, onClose }) => {
   mentor || (mentor = {});
 
+  const scrollEl = useRef(null);
+
   // Disable body scroll when modal is open.
-  const onAfterOpenHandler = ({ contentEl }) =>
-    disableBodyScroll(contentEl, { reserveScrollBarGap: true });
+  const onAfterOpenHandler = () =>
+    disableBodyScroll(scrollEl.current, { reserveScrollBarGap: true });
   const onAfterCloseHandler = () => clearAllBodyScrollLocks();
 
   return (
@@ -33,7 +35,7 @@ const ProfileModal = ({ isOpen, mentor, onClose }) => {
       contentLabel="View Details"
     >
       <CloseButton onClose={onClose} />
-      <div className="modal-content">
+      <div className="modal-content" ref={scrollEl}>
         <div className="modal-left">
           <img
             className="modal-image"
