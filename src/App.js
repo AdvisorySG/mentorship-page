@@ -7,7 +7,7 @@ import { fuse, mentors } from "./mentorsData";
 
 import "./App.css";
 
-const mentorIds = mentors.map((mentor) => mentor.id);
+const mentorIds = mentors.map((mentor, index) => index);
 
 function App() {
   const [visibleMentorIds, setVisibleMentorIds] = useState(mentorIds);
