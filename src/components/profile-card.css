@@ -1,6 +1,6 @@
 .card {
   display: flex;
-  flex: 1 0 160px;
+  flex: 0 0 160px;
   flex-flow: column nowrap;
   justify-content: space-between;
   background-color: white;
@@ -9,10 +9,10 @@
   overflow: hidden;
   margin: 8px;
 }
-/* On smaller viewports, maximize space usage and try to allow 2 cards per row. */
+/* On smaller viewports, restrict card size and try to allow 2 cards per row. */
 @media only screen and (max-width: 600px) {
   .card {
-    flex: 1 0 120px;
+    flex: 0 0 120px;
   }
 }
 .card-image-region {
