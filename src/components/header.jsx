@@ -46,8 +46,15 @@ const Header = ({ onSearch }) => (
           provide students with support and advice in these uncertain times.
         </p>
         <p>
-          Click <a href="https://advisorysg.typeform.com/to/qZFetT">here</a> to
-          apply as a mentee.
+          Click{" "}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://advisorysg.typeform.com/to/qZFetT"
+          >
+            here
+          </a>{" "}
+          to apply as a mentee.
         </p>
       </div>
       <SearchBar onSearch={onSearch} />
