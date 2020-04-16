@@ -11,3 +11,8 @@
   margin: auto;
   justify-content: center;
 }
+@media only screen and (max-width: 600px) {
+  .card-container {
+    width: 80%;
+  }
+}
