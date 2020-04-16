@@ -11,6 +11,8 @@ const CloseButton = ({ onClose }) => (
 );
 
 const ProfileModal = ({ isOpen, mentor, onClose }) => {
+  mentor || (mentor = {});
+
   return (
     <ReactModal
       className="modal-container"
