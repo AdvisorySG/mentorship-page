@@ -39,7 +39,6 @@ const NavBar = () => (
 const SearchBar = ({ onChange }) => (
   <div className="search-bar">
     <SelectSearch
-      className="search-input"
       options={searchOptions}
       onChange={onChange}
       placeholder="Type for more suggestions..."
