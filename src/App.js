@@ -22,29 +22,26 @@ function App() {
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeMentorId, setActiveMentorId] = useState(null);
+  const [activeMentorId, setActiveMentorId] = useState(0);
 
   const readMoreHandler = (mentorId) => {
-    setIsModalOpen(true);
     setActiveMentorId(mentorId);
+    setIsModalOpen(true);
   };
 
   const closeHandler = () => {
     setIsModalOpen(false);
-    setActiveMentorId(null);
   };
 
   return (
     <div className="container">
       <Header onSearch={searchHandler} />
 
-      {isModalOpen && (
-        <ProfileModal
-          isOpen={isModalOpen}
-          mentor={mentors[activeMentorId]}
-          onClose={closeHandler}
-        />
-      )}
+      <ProfileModal
+        isOpen={isModalOpen}
+        mentor={mentors[activeMentorId]}
+        onClose={closeHandler}
+      />
 
       <div className="card-container">
         {visibleMentorIds.map((mentorId) => (
