@@ -10,7 +10,6 @@ with open(sys.argv[1], newline='') as f:
         if row[0] == "":
             continue
 
-        print(row[0])
         mentors.append({
             "name": row[0],
             "role": row[1],
