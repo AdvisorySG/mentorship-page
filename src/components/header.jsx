@@ -61,7 +61,7 @@ const Header = ({ onSearch }) => (
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="/assets/resumeguide.pdf"
+            href={process.env.PUBLIC_URL+"/assets/resumeguide.pdf"}
           >
             here
           </a>{" "}
