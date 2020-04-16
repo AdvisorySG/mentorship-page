@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Header from "./components/header";
 import ProfileCard from "./components/profile-card";
@@ -10,6 +10,7 @@ import { fieldSearch } from "./search";
 import "./App.css";
 
 const mentorIds = mentors.map((mentor, index) => index);
+const setHash = (hash) => window.history.replaceState({}, "", `#${hash}`);
 
 function App() {
   const [visibleMentorIds, setVisibleMentorIds] = useState(mentorIds);
@@ -21,7 +22,45 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeMentorId, setActiveMentorId] = useState(0);
 
-  const readMoreHandler = (mentorId) => {
+  useEffect(() => {
+    // Checks hash and ensures that any modal with a corresponding ID is open.
+    let ensureModalFromHash = () => {
+      let hash = window.location.hash.slice(1);
+      let num = hash.length ? Number(hash) : "";
+
+      if (typeof num == "number" && !isNaN(num) && mentors[num]) {
+        if (!isModalOpen || num !== activeMentorId) {
+          activateModal(num);
+          return true;
+        }
+      }
+    };
+
+    // If modal is open, ensure that the hash is active.
+    if (isModalOpen) {
+      setHash(activeMentorId);
+    } else {
+      // If modal is not open and `activeMentorId === null`, this must be the
+      // initial load. Check for a hash, and open the modal if such an ID
+      // exists.
+      if (activeMentorId === null) {
+        if (!ensureModalFromHash()) {
+          // Otherwise, set a default ID, but do not open the modal.
+          setActiveMentorId(0);
+        }
+      } else {
+        // An ID exists, but the modal is not open, so remove the hash.
+        setHash("");
+      }
+    }
+
+    // Add event listeners to catch if the user manually changes the hash.
+    window.addEventListener("hashchange", ensureModalFromHash, false);
+    return () =>
+      window.removeEventListener("hashchange", ensureModalFromHash, false);
+  }, [isModalOpen, activeMentorId]);
+
+  const activateModal = (mentorId) => {
     setActiveMentorId(mentorId);
     setIsModalOpen(true);
   };
@@ -50,7 +89,7 @@ function App() {
           <ProfileCard
             key={mentorId}
             mentor={mentors[mentorId]}
-            onReadMore={() => readMoreHandler(mentorId)}
+            onReadMore={() => activateModal(mentorId)}
           />
         ))}
       </div>
