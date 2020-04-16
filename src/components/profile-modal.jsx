@@ -1,5 +1,6 @@
 import React from "react";
 import ReactModal from "react-modal";
+import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 import { MdClose } from "react-icons/md";
 
 import "./profile-modal.css";
@@ -13,13 +14,20 @@ const CloseButton = ({ onClose }) => (
 const ProfileModal = ({ isOpen, mentor, onClose }) => {
   mentor || (mentor = {});
 
+  // Disable body scroll when modal is open.
+  const onAfterOpenHandler = ({ contentEl }) =>
+    disableBodyScroll(contentEl, { reserveScrollBarGap: true });
+  const onAfterCloseHandler = () => clearAllBodyScrollLocks();
+
   return (
     <ReactModal
       className="modal-container"
       overlayClassName="modal-overlay"
-      shouldCloseOnOverlayClick={true}
-      onRequestClose={onClose}
       isOpen={isOpen}
+      shouldCloseOnOverlayClick={true}
+      onAfterOpen={onAfterOpenHandler}
+      onRequestClose={onClose}
+      onAfterClose={onAfterCloseHandler}
       contentLabel="View Details"
     >
       <CloseButton onClose={onClose} />
