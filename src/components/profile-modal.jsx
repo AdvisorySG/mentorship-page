@@ -28,6 +28,8 @@ const ProfileModal = ({ isOpen, mentor, onClose }) => {
       onAfterOpen={onAfterOpenHandler}
       onRequestClose={onClose}
       onAfterClose={onAfterCloseHandler}
+      /* Set a timeout so modal element is removed after transition (0.3s). */
+      closeTimeoutMS={300}
       contentLabel="View Details"
     >
       <CloseButton onClose={onClose} />
