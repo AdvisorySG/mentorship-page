@@ -22,16 +22,16 @@ function App() {
     setVisibleMentorIds(searchResults.map((result) => result.item.id));
   };
 
-  const [isModalActive, setIsModalActive] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeMentorId, setActiveMentorId] = useState(null);
 
   const readMoreHandler = (mentorId) => {
-    setIsModalActive(true);
+    setIsModalOpen(true);
     setActiveMentorId(mentorId);
   };
 
   const closeHandler = () => {
-    setIsModalActive(false);
+    setIsModalOpen(false);
     setActiveMentorId(null);
   };
 
@@ -39,9 +39,9 @@ function App() {
     <div className="container">
       <Header onSearch={searchHandler} />
 
-      {isModalActive && (
+      {isModalOpen && (
         <ProfileModal
-          key={activeMentorId}
+          isOpen={isModalOpen}
           mentor={mentors[activeMentorId]}
           onClose={closeHandler}
         />

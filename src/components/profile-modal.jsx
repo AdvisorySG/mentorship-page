@@ -1,4 +1,5 @@
 import React from "react";
+import ReactModal from "react-modal";
 import { MdClose } from "react-icons/md";
 
 import "./profile-modal.css";
@@ -13,9 +14,15 @@ const CloseButton = ({ onClose }) => (
   </button>
 );
 
-const ProfileModal = ({ mentor, onClose }) => {
+const ProfileModal = ({ isOpen, mentor, onClose }) => {
   return (
-    <div className="modal">
+    <ReactModal
+      className="modal-container"
+      shouldCloseOnOverlayClick={true}
+      onRequestClose={onClose}
+      isOpen={isOpen}
+      contentLabel="View Details"
+    >
       <CloseButton onClose={onClose} />
       <div className="modal-content">
         <div className="modal-left">
@@ -40,7 +47,7 @@ const ProfileModal = ({ mentor, onClose }) => {
           <p className="modal-bio">{mentor.fullBio}</p>
         </div>
       </div>
-    </div>
+    </ReactModal>
   );
 };
 
