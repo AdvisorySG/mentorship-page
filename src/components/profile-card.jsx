@@ -15,7 +15,11 @@ const ProfileCard = ({ mentor, onReadMore }) => (
   <div className="card">
     <div className="card-image-region">
       <LazyLoad height="100%" offset={100} once>
-        <img className="card-image" src={mentor.imageUrl} alt={mentor.name} />
+        <img
+          className="card-image"
+          src={process.env.PUBLIC_URL + mentor.imageUrl}
+          alt={mentor.name}
+        />
       </LazyLoad>
     </div>
     <div className="card-descriptors">
