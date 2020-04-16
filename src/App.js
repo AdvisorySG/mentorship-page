@@ -7,20 +7,9 @@ import { mentors } from "./mentors.json";
 
 import "./App.css";
 
-const mentorIds = mentors.map((mentor, index) => index);
+const visibleMentorIds = mentors.map((mentor, index) => index);
 
 function App() {
-  const [visibleMentorIds, setVisibleMentorIds] = useState(mentorIds);
-
-  const searchHandler = (input) => {
-    const processedInput = input.trim();
-    if (processedInput.length <= 0) {
-      setVisibleMentorIds(mentorIds);
-      return;
-    }
-    // TODO: add filter feature
-  };
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeMentorId, setActiveMentorId] = useState(0);
 
@@ -35,7 +24,7 @@ function App() {
 
   return (
     <div className="container">
-      <Header onSearch={searchHandler} />
+      <Header />
 
       <ProfileModal
         isOpen={isModalOpen}

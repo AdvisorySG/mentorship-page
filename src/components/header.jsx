@@ -15,18 +15,7 @@ const NavBar = () => (
   </div>
 );
 
-const SearchBar = ({ onSearch }) => (
-  <div className="search-bar">
-    <input
-      className="search-input"
-      type="text"
-      placeholder="Search for a mentor"
-      onChange={(e) => onSearch(e.target.value)}
-    />
-  </div>
-);
-
-const Header = ({ onSearch }) => (
+const Header = () => (
   <div className="header">
     <NavBar />
     <div className="header-bottom">
@@ -57,7 +46,6 @@ const Header = ({ onSearch }) => (
           to apply as a mentee.
         </p>
       </div>
-      <SearchBar onSearch={onSearch} />
     </div>
   </div>
 );
