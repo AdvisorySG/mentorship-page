@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Header from "./components/header";
 import ProfileCard from "./components/profile-card";
 import ProfileModal from "./components/profile-modal";
-import { fuse, mentors } from "./mentorsData";
+import { mentors } from "./mentors.json";
 
 import "./App.css";
 
@@ -18,8 +18,7 @@ function App() {
       setVisibleMentorIds(mentorIds);
       return;
     }
-    const searchResults = fuse.search(processedInput);
-    setVisibleMentorIds(searchResults.map((result) => result.item.id));
+    // TODO: add filter feature
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
