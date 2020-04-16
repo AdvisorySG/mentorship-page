@@ -63,14 +63,9 @@ a:hover {
   width: 80%;
 }
 .header-mentorship-intro {
-  width: 50%;
+  width: 80%;
   margin: 0 auto;
   text-align: justify;
-}
-@media only screen and (max-width: 600px) {
-  .header-mentorship-intro {
-    width: 80%;
-  }
 }
 .search-input {
   width: 50%;
