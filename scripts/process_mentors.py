@@ -7,19 +7,19 @@ with open(sys.argv[1], newline='') as f:
     mentors = []
     for row in lines:
         row = [x.strip() for x in row]
-        if row[1] == "" or row[1].lower() == "name":
+        if row[0] == "":
             continue
 
-        if row[0].lower() == "full profile" or row[0].lower() == "":
-            mentors.append({
-                "name": row[1],
-                "role": row[2],
-                "organization": row[3],
-                "school": row[4],
-                "courseOfStudy": row[5],
-                "fullBio": row[6],
-                "imageUrl": "/profile_images/{}.jpg".format(
-                    row[1].replace(" ", "")
-                )
-            })
+        print(row[0])
+        mentors.append({
+            "name": row[0],
+            "role": row[1],
+            "organization": row[2],
+            "school": row[3],
+            "courseOfStudy": row[4],
+            "fullBio": row[5],
+            "imageUrl": "/profile_images/{}.jpg".format(
+                row[0].replace(" ", "")
+            )
+        })
     print(json.dumps({"mentors": mentors})) 
