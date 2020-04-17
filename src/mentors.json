@@ -1,15 +1,6 @@
 {
   "mentors": [
     {
-      "name": "Aaron Ng",
-      "role": "Intelligence Consultant",
-      "organization": "Recorded Future",
-      "school": "Stanford University",
-      "courseOfStudy": "Management Science and Engineering",
-      "fullBio": "Aaron Ng is an Intelligence Consultant at Recorded Future, a leading SaaS company offering Security Intelligence solutions for over 90% of Fortune 100 Companies. He is responsible for designing and implementing intelligence strategies and solutions for accounts encompassing Government Agencies, Banking and Finance, Critical Infrastructure, Healthcare, E-Commerce Enterprises, Telecommunications and Internet Service Providers. Before joining Recorded Future, Aaron concluded 12 years of Active Duty in the Singapore Armed Forces as a Military Intelligence Officer. In his past immediate role, Aaron was instrumental in establishing the Defence Cyber Organisation (DCO), which is akin to Singapore\u2019s Cyber Command. Prior to professional employment, Aaron read Management Science and Engineering at Stanford University, and Chemical Engineering at University College London (UCL).",
-      "imageUrl": "/profile_images/AaronNg.jpg"
-    },
-    {
       "name": "Adrian Chew",
       "role": "Lead People Operations and Market Launcher",
       "organization": "Homage",
@@ -1372,8 +1363,8 @@
       "name": "Nanthinee Jevanandam",
       "role": "Director",
       "organization": "EARTHYS Sustainability",
-      "school": "#N/A",
-      "courseOfStudy": "#N/A",
+      "school": "National University of Singapore",
+      "courseOfStudy": "Ecology",
       "fullBio": "Nanthinee Jevanandam is Director at EARTHYS Sustainability, having founded it in 2015. She has developed two core solutions, xhebit (sustainable events) and MeSBer (sustainable behavioural tool). Holding a PhD in Ecology, Nanthinee\u2019s experience in ecological research and sustainability consulting spans over 10 years. Outside of Singapore, her academic and consulting experience covers South Africa, Malaysia, Myanmar, Indonesia and Philippines. Nanthinee believes in using her research and academic background to better understand gaps in sustainability and drive change. She also writes regularly on issues concerning sustainability.",
       "imageUrl": "/profile_images/NanthineeJevanandam.jpg"
     },
