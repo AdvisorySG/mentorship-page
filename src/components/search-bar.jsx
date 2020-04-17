@@ -46,10 +46,20 @@ const getSuggestions = (value) => {
     .filter((section) => section.fields.length > 0);
 
   const maxResults = 10;
-  return sections.map(({ title, fields }) => ({
-    title,
-    fields: fields.slice(0, Math.floor(maxResults / sections.length)),
-  }));
+  const computeResultsPerSection = (maxResultsPerSection) =>
+    sections
+      .map(({ fields }) => Math.min(fields.length, maxResultsPerSection))
+      .reduce((sum, x) => sum + x, 0);
+
+  for (let i = maxResults; i > 0; i--) {
+    if (computeResultsPerSection(i) <= maxResults) {
+      return sections.map(({ title, fields }) => ({
+        title,
+        fields: fields.slice(0, i),
+      }));
+    }
+  }
+  return [];
 };
 const getSectionSuggestions = (section) => section.fields;
 const getSuggestionValue = (suggestion) => suggestion.name;
