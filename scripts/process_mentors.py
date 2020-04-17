@@ -2,7 +2,7 @@ import csv
 import json
 import sys
 
-with open(sys.argv[1], newline='') as f:
+with open(sys.argv[1], newline='', encoding="utf-8") as f:
     lines = csv.reader(f, delimiter=',', quotechar='"')
     mentors = []
     for row in lines:
