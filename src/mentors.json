@@ -1,6 +1,15 @@
 {
   "mentors": [
     {
+      "name": "Aaron Ng",
+      "role": "Intelligence Consultant",
+      "organization": "Recorded Future",
+      "school": "Stanford University",
+      "courseOfStudy": "Management Science and Engineering",
+      "fullBio": "Aaron Ng is an Intelligence Consultant at Recorded Future, a leading SaaS company offering Security Intelligence solutions for over 90% of Fortune 100 Companies. He is responsible for designing and implementing intelligence strategies and solutions for accounts encompassing Government Agencies, Banking and Finance, Critical Infrastructure, Healthcare, E-Commerce Enterprises, Telecommunications and Internet Service Providers. Before joining Recorded Future, Aaron concluded 12 years of Active Duty in the Singapore Armed Forces as a Military Intelligence Officer. In his past immediate role, Aaron was instrumental in establishing the Defence Cyber Organisation (DCO), which is akin to Singapore\u2019s Cyber Command. Prior to professional employment, Aaron read Management Science and Engineering at Stanford University, and Chemical Engineering at University College London (UCL).",
+      "imageUrl": "/profile_images/AaronNg.jpg"
+    },
+    {
       "name": "Adrian Chew",
       "role": "Lead People Operations and Market Launcher",
       "organization": "Homage",
