@@ -71,22 +71,24 @@ function SearchBar({ onSearchChange, onSearchSelect }) {
     setSuggestions(getSuggestions(value));
 
   return (
-    <Autosuggest
-      multiSection={true}
-      getSectionSuggestions={getSectionSuggestions}
-      getSuggestionValue={getSuggestionValue}
-      onSuggestionSelected={onSuggestionSelected}
-      onSuggestionsClearRequest={onSuggestionsClearRequested}
-      onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-      renderSuggestion={renderSuggestion}
-      renderSectionTitle={renderSectionTitle}
-      suggestions={suggestions}
-      inputProps={{
-        onChange,
-        placeholder: "Please type here for suggestions...",
-        value,
-      }}
-    />
+    <div class="search-bar">
+      <Autosuggest
+        multiSection={true}
+        getSectionSuggestions={getSectionSuggestions}
+        getSuggestionValue={getSuggestionValue}
+        onSuggestionSelected={onSuggestionSelected}
+        onSuggestionsClearRequest={onSuggestionsClearRequested}
+        onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+        renderSuggestion={renderSuggestion}
+        renderSectionTitle={renderSectionTitle}
+        suggestions={suggestions}
+        inputProps={{
+          onChange,
+          placeholder: "Please type here for suggestions...",
+          value,
+        }}
+      />
+    </div>
   );
 }
 
