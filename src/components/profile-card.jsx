@@ -25,7 +25,9 @@ const ProfileCard = ({ mentor, onReadMore }) => (
     <div className="card-descriptors">
       <div className="card-name">{mentor.name}</div>
       <div className="card-desc">{mentor.role}</div>
-      <div className="card-desc">{mentor.organization}</div>
+      {mentor.organization && (
+        <div className="card-desc">{mentor.organization}</div>
+      )}
     </div>
     <ReadMore onReadMore={onReadMore} />
   </div>
