@@ -18,7 +18,7 @@ with open(sys.argv[1], newline='') as f:
             "courseOfStudy": row[4],
             "fullBio": row[5],
             "imageUrl": "/profile_images/{}.jpg".format(
-                row[0].replace(" ", "")
+                row[0].replace(" ", "").replace("(", "").replace(")", "")
             )
         })
     print(json.dumps({"mentors": mentors})) 
