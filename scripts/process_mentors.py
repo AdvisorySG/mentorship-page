@@ -21,4 +21,6 @@ with open(sys.argv[1], newline='') as f:
                 row[10].replace(" ", "").replace("(", "").replace(")", "")
             )
         })
-    print(json.dumps({"mentors": mentors[1:]})) # discard header row
+    print(json.dumps({
+        "mentors": sorted(mentors[1:], key=lambda mentor: mentor["name"])
+    })) # discard header row

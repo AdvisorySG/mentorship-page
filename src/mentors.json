@@ -10,15 +10,6 @@
       "imageUrl": "/profile_images/AaronNg.jpg"
     },
     {
-      "name": "Adrian Liew",
-      "role": "Chief Executive",
-      "organization": "Beknown",
-      "school": "Nanyang Technological University",
-      "courseOfStudy": "Computer Engineering",
-      "fullBio": "Adrian Liew founded Beknown in 2016 and has been a communications and digital media consultant for the past 10 years. He has been advising high-ranking executives and organisations on effectively reaching out to their target audiences and developing digital solutions to achieve their communications goals. Before his time at Beknown, Adrian had a rewarding career as an associate lecturer in Republic Polytechnic's School of Management and Communications. He also acted as the Director of PAP Corporate Affairs and New Media, where he managed and formulated the company's corporate communications and public communication strategies. Additionally, in his previous role as Manager of Capability Development in the Ministry of Defense, Adrian was instrumental in defence capability management and business process analyses. He hopes to give back to the community by sharing his experiences, particularly in the areas of digital transformation and strategy, copywriting, and reputation management.",
-      "imageUrl": "/profile_images/AdrianLiew.jpg"
-    },
-    {
       "name": "Adrian Chew",
       "role": "Lead People Operations and Market Launcher",
       "organization": "Homage",
@@ -26,6 +17,15 @@
       "courseOfStudy": "Business",
       "fullBio": "Adrian Chew is the Lead People Operations and Market Launcher, after a stint as Lead Strategic Operations, at Homage, a senior home technology platform connecting seniors to the best quality of care on demand. He previously worked at Uber as an Associate for Operations and Analytics for the regional portfolio, before Uber's acquisition by Grab. Prior to that, Adrian led the social impact start-up incubation programmes at UNFRAMED, as Manager for Programme and Social Finance, delivering on over 80% approval ratings in key metrics. In this capacity, he built on the company's financial model and successfully secured 6-digit funding; initiated a partnership with PwC and was the key account manager for Singtel as a partner; and supported the conceptualisation and launch of new products that have now proven sustainable. Adrian actually first worked for PwC Singapore, as a Senior Associate for Assurance, performing financial audit for clients with a turnover between SGD 500 million to SGD 1 billion; while receiving high appraisal for coaching 16 associates, and co-leading the audit of an IPO candidate on the US stock exchange. He holds a bachelor's degree in business, specialising in banking and finance, from the Nanyang Technological University.",
       "imageUrl": "/profile_images/AdrianChew.jpg"
+    },
+    {
+      "name": "Adrian Liew",
+      "role": "Chief Executive",
+      "organization": "Beknown",
+      "school": "Nanyang Technological University",
+      "courseOfStudy": "Computer Engineering",
+      "fullBio": "Adrian Liew founded Beknown in 2016 and has been a communications and digital media consultant for the past 10 years. He has been advising high-ranking executives and organisations on effectively reaching out to their target audiences and developing digital solutions to achieve their communications goals. Before his time at Beknown, Adrian had a rewarding career as an associate lecturer in Republic Polytechnic's School of Management and Communications. He also acted as the Director of PAP Corporate Affairs and New Media, where he managed and formulated the company's corporate communications and public communication strategies. Additionally, in his previous role as Manager of Capability Development in the Ministry of Defense, Adrian was instrumental in defence capability management and business process analyses. He hopes to give back to the community by sharing his experiences, particularly in the areas of digital transformation and strategy, copywriting, and reputation management.",
+      "imageUrl": "/profile_images/AdrianLiew.jpg"
     },
     {
       "name": "Akshay Maheshwari",
@@ -109,6 +109,15 @@
       "imageUrl": "/profile_images/AndrzejSurzyn.jpg"
     },
     {
+      "name": "Ang Eng Hieang",
+      "role": "Executive Director",
+      "organization": "Megatr8 Inc. Pte Ltd",
+      "school": "National University of Singapore",
+      "courseOfStudy": "Business Administration",
+      "fullBio": "Ang Eng Hieng\u2014Executive Director of Megatr8, an independent boutique asset management company\u2014has more than 30 years of experience in the investment management and private banking space across Asia. Since the mid-1980s, he has worked for several major banks, including DBS Bank, ING, Bank, Rabobank, Citibank, AmexBank, where he rose from a trainee officer to Director; and then serving as Executive Director of Merrill Lynch International and later, Bordier & Cie. A Chartered Financial Analyst (CFA), Eng Hieang was for many years part of a pool of industry practitioners who shared their expertise and experience as lecturers at the Institute of Banking and Finance Singapore, where he teaches investments and portfolio management on the diploma in banking, and wealth management for continuing education training. He graduated from the National University of Singapore with a bachelor's degree in business administration, specialising in finance.",
+      "imageUrl": "/profile_images/EngHieangAng.jpg"
+    },
+    {
       "name": "Anira Perera",
       "role": "QMS Programme Lead",
       "organization": "Advanced Accelerator Applications",
@@ -154,15 +163,6 @@
       "imageUrl": "/profile_images/BillyLoh.jpg"
     },
     {
-      "name": "Lim Boon Pin",
-      "role": "Senior Assistant Director (Policy & Planning), Municipal Services Office",
-      "organization": "Ministry of National Development Singapore",
-      "school": "National University of Singapore",
-      "courseOfStudy": "Sociology",
-      "fullBio": "Lim Boon Pin is the Senior Assistant Director for Policy and Planning at the Ministry of National Development's Municipal Services Office, bringing together government agencies, Town Councils, and citizens in the course of his work to improve the shared living environment in Singaproe. He previously worked as a Senior Manager for Community Collaborators at Youth Corps Singapore; and Senior Manager for Community Relations at the Community Relations and Engagement Division, under the Ministry of Culture, Community and Youth. Boon Pin graduated from the National University of Singapore (NUS) with a BSc. (Hons) majoring in sociology and minoring in religious studies, where he studied on a NUS Undergraduate Merit Scholarship. He attributes the critical thinking with which he approaches problems to his having developed a strong grounding in sociology through his undergraduate education, which trained him to understand problems contextually and question ideas rigorously \u2014 to dig deep into the 'why' and 'for whom' of questions. Boon Pin believes that as long as one's eyes are kept on the 'why' before diving into the 'how,' there is meaningful impact to be made together, collectively and cumulatively \u2014 a little at a time, there can be better, brighter world to which to look forward.",
-      "imageUrl": "/profile_images/BoonPinLim.jpg"
-    },
-    {
       "name": "Brian Liu",
       "role": "Senior Vice President",
       "organization": "Lazada Group",
@@ -181,15 +181,6 @@
       "imageUrl": "/profile_images/BryanLow.jpg"
     },
     {
-      "name": "Carol Soon",
-      "role": "Senior Research Fellow",
-      "organization": "Institute of Policy Studies",
-      "school": "National University of Singapore",
-      "courseOfStudy": "Communication and Media Studies",
-      "fullBio": "Carol Soon is a Senior Research Fellow at the Institute of Policy Studies where she heads the Society and Culture Department. Her research involving the government, private and people sectors focuses on media, technology and communication - false information, media regulation, digital inclusion, new media and activism, online public opinion sensing, and public engagement and deliberation. Carol worked with the Ministry of Health in 2017 on Singapore\u2019s first Citizens\u2019 Jury and is currently working with various government agencies on engaging citizens in co-creating policy solutions. She is also Associate Director of the Asia Journalism Fellowship supported by Temasek Foundation; Vice Chair of Singapore\u2019s Media Literacy Council; and a member of the Industry Advisory Panel for the Humanities, Arts and Social Sciences at the Singapore University of Technology and Design. She has taught courses at the Lee Kuan Yew School of Public Policy and the University Scholars Programme at NUS.  Carol speaks about her research frequently at international, regional and local forums \u2013 in 2015, she received the Lee Kuan Yew School of Public Policy Research Excellence Award. Before joining academia, she worked in the corporate sector where she developed communication campaigns for profit and non-profit organisations.",
-      "imageUrl": "/profile_images/CarolSoon.jpg"
-    },
-    {
       "name": "Carol Chuah",
       "role": "Senior Account Executive",
       "organization": "LinkedIn",
@@ -197,6 +188,15 @@
       "courseOfStudy": "Polical Science and Government",
       "fullBio": "Carol Chuah is a Senior Account Executive at LinkedIn. She is a seasoned leader with over 13 years of experience in enterprise sales, content strategy, data technology, and talent management, and spent the last 6 years in Asia building a variety of different communities centered around data & technology. In the OTC pricing landscape, she managed a team of content sales & negotiators across 10 countries to strike strategic data partnerships, working with industry associations, central banks, and market makers in an effort to improve transparency, digitize processes, and create efficiencies in emerging markets. In Singapore, Carol helped launch innovative workflow solutions in the research & KYC (Know Your Customer) space, working closely with client advocates and market associations to transform operational processes, and prior to that, she worked in New York for 7 years with a focus on product development & data management in M&A, Private Equity, and Equity Capital Markets. Carol has a proven record in launching new products, managing global teams, and fostering positive collaboration, and enjoys making meaningful connections, developing leaders, and leveraging technology to make things happen.",
       "imageUrl": "/profile_images/CarolChuah.jpg"
+    },
+    {
+      "name": "Carol Soon",
+      "role": "Senior Research Fellow",
+      "organization": "Institute of Policy Studies",
+      "school": "National University of Singapore",
+      "courseOfStudy": "Communication and Media Studies",
+      "fullBio": "Carol Soon is a Senior Research Fellow at the Institute of Policy Studies where she heads the Society and Culture Department. Her research involving the government, private and people sectors focuses on media, technology and communication - false information, media regulation, digital inclusion, new media and activism, online public opinion sensing, and public engagement and deliberation. Carol worked with the Ministry of Health in 2017 on Singapore\u2019s first Citizens\u2019 Jury and is currently working with various government agencies on engaging citizens in co-creating policy solutions. She is also Associate Director of the Asia Journalism Fellowship supported by Temasek Foundation; Vice Chair of Singapore\u2019s Media Literacy Council; and a member of the Industry Advisory Panel for the Humanities, Arts and Social Sciences at the Singapore University of Technology and Design. She has taught courses at the Lee Kuan Yew School of Public Policy and the University Scholars Programme at NUS.  Carol speaks about her research frequently at international, regional and local forums \u2013 in 2015, she received the Lee Kuan Yew School of Public Policy Research Excellence Award. Before joining academia, she worked in the corporate sector where she developed communication campaigns for profit and non-profit organisations.",
+      "imageUrl": "/profile_images/CarolSoon.jpg"
     },
     {
       "name": "Celine Toh",
@@ -208,40 +208,49 @@
       "imageUrl": "/profile_images/CelineToh.jpg"
     },
     {
-      "name": "Tan Chia Boon",
-      "role": "Education and Career Guidance Counsellor",
-      "organization": "Ministry of Education Singapore",
+      "name": "Cheah Wui Ling",
+      "role": "Assistant Professor",
+      "organization": "Faculty of Law",
+      "school": "Oxford University",
+      "courseOfStudy": "Law",
+      "fullBio": "Dr. Cheah Wui Ling has been Assistant Professor at the Faculty of Law of the National University of Singapore (NUS) since 2007. She holds academic qualifications from the National University of Singapore (LL.B., LL.M.), Harvard Law School (LL.M.), European University Institute, and Oxford University (D.Phil). She is a qualified lawyer (called to the New York Bar) and holds a diploma in arbitration (Queen Mary University of London). Dr. Cheah's research interests lie at the intersection of public international law, international criminal law, and human rights law, with a focus on historical and contemporary legal responses to mass atrocity and structural violence. Currently, she serves on the editorial boards of the Journal of International Humanitarian Legal Studies and the Singapore Journal of Legal Studies. Her teaching experience includes periods at the Centre for Transnational Legal Studies (London, UK), Oxford University (UK), Universit\u00e9 Jean Moulin Lyon 3 (France), and the Royal University of Law and Economics (Cambodia). Prior to joining academia, Dr. Cheah served as a Legal Officer at INTERPOL\u2019s Office of Legal Affairs (Lyon, France). She has been invited to speak on the practical impact of her research by the Contact Group on Piracy off the Coast of Somalia. In 2011, Dr. Cheah was a Visiting Professional at the International Criminal Court, and in 2018, she was awarded a Kathleen Fitzpatrick Visiting Fellowship at Melbourne Law School\u2019s Laureate Program in International Law.",
+      "imageUrl": "/profile_images/WuiLingCheah.jpg"
+    },
+    {
+      "name": "Chia Lih Wei",
+      "role": "Chief Technology Officer",
+      "organization": "AstropreneursHUB, TinyMOS",
       "school": "National University of Singapore",
-      "courseOfStudy": "Electrical Engineering",
-      "fullBio": "Tan Chia Boon has served as an Education and Career Guidance Counsellor in the Ministry of Education for the past two years. He spent twenty enriching years in the private sector \u2013 including fourteen years as the co-owner and director of an electronic components distribution company \u2013 and has extensive experience in sales, marketing, procurement and business development. He believes that everyone deserves a chance of proving themselves regardless of their background. Chia Boon is especially passionate about engaging with youths and young adults, leveraging on the experience of having been an entrepreneur to give back to society by becoming a coach, leader and mentor to the younger generation.",
-      "imageUrl": "/profile_images/ChiaBoonTan.jpg"
+      "courseOfStudy": "Electrical, Electronics and Computer Engineering,",
+      "fullBio": "Chia Lih Wei co-founded AstropreneursHUB and TinyMOS, and leads them both as Chief Technology Officer\u2014in addition to serving as Chief Technology Officer both for SG-Cosmos and Bhattacharya Space Enterprises\u2014to specialise in space technology training and satellite design, with TinyMOS, focussing on making two of the world's smallest smart astronomy cameras. These cameras by TinyMOS have received glowing reviews in Android Central and Digital Photography Review; and in partnership with the Ford Motor Company, have been incorporated into the Land Rover Spirit model. He graduated from the National University of Singapore with a Bachelor's degree in Electrical, Electronics and Computer Engineering, during which time he worked on NUS's first student-built satellite and its ground control station; and interned at Berner International Corp. Adept in coding languages of C and C++, he is currently pursuing a PhD in artificial intelligence for space and telecommunications.",
+      "imageUrl": "/profile_images/LihWeiChia.jpg"
     },
     {
-      "name": "Koh Ching Ching",
-      "role": "Head of Group Brand and Communications",
-      "organization": "OCBC",
+      "name": "Chin Hui Lin",
+      "role": "Associate Partner",
+      "organization": "Antler",
+      "school": "Oxford University",
+      "courseOfStudy": "English Literature",
+      "fullBio": "Chin Hui Lin, an Associate Partner at Antler, an early stage VC working with entrepreneurs from the start, currently works on building Antler's new team and presence in China. In Antler, a global startup generator, Hui Lin seeks to bring exceptional individuals together to build disruptive tech companies. Her work looks at helping entrepreneurs discover the right co-founders and connects them to a top tier network of advisors and experts worldwide. Hui Lin previously worked just over five years in the public service at the Singapore Economic Development Board (EDB), focusing on new industries, healthcare and international organizations, and has worked with and in not-for-profit organizations in the environmental biodiversity and corporate sustainability space. Prior to all this she taught a little at the Singapore Institute of Management University (UniSIM), and found it unexpectedly meaningful. Hui Lin first enrolled in the law faculty, but graduated with a Bachelor's Degree in Literature from NUS, and holds a Masters in English Literature from Oxford University.",
+      "imageUrl": "/profile_images/HuiLinChin.jpg"
+    },
+    {
+      "name": "Chow Yew Wah",
+      "role": "Security Data Scientist, Team Lead",
+      "organization": "Ultimate Software",
       "school": "National University of Singapore",
-      "courseOfStudy": "Business Administration",
-      "fullBio": "As the Head of Group Brand and Communications, Koh Ching Ching oversees OCBC Bank\u2019s branding and communications initiatives with the media, employees, customers, shareholders and the general public across its core markets. She has been heading the division since November 2004 and was appointed Executive Vice President in March 2012. Prior to her current role, she led OCBC Bank\u2019s franchise expansion efforts in trade finance in Malaysia. Ching Ching had 16 years of corporate and retail banking experience, having held various senior customer and product positions in local and foreign financial institutions. She graduated with First Class Honours in Business Administration from the National University of Singapore.",
-      "imageUrl": "/profile_images/ChingChingKoh.jpg"
+      "courseOfStudy": "Computer Engineering Specialization",
+      "fullBio": "Chow Yew Wah is a Security Data Scientist (Team Lead) at Ultimate Software, currently leading a team of data scientists working on cyber security related problems faced by the internal Security Operations Centre. She has 6 years of experience in the data science field, with prior involvement in the defence sector dealing with natural language processing. Her previous role as Research Engineer in the Centre for Strategic Infocomm Technologies included, among other things, developing machine learning algorithms to develop prototypes to fulfil critical business needs with emphasis on large scale structured/unstructured data, identifying opportunities for collaboration with business units to develop machine learning based solutions to increase productivity; conceptualising machine learning prototypes to demonstrate proof-of-concept; and collaborating with vendors on data analytics driven projects. Yew Wah obtained her Bachelor of Computer Science from NTU and a Masters in Computer Engineering Specialization from NUS.",
+      "imageUrl": "/profile_images/YewWahChow.jpg"
     },
     {
-      "name": "Tay Choon Hong",
-      "role": "Senior Director for Youth",
-      "organization": "Ministry of Culture, Community & Youth",
-      "school": "Stanford University",
-      "courseOfStudy": "Management",
-      "fullBio": "Tay Choon Hong is Senior Director for Youth at the Ministry of Culture, Community & Youth, and concurrently, Deputy Chief Executive of the National Youth Council. Choon Hong graduated from Carnegie Mellon University, with dual Bachelor\u2019s in Electrical and Computer Engineering, and Economics. He also holds a Master of Science in Management from the Stanford Graduate School of Business. Choon Hong's many years in the public service has allowed him to gain much experience across myriad portfolios, including previous appointments as the Director for Services at the Public Service Division's PS21 Office; and Director both for Policy and Planning, and Marriage and Parenthood Policy at the National Population and Talent Division within the Prime Minister's Office.",
-      "imageUrl": "/profile_images/ChoonHongTay.jpg"
-    },
-    {
-      "name": "Chris Tan",
-      "role": "Freelance Consultant",
-      "organization": "",
-      "school": "Queen's University",
-      "courseOfStudy": "Computing and Information Science",
-      "fullBio": "Chris Tan is a freelance consultant with over 30 years of working experience in the information technology and financial services industry with IBM. He has worked in roles spanning marketing, strategy, sales, business development, operations and even coding. His experience also includes leading teams at the country, regional and global level spanning Asia Pacific, Europe, Africa and Latin America.",
-      "imageUrl": "/profile_images/ChrisTan.jpg"
+      "name": "Choy Mun Kit",
+      "role": "Relationship Manager",
+      "organization": "Singapore National Co-operative Federation (SNCF)",
+      "school": "University of Bradford",
+      "courseOfStudy": "Accounting and Finance",
+      "fullBio": "Choy Mun Kit is a Relationship Manager with the Singapore National Co-operative Federation (SNCF) where he manages 28 Service Co-operative accounts and 13 NTUC Co-operatives accounts for business development. He has conducted more than 20 workshops and trained more than 1000 PMETs in the areas for Finance, Human Resources, Productivity and Marketing. He has also achieved an internationally-recognized professional qualification in Accountancy.",
+      "imageUrl": "/profile_images/MunKitChoy.jpg"
     },
     {
       "name": "Chris Chia",
@@ -251,6 +260,15 @@
       "courseOfStudy": "Political Science",
       "fullBio": "Chris Chia is an executive search and advisory professional at Russell Reynolds Associates \u2014 a global leadership advisory firm headquartered in the US. He works closely with senior-level stakeholders to help clients make strategic hires at the Board and Executive level. While focused on the Tech Sector, he also has expertise across multiple sectors like Education, Consumer, Industrial, and Financial Services. He is passionate about topics of leadership and human capital. Engaging with clients and the community about such topics, he is constantly reminded of the importance of addressing the human capital needs and concerns that we face in modern society \u2013 as individuals or as communities. Chris holds a Bachelor of Social Science in Political Science from the National University of Singapore (NUS). As a student leader in NUS, he remains actively involved as a volunteer in the grassroots.",
       "imageUrl": "/profile_images/ChrisChia.jpg"
+    },
+    {
+      "name": "Chris Tan",
+      "role": "Freelance Consultant",
+      "organization": "",
+      "school": "Queen's University",
+      "courseOfStudy": "Computing and Information Science",
+      "fullBio": "Chris Tan is a freelance consultant with over 30 years of working experience in the information technology and financial services industry with IBM. He has worked in roles spanning marketing, strategy, sales, business development, operations and even coding. His experience also includes leading teams at the country, regional and global level spanning Asia Pacific, Europe, Africa and Latin America.",
+      "imageUrl": "/profile_images/ChrisTan.jpg"
     },
     {
       "name": "Christian Cadeo",
@@ -269,6 +287,24 @@
       "courseOfStudy": "Literature and Economics",
       "fullBio": "Christine Kim is an analyst at J.P. Morgan. Interestingly, in university, she dual majored in Literature and Economics and explored many career options. She spent her three summers in university volunteering at a non-profit in Seoul teaching English to North Korean refugees, interning on a debt capital markets (bond issuance) team at a boutique bank in Manhattan, and interning on the trading floor at an investment bank in Singapore where she is now a third year analyst. One of her life goals is to seek out rich, varied, perspective-broadening experiences.",
       "imageUrl": "/profile_images/ChristineKim.jpg"
+    },
+    {
+      "name": "Chua Seng Tat",
+      "role": "Senior Manager",
+      "organization": "Economic Development Board Singapore",
+      "school": "Keio University",
+      "courseOfStudy": "System Design and Management",
+      "fullBio": "Chua Seng Tat is currently the Senior Manager of Investment Facilitation at Singapore Economic Development Board, where he is a \u201csalesman\u201d for Singapore, pitching the story of \u201cWhy Singapore?\u201d to foreign MNCs or start-ups looking to establish a foothold in Asia. He credits his background in Engineering for the problem-solving skills and analytical thinking that have laid a good foundation for his career. Seng Tat attained his Masters in System Design and Management from Keio University in Japan, and encourages everyone to learn a third language as a way of opening doors to a new culture and way of thinking.",
+      "imageUrl": "/profile_images/SengTatChua.jpg"
+    },
+    {
+      "name": "Chun Huey Yei",
+      "role": "Founder and Director",
+      "organization": "Qoorious",
+      "school": "Nanyang Technological University",
+      "courseOfStudy": "Accountancy",
+      "fullBio": "Chun Huey Yei, an entrepreneur with business foci in internet marketing and the mobile apps market, is the Founder and Director of Qoorious\u2014an internet marketing company that specialises in performance marketing, launched in 2011\u2014and Co-Founder of Appysode, launched in 2012, to expand and tap into the growing mobile apps market. Prior to his entrepreneurial ventures, he worked as an Auditor for KPMG, managing a clientele portfolio including notable brands such as Temasek, the Monetary Authority of Singapore, and General Electric. Outside of work, Huey Yei is a Taekwondo instructor \u2014 in which capacity he introduced this art to KPMG, and founded the KPMG Taekwondo Club. He helmed Taekwondo classes for charity, as part of KPMG's corporate social responsibility programme. Huey Yei graduated from the Nanyang Technological University of Singapore with a bachelor's degree in accountancy, after which he first forayed into professional life through tenures as an Animal Keeper at the Singapore Night Safari and an Outdoor Instructor with SAFRA National Service Association.",
+      "imageUrl": "/profile_images/HueyYeiChun.jpg"
     },
     {
       "name": "Cindy Chng",
@@ -397,13 +433,13 @@
       "imageUrl": "/profile_images/DivyaJagtiani.jpg"
     },
     {
-      "name": "Goh Duo Geng",
-      "role": "Associate Consultant",
-      "organization": "Bain & Company",
-      "school": "Nanyang Technological University",
-      "courseOfStudy": "Accountancy and Finance",
-      "fullBio": "Goh Duo Geng, an Associate Consultant for strategy and value acceleration at Bain & Company, takes an extensive interest in venture-building, having accrued much experience across various social enterprises\u2014such as CareerSocius, a social enterprise that aims to help individuals maximise their career potential, which he co-founded\u2014and start-ups, including Rocket Internet, Funding Societies, and Glints \u2014 the last of which he leads, on secondment as its Acting Chief of Staff. Outside of work, he reads voraciously, while dabbling in tennis, soccer, and yoga \u2014 despite some predisposition to inflexibility. Duo Geng graduated from the Nanyang Technological University Nanyang Business School with double First Class Honours in Accountancy and Finance. During his schooling days, Duo Geng invested time in numerous finance-based internships, including being an transactions intern working on depository services and operations at SGX; an audit intern dealing with general assurance at EY; a tech research intern at Accenture; and a knowledge intern researching financial services, institutions, practices and areas for The Boston Consulting Group. After stints as a financial analyst in United Overseas Bank Limited and Citi, he landed an internship which brought him to Bain & Company as an intern for strategy and financial services. Duo Geng remains an active volunteer in civil society groups, such as Riding for the Disabled Association, and the Central Singapore Community Development Council.",
-      "imageUrl": "/profile_images/DuoGengGoh.jpg"
+      "name": "Edmund Teo",
+      "role": "Recruiter",
+      "organization": "EPAM Systems",
+      "school": "Murdoch University",
+      "courseOfStudy": "Marketing and Public Relations",
+      "fullBio": "Edmund Teo is a recruiter at EPAM Systems, a company that specialises in product development, digital platform engineering, and digital and product design agency. He has vast experience in various cycles the of recruitment\u2014from strategic sourcing and data analytics to stakeholder and project management\u2014in the Asia-Pacific region, across a range of companies. This includes brands such as Google, where he worked as a Technical Recruiter; OutSystems, where he was contributed as the Talent Acquisition Specialist; and Dynamic Human Capital, where he was Senior Consultant. Edmund graduated from Murdoch University with a bachelor's degree in marketing and public relations.",
+      "imageUrl": "/profile_images/EdmundTeo.jpg"
     },
     {
       "name": "Edmund Twohill",
@@ -413,15 +449,6 @@
       "courseOfStudy": "History",
       "fullBio": "After more than 10 years as a professional army regular, during which he held various appointments across the Singapore Armed Forces Guards Formation and the Ministry of Defence, as a Major, Edmund Joseph Twohill joined DBS Bank's Digital Banking Group as its Vice President, where he now helps deliver on the bank's digital products. During his tenure in uniformed service, Edmund also served as an Aide De Camp to the President of the Republic of Singapore. Identifying as Singaporean first, before his racial category of \"Others\" (as one of Caucasian and European descent)\u2014and planing still to serve as an NSman for as long as possible\u2014his move into digital transformation was propelled by his deep care for Singapore's future, especially its relevance in a world being changed by the fourth Industrial Revolution. He continues to contribute as an NSman, on top of other volunteering opportunities in such organisations as the National Youth Council (NYC), Halogen Foundation, and ASEAN Youth Fellowship\u2014a network, managed both by NYC and the Singapore International Foundation, comprising young leaders nominated from across the public, private and people sectors, for their professionals roles and potential to shape the region's future.",
       "imageUrl": "/profile_images/EdmundTwohill.jpg"
-    },
-    {
-      "name": "Edmund Teo",
-      "role": "Recruiter",
-      "organization": "EPAM Systems",
-      "school": "Murdoch University",
-      "courseOfStudy": "Marketing and Public Relations",
-      "fullBio": "Edmund Teo is a recruiter at EPAM Systems, a company that specialises in product development, digital platform engineering, and digital and product design agency. He has vast experience in various cycles the of recruitment\u2014from strategic sourcing and data analytics to stakeholder and project management\u2014in the Asia-Pacific region, across a range of companies. This includes brands such as Google, where he worked as a Technical Recruiter; OutSystems, where he was contributed as the Talent Acquisition Specialist; and Dynamic Human Capital, where he was Senior Consultant. Edmund graduated from Murdoch University with a bachelor's degree in marketing and public relations.",
-      "imageUrl": "/profile_images/EdmundTeo.jpg"
     },
     {
       "name": "Edward Yee",
@@ -460,15 +487,6 @@
       "imageUrl": "/profile_images/EmilTan.jpg"
     },
     {
-      "name": "Ang Eng Hieang",
-      "role": "Executive Director",
-      "organization": "Megatr8 Inc. Pte Ltd",
-      "school": "National University of Singapore",
-      "courseOfStudy": "Business Administration",
-      "fullBio": "Ang Eng Hieng\u2014Executive Director of Megatr8, an independent boutique asset management company\u2014has more than 30 years of experience in the investment management and private banking space across Asia. Since the mid-1980s, he has worked for several major banks, including DBS Bank, ING, Bank, Rabobank, Citibank, AmexBank, where he rose from a trainee officer to Director; and then serving as Executive Director of Merrill Lynch International and later, Bordier & Cie. A Chartered Financial Analyst (CFA), Eng Hieang was for many years part of a pool of industry practitioners who shared their expertise and experience as lecturers at the Institute of Banking and Finance Singapore, where he teaches investments and portfolio management on the diploma in banking, and wealth management for continuing education training. He graduated from the National University of Singapore with a bachelor's degree in business administration, specialising in finance.",
-      "imageUrl": "/profile_images/EngHieangAng.jpg"
-    },
-    {
       "name": "Esther Seah",
       "role": "Classic and Established Product Commercial Market Lead",
       "organization": "GSK",
@@ -494,6 +512,24 @@
       "courseOfStudy": "Business Administration",
       "fullBio": "Felicia Ng is Chief of Operations and External Relations at INTELLEX \u2014 a legal-tech start-up in the business of solving \"knowledge management\"-related problems in professional firms, with its product being a knowledge management system powered by an intelligent search engine that deploys proprietary machine learning and natural language processing algorithms. She graduated from the Nanyang Technological University with a bachelor's degree in business administration, after which she took up a job as a Customer Affairs Manager with Singapore Airlines\u00a0\u2014\u00a0this was not her first job, though, for her foray into the working world began as early as the tender age of 15. Since working in customer success then, Felicia has gone on to hold appointments in Business Partnerships for Singapore Airlines, and Public Service Leadership at the Public Service Division. In the course of her work, however, she has undertaken a whole\u2014wider\u2014range of portfolios, from crisis management to policy-making and people operations, spanning a diversity of industries, such as aviation, government and technology. To Felicia, she observes the common thread in her professional experiences to be bringing people with different perspectives together to solve challenging problems. This motivates her, as she relishes the opportunity to help others maximise their growth potential for greater impact, and learn from the expertise and experiences of others, such as her own.",
       "imageUrl": "/profile_images/FeliciaNg.jpg"
+    },
+    {
+      "name": "Fong Yoong Kheong",
+      "role": "Principal Industrial Relations Officer",
+      "organization": "National Trades Union Congress",
+      "school": "Singapore University of Social Sciences",
+      "courseOfStudy": "Community Leadership and Social Development",
+      "fullBio": "Fong Yoong Kheong, the Principal Industrial Relations Officer at the National Trades Union Congress (NTUC), coordinates and aligns the efforts of various workforce segments, such as unions, freelancers, Small-Medium Enterprise partners, and associations, to serve the needs of workers. He also supports the Aviation and Aerospace Cluster unions in industrial relations, membership, and leadership and training matters as a Cluster Lead. Prior to that, Yoong Kheong was seconded to the Singapore Teachers' Union, where he staffed the secretariat for the NTUC Public Sector unions, and sat on the Public Service Commission Panel of Union Officials for Disciplinary Inquiry. He volunteers actively with the People's Association, as the Chairman of Eunos Community Club Management Committee; Assistant Secretary of the People's Association Residents' Network Council; and adjunct faculty of  the National Community Leadership Institute. Yoong Kheong is not only a Licenced Solemniser with the Registry of Marriages, but also holds a Master's of Community Leadership and Social Development from the Singapore University of Social Sciences, and a Bachelor's of Arts in Political Science, from the National University of Singapore.",
+      "imageUrl": "/profile_images/YoongKheongFong.jpg"
+    },
+    {
+      "name": "Foo Wan Xuan",
+      "role": "Senior Executive (Sustainability Department)",
+      "organization": "Wildlife Reserves Singapore",
+      "school": "National University of Singapore",
+      "courseOfStudy": "Environmental Studies",
+      "fullBio": "Foo Wan Xuan is a Senior Executive in the Sustainability Department at Wildlife Reserves Singapore (WRS), the organisation that manages world-leading zoological institutions including Jurong Bird Park, Night Safari, River Safari and the Singapore Zoo. She is responsible for incorporating sustainability in the organisation's value chain \u2013 to achieve this, she is responsible for developing Green Procurement strategies by introducing policy changes, and engaging internal stakeholders to review current best practices. Ultimately, Wan Xuan aims to work towards a more sustainable future through her efforts in resource optimization and sustainability advocacy. This includes designing and conducting trainings for staff in WRS to adopt sustainable behaviours, and raising awareness for and engaging the public through external outreach events and campaigns. She achieved the Excellence Award for WRS at the Singapore Packaging Agreement Awards in 2018.",
+      "imageUrl": "/profile_images/WanXuanFoo.jpg"
     },
     {
       "name": "Genie Gan",
@@ -523,22 +559,22 @@
       "imageUrl": "/profile_images/GobiNair.jpg"
     },
     {
-      "name": "Grace Zhu",
-      "role": "Manager (Disability Office)",
-      "organization": "Ministry of Social Development Singapore",
-      "school": "Columbia University and Sciences Po",
-      "courseOfStudy": "International Development",
-      "fullBio": "Grace Zhu, as Manager at the Disability Office of the Ministry of Social and Family Development, works with a passionate team to push for improvements in job prospects, social service delivery, and accessibility for persons with disability in Singapore. She is driven by empathy for others and an interest in solving problems by understanding what makes people tick. Grace graduated from Princeton University with specialities in Islamic studies and neuroscience; and received Master\u2019s degrees from Columbia University and Sciences Po in international development. Gifted with at least some working proficiency across five languages\u2014English, Mandarin, French, Arabic, and Bosnian-Croatian-Serbian, she also formerly represented Singapore at the United Nations (UN) as a diplomat, serving as First Secretary of Singapore's Permanent Mission to the UN, during her professional tenure as a Foreign Service Officer at the Ministry of Foreign Affairs. Grace recently became a proud mother to a vivacious toddler.",
-      "imageUrl": "/profile_images/GraceZhu.jpg"
+      "name": "Goh Duo Geng",
+      "role": "Associate Consultant",
+      "organization": "Bain & Company",
+      "school": "Nanyang Technological University",
+      "courseOfStudy": "Accountancy and Finance",
+      "fullBio": "Goh Duo Geng, an Associate Consultant for strategy and value acceleration at Bain & Company, takes an extensive interest in venture-building, having accrued much experience across various social enterprises\u2014such as CareerSocius, a social enterprise that aims to help individuals maximise their career potential, which he co-founded\u2014and start-ups, including Rocket Internet, Funding Societies, and Glints \u2014 the last of which he leads, on secondment as its Acting Chief of Staff. Outside of work, he reads voraciously, while dabbling in tennis, soccer, and yoga \u2014 despite some predisposition to inflexibility. Duo Geng graduated from the Nanyang Technological University Nanyang Business School with double First Class Honours in Accountancy and Finance. During his schooling days, Duo Geng invested time in numerous finance-based internships, including being an transactions intern working on depository services and operations at SGX; an audit intern dealing with general assurance at EY; a tech research intern at Accenture; and a knowledge intern researching financial services, institutions, practices and areas for The Boston Consulting Group. After stints as a financial analyst in United Overseas Bank Limited and Citi, he landed an internship which brought him to Bain & Company as an intern for strategy and financial services. Duo Geng remains an active volunteer in civil society groups, such as Riding for the Disabled Association, and the Central Singapore Community Development Council.",
+      "imageUrl": "/profile_images/DuoGengGoh.jpg"
     },
     {
-      "name": "Grace Tong",
-      "role": "Principal Consultant in Commerce (Accounting and Finance)",
-      "organization": "Morgan McKinley London",
-      "school": "Nanyang Technological University",
-      "courseOfStudy": "Accountancy",
-      "fullBio": "Grace Tong, Principal Consultant in Commerce for Accounting and Finance at Morgan McKinley in London, began her career in corporate tax as a Tax Associate at KPMG, after graduating from the Nanyang Technological University with a bachelor's degree in accountancy. She recognised early on that she enjoys connecting people and so, has been in the field of professional search for the past 7 years. Since launching her recruitment career in Singapore in 2013, she has been recruiting mid-to-senior level accounting and finance professionals, particularly within consumer sectors\u2014such as retail, consumer goods, pharmaceuticals, and medical devices\u2014and media and professional service sectors. Grace previously served as the Principal Consultant for Accounting and Finance in Commerce and Healthcare at Randstad Singapore, before moving to London to continue to specialise in commercial accounting and finance recruitment. Outside of work, she is also currently pursuing a Life and Career Coaching certification; and enjoys dancing, travelling, singing, yoga, reading, learning new things (like musical theatre, hypnotherapy, and muay thai) \u2014 and loving life.",
-      "imageUrl": "/profile_images/GraceTong.jpg"
+      "name": "Grace Lee-Khoo",
+      "role": "Founder and Creative Development Director",
+      "organization": "Access Path Productions",
+      "school": "Royal Central School of Speech and Drama",
+      "courseOfStudy": "Applied Theatre",
+      "fullBio": "Grace Lee Khoo is the Founder and Creative Development Director of Access Path Productions. She is also currently an Adjunct Lecturer at the Nanyang Academy of Fine Arts. A UK-trained applied theatre practitioner, she completed her Master\u2019s Degree in Applied Theatre at the Royal Central School of Speech and Drama in 2016. As an Honours graduate from the National University of Singapore\u2019s Theatre Studies programme in 2009, she also holds a Postgraduate Diploma in Education from the National Institute of Education (Singapore). In 2017, Grace was International Artist-in-residence at Graeae Theatre Company (London) \u2013 UK\u2019s flagship disability-led inclusive theatre company. In 2019, she was appointed a Singapore International Foundation Fellow.",
+      "imageUrl": "/profile_images/GraceLee-Khoo.jpg"
     },
     {
       "name": "Grace Ng",
@@ -550,13 +586,22 @@
       "imageUrl": "/profile_images/GraceNg.jpg"
     },
     {
-      "name": "Grace Lee-Khoo",
-      "role": "Founder and Creative Development Director",
-      "organization": "Access Path Productions",
-      "school": "Royal Central School of Speech and Drama",
-      "courseOfStudy": "Applied Theatre",
-      "fullBio": "Grace Lee Khoo is the Founder and Creative Development Director of Access Path Productions. She is also currently an Adjunct Lecturer at the Nanyang Academy of Fine Arts. A UK-trained applied theatre practitioner, she completed her Master\u2019s Degree in Applied Theatre at the Royal Central School of Speech and Drama in 2016. As an Honours graduate from the National University of Singapore\u2019s Theatre Studies programme in 2009, she also holds a Postgraduate Diploma in Education from the National Institute of Education (Singapore). In 2017, Grace was International Artist-in-residence at Graeae Theatre Company (London) \u2013 UK\u2019s flagship disability-led inclusive theatre company. In 2019, she was appointed a Singapore International Foundation Fellow.",
-      "imageUrl": "/profile_images/GraceLee-Khoo.jpg"
+      "name": "Grace Tong",
+      "role": "Principal Consultant in Commerce (Accounting and Finance)",
+      "organization": "Morgan McKinley London",
+      "school": "Nanyang Technological University",
+      "courseOfStudy": "Accountancy",
+      "fullBio": "Grace Tong, Principal Consultant in Commerce for Accounting and Finance at Morgan McKinley in London, began her career in corporate tax as a Tax Associate at KPMG, after graduating from the Nanyang Technological University with a bachelor's degree in accountancy. She recognised early on that she enjoys connecting people and so, has been in the field of professional search for the past 7 years. Since launching her recruitment career in Singapore in 2013, she has been recruiting mid-to-senior level accounting and finance professionals, particularly within consumer sectors\u2014such as retail, consumer goods, pharmaceuticals, and medical devices\u2014and media and professional service sectors. Grace previously served as the Principal Consultant for Accounting and Finance in Commerce and Healthcare at Randstad Singapore, before moving to London to continue to specialise in commercial accounting and finance recruitment. Outside of work, she is also currently pursuing a Life and Career Coaching certification; and enjoys dancing, travelling, singing, yoga, reading, learning new things (like musical theatre, hypnotherapy, and muay thai) \u2014 and loving life.",
+      "imageUrl": "/profile_images/GraceTong.jpg"
+    },
+    {
+      "name": "Grace Zhu",
+      "role": "Manager (Disability Office)",
+      "organization": "Ministry of Social Development Singapore",
+      "school": "Columbia University and Sciences Po",
+      "courseOfStudy": "International Development",
+      "fullBio": "Grace Zhu, as Manager at the Disability Office of the Ministry of Social and Family Development, works with a passionate team to push for improvements in job prospects, social service delivery, and accessibility for persons with disability in Singapore. She is driven by empathy for others and an interest in solving problems by understanding what makes people tick. Grace graduated from Princeton University with specialities in Islamic studies and neuroscience; and received Master\u2019s degrees from Columbia University and Sciences Po in international development. Gifted with at least some working proficiency across five languages\u2014English, Mandarin, French, Arabic, and Bosnian-Croatian-Serbian, she also formerly represented Singapore at the United Nations (UN) as a diplomat, serving as First Secretary of Singapore's Permanent Mission to the UN, during her professional tenure as a Foreign Service Officer at the Ministry of Foreign Affairs. Grace recently became a proud mother to a vivacious toddler.",
+      "imageUrl": "/profile_images/GraceZhu.jpg"
     },
     {
       "name": "Hamid Razak",
@@ -595,40 +640,13 @@
       "imageUrl": "/profile_images/HemaaSekar.jpg"
     },
     {
-      "name": "Chun Huey Yei",
-      "role": "Founder and Director",
-      "organization": "Qoorious",
-      "school": "Nanyang Technological University",
-      "courseOfStudy": "Accountancy",
-      "fullBio": "Chun Huey Yei, an entrepreneur with business foci in internet marketing and the mobile apps market, is the Founder and Director of Qoorious\u2014an internet marketing company that specialises in performance marketing, launched in 2011\u2014and Co-Founder of Appysode, launched in 2012, to expand and tap into the growing mobile apps market. Prior to his entrepreneurial ventures, he worked as an Auditor for KPMG, managing a clientele portfolio including notable brands such as Temasek, the Monetary Authority of Singapore, and General Electric. Outside of work, Huey Yei is a Taekwondo instructor \u2014 in which capacity he introduced this art to KPMG, and founded the KPMG Taekwondo Club. He helmed Taekwondo classes for charity, as part of KPMG's corporate social responsibility programme. Huey Yei graduated from the Nanyang Technological University of Singapore with a bachelor's degree in accountancy, after which he first forayed into professional life through tenures as an Animal Keeper at the Singapore Night Safari and an Outdoor Instructor with SAFRA National Service Association.",
-      "imageUrl": "/profile_images/HueyYeiChun.jpg"
-    },
-    {
-      "name": "Chin Hui Lin",
-      "role": "Associate Partner",
-      "organization": "Antler",
-      "school": "Oxford University",
-      "courseOfStudy": "English Literature",
-      "fullBio": "Chin Hui Lin, an Associate Partner at Antler, an early stage VC working with entrepreneurs from the start, currently works on building Antler's new team and presence in China. In Antler, a global startup generator, Hui Lin seeks to bring exceptional individuals together to build disruptive tech companies. Her work looks at helping entrepreneurs discover the right co-founders and connects them to a top tier network of advisors and experts worldwide. Hui Lin previously worked just over five years in the public service at the Singapore Economic Development Board (EDB), focusing on new industries, healthcare and international organizations, and has worked with and in not-for-profit organizations in the environmental biodiversity and corporate sustainability space. Prior to all this she taught a little at the Singapore Institute of Management University (UniSIM), and found it unexpectedly meaningful. Hui Lin first enrolled in the law faculty, but graduated with a Bachelor's Degree in Literature from NUS, and holds a Masters in English Literature from Oxford University.",
-      "imageUrl": "/profile_images/HuiLinChin.jpg"
-    },
-    {
-      "name": "Lee Hui Min",
-      "role": "Staff Officer (Research and Planning)",
-      "organization": "Singapore Police Force",
-      "school": "University of Oxford",
-      "courseOfStudy": "Criminology and Criminal Justice",
-      "fullBio": "Lee Hui Min\u2014today a Staff Officer for Research and Planning at the Criminal Investigation Department at the Central Police Division of the Singapore Police Force\u2014studied for her undergraduate education at New York University, majoring in economic and minoring in Asian, Pacific and American Studies for three years, with half a year during spent on an exchange semester in South Korea at Yonsei University. She started police training in 2016. Hui Min\u2019s work at the Central Police Division sees her overseeing transformation work at the Criminal Investigation Department. She holds a Masters in Criminology and Criminal Justice from the University of Oxford, which she pursued for a year in the United Kingdom before returning home to Singapore to embark on police training \u2014 having been the fortunate recipient of a Singapore Government Scholarship with the Ministry of Home Affairs.",
-      "imageUrl": "/profile_images/HuiMinLee.jpg"
-    },
-    {
-      "name": "Lim Huishan",
-      "role": "General Manager",
-      "organization": "FastJobs, Singapore",
-      "school": "Fudan University",
-      "courseOfStudy": "Chinese Politics and Diplomacy",
-      "fullBio": "Lim Huishan is the General Manager for FastJobs, Singapore \u2014\u00a0a mobile app that connects jobseekers and employers. In this capacity, she works with her team to grow the business across sales, marketing and operations; and loves problem solving. Huishan was previously the Head of Partnership Development, and Product Development, on the digital front at Singapore Press Holdings \u2014\u00a0where she worked for over 7 years. Keen to contribute her experience and skills to a wider community, and helping people communicate better to get things done, Huishan became a member of the National Youth Council's INSPIRIT community of young adult leaders. She holds a Master of Arts in Chinese Politics and Diplomacy from Fudan University, and Bachelor of Science in Government and Economics from the London School of Economics and Political Science. Huishan is a self-styled product development enthusiast, with a healthy interest in analytics, while believing that people must come first \u2014 and that the key to every great idea is execution.",
-      "imageUrl": "/profile_images/HuishanLim.jpg"
+      "name": "Heng Kai Le",
+      "role": "Freelance Article Writer",
+      "organization": "tsunagu Japan",
+      "school": "National University of Singapore",
+      "courseOfStudy": "English Language",
+      "fullBio": "Heng Kai Le is currently a freelance article writer at tsunagu Japan as an English-Chinese-Japanese translator and graduated from the National University of Singapore with a Bachelor of Arts in English Language. He is experienced in teaching linguistics, having been a Communications lecturer at a polytechnic and subsequently an Assistant Language Teacher in Japan. His expertise in intercultural communication is supported by his experience in working in the translation and localization industry and his Diploma in Translation Studies from the Singapore Chinese Chamber Institute of Business. Apart from languages, he likes to dabble in the philosophy of life.",
+      "imageUrl": "/profile_images/KaiLeHeng.jpg"
     },
     {
       "name": "Irnina Wong",
@@ -730,15 +748,6 @@
       "imageUrl": "/profile_images/JeanneTai.jpg"
     },
     {
-      "name": "Lee Jee Soo",
-      "role": "Associate",
-      "organization": "Boston Consulting Group",
-      "school": "Tsinghua University",
-      "courseOfStudy": "Global Affairs",
-      "fullBio": "Lee Jee Soo is an Associate at Boston Consulting Group (BCG), a top-tier global management and strategy consulting firm. Some of her past work has included data analytics enablement for a leading telecommunications company and organisational productivity improvement for a regional bank. In 2020, she was selected as a CEO Ambassador to tackle key strategic questions for BCG. She has a passion for people development and wellbeing. Prior to consulting, she graduated with a Master's of Global Affairs from Tsinghua University where she was a Schwarzman Scholar, and was a HKSAR Government Scholar at The University of Hong Kong where she concentrated in Psychology and Business Design & Innovation.",
-      "imageUrl": "/profile_images/JeeSooLee.jpg"
-    },
-    {
       "name": "Jeremy Chia",
       "role": "Consultant",
       "organization": "LucaNet (ASEAN)",
@@ -766,24 +775,6 @@
       "imageUrl": "/profile_images/JessicaTan.jpg"
     },
     {
-      "name": "Loke Jia Li",
-      "role": "Freelance Translator",
-      "organization": "",
-      "school": "Nanyang Technological University",
-      "courseOfStudy": "Electrical and Electronics Engineering",
-      "fullBio": "Loke Jia Li\u2014now a freelance translator specialising translating English to Mandarin and vice versa\u2014is studying for a Master of Arts in Translation and Interpretation at the Nanyang Technological University (NTU), after about 10 years as a senior service and project engineer for Invensys, which was then acquired by Schneider Electric. He had joined Invensys upon his first graduation from NTU, with a bachelor's degree in electrical and electronics engineering. As a service and project engineer, he accrued much experience in project management, product training, and site service support. Then, he decided to take a break from engineering\u2014in the process transiting from a day-to-day job to a freelancer\u2014to pursue his passion, switching gears to move into translation \u2014\u00a0something that he has always want to explore.",
-      "imageUrl": "/profile_images/JiaLiLoke.jpg"
-    },
-    {
-      "name": "Quek Jiahui",
-      "role": "Manager",
-      "organization": "Smart Nation and Digital Government Office",
-      "school": "The London School of Economics and Political Science",
-      "courseOfStudy": "International Relations",
-      "fullBio": "Quek Jiahui works in the public service as a Manager at the Smart Nation and Digital Government Office where she works on technology governance and digital infrastructure to make Singapore a Smart Nation. Most of her work and internship experience has been within the public service, but she has also done internships at non-profit organisations including the Singapore International Foundation and Asian Trade Centre. Jiahui completed her undergraduate studies in International Relations at the London School of Economics and Political Science, and then went on to do a Masters in Public Policy at the National University of Singapore Lee Kuan Yew School of Public Policy, specialising in economic policy. She believes in the power of mentorship as an experience that involves mutual sharing of stories and perspectives; and mutual support for each other's continually learning and growing, between mentor and mentee.",
-      "imageUrl": "/profile_images/JiahuiQuek.jpg"
-    },
-    {
       "name": "Jiaxi Zhang",
       "role": "Research Associate",
       "organization": "Hong Kong Polytechnic University Centre",
@@ -802,15 +793,6 @@
       "imageUrl": "/profile_images/JillianLye.jpg"
     },
     {
-      "name": "Jimmy Sia",
-      "role": "Regional Head (Go to Market, Strategy & Operations)",
-      "organization": "Grab",
-      "school": "Singapore Management University",
-      "courseOfStudy": "Political Science and Finance",
-      "fullBio": "As the Regional Head of Go to Market (Strategy and Operations) at Grab, Jimmy Sia drives the enterprise's business growth across Southeast Asia. Working at the intersection of technology and business, he is highly proficient in understanding market data, especially from emerging markets; designing sales narratives; and automating sales and marketing processes. Jimmy's previous experience ranges from being a Strategy Manager at PwC \u2014 where he worked on growth strategy, digital transformation, commercial strategy, localisation strategy, and business planning in Asia Pacific growth markets \u2014 to being a Manager at International Enterprise Singapore, where he focused on increasing the overseas sales and investments of Singapore companies. This has put Jimmy in good stead to handle the complex Go to Market challenges he now faces. A trusted adviser to business leaders, Jimmy places great emphasis on relationship building, and is passionate about helping others develop a deeper understanding of how to market their products or increase adoption of their services using practical strategies.",
-      "imageUrl": "/profile_images/JimmySia.jpg"
-    },
-    {
       "name": "Jimmy Ong",
       "role": "Vice President, Global Public Affairs (Corporate Citizenship)",
       "organization": "Citi Singapore",
@@ -820,22 +802,13 @@
       "imageUrl": "/profile_images/JimmyOng.jpg"
     },
     {
-      "name": "Peng Jingkai",
-      "role": "Chief Financial Officer",
-      "organization": "Golden Sunland",
-      "school": "University College London",
-      "courseOfStudy": "Economics",
-      "fullBio": "Peng Jingkai is the Chief Financial Officer of Golden Sunland, a rice company which aims to improve the lives of rice farmers in Myanmar impacted by climate change. His ambition is only outweighed by his belief that the meaning of a wholesome life goes beyond material gains. An expert in working on blockchain solutions for trading multi-assets, Jingkai has more than a decade's experience in the commodities sector across investment banks in London and Singapore. Previously, he worked as an investment banker with Barclays Capital in London, a commodities trader with Dresdner Bank, and helped built the Asia commodities team for Commerzbank as their Head of Commodities, Asia. Jingkai graduated from University College London, University of London, with a Bachelor's Degree in Science (Economics).",
-      "imageUrl": "/profile_images/JingkaiPeng.jpg"
-    },
-    {
-      "name": "Li Jingmei",
-      "role": "Senior Research Scientist",
-      "organization": "Genome Institute of Singapore",
-      "school": "Karolinska Institutet",
-      "courseOfStudy": "Medical Epidemiology",
-      "fullBio": "Senior Research Scientist at the Genome Institute of Singapore, Dr Li Jingmei is concurrently an Adjunct Assistant Professor at the Department of Surgery in the National University of Singapore. A recipient of the National Research Foundation Singapore Fellowship, she dedicates herself to improving women's health, particularly in the field of breast cancer research. An expert in the field of research focussing on identifying genetic differences to predict, prevent, and improve care for breast cancer, Dr Li also seeks to to increase public awareness of the disease, and has delivered a TEDx talk titled \"Knowledge is Power: Shaping Personalized Prevention of Breast Cancer\" on top of publishing some 130 original works in her name. She is a graduate of the National University of Singapore and an alumna of its University Scholars Programme.",
-      "imageUrl": "/profile_images/JingmeiLi.jpg"
+      "name": "Jimmy Sia",
+      "role": "Regional Head (Go to Market, Strategy & Operations)",
+      "organization": "Grab",
+      "school": "Singapore Management University",
+      "courseOfStudy": "Political Science and Finance",
+      "fullBio": "As the Regional Head of Go to Market (Strategy and Operations) at Grab, Jimmy Sia drives the enterprise's business growth across Southeast Asia. Working at the intersection of technology and business, he is highly proficient in understanding market data, especially from emerging markets; designing sales narratives; and automating sales and marketing processes. Jimmy's previous experience ranges from being a Strategy Manager at PwC \u2014 where he worked on growth strategy, digital transformation, commercial strategy, localisation strategy, and business planning in Asia Pacific growth markets \u2014 to being a Manager at International Enterprise Singapore, where he focused on increasing the overseas sales and investments of Singapore companies. This has put Jimmy in good stead to handle the complex Go to Market challenges he now faces. A trusted adviser to business leaders, Jimmy places great emphasis on relationship building, and is passionate about helping others develop a deeper understanding of how to market their products or increase adoption of their services using practical strategies.",
+      "imageUrl": "/profile_images/JimmySia.jpg"
     },
     {
       "name": "Jocelyn Low",
@@ -874,15 +847,6 @@
       "imageUrl": "/profile_images/JonathanAng.jpg"
     },
     {
-      "name": "Jonathan Lee",
-      "role": "Associate General Counsel",
-      "organization": "Facebook",
-      "school": "University of Bristol",
-      "courseOfStudy": "Law",
-      "fullBio": "Jonathan Lee is currently a dispute resolution and regulatory lawyer, as well as an Associate General Counsel at Facebook. Named one of Singapore\u2019s most influential lawyers under 40 in 2015, his previous experience involed a partnership at South East Asia's largest law firm, Rajah & Tann LLP. Jonathan thereafter served as a District Judge and Assistant Registrar in the Singapore judiciary. Passionate about the intersection of law, human rights, and technology, and the implications that tech regulation has for society in the future, Jonathan believes that the law can and should be a force for positive change in society.",
-      "imageUrl": "/profile_images/JonathanLee.jpg"
-    },
-    {
       "name": "Jonathan Kuek",
       "role": "Doctoral Candidate",
       "organization": "University of Sydney",
@@ -890,6 +854,15 @@
       "courseOfStudy": "Psychology",
       "fullBio": "A doctoral candidate at the University of Sydney, Jonathan Kuek specializes in recovery approaches to the management and understanding of mental health conditions. A published author and reviewer for peer-reviewed journals, his work can be found in journals such as the Asian Journal of Psychiatry and the International Journal of Environmental Research and Public Health. Along with that, he frequently delivers presentations at international conferences. An active mental health advocate, Jonathan volunteers his time as a Volunteer Leader at the Institute of Mental Health, where he founded and continues to manage a volunteer group of 600 youths. Under the SGPsychStuff mentorship program which he is in charge of, Jonathan mentors undergraduate psychology students. Additionally, he often gives talks about careers and topics in psychology in his role as an active member of the Singapore Psychological Society's public education team. Jonathan has also worked extensively with agencies in the social service and mental health sector.",
       "imageUrl": "/profile_images/JonathanKuek.jpg"
+    },
+    {
+      "name": "Jonathan Lee",
+      "role": "Associate General Counsel",
+      "organization": "Facebook",
+      "school": "University of Bristol",
+      "courseOfStudy": "Law",
+      "fullBio": "Jonathan Lee is currently a dispute resolution and regulatory lawyer, as well as an Associate General Counsel at Facebook. Named one of Singapore\u2019s most influential lawyers under 40 in 2015, his previous experience involed a partnership at South East Asia's largest law firm, Rajah & Tann LLP. Jonathan thereafter served as a District Judge and Assistant Registrar in the Singapore judiciary. Passionate about the intersection of law, human rights, and technology, and the implications that tech regulation has for society in the future, Jonathan believes that the law can and should be a force for positive change in society.",
+      "imageUrl": "/profile_images/JonathanLee.jpg"
     },
     {
       "name": "Joshua Au",
@@ -928,15 +901,6 @@
       "imageUrl": "/profile_images/JustinHo.jpg"
     },
     {
-      "name": "Heng Kai Le",
-      "role": "Freelance Article Writer",
-      "organization": "tsunagu Japan",
-      "school": "National University of Singapore",
-      "courseOfStudy": "English Language",
-      "fullBio": "Heng Kai Le is currently a freelance article writer at tsunagu Japan as an English-Chinese-Japanese translator and graduated from the National University of Singapore with a Bachelor of Arts in English Language. He is experienced in teaching linguistics, having been a Communications lecturer at a polytechnic and subsequently an Assistant Language Teacher in Japan. His expertise in intercultural communication is supported by his experience in working in the translation and localization industry and his Diploma in Translation Studies from the Singapore Chinese Chamber Institute of Business. Apart from languages, he likes to dabble in the philosophy of life.",
-      "imageUrl": "/profile_images/KaiLeHeng.jpg"
-    },
-    {
       "name": "Kamil Haque",
       "role": "Founder and Artistic Director",
       "organization": "Haque Centre of Acting & Creativity (HCAC)",
@@ -973,24 +937,6 @@
       "imageUrl": "/profile_images/KarpagamVenkkatesan.jpg"
     },
     {
-      "name": "Lee Keng Leong",
-      "role": "Deputy Director (Operations and Outreach)",
-      "organization": "Agency for Integrated Care",
-      "school": "National University of Singapore",
-      "courseOfStudy": "Business Administration",
-      "fullBio": "Lee Keng Leong serves as the Deputy Director (Operations and Outreach) of a 400 member team at the Agency for Integrated Care. He is part of the team at the Silver Generation Office that aims to serve our Merdeka and Pioneer generation seniors. Keng Leong has accumulated commercial experience in e-commerce, shipbuilding, finance, cyber security and logistics for the marine sector \u2013 be it through his stint at Fairprice Online, where he was responsible for omni-channel deployment and the creation of effective business strategy, or his entrepreneurial experiences as the co-founder of Bumbox Logistics, where he planned and executed green field projects. He has been a Chartered Financial Analyst (CFA) since 2012.",
-      "imageUrl": "/profile_images/KengLeongLee.jpg"
-    },
-    {
-      "name": "Kenneth Tay",
-      "role": "Associate",
-      "organization": "Clifford Chance",
-      "school": "University College London",
-      "courseOfStudy": "Law",
-      "fullBio": "An Associate at Clifford Chance, an international law firm, Kenneth Tay practices law in Clifford Chance Asia's Litigation, Dispute Resolution, and Risk Management practice in Singapore. During his time as a trainee, Kenneth worked in the firm\u2019s Banking and Mergers & Acquisitions practices. In his current role, he works regularly with financial institutions, private equity investors, and technology companies to solve a wide range of problems across the Asia-Pacific region. This includes disputes that arise after the acquisition of a company, investigations into staff misconduct or breaches of the law, and general regulatory advice relating to competition law, employment law, cybersecurity, money laundering, bribery, and data protection. Kenneth is also passionate about technological trends, particularly, developments relating to social media platforms. He believes that a strong sense of purpose, passion, and a well-supported workforce can go a long way, and sees mentoring as a valuable skill. He graduated from the University College London (UCL) with a Bachelor of Laws.",
-      "imageUrl": "/profile_images/KennethTay.jpg"
-    },
-    {
       "name": "Kenneth Bok",
       "role": "Head (Growth and Strategy)",
       "organization": "Zilliqa",
@@ -1007,6 +953,15 @@
       "courseOfStudy": "Architecture",
       "fullBio": "Kenneth Lau is a ceramic artist running a home studio with his wife, teaching and making pottery. After graduating from Cornell University with an architecture degree, he spent 8 years in the real estate industry, taking on roles in property development, architecture and interior design.",
       "imageUrl": "/profile_images/KennethLau.jpg"
+    },
+    {
+      "name": "Kenneth Tay",
+      "role": "Associate",
+      "organization": "Clifford Chance",
+      "school": "University College London",
+      "courseOfStudy": "Law",
+      "fullBio": "An Associate at Clifford Chance, an international law firm, Kenneth Tay practices law in Clifford Chance Asia's Litigation, Dispute Resolution, and Risk Management practice in Singapore. During his time as a trainee, Kenneth worked in the firm\u2019s Banking and Mergers & Acquisitions practices. In his current role, he works regularly with financial institutions, private equity investors, and technology companies to solve a wide range of problems across the Asia-Pacific region. This includes disputes that arise after the acquisition of a company, investigations into staff misconduct or breaches of the law, and general regulatory advice relating to competition law, employment law, cybersecurity, money laundering, bribery, and data protection. Kenneth is also passionate about technological trends, particularly, developments relating to social media platforms. He believes that a strong sense of purpose, passion, and a well-supported workforce can go a long way, and sees mentoring as a valuable skill. He graduated from the University College London (UCL) with a Bachelor of Laws.",
+      "imageUrl": "/profile_images/KennethTay.jpg"
     },
     {
       "name": "Kenny Sng",
@@ -1036,6 +991,15 @@
       "imageUrl": "/profile_images/KiaLiangFua.jpg"
     },
     {
+      "name": "Koh Ching Ching",
+      "role": "Head of Group Brand and Communications",
+      "organization": "OCBC",
+      "school": "National University of Singapore",
+      "courseOfStudy": "Business Administration",
+      "fullBio": "As the Head of Group Brand and Communications, Koh Ching Ching oversees OCBC Bank\u2019s branding and communications initiatives with the media, employees, customers, shareholders and the general public across its core markets. She has been heading the division since November 2004 and was appointed Executive Vice President in March 2012. Prior to her current role, she led OCBC Bank\u2019s franchise expansion efforts in trade finance in Malaysia. Ching Ching had 16 years of corporate and retail banking experience, having held various senior customer and product positions in local and foreign financial institutions. She graduated with First Class Honours in Business Administration from the National University of Singapore.",
+      "imageUrl": "/profile_images/ChingChingKoh.jpg"
+    },
+    {
       "name": "Kristene Chan",
       "role": "Head of North America Professional Services (Project Risk Control and Global Client Engagement Lead)",
       "organization": "AxiomSL",
@@ -1052,15 +1016,6 @@
       "courseOfStudy": "Business Administration",
       "fullBio": "A Commerce Platforms Lead at Facebook, Kush Sagar focuses on commerce platform (B2B) strategy across APAC enabling merchants to be successful on our Facebook via various API's/tech solution integrations with the platform partners. Website builders, feed management, social commerce and POS (point of sales) are some of the verticals he looks into. Kush has 11 years of experiences in various markets in APAC, seven of which have been in South East Asia (Singapore and Philippines). His previous roles include stints at Yahoo! as an account manager, and Komli Media (Twitter) where he was part of the sales team consulting clients on their business strategy across Philippines and India. Additionally, he has had experience working with the Royal Bank of Scotland (India) as a Software Associate.",
       "imageUrl": "/profile_images/KushSagar.jpg"
-    },
-    {
-      "name": "Soh Lai Yee",
-      "role": "Executive Director",
-      "organization": "VIVA Foundation",
-      "school": "National University of Singapore",
-      "courseOfStudy": "Sociology",
-      "fullBio": "Soh Lai Yee is an Executive Director at VIVA Foundation for Children with cancer. An entrepreneurial leader, her expertise consists of non-profit leadership, growing multi-sectorial partnerships for social inclusion, implementing cross-cultural exchange programmes and fostering international networks, thought leadership and collaborations in healthcare, social entrepreneurship, youth development, and the arts. Lai Yee's previous experience saw a stint at Singapore International Foundation as the Head of Cultural Exchange, where she established a new programmes department, and led the growth of partnerships and cross-cultural exchanges in the arts and culture for social impact. She was also Assistant Director of Public Affairs at the Asia-Europe Foundation, where she managed and co-edited a project 'Go Home!', involving the works by 12 comic artists on migration. She graduated from the National University of Singapore with a Bachelor of Arts in Sociology.",
-      "imageUrl": "/profile_images/LaiYeeSoh.jpg"
     },
     {
       "name": "Lavinia Thanapathy",
@@ -1081,13 +1036,58 @@
       "imageUrl": "/profile_images/LeanneThachil.jpg"
     },
     {
-      "name": "Leon Toh",
+      "name": "Lee Hui Min",
+      "role": "Staff Officer (Research and Planning)",
+      "organization": "Singapore Police Force",
+      "school": "University of Oxford",
+      "courseOfStudy": "Criminology and Criminal Justice",
+      "fullBio": "Lee Hui Min\u2014today a Staff Officer for Research and Planning at the Criminal Investigation Department at the Central Police Division of the Singapore Police Force\u2014studied for her undergraduate education at New York University, majoring in economic and minoring in Asian, Pacific and American Studies for three years, with half a year during spent on an exchange semester in South Korea at Yonsei University. She started police training in 2016. Hui Min\u2019s work at the Central Police Division sees her overseeing transformation work at the Criminal Investigation Department. She holds a Masters in Criminology and Criminal Justice from the University of Oxford, which she pursued for a year in the United Kingdom before returning home to Singapore to embark on police training \u2014 having been the fortunate recipient of a Singapore Government Scholarship with the Ministry of Home Affairs.",
+      "imageUrl": "/profile_images/HuiMinLee.jpg"
+    },
+    {
+      "name": "Lee Jee Soo",
+      "role": "Associate",
+      "organization": "Boston Consulting Group",
+      "school": "Tsinghua University",
+      "courseOfStudy": "Global Affairs",
+      "fullBio": "Lee Jee Soo is an Associate at Boston Consulting Group (BCG), a top-tier global management and strategy consulting firm. Some of her past work has included data analytics enablement for a leading telecommunications company and organisational productivity improvement for a regional bank. In 2020, she was selected as a CEO Ambassador to tackle key strategic questions for BCG. She has a passion for people development and wellbeing. Prior to consulting, she graduated with a Master's of Global Affairs from Tsinghua University where she was a Schwarzman Scholar, and was a HKSAR Government Scholar at The University of Hong Kong where she concentrated in Psychology and Business Design & Innovation.",
+      "imageUrl": "/profile_images/JeeSooLee.jpg"
+    },
+    {
+      "name": "Lee Keng Leong",
+      "role": "Deputy Director (Operations and Outreach)",
+      "organization": "Agency for Integrated Care",
+      "school": "National University of Singapore",
+      "courseOfStudy": "Business Administration",
+      "fullBio": "Lee Keng Leong serves as the Deputy Director (Operations and Outreach) of a 400 member team at the Agency for Integrated Care. He is part of the team at the Silver Generation Office that aims to serve our Merdeka and Pioneer generation seniors. Keng Leong has accumulated commercial experience in e-commerce, shipbuilding, finance, cyber security and logistics for the marine sector \u2013 be it through his stint at Fairprice Online, where he was responsible for omni-channel deployment and the creation of effective business strategy, or his entrepreneurial experiences as the co-founder of Bumbox Logistics, where he planned and executed green field projects. He has been a Chartered Financial Analyst (CFA) since 2012.",
+      "imageUrl": "/profile_images/KengLeongLee.jpg"
+    },
+    {
+      "name": "Lee Sing-Kok (SK)",
       "role": "Executive Director",
-      "organization": "Damson Capital",
-      "school": "Monash University",
-      "courseOfStudy": "Commerse and Economics",
-      "fullBio": "Leon Toh is currently the Executive Director of Damson Capital, an impact investment firm in Singapore. Damson Capital invests in Entrepreneurs that the world needs and is dedicated to supporting social entrepreneurs seeking to create sustained positive change through enterprise solutions. Leon also co-founded Eden and Elie, a Singaporean Social Enterprise Jewellery company, supporting autistic adults. They have been featured in prestigious publications such as the New York Times Style Magazine and Channel News Asia. His previous experience include stints as a Management Consultant with Accenture Strategy, a Reporter and a Research Assistant with Monash University, studying Coffee Farming Households in Timor Leste. Leon also served on various Boards of Social Enterprises, Non-Profits and Charities in the areas of Education, Water, Sanitation and Social Enterprises Development in Asia.",
-      "imageUrl": "/profile_images/LeonToh.jpg"
+      "organization": "Jupiter Investment Asia",
+      "school": "University of Canberra",
+      "courseOfStudy": "Business Admin",
+      "fullBio": "Lee Sing-Kok is the Executive Director at Jupiter Investment Asia, an external asset manager licensed by the MAS. He is also a founding member of Jupiter Asia Capital, a sister company of JIA that focus on private market deals. Prior to joining the Jupiter Group, Sing-Kok was the Chief Operating Officer for KPMG Deal Advisory (Forensic) practice based in Jakarta. He has held advisory and risk management roles in a career that spanned from the Ministry of Home Affair to Merrill Lynch and Goldman Sachs in Asia. Sing-Kok also volunteered in various grassroot activities including the Appropriate Adult Scheme for Young Suspects ('AAYS') currently managed under the Singapore Children's Society. Sing-Kok has received professional training at Harvard Kennedy School and holds professional certifications in Risk Management, Compliance and Fraud Examination. He is also a member of Singapore Institute of Directors (\u2018SID\u2019), Association of Independent Asset Managers (\u2018AIAM\u2019), Association of CryptoCurrency Enterprises and Startups in Singapore (\u2018ACCESS\u2019) & International Business Brokers Association (\u2018IBBA\u2019).",
+      "imageUrl": "/profile_images/Sing-KokSKLee.jpg"
+    },
+    {
+      "name": "Lee Wei An",
+      "role": "Regional Operations Manager",
+      "organization": "Uber Eats",
+      "school": "The London School of Economics and Political Science",
+      "courseOfStudy": "Economics",
+      "fullBio": "Lee Wei An is currently a Regional Operations Manager with Uber Eats, the food delivery arm of Uber Technologies. Based in New York City, his team owns launch and expansion, restaurant densification and other strategic initiatives across all US suburban markets. He first joined Uber as part of the Singapore City team leading Uber rides operations against Grab. Wei An started his career at European corporate venture fund, Burda Principal Investments, covering Southeast Asian Series B deals. He holds a BSc in Economics from The London School of Economics and Political Science and has travelled extensively throughout Europe during his studies. Wei An is passionate about B2C tech start-ups and is ideally looking for a mentee who is considering overseas studies/ work / interested in tech as well! He can advise on overseas studies / work, consulting recruiting, investment banking recruiting, SEA venture capital and SEA start-ups.",
+      "imageUrl": "/profile_images/WeiAnLee.jpg"
+    },
+    {
+      "name": "Lee Zhihan",
+      "role": "Co-Founder, Group CEO",
+      "organization": "BagoSphere",
+      "school": "National University of Singapore",
+      "courseOfStudy": "Nanoscience and Nanotechnology",
+      "fullBio": "Lee Zhihan is the Co-Founder and Group CEO of BagoSphere, a workforce development company based in Singapore and in the Philippines that aims to develop human skills. For his work at BagoSphere, he was named as an Ashoka Fellow in 2018, joining the world's largest and most prestigious network of social innovators. Prior to founding BagoSphere, he worked at a medical-tech start-up in Stockholm before venturing into rural India to work with a social enterprise involved in rural IT outsourcing. He was the Singapore Ambassador for the Sandbox Network, the leading global network of innovators under 30, and a 2016 Global Good Fund Fellow. Zhihan graduated from the National University of Singapore's Engineering Science Program and studied entrepreneurship at the Stockholm School of Entrepreneurship & The Royal Institute of Technology.",
+      "imageUrl": "/profile_images/ZhihanLee.jpg"
     },
     {
       "name": "Leon Khee Pay",
@@ -1099,6 +1099,15 @@
       "imageUrl": "/profile_images/LeonKheePay.jpg"
     },
     {
+      "name": "Leon Toh",
+      "role": "Executive Director",
+      "organization": "Damson Capital",
+      "school": "Monash University",
+      "courseOfStudy": "Commerse and Economics",
+      "fullBio": "Leon Toh is currently the Executive Director of Damson Capital, an impact investment firm in Singapore. Damson Capital invests in Entrepreneurs that the world needs and is dedicated to supporting social entrepreneurs seeking to create sustained positive change through enterprise solutions. Leon also co-founded Eden and Elie, a Singaporean Social Enterprise Jewellery company, supporting autistic adults. They have been featured in prestigious publications such as the New York Times Style Magazine and Channel News Asia. His previous experience include stints as a Management Consultant with Accenture Strategy, a Reporter and a Research Assistant with Monash University, studying Coffee Farming Households in Timor Leste. Leon also served on various Boards of Social Enterprises, Non-Profits and Charities in the areas of Education, Water, Sanitation and Social Enterprises Development in Asia.",
+      "imageUrl": "/profile_images/LeonToh.jpg"
+    },
+    {
       "name": "Leslie Lim",
       "role": "Co-Founder",
       "organization": "Cicil",
@@ -1108,13 +1117,58 @@
       "imageUrl": "/profile_images/LeslieLim.jpg"
     },
     {
-      "name": "Chia Lih Wei",
-      "role": "Chief Technology Officer",
-      "organization": "AstropreneursHUB, TinyMOS",
+      "name": "Li Jingmei",
+      "role": "Senior Research Scientist",
+      "organization": "Genome Institute of Singapore",
+      "school": "Karolinska Institutet",
+      "courseOfStudy": "Medical Epidemiology",
+      "fullBio": "Senior Research Scientist at the Genome Institute of Singapore, Dr Li Jingmei is concurrently an Adjunct Assistant Professor at the Department of Surgery in the National University of Singapore. A recipient of the National Research Foundation Singapore Fellowship, she dedicates herself to improving women's health, particularly in the field of breast cancer research. An expert in the field of research focussing on identifying genetic differences to predict, prevent, and improve care for breast cancer, Dr Li also seeks to to increase public awareness of the disease, and has delivered a TEDx talk titled \"Knowledge is Power: Shaping Personalized Prevention of Breast Cancer\" on top of publishing some 130 original works in her name. She is a graduate of the National University of Singapore and an alumna of its University Scholars Programme.",
+      "imageUrl": "/profile_images/JingmeiLi.jpg"
+    },
+    {
+      "name": "Lim Boon Pin",
+      "role": "Senior Assistant Director (Policy & Planning), Municipal Services Office",
+      "organization": "Ministry of National Development Singapore",
       "school": "National University of Singapore",
-      "courseOfStudy": "Electrical, Electronics and Computer Engineering,",
-      "fullBio": "Chia Lih Wei co-founded AstropreneursHUB and TinyMOS, and leads them both as Chief Technology Officer\u2014in addition to serving as Chief Technology Officer both for SG-Cosmos and Bhattacharya Space Enterprises\u2014to specialise in space technology training and satellite design, with TinyMOS, focussing on making two of the world's smallest smart astronomy cameras. These cameras by TinyMOS have received glowing reviews in Android Central and Digital Photography Review; and in partnership with the Ford Motor Company, have been incorporated into the Land Rover Spirit model. He graduated from the National University of Singapore with a Bachelor's degree in Electrical, Electronics and Computer Engineering, during which time he worked on NUS's first student-built satellite and its ground control station; and interned at Berner International Corp. Adept in coding languages of C and C++, he is currently pursuing a PhD in artificial intelligence for space and telecommunications.",
-      "imageUrl": "/profile_images/LihWeiChia.jpg"
+      "courseOfStudy": "Sociology",
+      "fullBio": "Lim Boon Pin is the Senior Assistant Director for Policy and Planning at the Ministry of National Development's Municipal Services Office, bringing together government agencies, Town Councils, and citizens in the course of his work to improve the shared living environment in Singaproe. He previously worked as a Senior Manager for Community Collaborators at Youth Corps Singapore; and Senior Manager for Community Relations at the Community Relations and Engagement Division, under the Ministry of Culture, Community and Youth. Boon Pin graduated from the National University of Singapore (NUS) with a BSc. (Hons) majoring in sociology and minoring in religious studies, where he studied on a NUS Undergraduate Merit Scholarship. He attributes the critical thinking with which he approaches problems to his having developed a strong grounding in sociology through his undergraduate education, which trained him to understand problems contextually and question ideas rigorously \u2014 to dig deep into the 'why' and 'for whom' of questions. Boon Pin believes that as long as one's eyes are kept on the 'why' before diving into the 'how,' there is meaningful impact to be made together, collectively and cumulatively \u2014 a little at a time, there can be better, brighter world to which to look forward.",
+      "imageUrl": "/profile_images/BoonPinLim.jpg"
+    },
+    {
+      "name": "Lim Huishan",
+      "role": "General Manager",
+      "organization": "FastJobs, Singapore",
+      "school": "Fudan University",
+      "courseOfStudy": "Chinese Politics and Diplomacy",
+      "fullBio": "Lim Huishan is the General Manager for FastJobs, Singapore \u2014\u00a0a mobile app that connects jobseekers and employers. In this capacity, she works with her team to grow the business across sales, marketing and operations; and loves problem solving. Huishan was previously the Head of Partnership Development, and Product Development, on the digital front at Singapore Press Holdings \u2014\u00a0where she worked for over 7 years. Keen to contribute her experience and skills to a wider community, and helping people communicate better to get things done, Huishan became a member of the National Youth Council's INSPIRIT community of young adult leaders. She holds a Master of Arts in Chinese Politics and Diplomacy from Fudan University, and Bachelor of Science in Government and Economics from the London School of Economics and Political Science. Huishan is a self-styled product development enthusiast, with a healthy interest in analytics, while believing that people must come first \u2014 and that the key to every great idea is execution.",
+      "imageUrl": "/profile_images/HuishanLim.jpg"
+    },
+    {
+      "name": "Lim Wei Jie",
+      "role": "Co-Founder and Director",
+      "organization": "Foreword",
+      "school": "National University of Singapore",
+      "courseOfStudy": "Psychology",
+      "fullBio": "Lim Wei Jie is Co-Founder and Director of Foreword, a coffee company providing training and inclusive employment for persons with disabilities and special needs. Wei Jie co-founded Foreword in 2017 during his final year of study in National University of Singapore (NUS). Combining his academic background in Psychology, his drive to make a change with the special needs community, and interest in specialty coffee, Wei Jie started Foreword as a social enterprise with the mission to inspire the can-do spirit to realise the potential in every individual.",
+      "imageUrl": "/profile_images/WeiJieLim.jpg"
+    },
+    {
+      "name": "Ling Han",
+      "role": "Policy Executive",
+      "organization": "Ministry of Transport",
+      "school": "Columbia University",
+      "courseOfStudy": "Public Administration",
+      "fullBio": "Ling Han is a Policy Executive (Land Division) in the Ministry of Transport. In her role, she both developed Singapore\u2019s inaugural regulatory framework, and conceptualized and executed stakeholder engagements with key businesses groups, Members of Parliament, labour unions, and members of the public for the point-to-point transport sector. Ling Han also had the opportunity to work on strategic planning for major road projects and the development of cycling path infrastructure to support Singapore\u2019s Active Mobility landscape. A strong believer in the need to move out of one\u2019s comfort zone to learn and grow, she decided to take the less conventional path of going to Peking University to pursue an undergraduate degree in International Relations, entirely in Mandarin, after which she completed her Masters in public policy at Columbia University where she enjoyed the vibrancy and liberalism that New York had to offer.",
+      "imageUrl": "/profile_images/HanLing.jpg"
+    },
+    {
+      "name": "Lionel Choong",
+      "role": "Co-Founder",
+      "organization": "Innervate Fitness",
+      "school": "National University of Singapore",
+      "courseOfStudy": "Industrial and Systems Engineering",
+      "fullBio": "Lionel Choong is the co-founder of Innervate Fitness and the main organiser of the fitness charity event, Operation Broken Wing. As an entrepreneur for 6 years, he has managed to weave in the impact of social good by engaging the marginalised in Singapore yet building a sustainable business model. Lionel believes in using fitness for a cause and providing fitness for all to those who need it most. He is also on various membership boards, such as the National Youth Council's INSPIRIT, grassroots organisations, and more. Lionel is extremely passionate about making a difference to future generations, and takes the effort and time to build a community that does the same. Beyond his work and career, he is an avid fan of music and movement.",
+      "imageUrl": "/profile_images/LionelChoong.jpg"
     },
     {
       "name": "Lionel Tan",
@@ -1126,13 +1180,22 @@
       "imageUrl": "/profile_images/LionelTan.jpg"
     },
     {
-      "name": "Lionel Choong",
-      "role": "Co-Founder",
-      "organization": "Innervate Fitness",
-      "school": "National University of Singapore",
-      "courseOfStudy": "Industrial and Systems Engineering",
-      "fullBio": "Lionel Choong is the co-founder of Innervate Fitness and the main organiser of the fitness charity event, Operation Broken Wing. As an entrepreneur for 6 years, he has managed to weave in the impact of social good by engaging the marginalised in Singapore yet building a sustainable business model. Lionel believes in using fitness for a cause and providing fitness for all to those who need it most. He is also on various membership boards, such as the National Youth Council's INSPIRIT, grassroots organisations, and more. Lionel is extremely passionate about making a difference to future generations, and takes the effort and time to build a community that does the same. Beyond his work and career, he is an avid fan of music and movement.",
-      "imageUrl": "/profile_images/LionelChoong.jpg"
+      "name": "Loke Jia Li",
+      "role": "Freelance Translator",
+      "organization": "",
+      "school": "Nanyang Technological University",
+      "courseOfStudy": "Electrical and Electronics Engineering",
+      "fullBio": "Loke Jia Li\u2014now a freelance translator specialising translating English to Mandarin and vice versa\u2014is studying for a Master of Arts in Translation and Interpretation at the Nanyang Technological University (NTU), after about 10 years as a senior service and project engineer for Invensys, which was then acquired by Schneider Electric. He had joined Invensys upon his first graduation from NTU, with a bachelor's degree in electrical and electronics engineering. As a service and project engineer, he accrued much experience in project management, product training, and site service support. Then, he decided to take a break from engineering\u2014in the process transiting from a day-to-day job to a freelancer\u2014to pursue his passion, switching gears to move into translation \u2014\u00a0something that he has always want to explore.",
+      "imageUrl": "/profile_images/JiaLiLoke.jpg"
+    },
+    {
+      "name": "Low Siew Ling",
+      "role": "Graduate Student",
+      "organization": "",
+      "school": "",
+      "courseOfStudy": "Social Work",
+      "fullBio": "Low Siew Ling is currently a graduate research student in Social Work. Before this, she used to live in North Asia for over 10 years. Her previous job as a Social Worker involved working with children and youth living in an orphanage as well as families living in difficult situations. Interestingly, she was in a high-paying job as an investment banker and auditor before she found her passion. She is thankful to have been in vastly different lines of work, as she has learnt a lot from her experiences. Siew Ling is passionate about creating a better tomorrow for others, and wants to support them so that their needs can be heard and help can be provided. In alignment with this, she hopes to continue working in her previous job in the future.",
+      "imageUrl": "/profile_images/SiewLingLow.jpg"
     },
     {
       "name": "Mala Satkunanantham",
@@ -1196,15 +1259,6 @@
       "courseOfStudy": "Philosophy, Politics and Economics",
       "fullBio": "Meera Sachdeva currently works as an Associate at Boston Consulting Group (BCG), a global management consulting firm. Previously, she worked on projects within the public sector such as the Ministry of Defence and Ministry of Foreign Affairs in addition to building technology startups. In 2018, Meera graduated from the University of Oxford with a Bachelor\u2019s Degree in Philosophy, Politics and Economics (PPE). Reading, volunteering and discovering new music are some of the things she enjoys on the side.",
       "imageUrl": "/profile_images/MeeraSachdeva.jpg"
-    },
-    {
-      "name": "Neo Mei Lin",
-      "role": "Marine Ecologist",
-      "organization": "St. John\u2019s Island National Marine Laboratory",
-      "school": "National University of Singapore",
-      "courseOfStudy": "Marine Ecology",
-      "fullBio": "Neo Mei Lin is a Marine Ecologist at the St. John\u2019s Island National Marine Laboratory. She graduated from NUS with a B.Sc. in Life Sciences (2009) and Ph.D. in Marine Ecology (2013). While pursuing her degrees, Mei Lin became inspired by Singapore\u2019s conservation workers, and took a strong interest in marine conservation issues. Mei Lin's passion to save the giant clams, her favourite marine animals, kickstarted two research programmes in Singapore to breed and raise clams to be placed onto our reefs.\n\nMei Lin hopes to increase awareness on marine issues in Singapore and elsewhere through science communication. She believes that science can be used to change mindsets on environmental issues, and that this can only be done by making science relevant and relatable. Thus, Mei Lin strives to make science accessible through collaborations, engagements, and communication. For her efforts to generate social impact, Mei Lin received the Singapore Youth Award 2019. When not doing research, she actively volunteers with TeamSeagrass and Reef Friends to promote marine conservation and educate fellow volunteers. She is also an avid diver and photographer.",
-      "imageUrl": "/profile_images/MeiLinNeo.jpg"
     },
     {
       "name": "Melissa Low",
@@ -1279,15 +1333,6 @@
       "imageUrl": "/profile_images/MuhammadAshiqChu.jpg"
     },
     {
-      "name": "Choy Mun Kit",
-      "role": "Relationship Manager",
-      "organization": "Singapore National Co-operative Federation (SNCF)",
-      "school": "University of Bradford",
-      "courseOfStudy": "Accounting and Finance",
-      "fullBio": "Choy Mun Kit is a Relationship Manager with the Singapore National Co-operative Federation (SNCF) where he manages 28 Service Co-operative accounts and 13 NTUC Co-operatives accounts for business development. He has conducted more than 20 workshops and trained more than 1000 PMETs in the areas for Finance, Human Resources, Productivity and Marketing. He has also achieved an internationally-recognized professional qualification in Accountancy.",
-      "imageUrl": "/profile_images/MunKitChoy.jpg"
-    },
-    {
       "name": "Musarrat Maisha Reza",
       "role": "Lecturer",
       "organization": "University of East Anglia",
@@ -1315,13 +1360,22 @@
       "imageUrl": "/profile_images/NaishadKai-RenI.jpg"
     },
     {
-      "name": "Nanthinee Jevanandnam",
+      "name": "Nakul Asjia",
+      "role": "Founder",
+      "organization": "The Gosto Foods Co.",
+      "school": "Institute of Technology and Management",
+      "courseOfStudy": "Mechanical Engineering",
+      "fullBio": "Nakul Asija is the Founder of The Gosto Foods Co. which provides unique gastronomical experiences through sustainable practices in food sourcing and manufacturing. Gosto also educates local communities on responsible consumption of food and reducing food wastage. Prior to starting Gosto, Nakul spent the last decade consulting and working with global organisations to solve the talent challenge for them, with stints at Flow Portugal, Hudson Asia Pacific, and then as Senior Manager (Digital & Technology) at Randstad Singapore. He has also previously led global partnerships and youth engagement strategy for AIESEC in multiple geographies including the United Kingdom, Northern Europe and Latin America, culminating in his role as Global Business Development & Marketing Director. Nakul is passionate about youth leadership development, sustainable consumption and food technology. He is a member of the Singapore Hub of the World Economic Forum Global Shapers Community, having previously served as the Hub's Curator.",
+      "imageUrl": "/profile_images/NakulAsjia.jpg"
+    },
+    {
+      "name": "Nanthinee Jevanandam",
       "role": "Director",
       "organization": "EARTHYS Sustainability",
-      "school": "National University of Singapore",
-      "courseOfStudy": "Ecology",
-      "fullBio": "Nanthinee Jevanandnam is Director at EARTHYS Sustainability, having founded it in 2015. She has developed two core solutions, xhebit (sustainable events) and MeSBer (sustainable behavioural tool). Holding a PhD in Ecology, Nanthinee\u2019s experience in ecological research and sustainability consulting spans over 10 years. Outside of Singapore, her academic and consulting experience covers South Africa, Malaysia, Myanmar, Indonesia and Philippines. Nanthinee believes in using her research and academic background to better understand gaps in sustainability and drive change. She also writes regularly on issues concerning sustainability.",
-      "imageUrl": "/profile_images/NanthineeJevanandnam.jpg"
+      "school": "#N/A",
+      "courseOfStudy": "#N/A",
+      "fullBio": "Nanthinee Jevanandam is Director at EARTHYS Sustainability, having founded it in 2015. She has developed two core solutions, xhebit (sustainable events) and MeSBer (sustainable behavioural tool). Holding a PhD in Ecology, Nanthinee\u2019s experience in ecological research and sustainability consulting spans over 10 years. Outside of Singapore, her academic and consulting experience covers South Africa, Malaysia, Myanmar, Indonesia and Philippines. Nanthinee believes in using her research and academic background to better understand gaps in sustainability and drive change. She also writes regularly on issues concerning sustainability.",
+      "imageUrl": "/profile_images/NanthineeJevanandam.jpg"
     },
     {
       "name": "Nathan Ong",
@@ -1340,6 +1394,15 @@
       "courseOfStudy": "Digital Business",
       "fullBio": "Navjeev Singh is a Development Partner at Enterprise Singapore working on building partnerships with foreign governments to support the growth of Singapore businesses. Most recently, he worked on setting up an innovation partnership between Singapore and the EUREKA Network, the world\u2019s largest intergovernmental research and development network of over 40 countries. Prior to this, Narjeev spent three years with the Ministry of Foreign Affairs, where he was part of the team in charge of Singapore's 2018 ASEAN Chairmanship.\n\nNavjeev is passionate about the intersection between new technology and industry, and how it has fundamentally changed the way we live, work, and play. He holds an undergraduate degree in Economics & Management from the University of Oxford, and a Masters in Digital Business from the IE Business School in Madrid. Even though it has been ten years, Narjeev is still sometimes introduced as the \"Chicken Essence dude\" when meeting new people.",
       "imageUrl": "/profile_images/NavjeevSingh.jpg"
+    },
+    {
+      "name": "Neo Mei Lin",
+      "role": "Marine Ecologist",
+      "organization": "St. John\u2019s Island National Marine Laboratory",
+      "school": "National University of Singapore",
+      "courseOfStudy": "Marine Ecology",
+      "fullBio": "Neo Mei Lin is a Marine Ecologist at the St. John\u2019s Island National Marine Laboratory. She graduated from NUS with a B.Sc. in Life Sciences (2009) and Ph.D. in Marine Ecology (2013). While pursuing her degrees, Mei Lin became inspired by Singapore\u2019s conservation workers, and took a strong interest in marine conservation issues. Mei Lin's passion to save the giant clams, her favourite marine animals, kickstarted two research programmes in Singapore to breed and raise clams to be placed onto our reefs.\n\nMei Lin hopes to increase awareness on marine issues in Singapore and elsewhere through science communication. She believes that science can be used to change mindsets on environmental issues, and that this can only be done by making science relevant and relatable. Thus, Mei Lin strives to make science accessible through collaborations, engagements, and communication. For her efforts to generate social impact, Mei Lin received the Singapore Youth Award 2019. When not doing research, she actively volunteers with TeamSeagrass and Reef Friends to promote marine conservation and educate fellow volunteers. She is also an avid diver and photographer.",
+      "imageUrl": "/profile_images/MeiLinNeo.jpg"
     },
     {
       "name": "Nesh Sooriyan",
@@ -1369,6 +1432,15 @@
       "imageUrl": "/profile_images/NormanChia.jpg"
     },
     {
+      "name": "Peng Jingkai",
+      "role": "Chief Financial Officer",
+      "organization": "Golden Sunland",
+      "school": "University College London",
+      "courseOfStudy": "Economics",
+      "fullBio": "Peng Jingkai is the Chief Financial Officer of Golden Sunland, a rice company which aims to improve the lives of rice farmers in Myanmar impacted by climate change. His ambition is only outweighed by his belief that the meaning of a wholesome life goes beyond material gains. An expert in working on blockchain solutions for trading multi-assets, Jingkai has more than a decade's experience in the commodities sector across investment banks in London and Singapore. Previously, he worked as an investment banker with Barclays Capital in London, a commodities trader with Dresdner Bank, and helped built the Asia commodities team for Commerzbank as their Head of Commodities, Asia. Jingkai graduated from University College London, University of London, with a Bachelor's Degree in Science (Economics).",
+      "imageUrl": "/profile_images/JingkaiPeng.jpg"
+    },
+    {
       "name": "Praveen Nair",
       "role": "Sales Leader",
       "organization": "Bridge Data Centre",
@@ -1376,6 +1448,15 @@
       "courseOfStudy": "Business Administration",
       "fullBio": "Praveen Nair, Sales Leader for Bridge Data Centres in India, is responsible for all sales and marketing activities across South Asia. Bridge Data Centres is an APAC focused data centre colocation services provider with a strong presence in India, China, Malaysia and Singapore. As a Bain Capital portfolio company, they are focused on designing, building and operating the physical infrastructure that powers the digital economy. Previously, Praveen spent 7 years as General Manager for Datacenter Dynamics (DCD). Prior to DCD, Praveen held leadership and operational roles across Asia and the Middle East in the B2B media industry. He is a licensed Marine Engineer and holds a Post Graduate Diploma in Business Administration from the Welingkar Institute of Management Development & Research, Mumbai, India.",
       "imageUrl": "/profile_images/PraveenNair.jpg"
+    },
+    {
+      "name": "Quek Jiahui",
+      "role": "Manager",
+      "organization": "Smart Nation and Digital Government Office",
+      "school": "The London School of Economics and Political Science",
+      "courseOfStudy": "International Relations",
+      "fullBio": "Quek Jiahui works in the public service as a Manager at the Smart Nation and Digital Government Office where she works on technology governance and digital infrastructure to make Singapore a Smart Nation. Most of her work and internship experience has been within the public service, but she has also done internships at non-profit organisations including the Singapore International Foundation and Asian Trade Centre. Jiahui completed her undergraduate studies in International Relations at the London School of Economics and Political Science, and then went on to do a Masters in Public Policy at the National University of Singapore Lee Kuan Yew School of Public Policy, specialising in economic policy. She believes in the power of mentorship as an experience that involves mutual sharing of stories and perspectives; and mutual support for each other's continually learning and growing, between mentor and mentee.",
+      "imageUrl": "/profile_images/JiahuiQuek.jpg"
     },
     {
       "name": "Rahul Daswani",
@@ -1430,15 +1511,6 @@
       "courseOfStudy": "Business Management",
       "fullBio": "Remus Tan is a Wealth Planning Manager at DBS. He has been involved in investments, insurance and home loans, and financial advisory. Remus is also invested in teaching people financial literacy. Wishing to give back to students, he hopes to guide them on a clearer path and help them be more focussed on their studies and goals.",
       "imageUrl": "/profile_images/RemusTan.jpg"
-    },
-    {
-      "name": "Yip Ren Kai",
-      "role": "Co-Founder & Managing Director",
-      "organization": "Reddentes Sports",
-      "school": "La Trobe University",
-      "courseOfStudy": "Biotechnology",
-      "fullBio": "Yip Ren Kai is the co-founder and Managing Director of Reddentes Sports, a business focused on media rights trading, with top sporting events such as the Tokyo 2020 Paralympics being part of its portfolio. As part of Reddentes Sports\u2019 e-sports strategy, the company has invested in an e-sports Team, where Ren Kai leads the partnerships department as Chief Partnerships Officer. His experience spans across commercial and government roles covering events management, media rights acquisition, sponsorship and activation. A three-time SEA Games gold medallists in water-polo, he has also helmed the SNOC Athletes\u2019 Commission as chairperson and is a Master Educator preparing athletes to transition into the workforce by facilitating various events and career fests in Asia. Ren Kai also sits on the council of National Youth Council and aims to provide fresh insights into youths\u2019 mindsets and beliefs.",
-      "imageUrl": "/profile_images/RenKaiYip.jpg"
     },
     {
       "name": "Rick Liu",
@@ -1531,15 +1603,6 @@
       "imageUrl": "/profile_images/SebastianTay.jpg"
     },
     {
-      "name": "Chua Seng Tat",
-      "role": "Senior Manager",
-      "organization": "Economic Development Board Singapore",
-      "school": "Keio University",
-      "courseOfStudy": "System Design and Management",
-      "fullBio": "Chua Seng Tat is currently the Senior Manager of Investment Facilitation at Singapore Economic Development Board, where he is a \u201csalesman\u201d for Singapore, pitching the story of \u201cWhy Singapore?\u201d to foreign MNCs or start-ups looking to establish a foothold in Asia. He credits his background in Engineering for the problem-solving skills and analytical thinking that have laid a good foundation for his career. Seng Tat attained his Masters in System Design and Management from Keio University in Japan, and encourages everyone to learn a third language as a way of opening doors to a new culture and way of thinking.",
-      "imageUrl": "/profile_images/SengTatChua.jpg"
-    },
-    {
       "name": "Serene Goh",
       "role": "Founder",
       "organization": "O'Chim",
@@ -1594,24 +1657,6 @@
       "imageUrl": "/profile_images/SherminHo.jpg"
     },
     {
-      "name": "Xu Si Han",
-      "role": "Head of Legal (SEA+AUNZ)",
-      "organization": "ByteDance",
-      "school": "University of Melbourne",
-      "courseOfStudy": "Law",
-      "fullBio": "Xu Si Han is the Head of Legal (in the SEA and AUNZ regions) in ByteDance, a technology company operating a range of content platforms that inform, educate, entertain and inspire people across different countries. He specializes in the areas of intellectual property, technology and media, and has a wealth of experience working in the Southeast Asian region. Prior to working at ByteDance, he was a legal and contracts manager at SingTel, where he was involved in content licensing projects as well as special projects involving sponsorship agreements and anti-piracy countermeasures. His other work experiences include working at ACI Worldwide as an Associate Legal Counsel; Infinitus Law Corporation as a Legal Executive; Sinochem International (Overseas) as a Legal Counsel; and Keystone Law Corporation as a Foreign Associate. As Si Han began his career at the beginning of a deep recession due to a financial crisis, there were limited opportunities and it was difficult getting to where he is today. Thus, he hopes that by sharing his experiences, he will be able to support others who are navigating similar challenges in these uncertain times.",
-      "imageUrl": "/profile_images/SiHanXu.jpg"
-    },
-    {
-      "name": "Low Siew Ling",
-      "role": "Graduate Student",
-      "organization": "",
-      "school": "",
-      "courseOfStudy": "Social Work",
-      "fullBio": "Low Siew Ling is currently a graduate research student in Social Work. Before this, she used to live in North Asia for over 10 years. Her previous job as a Social Worker involved working with children and youth living in an orphanage as well as families living in difficult situations. Interestingly, she was in a high-paying job as an investment banker and auditor before she found her passion. She is thankful to have been in vastly different lines of work, as she has learnt a lot from her experiences. Siew Ling is passionate about creating a better tomorrow for others, and wants to support them so that their needs can be heard and help can be provided. In alignment with this, she hopes to continue working in her previous job in the future.",
-      "imageUrl": "/profile_images/SiewLingLow.jpg"
-    },
-    {
       "name": "Simon Gwozdz",
       "role": "CEO",
       "organization": "Equatorial Space Industries",
@@ -1630,13 +1675,13 @@
       "imageUrl": "/profile_images/SimonPhua.jpg"
     },
     {
-      "name": "Lee Sing-Kok (SK)",
+      "name": "Soh Lai Yee",
       "role": "Executive Director",
-      "organization": "Jupiter Investment Asia",
-      "school": "University of Canberra",
-      "courseOfStudy": "Business Admin",
-      "fullBio": "Lee Sing-Kok is the Executive Director at Jupiter Investment Asia, an external asset manager licensed by the MAS. He is also a founding member of Jupiter Asia Capital, a sister company of JIA that focus on private market deals. Prior to joining the Jupiter Group, Sing-Kok was the Chief Operating Officer for KPMG Deal Advisory (Forensic) practice based in Jakarta. He has held advisory and risk management roles in a career that spanned from the Ministry of Home Affair to Merrill Lynch and Goldman Sachs in Asia. Sing-Kok also volunteered in various grassroot activities including the Appropriate Adult Scheme for Young Suspects ('AAYS') currently managed under the Singapore Children's Society. Sing-Kok has received professional training at Harvard Kennedy School and holds professional certifications in Risk Management, Compliance and Fraud Examination. He is also a member of Singapore Institute of Directors (\u2018SID\u2019), Association of Independent Asset Managers (\u2018AIAM\u2019), Association of CryptoCurrency Enterprises and Startups in Singapore (\u2018ACCESS\u2019) & International Business Brokers Association (\u2018IBBA\u2019).",
-      "imageUrl": "/profile_images/Sing-KokSKLee.jpg"
+      "organization": "VIVA Foundation",
+      "school": "National University of Singapore",
+      "courseOfStudy": "Sociology",
+      "fullBio": "Soh Lai Yee is an Executive Director at VIVA Foundation for Children with cancer. An entrepreneurial leader, her expertise consists of non-profit leadership, growing multi-sectorial partnerships for social inclusion, implementing cross-cultural exchange programmes and fostering international networks, thought leadership and collaborations in healthcare, social entrepreneurship, youth development, and the arts. Lai Yee's previous experience saw a stint at Singapore International Foundation as the Head of Cultural Exchange, where she established a new programmes department, and led the growth of partnerships and cross-cultural exchanges in the arts and culture for social impact. She was also Assistant Director of Public Affairs at the Asia-Europe Foundation, where she managed and co-edited a project 'Go Home!', involving the works by 12 comic artists on migration. She graduated from the National University of Singapore with a Bachelor of Arts in Sociology.",
+      "imageUrl": "/profile_images/LaiYeeSoh.jpg"
     },
     {
       "name": "Sophia Tan",
@@ -1648,15 +1693,6 @@
       "imageUrl": "/profile_images/SophiaTan.jpg"
     },
     {
-      "name": "Stephanie Sutanto",
-      "role": "Product Manager",
-      "organization": "Rakuten Viki",
-      "school": "University of California, Los Angeles",
-      "courseOfStudy": "Business Economics",
-      "fullBio": "Stephanie Sutanto is the Product Manager of Rakuten Viki, an American video streaming website that provides multicultural entertainment for millions of viewers. Her passion in product management has seen her working in various industries including health technology, O2O retail, and video streaming, and she has previously worked with companies such as habitat by honestbee and MyDoc Pte. Ltd, which coordinates outpatient care through online-to-offline platforms. Stephanie also has extensive experience in developing and launching web and mobile apps for users. This passion for product management also extends into her personal life, as she is an active core member of the Singapore chapter of Women in Product, which unites women in this career through online platforms and various events. Having graduated from  University of California, Los Angeles (UCLA) with a degree in Business Economics, Stephanie also co-founded UCLA\u2019s first undergraduate entrepreneurship organization.",
-      "imageUrl": "/profile_images/StephanieSutanto.jpg"
-    },
-    {
       "name": "Stephanie Siow",
       "role": "Assistant Director",
       "organization": "Ministry of Education Singapore",
@@ -1664,6 +1700,15 @@
       "courseOfStudy": "Global Affairs",
       "fullBio": "Stephanie Siow is currently Assistant Director at the Ministry of Education (MOE) where she works on strategic communications, education, narratives and pressing education issues that students, parents and teachers care about. Previously, she worked at a Social Service Office, where she helped needy Singaporeans apply for ComCare financial assistance and the Ministry of Manpower, where she worked on foreign workforce policies. In her spare time, she services on the board of a local Foundation, trains in-camp with the SAF Volunteer Corp, and volunteers with the Young Women's Leadership Connection. Stephanie graduated from Yale University with a degree in Global Affairs. She loves board games, basketball, cycling and anything to do with Japan.",
       "imageUrl": "/profile_images/StephanieSiow.jpg"
+    },
+    {
+      "name": "Stephanie Sutanto",
+      "role": "Product Manager",
+      "organization": "Rakuten Viki",
+      "school": "University of California, Los Angeles",
+      "courseOfStudy": "Business Economics",
+      "fullBio": "Stephanie Sutanto is the Product Manager of Rakuten Viki, an American video streaming website that provides multicultural entertainment for millions of viewers. Her passion in product management has seen her working in various industries including health technology, O2O retail, and video streaming, and she has previously worked with companies such as habitat by honestbee and MyDoc Pte. Ltd, which coordinates outpatient care through online-to-offline platforms. Stephanie also has extensive experience in developing and launching web and mobile apps for users. This passion for product management also extends into her personal life, as she is an active core member of the Singapore chapter of Women in Product, which unites women in this career through online platforms and various events. Having graduated from  University of California, Los Angeles (UCLA) with a degree in Business Economics, Stephanie also co-founded UCLA\u2019s first undergraduate entrepreneurship organization.",
+      "imageUrl": "/profile_images/StephanieSutanto.jpg"
     },
     {
       "name": "Sugidha Nithiananthan",
@@ -1700,6 +1745,33 @@
       "courseOfStudy": "Finance",
       "fullBio": "Sulin Tan is the Vice President of Operations and Chief of Staff at Carousell, where she is responsible for customer experience which broadly includes service, trust, safety and marketplace quality. She also works with the CEO Office to improve the operating system of Carousell, and works alongside the CEO to help realise the vision of \u2018making second-hand the first choice\u2019. Prior to Carousell, Sulin had a 22-year career in Singapore Press Holdings (SPH), having joined the company after graduation. She spent most of her career as an advertising professional, and rose through the ranks from a sales individual contributor to running sales teams and whole business units. When she left SPH, she was the Deputy Chief Marketing Officer and Senior Vice President of Sales Strategy and Operations, and was responsible for about 400 people and a few hundred million in revenue across print, digital radio and outdoor channels. Her fondest memories were her 2.5 years building up the digital division, and this stint helped her to realize that she wanted to be fully immersed in a digital-first organisation, led by visionaries and build strong, cohesive and collaborative teams, which led to her taking up the opportunity to work for Carousell.",
       "imageUrl": "/profile_images/SulinTan.jpg"
+    },
+    {
+      "name": "Tan Chia Boon",
+      "role": "Education and Career Guidance Counsellor",
+      "organization": "Ministry of Education Singapore",
+      "school": "National University of Singapore",
+      "courseOfStudy": "Electrical Engineering",
+      "fullBio": "Tan Chia Boon has served as an Education and Career Guidance Counsellor in the Ministry of Education for the past two years. He spent twenty enriching years in the private sector \u2013 including fourteen years as the co-owner and director of an electronic components distribution company \u2013 and has extensive experience in sales, marketing, procurement and business development. He believes that everyone deserves a chance of proving themselves regardless of their background. Chia Boon is especially passionate about engaging with youths and young adults, leveraging on the experience of having been an entrepreneur to give back to society by becoming a coach, leader and mentor to the younger generation.",
+      "imageUrl": "/profile_images/ChiaBoonTan.jpg"
+    },
+    {
+      "name": "Tan Wei Xiong",
+      "role": "Senior Head, SkillsFuture Division",
+      "organization": "Ministry of Education Singapore",
+      "school": "University of Hong Kong",
+      "courseOfStudy": "Philosophy in Education",
+      "fullBio": "Tan Wei Xiong is a policy officer of the SkillsFuture Division at the Ministry of Education, serving as the Senior Head for SkillsFuture, in which capacity he develops policies related to life-long learning and skills strategies to support mid-term economic transformation; and whose work, involves formulating strategies and policies related to lifelong learning, especially at ITE, Polytechnics and Autonomous Universities. He also work closely with other government agencies to ensure that our workforce have the skills required to prepare them for Singapore\u2019s economic transformation in the next decade. Wei Xiong began his career, though, as a secondary school Chinese Language educator at upon his graduation from both Fudan University in Shanghai, China, with a Bachelor of Arts in Chinese Language and Literature, and University of Hong Kong, with a Master of Philosophy in Education (Curriculum Studies), on a government scholarship. After his teaching stint in schools, he joined Ministry of Education Headquarters as a Special Project Officer, HR Solutions and Capability Division to develop Human Resource (HR) policies for Allied Educators, Education and Career Guidance Counsellors, and Executive & Administrative Staff; and subsequently, to oversee HR process improvement, as an Assistant Team Lead. We thereafter transferred into the SkillsFuture Division, as a policy officer.",
+      "imageUrl": "/profile_images/WeiXiongTan.jpg"
+    },
+    {
+      "name": "Tay Choon Hong",
+      "role": "Senior Director for Youth",
+      "organization": "Ministry of Culture, Community & Youth",
+      "school": "Stanford University",
+      "courseOfStudy": "Management",
+      "fullBio": "Tay Choon Hong is Senior Director for Youth at the Ministry of Culture, Community & Youth, and concurrently, Deputy Chief Executive of the National Youth Council. Choon Hong graduated from Carnegie Mellon University, with dual Bachelor\u2019s in Electrical and Computer Engineering, and Economics. He also holds a Master of Science in Management from the Stanford Graduate School of Business. Choon Hong's many years in the public service has allowed him to gain much experience across myriad portfolios, including previous appointments as the Director for Services at the Public Service Division's PS21 Office; and Director both for Policy and Planning, and Marriage and Parenthood Policy at the National Population and Talent Division within the Prime Minister's Office.",
+      "imageUrl": "/profile_images/ChoonHongTay.jpg"
     },
     {
       "name": "Teddy Low",
@@ -1774,42 +1846,6 @@
       "imageUrl": "/profile_images/WaltonZhang.jpg"
     },
     {
-      "name": "Foo Wan Xuan",
-      "role": "Senior Executive (Sustainability Department)",
-      "organization": "Wildlife Reserves Singapore",
-      "school": "National University of Singapore",
-      "courseOfStudy": "Environmental Studies",
-      "fullBio": "Foo Wan Xuan is a Senior Executive in the Sustainability Department at Wildlife Reserves Singapore (WRS), the organisation that manages world-leading zoological institutions including Jurong Bird Park, Night Safari, River Safari and the Singapore Zoo. She is responsible for incorporating sustainability in the organisation's value chain \u2013 to achieve this, she is responsible for developing Green Procurement strategies by introducing policy changes, and engaging internal stakeholders to review current best practices. Ultimately, Wan Xuan aims to work towards a more sustainable future through her efforts in resource optimization and sustainability advocacy. This includes designing and conducting trainings for staff in WRS to adopt sustainable behaviours, and raising awareness for and engaging the public through external outreach events and campaigns. She achieved the Excellence Award for WRS at the Singapore Packaging Agreement Awards in 2018.",
-      "imageUrl": "/profile_images/WanXuanFoo.jpg"
-    },
-    {
-      "name": "Lee Wei An",
-      "role": "Regional Operations Manager",
-      "organization": "Uber Eats",
-      "school": "The London School of Economics and Political Science",
-      "courseOfStudy": "Economics",
-      "fullBio": "Lee Wei An is currently a Regional Operations Manager with Uber Eats, the food delivery arm of Uber Technologies. Based in New York City, his team owns launch and expansion, restaurant densification and other strategic initiatives across all US suburban markets. He first joined Uber as part of the Singapore City team leading Uber rides operations against Grab. Wei An started his career at European corporate venture fund, Burda Principal Investments, covering Southeast Asian Series B deals. He holds a BSc in Economics from The London School of Economics and Political Science and has travelled extensively throughout Europe during his studies. Wei An is passionate about B2C tech start-ups and is ideally looking for a mentee who is considering overseas studies/ work / interested in tech as well! He can advise on overseas studies / work, consulting recruiting, investment banking recruiting, SEA venture capital and SEA start-ups.",
-      "imageUrl": "/profile_images/WeiAnLee.jpg"
-    },
-    {
-      "name": "Lim Wei Jie",
-      "role": "Co-Founder and Director",
-      "organization": "Foreword",
-      "school": "National University of Singapore",
-      "courseOfStudy": "Psychology",
-      "fullBio": "Lim Wei Jie is Co-Founder and Director of Foreword, a coffee company providing training and inclusive employment for persons with disabilities and special needs. Wei Jie co-founded Foreword in 2017 during his final year of study in National University of Singapore (NUS). Combining his academic background in Psychology, his drive to make a change with the special needs community, and interest in specialty coffee, Wei Jie started Foreword as a social enterprise with the mission to inspire the can-do spirit to realise the potential in every individual.",
-      "imageUrl": "/profile_images/WeiJieLim.jpg"
-    },
-    {
-      "name": "Tan Wei Xiong",
-      "role": "Senior Head, SkillsFuture Division",
-      "organization": "Ministry of Education Singapore",
-      "school": "University of Hong Kong",
-      "courseOfStudy": "Philosophy in Education",
-      "fullBio": "Tan Wei Xiong is a policy officer of the SkillsFuture Division at the Ministry of Education, serving as the Senior Head for SkillsFuture, in which capacity he develops policies related to life-long learning and skills strategies to support mid-term economic transformation; and whose work, involves formulating strategies and policies related to lifelong learning, especially at ITE, Polytechnics and Autonomous Universities. He also work closely with other government agencies to ensure that our workforce have the skills required to prepare them for Singapore\u2019s economic transformation in the next decade. Wei Xiong began his career, though, as a secondary school Chinese Language educator at upon his graduation from both Fudan University in Shanghai, China, with a Bachelor of Arts in Chinese Language and Literature, and University of Hong Kong, with a Master of Philosophy in Education (Curriculum Studies), on a government scholarship. After his teaching stint in schools, he joined Ministry of Education Headquarters as a Special Project Officer, HR Solutions and Capability Division to develop Human Resource (HR) policies for Allied Educators, Education and Career Guidance Counsellors, and Executive & Administrative Staff; and subsequently, to oversee HR process improvement, as an Assistant Team Lead. We thereafter transferred into the SkillsFuture Division, as a policy officer.",
-      "imageUrl": "/profile_images/WeiXiongTan.jpg"
-    },
-    {
       "name": "Wendy Cheong",
       "role": "Research Assistant",
       "organization": "Duke-NUS School of Medicine",
@@ -1828,13 +1864,13 @@
       "imageUrl": "/profile_images/WilsonTang.jpg"
     },
     {
-      "name": "Cheah Wui Ling",
-      "role": "Assistant Professor",
-      "organization": "Faculty of Law",
-      "school": "Oxford University",
-      "courseOfStudy": "Law",
-      "fullBio": "Dr. Cheah Wui Ling has been Assistant Professor at the Faculty of Law of the National University of Singapore (NUS) since 2007. She holds academic qualifications from the National University of Singapore (LL.B., LL.M.), Harvard Law School (LL.M.), European University Institute, and Oxford University (D.Phil). She is a qualified lawyer (called to the New York Bar) and holds a diploma in arbitration (Queen Mary University of London). Dr. Cheah's research interests lie at the intersection of public international law, international criminal law, and human rights law, with a focus on historical and contemporary legal responses to mass atrocity and structural violence. Currently, she serves on the editorial boards of the Journal of International Humanitarian Legal Studies and the Singapore Journal of Legal Studies. Her teaching experience includes periods at the Centre for Transnational Legal Studies (London, UK), Oxford University (UK), Universit\u00e9 Jean Moulin Lyon 3 (France), and the Royal University of Law and Economics (Cambodia). Prior to joining academia, Dr. Cheah served as a Legal Officer at INTERPOL\u2019s Office of Legal Affairs (Lyon, France). She has been invited to speak on the practical impact of her research by the Contact Group on Piracy off the Coast of Somalia. In 2011, Dr. Cheah was a Visiting Professional at the International Criminal Court, and in 2018, she was awarded a Kathleen Fitzpatrick Visiting Fellowship at Melbourne Law School\u2019s Laureate Program in International Law.",
-      "imageUrl": "/profile_images/WuiLingCheah.jpg"
+      "name": "Wong Yoke Yong",
+      "role": "Analyst",
+      "organization": "Immigration and Checkpoints Authority (ICA)",
+      "school": "Singapore Management University",
+      "courseOfStudy": "Business",
+      "fullBio": "Wong Yoke Yong is currently an Analyst with the Immigration and Checkpoints Authority (ICA).  Previously, he was a data science intern with the Integrated Health Information Systems (IHiS), where he performed Natural Language Processing (NLP), exploratory data and text analytics using Python. He also learnt and created Deep Learning Prototypes using Keras and Tensorflow. When he was a Data Scientist in Aviva Asia, he contributed to their first Recommender System and experimented with predictive analytics to address modelling needs of projects. Additionally, Yoke Yong developed and maintained data models and explored technical requirements in view of project needs. His enthusiasm for data science remains evident in his stint as a previous Research Assistant with the National University of Singapore's School of Computing, where he participated in various post-graduate projects, which included employing hypothesis-testing for statistical tests, data mining and predictive analytics; and creating data model and ETL scripts in R. Yoke Yong believes that Data Science and Analytics can cultivate values of lifelong learning and openness to logical possibilities.",
+      "imageUrl": "/profile_images/YokeYongWong.jpg"
     },
     {
       "name": "Xinyu Jiang",
@@ -1846,6 +1882,15 @@
       "imageUrl": "/profile_images/XinyuJiang.jpg"
     },
     {
+      "name": "Xu Si Han",
+      "role": "Head of Legal (SEA+AUNZ)",
+      "organization": "ByteDance",
+      "school": "University of Melbourne",
+      "courseOfStudy": "Law",
+      "fullBio": "Xu Si Han is the Head of Legal (in the SEA and AUNZ regions) in ByteDance, a technology company operating a range of content platforms that inform, educate, entertain and inspire people across different countries. He specializes in the areas of intellectual property, technology and media, and has a wealth of experience working in the Southeast Asian region. Prior to working at ByteDance, he was a legal and contracts manager at SingTel, where he was involved in content licensing projects as well as special projects involving sponsorship agreements and anti-piracy countermeasures. His other work experiences include working at ACI Worldwide as an Associate Legal Counsel; Infinitus Law Corporation as a Legal Executive; Sinochem International (Overseas) as a Legal Counsel; and Keystone Law Corporation as a Foreign Associate. As Si Han began his career at the beginning of a deep recession due to a financial crisis, there were limited opportunities and it was difficult getting to where he is today. Thus, he hopes that by sharing his experiences, he will be able to support others who are navigating similar challenges in these uncertain times.",
+      "imageUrl": "/profile_images/SiHanXu.jpg"
+    },
+    {
       "name": "Yeher Wu",
       "role": "Executive Director, SCALE-Global",
       "organization": "NUS School of Continuing and Lifelong Education",
@@ -1855,31 +1900,13 @@
       "imageUrl": "/profile_images/YeherWu.jpg"
     },
     {
-      "name": "Chow Yew Wah",
-      "role": "Security Data Scientist, Team Lead",
-      "organization": "Ultimate Software",
-      "school": "National University of Singapore",
-      "courseOfStudy": "Computer Engineering Specialization",
-      "fullBio": "Chow Yew Wah is a Security Data Scientist (Team Lead) at Ultimate Software, currently leading a team of data scientists working on cyber security related problems faced by the internal Security Operations Centre. She has 6 years of experience in the data science field, with prior involvement in the defence sector dealing with natural language processing. Her previous role as Research Engineer in the Centre for Strategic Infocomm Technologies included, among other things, developing machine learning algorithms to develop prototypes to fulfil critical business needs with emphasis on large scale structured/unstructured data, identifying opportunities for collaboration with business units to develop machine learning based solutions to increase productivity; conceptualising machine learning prototypes to demonstrate proof-of-concept; and collaborating with vendors on data analytics driven projects. Yew Wah obtained her Bachelor of Computer Science from NTU and a Masters in Computer Engineering Specialization from NUS.",
-      "imageUrl": "/profile_images/YewWahChow.jpg"
-    },
-    {
-      "name": "Wong Yoke Yong",
-      "role": "Analyst",
-      "organization": "Immigration and Checkpoints Authority (ICA)",
-      "school": "Singapore Management University",
-      "courseOfStudy": "Business",
-      "fullBio": "Wong Yoke Yong is currently an Analyst with the Immigration and Checkpoints Authority (ICA).  Previously, he was a data science intern with the Integrated Health Information Systems (IHiS), where he performed Natural Language Processing (NLP), exploratory data and text analytics using Python. He also learnt and created Deep Learning Prototypes using Keras and Tensorflow. When he was a Data Scientist in Aviva Asia, he contributed to their first Recommender System and experimented with predictive analytics to address modelling needs of projects. Additionally, Yoke Yong developed and maintained data models and explored technical requirements in view of project needs. His enthusiasm for data science remains evident in his stint as a previous Research Assistant with the National University of Singapore's School of Computing, where he participated in various post-graduate projects, which included employing hypothesis-testing for statistical tests, data mining and predictive analytics; and creating data model and ETL scripts in R. Yoke Yong believes that Data Science and Analytics can cultivate values of lifelong learning and openness to logical possibilities.",
-      "imageUrl": "/profile_images/YokeYongWong.jpg"
-    },
-    {
-      "name": "Fong Yoong Kheong",
-      "role": "Principal Industrial Relations Officer",
-      "organization": "National Trades Union Congress",
-      "school": "Singapore University of Social Sciences",
-      "courseOfStudy": "Community Leadership and Social Development",
-      "fullBio": "Fong Yoong Kheong, the Principal Industrial Relations Officer at the National Trades Union Congress (NTUC), coordinates and aligns the efforts of various workforce segments, such as unions, freelancers, Small-Medium Enterprise partners, and associations, to serve the needs of workers. He also supports the Aviation and Aerospace Cluster unions in industrial relations, membership, and leadership and training matters as a Cluster Lead. Prior to that, Yoong Kheong was seconded to the Singapore Teachers' Union, where he staffed the secretariat for the NTUC Public Sector unions, and sat on the Public Service Commission Panel of Union Officials for Disciplinary Inquiry. He volunteers actively with the People's Association, as the Chairman of Eunos Community Club Management Committee; Assistant Secretary of the People's Association Residents' Network Council; and adjunct faculty of  the National Community Leadership Institute. Yoong Kheong is not only a Licenced Solemniser with the Registry of Marriages, but also holds a Master's of Community Leadership and Social Development from the Singapore University of Social Sciences, and a Bachelor's of Arts in Political Science, from the National University of Singapore.",
-      "imageUrl": "/profile_images/YoongKheongFong.jpg"
+      "name": "Yip Ren Kai",
+      "role": "Co-Founder & Managing Director",
+      "organization": "Reddentes Sports",
+      "school": "La Trobe University",
+      "courseOfStudy": "Biotechnology",
+      "fullBio": "Yip Ren Kai is the co-founder and Managing Director of Reddentes Sports, a business focused on media rights trading, with top sporting events such as the Tokyo 2020 Paralympics being part of its portfolio. As part of Reddentes Sports\u2019 e-sports strategy, the company has invested in an e-sports Team, where Ren Kai leads the partnerships department as Chief Partnerships Officer. His experience spans across commercial and government roles covering events management, media rights acquisition, sponsorship and activation. A three-time SEA Games gold medallists in water-polo, he has also helmed the SNOC Athletes\u2019 Commission as chairperson and is a Master Educator preparing athletes to transition into the workforce by facilitating various events and career fests in Asia. Ren Kai also sits on the council of National Youth Council and aims to provide fresh insights into youths\u2019 mindsets and beliefs.",
+      "imageUrl": "/profile_images/RenKaiYip.jpg"
     },
     {
       "name": "Yuan Ning Mock",
@@ -1916,33 +1943,6 @@
       "courseOfStudy": "Computer Applications",
       "fullBio": "Yuvaraj Anandan is currently the Head of Program Management and Business Engineering in Julius Baer. He also has more than 18 years of experience in various facets of project management, which includes being the senior program manager in Standard Chartered Bank, overseeing asset and wealth management in Deutsche Bank and as a senior management consultant with Temenos. Yuvaraj is also experienced in operations work, having been the Head of Operations Program Office in Citi. Yuvaraj is dedicated to applying his knowledge across industries and domains. He graduated from University of Madras with a Master of Computer Applications (MCA).",
       "imageUrl": "/profile_images/YuvarajAnandan.jpg"
-    },
-    {
-      "name": "Lee Zhihan",
-      "role": "Co-Founder, Group CEO",
-      "organization": "BagoSphere",
-      "school": "National University of Singapore",
-      "courseOfStudy": "Nanoscience and Nanotechnology",
-      "fullBio": "Lee Zhihan is the Co-Founder and Group CEO of BagoSphere, a workforce development company based in Singapore and in the Philippines that aims to develop human skills. For his work at BagoSphere, he was named as an Ashoka Fellow in 2018, joining the world's largest and most prestigious network of social innovators. Prior to founding BagoSphere, he worked at a medical-tech start-up in Stockholm before venturing into rural India to work with a social enterprise involved in rural IT outsourcing. He was the Singapore Ambassador for the Sandbox Network, the leading global network of innovators under 30, and a 2016 Global Good Fund Fellow. Zhihan graduated from the National University of Singapore's Engineering Science Program and studied entrepreneurship at the Stockholm School of Entrepreneurship & The Royal Institute of Technology.",
-      "imageUrl": "/profile_images/ZhihanLee.jpg"
-    },
-    {
-      "name": "Ling Han",
-      "role": "Policy Executive",
-      "organization": "Ministry of Transport",
-      "school": "Columbia University",
-      "courseOfStudy": "Public Administration",
-      "fullBio": "Ling Han is a Policy Executive (Land Division) in the Ministry of Transport. In her role, she both developed Singapore\u2019s inaugural regulatory framework, and conceptualized and executed stakeholder engagements with key businesses groups, Members of Parliament, labour unions, and members of the public for the point-to-point transport sector. Ling Han also had the opportunity to work on strategic planning for major road projects and the development of cycling path infrastructure to support Singapore\u2019s Active Mobility landscape. A strong believer in the need to move out of one\u2019s comfort zone to learn and grow, she decided to take the less conventional path of going to Peking University to pursue an undergraduate degree in International Relations, entirely in Mandarin, after which she completed her Masters in public policy at Columbia University where she enjoyed the vibrancy and liberalism that New York had to offer.",
-      "imageUrl": "/profile_images/HanLing.jpg"
-    },
-    {
-      "name": "Nakul Asjia",
-      "role": "Founder",
-      "organization": "The Gosto Foods Co.",
-      "school": "Institute of Technology and Management",
-      "courseOfStudy": "Mechanical Engineering",
-      "fullBio": "Nakul Asija is the Founder of The Gosto Foods Co. which provides unique gastronomical experiences through sustainable practices in food sourcing and manufacturing. Gosto also educates local communities on responsible consumption of food and reducing food wastage. Prior to starting Gosto, Nakul spent the last decade consulting and working with global organisations to solve the talent challenge for them, with stints at Flow Portugal, Hudson Asia Pacific, and then as Senior Manager (Digital & Technology) at Randstad Singapore. He has also previously led global partnerships and youth engagement strategy for AIESEC in multiple geographies including the United Kingdom, Northern Europe and Latin America, culminating in his role as Global Business Development & Marketing Director. Nakul is passionate about youth leadership development, sustainable consumption and food technology. He is a member of the Singapore Hub of the World Economic Forum Global Shapers Community, having previously served as the Hub's Curator.",
-      "imageUrl": "/profile_images/NakulAsjia.jpg"
     }
   ]
 }
