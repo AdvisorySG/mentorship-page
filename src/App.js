@@ -4,7 +4,7 @@ import Header from "./components/header";
 import ProfileCard from "./components/profile-card";
 import ProfileModal from "./components/profile-modal";
 import { mentors } from "./mentors.json";
-import { search } from "./search";
+import { querySearch } from "./search";
 
 import "./App.css";
 
@@ -12,7 +12,10 @@ const mentorIds = mentors.map((mentor, index) => index);
 
 function App() {
   const [visibleMentorIds, setVisibleMentorIds] = useState(mentorIds);
-  const searchHandler = (input) => setVisibleMentorIds(search(input));
+  const searchChangeHandler = (input) =>
+    input.trim().length === 0 && setVisibleMentorIds(mentorIds);
+  const searchSelectHandler = (query) =>
+    setVisibleMentorIds(querySearch(query));
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeMentorId, setActiveMentorId] = useState(0);
@@ -28,7 +31,10 @@ function App() {
 
   return (
     <div className="container">
-      <Header onSearch={searchHandler} />
+      <Header
+        onSearchChange={searchChangeHandler}
+        onSearchSelect={searchSelectHandler}
+      />
 
       <ProfileModal
         isOpen={isModalOpen}

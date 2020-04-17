@@ -22,7 +22,10 @@ const createFuse = (key) =>
   new Fuse(
     [...new Set(mentors.map((mentor) => mentor[key]))]
       .filter((value) => value.length > 0)
-      .map((value) => ({ name: value, query: value })),
+      .map((value) => ({
+        name: value,
+        query: { field: key, term: value },
+      })),
     fuseOptions
   );
 const fuses = {
@@ -55,16 +58,16 @@ const getSuggestionValue = (suggestion) => suggestion.name;
 const renderSectionTitle = (section) => <strong>{section.title}</strong>;
 const renderSuggestion = (suggestion) => <span>{suggestion.name}</span>;
 
-function SearchBar({ onSearch }) {
+function SearchBar({ onSearchChange, onSearchSelect }) {
   const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
   const onChange = (event, { newValue }) => {
     setValue(newValue);
-    onSearch(newValue);
+    onSearchChange(newValue);
   };
   const onSuggestionSelected = (event, { suggestion }) =>
-    onSearch(suggestion.query);
+    onSearchSelect(suggestion.query);
   const onSuggestionsClearRequested = () => setSuggestions([]);
   const onSuggestionsFetchRequested = ({ value }) =>
     setSuggestions(getSuggestions(value));

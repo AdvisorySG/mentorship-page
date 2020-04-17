@@ -16,7 +16,7 @@ const NavBar = () => (
   </div>
 );
 
-const Header = ({ onSearch }) => (
+const Header = ({ onSearchChange, onSearchSelect }) => (
   <div className="header">
     <NavBar />
     <div className="header-bottom">
@@ -47,7 +47,10 @@ const Header = ({ onSearch }) => (
           to apply as a mentee.
         </p>
       </div>
-      <SearchBar onSearch={onSearch} />
+      <SearchBar
+        onSearchChange={onSearchChange}
+        onSearchSelect={onSearchSelect}
+      />
     </div>
   </div>
 );
