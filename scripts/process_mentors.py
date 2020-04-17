@@ -22,5 +22,5 @@ with open(sys.argv[1], newline='', encoding="utf-8") as f:
             )
         })
     print(json.dumps({
-        "mentors": sorted(mentors[1:], key=lambda mentor: mentor["name"])
-    })) # discard header row
+        "mentors": sorted(mentors, key=lambda mentor: mentor["name"])
+    }))
