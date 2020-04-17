@@ -6,27 +6,18 @@ import { mentors } from "../mentors.json";
 
 import "./search-bar.css";
 
-const fields = [
-  { name: "Name", key: "name" },
-  { name: "Role", key: "role" },
-  { name: "Organization", key: "organization" },
-  { name: "School", key: "school" },
-  { name: "Course of Study", key: "courseOfStudy" },
-];
-
-const fuseOptions = {
-  threshold: 0.2,
-  keys: ["name"],
-};
-const createFuse = (key) =>
+const createFuse = (field) =>
   new Fuse(
-    [...new Set(mentors.map((mentor) => mentor[key]))]
+    [...new Set(mentors.map((mentor) => mentor[field]))]
       .filter((value) => value.length > 0)
       .map((value) => ({
         name: value,
-        query: { field: key, term: value },
+        query: { field, value },
       })),
-    fuseOptions
+    {
+      threshold: 0.2,
+      keys: ["name"],
+    }
   );
 const fuses = {
   name: createFuse("name"),
@@ -38,15 +29,22 @@ const fuses = {
 
 const getSuggestions = (value) => {
   const processedInput = value.trim();
-  const sections = fields
-    .map(({ name, key }) => {
-      const searchResults = fuses[key].search(processedInput);
+  const sections = [
+    { field: "name", name: "Name" },
+    { field: "role", name: "Role" },
+    { field: "organization", name: "Organization" },
+    { field: "school", name: "School" },
+    { field: "courseOfStudy", name: "Course of Study" },
+  ]
+    .map(({ name, field }) => {
+      const searchResults = fuses[field].search(processedInput);
       return {
         title: name,
         fields: searchResults.map(({ item }) => item),
       };
     })
     .filter((section) => section.fields.length > 0);
+
   const maxResults = 10;
   return sections.map(({ title, fields }) => ({
     title,

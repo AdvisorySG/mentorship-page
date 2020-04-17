@@ -4,7 +4,7 @@ import Header from "./components/header";
 import ProfileCard from "./components/profile-card";
 import ProfileModal from "./components/profile-modal";
 import { mentors } from "./mentors.json";
-import { querySearch } from "./search";
+import { fieldSearch } from "./search";
 
 import "./App.css";
 
@@ -15,7 +15,7 @@ function App() {
   const searchChangeHandler = (input) =>
     input.trim().length === 0 && setVisibleMentorIds(mentorIds);
   const searchSelectHandler = (query) =>
-    setVisibleMentorIds(querySearch(query));
+    setVisibleMentorIds(fieldSearch(query));
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeMentorId, setActiveMentorId] = useState(0);
