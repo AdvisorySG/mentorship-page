@@ -8,7 +8,7 @@ import { querySearch } from "./search";
 
 import "./App.css";
 
-const visibleMentorIds = mentors.map((mentor, index) => index);
+const mentorIds = mentors.map((mentor, index) => index);
 
 function App() {
   const [visibleMentorIds, setVisibleMentorIds] = useState(mentorIds);
