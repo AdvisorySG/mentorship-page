@@ -42,16 +42,24 @@ const ProfileModal = ({ isOpen, mentor, onClose }) => {
             src={mentor.imageUrl}
             alt={mentor.name}
           />
-          <h2>{mentor.name}</h2>
-          <div className="modal-metadata">Role: {mentor.role}</div>
-          <div className="modal-metadata">
-            Organization: {mentor.organization}
-          </div>
-          <div className="modal-metadata">
-            School Graduated From: {mentor.school}
-          </div>
-          <div className="modal-metadata">
-            Course of Study: {mentor.courseOfStudy}
+          <div class="modal-metadata-container">
+            <h2>{mentor.name}</h2>
+            <div className="modal-metadata">
+              <strong>Role:</strong> {mentor.role}
+            </div>
+            <div className="modal-metadata">
+              <strong>Organization:</strong> {mentor.organization}
+            </div>
+            {mentor.school && (
+              <div className="modal-metadata">
+                <strong>School Graduated From:</strong> {mentor.school}
+              </div>
+            )}
+            {mentor.courseOfStudy && (
+              <div className="modal-metadata">
+                <strong>Course of Study:</strong> {mentor.courseOfStudy}
+              </div>
+            )}
           </div>
         </div>
         <div className="modal-right">

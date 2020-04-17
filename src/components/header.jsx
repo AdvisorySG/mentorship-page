@@ -46,6 +46,17 @@ const Header = ({ onSearchChange, onSearchSelect }) => (
           </a>{" "}
           to apply as a mentee.
         </p>
+        <p>
+          Click{" "}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={process.env.PUBLIC_URL+"/assets/resumeguide.pdf"}
+          >
+            here
+          </a>{" "}
+          to view the application guide on CVs and resumes.
+        </p>
       </div>
       <SearchBar
         onSearchChange={onSearchChange}

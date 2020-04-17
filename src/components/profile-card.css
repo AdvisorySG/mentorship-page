@@ -25,21 +25,30 @@
   height: 160px;
   object-fit: cover;
   margin: auto;
+  image-orientation: from-image;
 }
 @media only screen and (max-width: 600px) {
   .card-image {
     height: 120px;
   }
 }
+.card-descriptors {
+  flex: 1;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
 .card-name {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   font-weight: bold;
   text-align: center;
+  overflow-wrap: break-word;
 }
 .card-desc {
   font-size: 90%;
   text-align: center;
-  padding-top: 5px;
+  padding-top: 20px;
 }
 .card-read-more-container {
   background-color: white;
