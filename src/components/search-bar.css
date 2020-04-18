@@ -1,5 +1,11 @@
+.search-bar {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+
 .react-autosuggest__container {
-  position: relative;
+  position: absolute;
 }
 
 .react-autosuggest__input {
