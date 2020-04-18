@@ -16,6 +16,7 @@ const createFuse = (field) =>
       })),
     {
       threshold: 0.2,
+      distance: 100,
       keys: ["name"],
     }
   );
