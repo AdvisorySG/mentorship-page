@@ -95,7 +95,7 @@ function SearchBar({ onSearchChange, onSearchSelect }) {
         suggestions={suggestions}
         inputProps={{
           onChange,
-          placeholder: "Please type here for suggestions",
+          placeholder: "Please type here for suggestions.",
           value,
         }}
       />
