@@ -3,13 +3,21 @@ import React, { useState } from "react";
 import Header from "./components/header";
 import ProfileCard from "./components/profile-card";
 import ProfileModal from "./components/profile-modal";
+import SearchBar from "./components/search-bar";
 import { mentors } from "./mentors.json";
+import { fieldSearch } from "./search";
 
 import "./App.css";
 
-const visibleMentorIds = mentors.map((mentor, index) => index);
+const mentorIds = mentors.map((mentor, index) => index);
 
 function App() {
+  const [visibleMentorIds, setVisibleMentorIds] = useState(mentorIds);
+  const searchChangeHandler = (input) =>
+    input.trim().length === 0 && setVisibleMentorIds(mentorIds);
+  const searchSelectHandler = (query) =>
+    setVisibleMentorIds(fieldSearch(query));
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeMentorId, setActiveMentorId] = useState(0);
 
@@ -25,6 +33,11 @@ function App() {
   return (
     <div className="container">
       <Header />
+
+      <SearchBar
+        onSearchChange={searchChangeHandler}
+        onSearchSelect={searchSelectHandler}
+      />
 
       <ProfileModal
         isOpen={isModalOpen}
