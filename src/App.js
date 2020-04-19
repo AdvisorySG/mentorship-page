@@ -12,7 +12,7 @@ import "./App.css";
 const mentorIds = mentors.map((mentor, index) => index);
 
 // Convert names into usable `#`-ids.
-const mentorNames = mentors.map(({ name }) =>
+const mentorHashes = mentors.map(({ name }) =>
   name.toLowerCase().replace(" ", "-").replace("(", "").replace(")", "")
 );
 const setHash = (hash) => window.history.replaceState({}, "", `#${hash}`);
@@ -32,7 +32,7 @@ function App() {
     let ensureModalFromHash = () => {
       let hash = window.location.hash.slice(1);
       let mentorName = hash.length ? String(hash) : "";
-      let mentorId = mentorName.length ? mentorNames.indexOf(mentorName) : -1;
+      let mentorId = mentorName.length ? mentorHashes.indexOf(mentorName) : -1;
 
       if (mentorId !== -1) {
         if (!isModalOpen || mentorId !== activeMentorId) {
@@ -44,7 +44,7 @@ function App() {
 
     // If modal is open, ensure that the hash is active.
     if (isModalOpen) {
-      setHash(mentorNames[activeMentorId]);
+      setHash(mentorHashes[activeMentorId]);
     } else {
       // If modal is not open and `activeMentorId === null`, this must be the
       // initial load. Check for a hash, and open the modal if such an ID
