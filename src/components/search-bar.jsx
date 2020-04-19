@@ -16,7 +16,7 @@ const createFuse = (field) =>
       })),
     {
       threshold: 0.2,
-      distance: 100,
+      distance: 400,
       keys: ["name"],
     }
   );
@@ -95,7 +95,7 @@ function SearchBar({ onSearchChange, onSearchSelect }) {
         suggestions={suggestions}
         inputProps={{
           onChange,
-          placeholder: "Please type here for suggestions.",
+          placeholder: "Search for mentors...",
           value,
         }}
       />
