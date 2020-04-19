@@ -1,7 +1,6 @@
 import React from "react";
 import { IoIosArrowBack } from "react-icons/io";
 
-import SearchBar from "./search-bar";
 import { advisoryLogo, advisoryMentorshipLogo } from "../assets";
 
 import "./header.css";
@@ -16,7 +15,7 @@ const NavBar = () => (
   </div>
 );
 
-const Header = ({ onSearchChange, onSearchSelect }) => (
+const Header = () => (
   <div className="header">
     <NavBar />
     <div className="header-bottom">
@@ -51,17 +50,13 @@ const Header = ({ onSearchChange, onSearchSelect }) => (
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href={process.env.PUBLIC_URL+"/assets/resumeguide.pdf"}
+            href={process.env.PUBLIC_URL + "/assets/resumeguide.pdf"}
           >
             here
           </a>{" "}
           to view the application guide on CVs and resumes.
         </p>
       </div>
-      <SearchBar
-        onSearchChange={onSearchChange}
-        onSearchSelect={onSearchSelect}
-      />
     </div>
   </div>
 );

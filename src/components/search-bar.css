@@ -1,5 +1,6 @@
 .search-bar {
   height: 40px;
+  margin: 30px 0;
   display: flex;
   justify-content: center;
 }

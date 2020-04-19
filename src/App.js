@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Header from "./components/header";
 import ProfileCard from "./components/profile-card";
 import ProfileModal from "./components/profile-modal";
+import SearchBar from "./components/search-bar";
 import { mentors } from "./mentors.json";
 import { fieldSearch } from "./search";
 
@@ -31,7 +32,9 @@ function App() {
 
   return (
     <div className="container">
-      <Header
+      <Header />
+
+      <SearchBar
         onSearchChange={searchChangeHandler}
         onSearchSelect={searchSelectHandler}
       />
