@@ -17,7 +17,7 @@ const ProfileCard = ({ mentor, onReadMore }) => (
       <LazyLoad height={160} offset={480} once>
         <img
           className="card-image"
-          src={process.env.PUBLIC_URL + mentor.imageUrl}
+          src={process.env.PUBLIC_URL + mentor.thumbnailImageUrl}
           alt={mentor.name}
         />
       </LazyLoad>
