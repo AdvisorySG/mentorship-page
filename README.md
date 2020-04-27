@@ -2,6 +2,22 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Setting up Git LFS and Netlify Large Media
+
+If you wish to make changes to assets stored in this repository (such as those
+in `data/profile_images/`, `public/assets` and `public/profile_images`), you
+will need to set up Git LFS and Netlify Large Media.
+
+Firstly, please install [Git LFS](https://git-lfs.github.com/) and set it up
+for your user account:
+
+```
+$ git lfs install
+```
+
+Then, please [set up Netlify Large Media](https://docs.netlify.com/large-media/setup/#configure-file-tracking),
+taking care to follow the instructions carefully.
+
 ## Available Scripts
 
 In the project directory, you can run:
