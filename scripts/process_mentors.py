@@ -43,7 +43,7 @@ def main(csv_src, im_src, im_dst):
             im2_fn = Path('{}.{}.jpg'.format(im_name, im_hash))
 
             Path(im_dst, im2_dir).mkdir(parents=True, exist_ok=True)
-            im2.save(Path(im_dst, im2_dir, im2_fn), optimize=True)
+            im2.save(Path(im_dst, im2_dir, im2_fn), optimize=True, progressive=True)
             im_paths[size_name] = Path(im2_dir, im2_fn)
         return im_paths
 
