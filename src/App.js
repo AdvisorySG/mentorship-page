@@ -18,10 +18,6 @@ function App() {
   const [visibleMentorIds, setVisibleMentorIds] = useState(
     mentorIds[waveIndex]
   );
-  const searchChangeHandler = (input) =>
-    input.trim().length === 0 && setVisibleMentorIds(mentorIds[waveIndex]);
-  const searchSelectHandler = (query) =>
-    setVisibleMentorIds(fieldSearch(query, waveIndex));
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeMentorId, setActiveMentorId] = useState("");
@@ -62,9 +58,20 @@ function App() {
       window.removeEventListener("hashchange", ensureModalFromHash, false);
   }, [isModalOpen, activeMentorId]);
 
+  const [searchValue, setSearchValue] = useState("");
+  const searchChangeHandler = (input) => {
+    setSearchValue(input);
+    if (input.trim().length === 0) {
+      setVisibleMentorIds(mentorIds[waveIndex]);
+    }
+  };
+  const searchSelectHandler = (query) =>
+    setVisibleMentorIds(fieldSearch(query, waveIndex));
+
   const tabChangeHandler = (tabIndex) => {
     setWaveIndex(tabIndex);
     setVisibleMentorIds(mentorIds[tabIndex]);
+    setSearchValue("");
   };
 
   const activateModal = (mentorId) => {
@@ -81,6 +88,7 @@ function App() {
       <Header />
 
       <SearchBar
+        value={searchValue}
         waveIndex={waveIndex}
         onSearchChange={searchChangeHandler}
         onSearchSelect={searchSelectHandler}
