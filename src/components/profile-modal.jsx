@@ -39,7 +39,7 @@ const ProfileModal = ({ isOpen, mentor, onClose }) => {
         <div className="modal-left">
           <img
             className="modal-image"
-            src={mentor.imageUrl}
+            src={process.env.PUBLIC_URL + mentor.fullImageUrl}
             alt={mentor.name}
           />
           <div class="modal-metadata-container">
