@@ -67,7 +67,7 @@ def main(csv_src, im_src, im_dst):
     with open(csv_src, newline='', encoding='utf-8') as f:
         lines = csv.reader(f, delimiter=',', quotechar='"')
         mentors = dict(process_row(row) for row in lines if process_row(row))
-        print(json.dumps({'mentors': mentors}, indent=4, sort_keys=True))
+        print(json.dumps({'mentors': mentors}, indent=2, sort_keys=True))
 
 if __name__ == '__main__':
     main()
