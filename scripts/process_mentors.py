@@ -1,11 +1,11 @@
 import csv
-import hashlib
 import json
 import sys
 from pathlib import Path
 
 from PIL import Image
 import click
+import imagehash
 
 CSV_FIELDS = [
     None,
@@ -32,12 +32,10 @@ IMG_SIZES = {
 @click.argument('im_src', type=click.Path(file_okay=False, dir_okay=True))
 @click.argument('im_dst', type=click.Path(file_okay=False, dir_okay=True))
 def main(csv_src, im_src, im_dst):
-    def process_image(im, mentor_id):
-        im_hash = hashlib.sha256(im.tobytes()).hexdigest()[:7]
+    def process_image(im, mentor_id, im_hash):
         im_paths = {}
         for size_name, size in IMG_SIZES.items():
             w, h = size
-
             im2 = im.resize(size)
             im2_dir = Path('{}x{}'.format(w, h))
             im2_fn = Path('{}.{}.jpg'.format(mentor_id, im_hash))
@@ -59,7 +57,8 @@ def main(csv_src, im_src, im_dst):
         mentor_id = mentor['firstNameAndLastName'].replace(' ', '').replace('(', '').replace(')', '')
 
         with Image.open(Path(im_src, '{}.jpg'.format(mentor_id))) as im:
-            im_paths = process_image(im, mentor_id)
+            im_hash = str(imagehash.average_hash(im))[:7]
+            im_paths = process_image(im, mentor_id, im_hash)
             for size_name, im_path in im_paths.items():
                 mentor['{}ImageUrl'.format(size_name)] = '/profile_images/{}'.format(im_path)
 
