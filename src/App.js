@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from "react";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 import Header from "./components/header";
 import ProfileCard from "./components/profile-card";
 import ProfileModal from "./components/profile-modal";
 import SearchBar from "./components/search-bar";
-import { mentors } from "./mentors.json";
+import { mentors, mentorIds, waves } from "./mentors";
 import { fieldSearch } from "./search";
 
+import "react-tabs/style/react-tabs.css";
 import "./App.css";
-
-const mentorIds = Object.keys(mentors);
 
 const setHash = (hash) => window.history.replaceState({}, "", `#${hash}`);
 
 function App() {
-  const [visibleMentorIds, setVisibleMentorIds] = useState(mentorIds);
+  const [waveIndex, setWaveIndex] = useState(waves - 1);
+  const [visibleMentorIds, setVisibleMentorIds] = useState(
+    mentorIds[waveIndex]
+  );
   const searchChangeHandler = (input) =>
-    input.trim().length === 0 && setVisibleMentorIds(mentorIds);
+    input.trim().length === 0 && setVisibleMentorIds(mentorIds[waveIndex]);
   const searchSelectHandler = (query) =>
-    setVisibleMentorIds(fieldSearch(query));
+    setVisibleMentorIds(fieldSearch(query, waveIndex));
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeMentorId, setActiveMentorId] = useState("");
@@ -59,6 +62,11 @@ function App() {
       window.removeEventListener("hashchange", ensureModalFromHash, false);
   }, [isModalOpen, activeMentorId]);
 
+  const tabChangeHandler = (tabIndex) => {
+    setWaveIndex(tabIndex);
+    setVisibleMentorIds(mentorIds[tabIndex]);
+  };
+
   const activateModal = (mentorId) => {
     setActiveMentorId(mentorId);
     setIsModalOpen(true);
@@ -73,25 +81,42 @@ function App() {
       <Header />
 
       <SearchBar
+        waveIndex={waveIndex}
         onSearchChange={searchChangeHandler}
         onSearchSelect={searchSelectHandler}
       />
+
+      <Tabs
+        className="tabs-container"
+        selectedIndex={waveIndex}
+        onSelect={tabChangeHandler}
+      >
+        <TabList>
+          {Array.from({ length: waves }, (_, i) => (
+            <Tab key={i}>Wave {i + 1}</Tab>
+          ))}
+        </TabList>
+
+        {Array.from({ length: waves }, (_, i) => (
+          <TabPanel key={i}>
+            <div className="card-container">
+              {visibleMentorIds.map((mentorId) => (
+                <ProfileCard
+                  key={mentorId}
+                  mentor={mentors[mentorId]}
+                  onReadMore={() => activateModal(mentorId)}
+                />
+              ))}
+            </div>
+          </TabPanel>
+        ))}
+      </Tabs>
 
       <ProfileModal
         isOpen={isModalOpen}
         mentor={mentors[activeMentorId]}
         onClose={closeHandler}
       />
-
-      <div className="card-container">
-        {visibleMentorIds.map((mentorId) => (
-          <ProfileCard
-            key={mentorId}
-            mentor={mentors[mentorId]}
-            onReadMore={() => activateModal(mentorId)}
-          />
-        ))}
-      </div>
     </div>
   );
 }
