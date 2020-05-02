@@ -71,12 +71,10 @@ const getSuggestionValue = (suggestion) => suggestion.name;
 const renderSectionTitle = (section) => <strong>{section.title}</strong>;
 const renderSuggestion = (suggestion) => <span>{suggestion.name}</span>;
 
-function SearchBar({ waveIndex, onSearchChange, onSearchSelect }) {
-  const [value, setValue] = useState("");
+function SearchBar({ value, waveIndex, onSearchChange, onSearchSelect }) {
   const [suggestions, setSuggestions] = useState([]);
 
   const onChange = (event, { newValue }) => {
-    setValue(newValue);
     onSearchChange(newValue);
   };
   const onSuggestionSelected = (event, { suggestion }) =>
