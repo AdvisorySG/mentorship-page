@@ -9,12 +9,8 @@ import { fieldSearch } from "./search";
 
 import "./App.css";
 
-const mentorIds = mentors.map((mentor, index) => index);
+const mentorIds = Object.keys(mentors);
 
-// Convert names into usable `#`-ids.
-const mentorHashes = mentors.map(({ name }) =>
-  name.toLowerCase().replace(" ", "-").replace("(", "").replace(")", "")
-);
 const setHash = (hash) => window.history.replaceState({}, "", `#${hash}`);
 
 function App() {
@@ -25,16 +21,13 @@ function App() {
     setVisibleMentorIds(fieldSearch(query));
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeMentorId, setActiveMentorId] = useState(0);
+  const [activeMentorId, setActiveMentorId] = useState("");
 
   useEffect(() => {
     // Checks hash and ensures that any modal with a corresponding name is open.
-    let ensureModalFromHash = () => {
-      let hash = window.location.hash.slice(1);
-      let mentorName = hash.length ? String(hash) : "";
-      let mentorId = mentorName.length ? mentorHashes.indexOf(mentorName) : -1;
-
-      if (mentorId !== -1) {
+    const ensureModalFromHash = () => {
+      const mentorId = window.location.hash.slice(1);
+      if (mentors.hasOwnProperty(mentorId)) {
         if (!isModalOpen || mentorId !== activeMentorId) {
           activateModal(mentorId);
           return true;
@@ -44,7 +37,7 @@ function App() {
 
     // If modal is open, ensure that the hash is active.
     if (isModalOpen) {
-      setHash(mentorHashes[activeMentorId]);
+      setHash(activeMentorId);
     } else {
       // If modal is not open and `activeMentorId === null`, this must be the
       // initial load. Check for a hash, and open the modal if such an ID
@@ -52,7 +45,7 @@ function App() {
       if (activeMentorId === null) {
         if (!ensureModalFromHash()) {
           // Otherwise, set a default ID, but do not open the modal.
-          setActiveMentorId(0);
+          setActiveMentorId("");
         }
       } else {
         // An ID exists, but the modal is not open, so remove the hash.

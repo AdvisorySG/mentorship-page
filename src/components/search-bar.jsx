@@ -8,7 +8,7 @@ import "./search-bar.css";
 
 const createFuse = (field) =>
   new Fuse(
-    [...new Set(mentors.map((mentor) => mentor[field]))]
+    [...new Set(Object.values(mentors).map((mentor) => mentor[field]))]
       .filter((value) => value.length > 0)
       .map((value) => ({
         name: value,
