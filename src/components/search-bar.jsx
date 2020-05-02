@@ -2,13 +2,21 @@ import Autosuggest from "react-autosuggest";
 import Fuse from "fuse.js";
 import React, { useState } from "react";
 
-import { mentors } from "../mentors.json";
+import { mentors, mentorIds, waves } from "../mentors";
 
 import "./search-bar.css";
 
-const createFuse = (field) =>
+const fields = [
+  { field: "name", name: "Name" },
+  { field: "role", name: "Role" },
+  { field: "organization", name: "Organization" },
+  { field: "school", name: "School" },
+  { field: "courseOfStudy", name: "Course of Study" },
+];
+
+const createFuse = (field, waveIndex) =>
   new Fuse(
-    [...new Set(Object.values(mentors).map((mentor) => mentor[field]))]
+    [...new Set(mentorIds[waveIndex].map((mentorId) => mentors[mentorId][field]))]
       .filter((value) => value.length > 0)
       .map((value) => ({
         name: value,
@@ -20,25 +28,21 @@ const createFuse = (field) =>
       keys: ["name"],
     }
   );
-const fuses = {
-  name: createFuse("name"),
-  role: createFuse("role"),
-  organization: createFuse("organization"),
-  school: createFuse("school"),
-  courseOfStudy: createFuse("courseOfStudy"),
-};
 
-const getSuggestions = (value) => {
+// Create an array of fuse objects for each separate wave.
+const fuses = Array.from({ length: waves }, (_, waveIndex) => {
+  const fuseObject = {};
+  fields.forEach(({ field }) => {
+    fuseObject[field] = createFuse(field, waveIndex);
+  });
+  return fuseObject;
+});
+
+const getSuggestions = (value, waveIndex) => {
   const processedInput = value.trim();
-  const sections = [
-    { field: "name", name: "Name" },
-    { field: "role", name: "Role" },
-    { field: "organization", name: "Organization" },
-    { field: "school", name: "School" },
-    { field: "courseOfStudy", name: "Course of Study" },
-  ]
+  const sections = fields
     .map(({ name, field }) => {
-      const searchResults = fuses[field].search(processedInput);
+      const searchResults = fuses[waveIndex][field].search(processedInput);
       return {
         title: name,
         fields: searchResults.map(({ item }) => item),
@@ -67,7 +71,7 @@ const getSuggestionValue = (suggestion) => suggestion.name;
 const renderSectionTitle = (section) => <strong>{section.title}</strong>;
 const renderSuggestion = (suggestion) => <span>{suggestion.name}</span>;
 
-function SearchBar({ onSearchChange, onSearchSelect }) {
+function SearchBar({ waveIndex, onSearchChange, onSearchSelect }) {
   const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
@@ -79,16 +83,16 @@ function SearchBar({ onSearchChange, onSearchSelect }) {
     onSearchSelect(suggestion.query);
   const onSuggestionsClearRequested = () => setSuggestions([]);
   const onSuggestionsFetchRequested = ({ value }) =>
-    setSuggestions(getSuggestions(value));
+    setSuggestions(getSuggestions(value, waveIndex));
 
   return (
-    <div class="search-bar">
+    <div className="search-bar">
       <Autosuggest
         multiSection={true}
         getSectionSuggestions={getSectionSuggestions}
         getSuggestionValue={getSuggestionValue}
         onSuggestionSelected={onSuggestionSelected}
-        onSuggestionsClearRequest={onSuggestionsClearRequested}
+        onSuggestionsClearRequested={onSuggestionsClearRequested}
         onSuggestionsFetchRequested={onSuggestionsFetchRequested}
         renderSuggestion={renderSuggestion}
         renderSectionTitle={renderSectionTitle}
