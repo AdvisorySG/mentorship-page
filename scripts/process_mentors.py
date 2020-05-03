@@ -65,7 +65,8 @@ def main(csv_src, im_src, im_dst):
                     mentor[field] = row[i]
             mentor_id = mentor['firstNameAndLastName'].replace(' ', '').replace('(', '').replace(')', '')
 
-            with Image.open(Path(im_src, '{}.jpg'.format(mentor_id))) as im:
+            im_fn = Path(im_src, '{}.jpg'.format(mentor_id))
+            with Image.open(im_fn) as im:
                 im_hash = str(imagehash.average_hash(im))[:7]
                 im_paths = process_image(im, mentor_id, im_hash)
                 for size_name, im_path in im_paths.items():
