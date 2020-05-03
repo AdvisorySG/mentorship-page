@@ -79,5 +79,5 @@ placing the relevant profile images in `data/profile_images` and ensuring
 
 ```
 $ rm -rf public/profile_images
-$ python3 scripts/process_mentors.py data/mentors.csv data/profile_images public/profile_images > src/mentors.json
+$ python3 scripts/process_mentors.py data/csv data/profile_images public/profile_images > src/mentors.json
 ```
