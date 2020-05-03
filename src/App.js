@@ -5,7 +5,9 @@ import Header from "./components/header";
 import ProfileCard from "./components/profile-card";
 import ProfileModal from "./components/profile-modal";
 import SearchBar from "./components/search-bar";
-import { mentors, mentorIds, waves } from "./mentors";
+import { waves } from "./waves.json";
+import { mentors, mentorIds } from "./mentors";
+
 import { fieldSearch } from "./search";
 
 import "react-tabs/style/react-tabs.css";
@@ -14,7 +16,7 @@ import "./App.css";
 const setHash = (hash) => window.history.replaceState({}, "", `#${hash}`);
 
 function App() {
-  const [waveIndex, setWaveIndex] = useState(waves - 1);
+  const [waveIndex, setWaveIndex] = useState(waves.length - 1);
   const [visibleMentorIds, setVisibleMentorIds] = useState(
     mentorIds[waveIndex]
   );
@@ -100,12 +102,12 @@ function App() {
         onSelect={tabChangeHandler}
       >
         <TabList>
-          {Array.from({ length: waves }, (_, i) => (
-            <Tab key={i}>Wave {i + 1}</Tab>
+          {waves.map(({ name }, i) => (
+            <Tab key={i}>{name}</Tab>
           ))}
         </TabList>
 
-        {Array.from({ length: waves }, (_, i) => (
+        {waves.map((_, i) => (
           <TabPanel key={i}>
             <div className="card-container">
               {visibleMentorIds.map((mentorId) => (
