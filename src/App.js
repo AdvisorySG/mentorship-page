@@ -30,6 +30,7 @@ function App() {
       const mentorId = window.location.hash.slice(1);
       if (mentors.hasOwnProperty(mentorId)) {
         if (!isModalOpen || mentorId !== activeMentorId) {
+          activateTab(mentors[mentorId].wave);
           activateModal(mentorId);
           return true;
         }
@@ -70,7 +71,7 @@ function App() {
   const searchSelectHandler = (query) =>
     setVisibleMentorIds(fieldSearch(query, waveIndex));
 
-  const tabChangeHandler = (tabIndex) => {
+  const activateTab = (tabIndex) => {
     setWaveIndex(tabIndex);
     setVisibleMentorIds(mentorIds[tabIndex]);
     setSearchValue("");
@@ -99,7 +100,7 @@ function App() {
       <Tabs
         className="tabs-container"
         selectedIndex={waveIndex}
-        onSelect={tabChangeHandler}
+        onSelect={activateTab}
       >
         <TabList>
           {waves.map(({ name }, i) => (
