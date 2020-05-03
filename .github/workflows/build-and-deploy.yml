@@ -60,6 +60,7 @@ jobs:
         with:
           name: mentorship-page-${{ github.sha }}
           path: build/
+      - run: touch build/.nojekyll
 
       - name: Deploy website
         uses: JamesIves/github-pages-deploy-action@releases/v3
