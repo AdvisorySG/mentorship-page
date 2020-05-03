@@ -2,7 +2,8 @@ import Autosuggest from "react-autosuggest";
 import Fuse from "fuse.js";
 import React, { useState } from "react";
 
-import { mentors, mentorIds, waves } from "../mentors";
+import { waves } from "../waves.json";
+import { mentors, mentorIds } from "../mentors";
 
 import "./search-bar.css";
 
@@ -16,7 +17,11 @@ const fields = [
 
 const createFuse = (field, waveIndex) =>
   new Fuse(
-    [...new Set(mentorIds[waveIndex].map((mentorId) => mentors[mentorId][field]))]
+    [
+      ...new Set(
+        mentorIds[waveIndex].map((mentorId) => mentors[mentorId][field])
+      ),
+    ]
       .filter((value) => value.length > 0)
       .map((value) => ({
         name: value,
@@ -30,7 +35,7 @@ const createFuse = (field, waveIndex) =>
   );
 
 // Create an array of fuse objects for each separate wave.
-const fuses = Array.from({ length: waves }, (_, waveIndex) => {
+const fuses = waves.map((_, waveIndex) => {
   const fuseObject = {};
   fields.forEach(({ field }) => {
     fuseObject[field] = createFuse(field, waveIndex);
