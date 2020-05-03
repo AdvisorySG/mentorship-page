@@ -35,13 +35,11 @@ const createFuse = (field, waveIndex) =>
   );
 
 // Create an array of fuse objects for each separate wave.
-const fuses = waves.map((_, waveIndex) => {
-  const fuseObject = {};
-  fields.forEach(({ field }) => {
-    fuseObject[field] = createFuse(field, waveIndex);
-  });
-  return fuseObject;
-});
+const fuses = waves.map((_, waveIndex) =>
+  Object.fromEntries(
+    fields.map(({ field }) => [field, createFuse(field, waveIndex)])
+  )
+);
 
 const getSuggestions = (value, waveIndex) => {
   const processedInput = value.trim();
