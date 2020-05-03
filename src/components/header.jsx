@@ -50,7 +50,7 @@ const Header = () => (
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href={process.env.PUBLIC_URL + "/assets/resumeguide.pdf"}
+            href="https://drive.google.com/file/d/1w7zlMuGY_7hVXeW0LaNKXWWjLRt3ic4G/view?usp=sharing"
           >
             here
           </a>{" "}
