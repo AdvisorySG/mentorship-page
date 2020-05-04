@@ -8,6 +8,7 @@ const mentorIds = waves.map((_, waveIndex) =>
     // Construct a new object to preserve the index before filtering.
     .map((mentorId) => ({ mentorId, mentor: mentors[mentorId] }))
     .filter(({ mentor }) => mentor.wave === waveIndex)
+    .sort((a, b) => a.mentor.name.localeCompare(b.mentor.name))
     .map(({ mentorId }) => mentorId)
 );
 
