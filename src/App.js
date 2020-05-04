@@ -15,6 +15,9 @@ import "./App.css";
 
 const setHash = (hash) => window.history.replaceState({}, "", `#${hash}`);
 
+// Used to convert between wave and tab indices.
+const convertIndex = (index) => waves.length - 1 - index;
+
 function App() {
   const [waveIndex, setWaveIndex] = useState(waves.length - 1);
   const [visibleMentorIds, setVisibleMentorIds] = useState(
@@ -30,7 +33,7 @@ function App() {
       const mentorId = window.location.hash.slice(1);
       if (mentors.hasOwnProperty(mentorId)) {
         if (!isModalOpen || mentorId !== activeMentorId) {
-          activateTab(mentors[mentorId].wave);
+          activateTab(convertIndex(mentors[mentorId].wave));
           activateModal(mentorId);
           return true;
         }
@@ -72,8 +75,9 @@ function App() {
     setVisibleMentorIds(fieldSearch(query, waveIndex));
 
   const activateTab = (tabIndex) => {
-    setWaveIndex(tabIndex);
-    setVisibleMentorIds(mentorIds[tabIndex]);
+    const waveIndex = convertIndex(tabIndex);
+    setWaveIndex(waveIndex);
+    setVisibleMentorIds(mentorIds[waveIndex]);
     setSearchValue("");
   };
 
@@ -99,13 +103,17 @@ function App() {
 
       <Tabs
         className="tabs-container"
-        selectedIndex={waveIndex}
+        selectedIndex={convertIndex(waveIndex)}
         onSelect={activateTab}
       >
         <TabList>
-          {waves.map(({ name }, i) => (
-            <Tab key={i}>{name}</Tab>
-          ))}
+          {/* Sort waves in descending order. */}
+          {waves
+            .slice()
+            .reverse()
+            .map(({ name }, i) => (
+              <Tab key={i}>{name}</Tab>
+            ))}
         </TabList>
 
         {waves.map((_, i) => (
