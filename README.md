@@ -12,8 +12,14 @@ will need to set up [Git LFS](https://git-lfs.github.com/).
 
 You can use this nifty script here **in the root of the repository**, after
 placing the relevant profile images in `data/profile_images` and ensuring
-`data/mentors.csv` is updated. Please purge the destination directory
-`public/profile_images` of all images before running this script.
+`data/mentors.csv` is updated. Firstly, install the required dependencies:
+
+```
+$ pip3 install -r scripts/requirements.txt
+```
+
+Then, purge the destination directory `public/profile_images` of all images
+before running this script:
 
 ```
 $ rm -rf public/profile_images
