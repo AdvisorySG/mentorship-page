@@ -1,7 +1,7 @@
 {
   "name": "mentorship-page",
   "version": "0.1.0",
-  "homepage": "https://advisorysg.github.io/mentorship-page/",
+  "homepage": "https://mentorship.advisory.sg/",
   "private": true,
   "dependencies": {
     "body-scroll-lock": "^3.0.1",
