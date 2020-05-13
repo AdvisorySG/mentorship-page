@@ -20,12 +20,23 @@ const convertIndex = (index) => waves.length - 1 - index;
 
 function App() {
   const [waveIndex, setWaveIndex] = useState(waves.length - 1);
+  const activateTab = (tabIndex) => {
+    const waveIndex = convertIndex(tabIndex);
+    setWaveIndex(waveIndex);
+    setVisibleMentorIds(mentorIds[waveIndex]);
+    setSearchValue("");
+  };
+
   const [visibleMentorIds, setVisibleMentorIds] = useState(
     mentorIds[waveIndex]
   );
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeMentorId, setActiveMentorId] = useState("");
+  const activateModal = (mentorId) => {
+    setActiveMentorId(mentorId);
+    setIsModalOpen(true);
+  };
 
   useEffect(() => {
     // Checks hash and ensures that any modal with a corresponding name is open.
@@ -74,22 +85,6 @@ function App() {
   const searchSelectHandler = (query) =>
     setVisibleMentorIds(fieldSearch(query, waveIndex));
 
-  const activateTab = (tabIndex) => {
-    const waveIndex = convertIndex(tabIndex);
-    setWaveIndex(waveIndex);
-    setVisibleMentorIds(mentorIds[waveIndex]);
-    setSearchValue("");
-  };
-
-  const activateModal = (mentorId) => {
-    setActiveMentorId(mentorId);
-    setIsModalOpen(true);
-  };
-
-  const closeHandler = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <div className="container">
       <Header />
@@ -134,7 +129,7 @@ function App() {
       <ProfileModal
         isOpen={isModalOpen}
         mentor={mentors[activeMentorId]}
-        onClose={closeHandler}
+        onClose={() => setIsModalOpen(false)}
       />
     </div>
   );
