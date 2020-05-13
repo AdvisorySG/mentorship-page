@@ -1,6 +1,6 @@
 # mentorship-page ![Build and Deploy Theme](https://github.com/AdvisorySG/mentorship-page/workflows/Build%20and%20Deploy%20Theme/badge.svg)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React app for Advisory's Mentorship Network page. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Setting up Git LFS
 
