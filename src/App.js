@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 import Header from "./components/header";
@@ -20,12 +20,14 @@ const convertIndex = (index) => waves.length - 1 - index;
 
 function App() {
   const [waveIndex, setWaveIndex] = useState(waves.length - 1);
-  const [visibleMentorIds, setVisibleMentorIds] = useState(
-    mentorIds[waveIndex]
-  );
+  const activateTab = (tabIndex) => setWaveIndex(convertIndex(tabIndex));
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeMentorId, setActiveMentorId] = useState("");
+  const activateModal = (mentorId) => {
+    setActiveMentorId(mentorId);
+    setIsModalOpen(true);
+  };
 
   useEffect(() => {
     // Checks hash and ensures that any modal with a corresponding name is open.
@@ -65,30 +67,16 @@ function App() {
   }, [isModalOpen, activeMentorId]);
 
   const [searchValue, setSearchValue] = useState("");
-  const searchChangeHandler = (input) => {
-    setSearchValue(input);
-    if (input.trim().length === 0) {
-      setVisibleMentorIds(mentorIds[waveIndex]);
-    }
-  };
-  const searchSelectHandler = (query) =>
-    setVisibleMentorIds(fieldSearch(query, waveIndex));
+  const [searchQuery, setSearchQuery] = useState({});
+  useEffect(() => setSearchValue(""), [waveIndex]);
 
-  const activateTab = (tabIndex) => {
-    const waveIndex = convertIndex(tabIndex);
-    setWaveIndex(waveIndex);
-    setVisibleMentorIds(mentorIds[waveIndex]);
-    setSearchValue("");
-  };
-
-  const activateModal = (mentorId) => {
-    setActiveMentorId(mentorId);
-    setIsModalOpen(true);
-  };
-
-  const closeHandler = () => {
-    setIsModalOpen(false);
-  };
+  const visibleMentorIds = useMemo(
+    () =>
+      searchValue.trim().length === 0
+        ? mentorIds[waveIndex]
+        : fieldSearch(searchQuery, waveIndex),
+    [searchQuery, searchValue, waveIndex]
+  );
 
   return (
     <div className="container">
@@ -97,8 +85,8 @@ function App() {
       <SearchBar
         value={searchValue}
         waveIndex={waveIndex}
-        onSearchChange={searchChangeHandler}
-        onSearchSelect={searchSelectHandler}
+        onSearchChange={setSearchValue}
+        onSearchSelect={setSearchQuery}
       />
 
       <Tabs
@@ -134,7 +122,7 @@ function App() {
       <ProfileModal
         isOpen={isModalOpen}
         mentor={mentors[activeMentorId]}
-        onClose={closeHandler}
+        onClose={() => setIsModalOpen(false)}
       />
     </div>
   );
