@@ -4,7 +4,7 @@
   "homepage": "https://mentorship.advisory.sg/",
   "private": true,
   "dependencies": {
-    "body-scroll-lock": "^3.0.2",
+    "body-scroll-lock": "^3.0.3",
     "danger": "^10.2.0",
     "fuse.js": "^6.0.0",
     "react": "^16.13.1",
