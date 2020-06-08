@@ -56,6 +56,17 @@ const Header = () => (
           </a>{" "}
           to view the application guide on CVs and resumes.
         </p>
+        <p>
+          Click{" "}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://drive.google.com/file/d/1aA3l_WQ1ehGO8UBKuRFLqj4URpQbAVzN/view?usp=sharing"
+          >
+            here
+          </a>{" "}
+          to view a sample application response.
+        </p>
       </div>
     </div>
   </div>
