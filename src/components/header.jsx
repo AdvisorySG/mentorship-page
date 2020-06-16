@@ -30,9 +30,9 @@ const Header = () => (
           frustration and uncertainty about their studies, graduation, and
           career opportunities - Advisory is looking to support affected
           students. By matching students aged 16-25 with industry mentors from
-          their field of interest one-to-one on a three-month basis from May to
-          July, we hope to assist students to make informed career choices, and
-          provide students with support and advice in these uncertain times.
+          their field of interest one-to-one on a three-month basis from July to
+          September, we hope to assist students to make informed career choices,
+          and provide students with support and advice in these uncertain times.
         </p>
         <p>
           Click{" "}
