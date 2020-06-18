@@ -14,7 +14,6 @@ CSV_FIELDS = [
     None,
     None,
     None,
-    None,
     'imageFilename',
     None,
     None,
