@@ -49,7 +49,7 @@ function App() {
       // If modal is not open and `activeMentorId === null`, this must be the
       // initial load. Check for a hash, and open the modal if such an ID
       // exists.
-      if (activeMentorId === null) {
+      if (activeMentorId === "") {
         if (!ensureModalFromHash()) {
           // Otherwise, set a default ID, but do not open the modal.
           setActiveMentorId("");
