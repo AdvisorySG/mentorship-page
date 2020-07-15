@@ -35,6 +35,16 @@ const Header = () => (
           and provide students with support and advice in these uncertain times.
         </p>
         <p>
+          <small>
+            All Mentors have the rights to privacy and non-harassment that must
+            be respected. You are hereby informed not to misrepresent your
+            relationship or affiliation with Advisory in any way and on any
+            platform, if and when you communicate with any mentors. Failing
+            which you accept that you have been informed and therefore
+            understand that legal action may be taken against you.
+          </small>
+        </p>
+        <p>
           Click{" "}
           <a
             target="_blank"
