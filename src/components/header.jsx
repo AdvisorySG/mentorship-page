@@ -26,13 +26,28 @@ const Header = () => (
       />
       <div className="header-mentorship-intro">
         <p>
-          With the spread of COVID-19, and as many students face concerns,
-          frustration and uncertainty about their studies, graduation, and
-          career opportunities - Advisory is looking to support affected
-          students. By matching students aged 16-25 with industry mentors from
-          their field of interest one-to-one on a three-month basis from July to
-          September, we hope to assist students to make informed career choices,
-          and provide students with support and advice in these uncertain times.
+          With the closure of applications for the final wave of The Mentorship
+          Programme: Online, we would like to take the opportunity to thank all
+          industry mentors and mentees for their immense support for this
+          initiative.
+        </p>
+        <p>
+          As the first public run of the Mentorship Programme, we garnered a
+          total of 1942 mentee applications vying for mentorship opportunities
+          with 560 industry mentors across all three waves. The large wave of
+          applications is testament to the urgent importance of career guidance
+          in this era of COVID-19 which has brought about numerous disruptions,
+          and we are glad to have been able to support students through this
+          difficult time.
+        </p>
+        <p>
+          Moving forward, we are happy to announce that the next cycle of the
+          Mentorship Programme will be commencing in 2021! You may keep a
+          lookout on our website or social media channels for regular updates on
+          Advisory events and in the meantime, we highly encourage you to
+          consider joining us for various other career guidance opportunities
+          that we offer, such as the Discover+ Series panel discussions that are
+          open to all to apply!
         </p>
         <p>
           <small>
