@@ -9,7 +9,7 @@
     "fuse.js": "^6.4.1",
     "react": "^16.14.0",
     "react-autosuggest": "^10.0.3",
-    "react-dom": "^16.13.1",
+    "react-dom": "^16.14.0",
     "react-icons": "^3.11.0",
     "react-lazyload": "^3.0.0",
     "react-modal": "^3.11.2",
