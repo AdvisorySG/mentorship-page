@@ -1,2 +1,3 @@
-export const advisoryLogo = require("./advisory-logo.png");
-export const advisoryMentorshipLogo = require("./advisory-mentorship-logo.png");
+export const advisoryLogo = require("./advisory-logo.png").default;
+export const advisoryMentorshipLogo = require("./advisory-mentorship-logo.png")
+  .default;
