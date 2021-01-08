@@ -8,7 +8,7 @@
     "danger": "^10.6.0",
     "fuse.js": "^6.4.6",
     "react": "^16.14.0",
-    "react-autosuggest": "^10.0.4",
+    "react-autosuggest": "^10.1.0",
     "react-dom": "^16.14.0",
     "react-icons": "^4.1.0",
     "react-lazyload": "^3.1.0",
