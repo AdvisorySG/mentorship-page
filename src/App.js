@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
+import axios from 'axios';
+
 import Header from "./components/header";
 import ProfileCard from "./components/profile-card";
 import ProfileModal from "./components/profile-modal";
@@ -28,6 +30,16 @@ function App() {
     setActiveMentorId(mentorId);
     setIsModalOpen(true);
   };
+
+  // Load Airtable data once on each app render
+  useEffect(() => {
+    const loadData = async () => {
+      const response = await axios.get('https://d3f3pna2dcek92.cloudfront.net/');
+      console.log(JSON.stringify(response.data.records));
+    }
+    loadData();
+    // Do something with response here
+  }, []);
 
   useEffect(() => {
     // Checks hash and ensures that any modal with a corresponding name is open.
