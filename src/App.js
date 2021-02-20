@@ -12,6 +12,7 @@ import { fieldSearch } from "./search";
 
 import "react-tabs/style/react-tabs.css";
 import "./App.css";
+import axios from "axios";
 
 const setHash = (hash) => window.history.replaceState({}, "", `#${hash}`);
 
@@ -28,6 +29,18 @@ function App() {
     setActiveMentorId(mentorId);
     setIsModalOpen(true);
   };
+
+  // Load Airtable data once on each app render
+  useEffect(() => {
+    const loadData = async () => {
+      const response = await axios.get(
+        "https://d3f3pna2dcek92.cloudfront.net/"
+      );
+      console.log(JSON.stringify(response.data.records));
+    };
+    loadData();
+    // Do something with response here
+  }, []);
 
   useEffect(() => {
     // Checks hash and ensures that any modal with a corresponding name is open.
