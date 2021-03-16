@@ -1,6 +1,7 @@
 import Autosuggest from "react-autosuggest";
 import Fuse from "fuse.js";
 import React, { useState } from "react";
+import lunr from "lunr";
 
 import { waves } from "../waves.json";
 import { mentors, mentorIds } from "../mentors";
@@ -107,5 +108,23 @@ function SearchBar({ value, waveIndex, onSearchChange, onSearchSelect }) {
     </div>
   );
 }
+
+let documents = Object.values(mentors);
+
+var searchIndex = lunr(function () {
+  this.ref("name");
+  this.field("name");
+  this.field("school");
+  this.field("organization");
+  this.field("courseOfStudy");
+  this.field("role");
+
+  documents.forEach((doc) => {
+    this.add(doc);
+  }, this);
+});
+
+// idx.search('oxford')
+// Sample search for term oxford
 
 export default SearchBar;
