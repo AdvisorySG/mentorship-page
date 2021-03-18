@@ -42,8 +42,19 @@ const fuses = waves.map((_, waveIndex) =>
   )
 );
 
+let finalResult;
 const getSuggestions = (value, waveIndex) => {
   const processedInput = value.trim();
+  const searchQuery = ["role", "school", "organization"]; // Filter terms should be saved as an array of terms
+  let formattedString = "";
+  searchQuery.forEach((element) => {
+    formattedString += `${element}:${processedInput} `;
+  });
+  finalResult = searchIndex.search(formattedString); // Searches name fields only
+  // console.log(finalResult);
+  finalResult.forEach((element) => {
+    console.log(element.ref); // the name reference index of the search result is saved
+  });
   const sections = fields
     .map(({ name, field }) => {
       const searchResults = fuses[waveIndex][field].search(processedInput);
