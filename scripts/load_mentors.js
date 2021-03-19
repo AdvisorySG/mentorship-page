@@ -5,9 +5,8 @@ var i = 1;
 
 base('ProNet Masterlist').select({
 
-  field: 'name',
-  direction: 'asc',
-    
+  sort: [{field: 'First Name', direction: 'asc'}]
+
 }).eachPage((records, fetchNextPage) => {
     
   console.log(`Page ${i}: ${records.length} records`);
