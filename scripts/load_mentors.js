@@ -1,26 +1,30 @@
-import axios from "axios";
-
 export const loadData = async () => {
-  const response = await axios.get(
-    `https://d3f3pna2dcek92.cloudfront.net/?sort%5B0%5D%5Bfield%5D=Name`
-  );
-  var mentors = response.data.records;
+  
+  var Airtable = require('airtable');
+  var base = new Airtable({ apiKey: 'keyAOJiy5cPLwI9Oz' }).base('appREFfUG2Z5A1bDz');
+  var mentors = [];
 
-  var offset = response.data.offset;
+  base('Furniture').select({
+    // Selecting the first 3 records in All furniture:
+    view: "All furniture"
+  }).eachPage(function page(records, fetchNextPage) {
+    // This function (`page`) will get called for each page of records.
 
-  while (offset) {
-    const response = await axios.get(
-      `https://d3f3pna2dcek92.cloudfront.net/?sort%5B0%5D%5Bfield%5D=Name&offset=${offset}`
-    );
-    mentors = mentors.concat(response.data.records);
+    records.forEach(function (record) {
+      console.log('Retrieved', record.get('Name'));
+    });
 
-    if (response.data.offset) {
-      offset = response.data.offset;
-    } else {
-      offset = "";
-    }
-  }
+    mentors.concat(records);
+
+    // To fetch the next page of records, call `fetchNextPage`.
+    // If there are more records, `page` will get called again.
+    // If there are no more records, `done` will get called.
+    fetchNextPage();
+
+  }, function done(err) {
+    if (err) { console.error(err); return; }
+  });
 
   var mentorsJson = JSON.stringify(mentors);
-  return mentorsJson;
+  console.log(mentorsJson);
 };

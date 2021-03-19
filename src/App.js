@@ -12,7 +12,6 @@ import { fieldSearch } from "./search";
 
 import "react-tabs/style/react-tabs.css";
 import "./App.css";
-import axios from "axios";
 
 const setHash = (hash) => window.history.replaceState({}, "", `#${hash}`);
 
@@ -20,8 +19,6 @@ const setHash = (hash) => window.history.replaceState({}, "", `#${hash}`);
 const convertIndex = (index) => waves.length - 1 - index;
 
 function App() {
-  const [apiData, setApiData] = useState([]);
-
   const [waveIndex, setWaveIndex] = useState(waves.length - 1);
   const activateTab = (tabIndex) => setWaveIndex(convertIndex(tabIndex));
 
