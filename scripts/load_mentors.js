@@ -1,30 +1,32 @@
-export const loadData = async () => {
-  
-  var Airtable = require('airtable');
-  var base = new Airtable({ apiKey: 'keyAOJiy5cPLwI9Oz' }).base('appREFfUG2Z5A1bDz');
-  var mentors = [];
+var Airtable = require('airtable');
+var base = new Airtable({ apiKey: 'keyAOJiy5cPLwI9Oz' }).base('appDfSlmYKDyuAj51');
+var mentors = [];
+var i = 1;
 
-  base('Furniture').select({
-    // Selecting the first 3 records in All furniture:
-    view: "All furniture"
-  }).eachPage(function page(records, fetchNextPage) {
-    // This function (`page`) will get called for each page of records.
+base('ProNet Masterlist').select({
 
-    records.forEach(function (record) {
-      console.log('Retrieved', record.get('Name'));
-    });
+  field: 'name',
+  direction: 'asc',
+    
+}).eachPage((records, fetchNextPage) => {
+    
+  console.log(`Page ${i}: ${records.length} records`);
+  i++;
+  mentors = mentors.concat(records);
+  fetchNextPage();
 
-    mentors.concat(records);
+}, function done(err) {
 
-    // To fetch the next page of records, call `fetchNextPage`.
-    // If there are more records, `page` will get called again.
-    // If there are no more records, `done` will get called.
-    fetchNextPage();
+  if (err) {
+      console.error(err);
+      return;
+  }
 
-  }, function done(err) {
-    if (err) { console.error(err); return; }
-  });
+  console.log(`Total records: ${mentors.length}`);
 
   var mentorsJson = JSON.stringify(mentors);
+  console.log("----------------JSON START----------------");
   console.log(mentorsJson);
-};
+  console.log("----------------JSON END----------------");
+
+});
