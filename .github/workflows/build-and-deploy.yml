@@ -84,17 +84,20 @@ jobs:
         uses: actions/cache@v1
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-airtable
+          key: ${{ runner.os }}-node-airtable-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-airtable
+            ${{ runner.os }}-node-airtable-
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install airtable
+      - run: export VERSION_AIRTABLE=`node -p -e "require('./package.json').dependencies.airtable"`
+      - run: npm install --no-package-lock --no-save airtable@"$VERSION_AIRTABLE"
 
-      - run: cp scripts/load_mentors.js index.js
-      - run: zip -r lambda.zip node_modules/ index.js
+      - run: mkdir lambda
+      - run: cp scripts/load_mentors.js lambda/index.js
+      - run: cp node_modules/ lambda/
+      - run: zip -r lambda.zip node_modules/
 
       - name: Deploy lambda
         uses: appleboy/lambda-action@master
