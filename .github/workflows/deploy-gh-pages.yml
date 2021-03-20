@@ -1,9 +1,9 @@
-name: Build and Deploy Website
+name: Deploy GitHub Pages
 on:
   pull_request:
   push:
 jobs:
-  build-website:
+  build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
