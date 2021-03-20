@@ -23,7 +23,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: export VERSION_AIRTABLE=`node -p -e "require('./package.json').dependencies.airtable"`
+      - run: export VERSION_AIRTABLE=`node -p -e "require('./package.json').devDependencies.airtable"`
       - run: npm install --no-package-lock --no-save airtable@"$VERSION_AIRTABLE"
 
       - run: mkdir lambda
