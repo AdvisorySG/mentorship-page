@@ -93,7 +93,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install airtable
 
-      - run: zip lambda.zip node_modules/ scripts/load_mentors.js
+      - run: cp scripts/load_mentors.js index.js
+      - run: zip -r lambda.zip node_modules/ index.js
       
       - name: Deploy lambda
         uses: appleboy/lambda-action@master
