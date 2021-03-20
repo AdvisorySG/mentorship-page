@@ -92,6 +92,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install airtable
+
+      - run: zip lambda.zip node_modules/ scripts/load_mentors.js
       
       - name: Deploy lambda
         uses: appleboy/lambda-action@master
@@ -100,6 +102,4 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: ${{ secrets.AWS_REGION }}
           function_name: load_mentors
-          source:
-            - node_modules/
-            - scripts/load_mentors.js
+          zip_file: lambda.zip
