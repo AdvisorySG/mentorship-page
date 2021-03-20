@@ -1,40 +1,26 @@
-var Airtable = require("airtable");
-var AWS = require("aws-sdk"),
+const Airtable = require("airtable");
+const AWS = require("aws-sdk"),
   region = "ap-southeast-1",
-  secretName = "airtable_api_key",
-  secret,
-  decodedBinarySecret;
-var client = new AWS.SecretsManager({ region: region });
+  secretName = "airtable_api_key";
+const client = new AWS.SecretsManager({ region: region });
 
-exports.handler = (event, context, callback) => {
-  var mentors = [];
+exports.handler = async (event) => {
+  let mentors = [];
 
-  client.getSecretValue({ SecretId: secretName }, (err, data) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-
-    var apiKey = data.SecretString["APIKey"];
-    var base = new Airtable({ apiKey }).base("appDfSlmYKDyuAj51");
-
-    base("ProNet Masterlist")
-      .select({
-        sort: [{ field: "First Name", direction: "asc" }],
-      })
-      .eachPage(
-        (records, fetchNextPage) => {
-          mentors = mentors.concat(records);
-          fetchNextPage();
-        },
-        (err) => {
-          if (err) {
-            console.error(err);
-            return;
-          }
-        }
-      );
-  });
-
-  return JSON.stringify(mentors);
+  const apiKey = await client.getSecretValue({ SecretId: secretName })
+    .promise()
+    .then(data => JSON.parse(data.SecretString)["APIKey"]);
+  const base = new Airtable({ apiKey }).base("appDfSlmYKDyuAj51");
+  
+  await base("ProNet Masterlist")
+    .select({ sort: [{ field: "First Name", direction: "asc" }] })
+    .eachPage((records, fetchNextPage) => {
+      mentors = mentors.concat(records.map(record => record.fields));
+      fetchNextPage();
+    });
+  
+  return {
+      statusCode: 200,
+      body: mentors
+  };
 };
