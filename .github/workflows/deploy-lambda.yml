@@ -27,7 +27,7 @@ jobs:
       - run: mkdir lambda
       - run: cp scripts/load_mentors.js lambda/index.js
       - run: cp -r node_modules/ lambda/
-      - run: zip -r lambda.zip lambda/
+      - run: cd lambda && zip -r ../lambda.zip .
 
       - name: Deploy lambda
         uses: appleboy/lambda-action@master
