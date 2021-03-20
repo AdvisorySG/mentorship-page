@@ -12,7 +12,7 @@ exports.handler = async (event) => {
     .then(data => JSON.parse(data.SecretString)["APIKey"]);
   const base = new Airtable({ apiKey }).base("appDfSlmYKDyuAj51");
   
-  await base("ProNet Masterlist")
+  await base("4 Tech")
     .select({ sort: [{ field: "First Name", direction: "asc" }] })
     .eachPage((records, fetchNextPage) => {
       mentors = mentors.concat(records.map(record => record.fields));
