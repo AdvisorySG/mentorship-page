@@ -24,5 +24,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # generated files
-/src/mentors.json
 /public/profile_images
