@@ -5,7 +5,7 @@ import { mentors } from "./mentors.json";
 // in the first wave.
 const mentorIds = waves.map((_, waveIndex) =>
   Object.keys(mentors)
-    // Construct a new object to preserve the index before filtering.
+    // Construct a new object to preserve the index before filtering => { mentorId: <stringint>, mentor: {...} }
     .map((mentorId) => ({ mentorId, mentor: mentors[mentorId] }))
     .filter(({ mentor }) => mentor.wave === waveIndex)
     .sort((a, b) => a.mentor.name.localeCompare(b.mentor.name))
