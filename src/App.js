@@ -6,7 +6,8 @@ import ProfileCard from "./components/profile-card";
 import ProfileModal from "./components/profile-modal";
 import SearchBar from "./components/search-bar";
 import { waves } from "./waves.json";
-import { mentors, mentorIds } from "./mentors";
+import { mentorIds } from "./mentors";
+import { mentors } from "../src/mentors_copy";
 
 import { fieldSearch } from "./search";
 
@@ -41,6 +42,8 @@ function App() {
         }
       }
     };
+
+    console.log(mentors)
 
     // If modal is open, ensure that the hash is active.
     if (isModalOpen) {
@@ -89,6 +92,17 @@ function App() {
         onSearchSelect={setSearchQuery}
       />
 
+      <div className="mentors-container">
+        {/* mentorList.map((mentorId) => (
+              <ProfileCard
+                mentor={mentorList[mentorId]}
+                onReadMore={() => activateModal(mentorId) // MUST MODIFY activateModal() }
+              />
+            ))*/
+        }
+      </div>
+
+
       <Tabs
         className="tabs-container"
         selectedIndex={convertIndex(waveIndex)}
@@ -107,23 +121,23 @@ function App() {
         {waves.map((_, i) => (
           <TabPanel key={i}>
             <div className="card-container">
-              {visibleMentorIds.map((mentorId) => (
+              {/* {visibleMentorIds.map((mentorId) => (
                 <ProfileCard
                   key={mentorId}
                   mentor={mentors[mentorId]}
                   onReadMore={() => activateModal(mentorId)}
                 />
-              ))}
+              ))} */}
             </div>
           </TabPanel>
         ))}
       </Tabs>
 
-      <ProfileModal
+      {/* <ProfileModal
         isOpen={isModalOpen}
         mentor={mentors[activeMentorId]}
         onClose={() => setIsModalOpen(false)}
-      />
+      /> */}
     </div>
   );
 }
