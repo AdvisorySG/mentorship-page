@@ -92,50 +92,31 @@ function App() {
         onSearchSelect={setSearchQuery}
       />
 
-      <div className="mentors-container">
-        {/* mentorList.map((mentorId) => (
+      {/* <div className="mentors-container">
+        {mentorList.map((mentorId) => (
               <ProfileCard
                 mentor={mentorList[mentorId]}
-                onReadMore={() => activateModal(mentorId) // MUST MODIFY activateModal() }
+                onReadMore={() => activateModal(mentorId)} // MUST MODIFY activateModal()
               />
-            ))*/
+            ))
         }
+      </div> */}
+
+      <div className="tabs-container">
+        <div className="card-container">
+          {mentors.map((mentor) => (
+            <ProfileCard
+              mentor={mentor}
+              // onReadMore={() => activateModal(mentorId)}
+            />
+          ))}
+        </div>
+
       </div>
-
-
-      <Tabs
-        className="tabs-container"
-        selectedIndex={convertIndex(waveIndex)}
-        onSelect={activateTab}
-      >
-        <TabList>
-          {/* Sort waves in descending order. */}
-          {waves
-            .slice()
-            .reverse()
-            .map(({ name }, i) => (
-              <Tab key={i}>{name}</Tab>
-            ))}
-        </TabList>
-
-        {waves.map((_, i) => (
-          <TabPanel key={i}>
-            <div className="card-container">
-              {/* {visibleMentorIds.map((mentorId) => (
-                <ProfileCard
-                  key={mentorId}
-                  mentor={mentors[mentorId]}
-                  onReadMore={() => activateModal(mentorId)}
-                />
-              ))} */}
-            </div>
-          </TabPanel>
-        ))}
-      </Tabs>
 
       {/* <ProfileModal
         isOpen={isModalOpen}
-        mentor={mentors[activeMentorId]}
+        mentor
         onClose={() => setIsModalOpen(false)}
       /> */}
     </div>

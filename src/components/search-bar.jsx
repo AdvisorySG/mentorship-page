@@ -100,7 +100,7 @@ function SearchBar({ value, waveIndex, onSearchChange, onSearchSelect }) {
         suggestions={suggestions}
         inputProps={{
           onChange,
-          placeholder: `Search for mentors in ${waves[waveIndex].name}...`,
+          placeholder: 'Search for mentors...',
           value,
         }}
       />
