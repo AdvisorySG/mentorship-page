@@ -1,7 +1,5 @@
 import { body } from "./mentors_new.json";
 
-// Construct a 2-dimensional array of mentors in ascending order of `First Name`
-
 const mentors = []
 
 body.forEach(({ 
@@ -11,17 +9,12 @@ body.forEach(({
     Schools: school, 
     "Course of Study": courseOfStudy, 
     Name: name,
-    "Job Title": role }) => {
-    
+    "Job Title": role 
+}) => {
     var fullImageUrl, thumbnailImageUrl;
-
-    if (images) {
-        fullImageUrl = images[0].url;
-        thumbnailImageUrl = images[0].thumbnails.large.url;
-    } else if  (images === undefined) {
-        fullImageUrl = "AaqibAlvi.jpg";
-        thumbnailImageUrl = "AaqibAlvi.jpg";
-    }
+    
+    fullImageUrl = images ? images[0].url : undefined;
+    thumbnailImageUrl = images ? images[0].thumbnails.large.url : undefined;
 
     var mentor = { courseOfStudy, fullBio, fullImageUrl, name, organization, role, school, thumbnailImageUrl }
 

@@ -1,6 +1,4 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-
 import Header from "./components/header";
 import ProfileCard from "./components/profile-card";
 import ProfileModal from "./components/profile-modal";
@@ -24,9 +22,9 @@ function App() {
   const activateTab = (tabIndex) => setWaveIndex(convertIndex(tabIndex));
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeMentorId, setActiveMentorId] = useState("");
-  const activateModal = (mentorId) => {
-    setActiveMentorId(mentorId);
+  const [activeMentor, setActiveMentor] = useState("");
+  const activateModal = (mentor) => {
+    setActiveMentor(mentor);
     setIsModalOpen(true);
   };
 
@@ -35,7 +33,7 @@ function App() {
     const ensureModalFromHash = () => {
       const mentorId = window.location.hash.slice(1);
       if (mentors.hasOwnProperty(mentorId)) {
-        if (!isModalOpen || mentorId !== activeMentorId) {
+        if (!isModalOpen || mentorId !== activeMentor) {
           activateTab(convertIndex(mentors[mentorId].wave));
           activateModal(mentorId);
           return true;
@@ -47,15 +45,15 @@ function App() {
 
     // If modal is open, ensure that the hash is active.
     if (isModalOpen) {
-      setHash(activeMentorId);
+      setHash(activeMentor);
     } else {
-      // If modal is not open and `activeMentorId === ""`, this must be the
+      // If modal is not open and `activeMentor === ""`, this must be the
       // initial load. Check for a hash, and open the modal if such an ID
       // exists.
-      if (activeMentorId === "") {
+      if (activeMentor === "") {
         if (!ensureModalFromHash()) {
           // Otherwise, set a default ID, but do not open the modal.
-          setActiveMentorId("");
+          setActiveMentor("");
         }
       } else {
         // An ID exists, but the modal is not open, so remove the hash.
@@ -67,7 +65,7 @@ function App() {
     window.addEventListener("hashchange", ensureModalFromHash, false);
     return () =>
       window.removeEventListener("hashchange", ensureModalFromHash, false);
-  }, [isModalOpen, activeMentorId]);
+  }, [isModalOpen, activeMentor]);
 
   const [searchValue, setSearchValue] = useState("");
   const [searchQuery, setSearchQuery] = useState({});
@@ -92,33 +90,23 @@ function App() {
         onSearchSelect={setSearchQuery}
       />
 
-      {/* <div className="mentors-container">
-        {mentorList.map((mentorId) => (
-              <ProfileCard
-                mentor={mentorList[mentorId]}
-                onReadMore={() => activateModal(mentorId)} // MUST MODIFY activateModal()
-              />
-            ))
-        }
-      </div> */}
-
       <div className="tabs-container">
         <div className="card-container">
           {mentors.map((mentor) => (
             <ProfileCard
+              key={mentor.name}
               mentor={mentor}
-              // onReadMore={() => activateModal(mentorId)}
+              onReadMore={() => activateModal(mentor)}
             />
           ))}
         </div>
-
       </div>
-
-      {/* <ProfileModal
+      
+      <ProfileModal
         isOpen={isModalOpen}
-        mentor
+        mentor={activeMentor}
         onClose={() => setIsModalOpen(false)}
-      /> */}
+      />
     </div>
   );
 }

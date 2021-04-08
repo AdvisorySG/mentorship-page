@@ -2,22 +2,27 @@ import LazyLoad from "react-lazyload";
 import React from "react";
 
 import "./profile-card.css";
+import placeholder from "../assets/placeholder.jpg";
 
-// const ReadMore = ({ onReadMore }) => (
-//   <div className="card-read-more-container">
-//     <button className="card-read-more" onClick={onReadMore}>
-//       Read More
-//     </button>
-//   </div>
-// );
+const ReadMore = ({ onReadMore }) => (
+  <div className="card-read-more-container">
+    <button className="card-read-more" onClick={onReadMore}>
+      Read More
+    </button>
+  </div>
+);
 
-const ProfileCard = ({ mentor }) => (
+const ProfileCard = ({ mentor, onReadMore }) => (
   <div className="card">
     <div className="card-image-region">
       <LazyLoad height={160} offset={480} once>
         <img
           className="card-image"
-          src={process.env.PUBLIC_URL + mentor.thumbnailImageUrl}
+          src={
+            mentor.thumbnailImageUrl 
+            ? process.env.PUBLIC_URL + mentor.thumbnailImageUrl
+            : placeholder
+          }
           alt={mentor.name}
         />
       </LazyLoad>
@@ -29,7 +34,7 @@ const ProfileCard = ({ mentor }) => (
         <div className="card-desc">{mentor.organization}</div>
       )}
     </div>
-    {/* <ReadMore onReadMore={onReadMore} /> */}
+    <ReadMore onReadMore={onReadMore} />
   </div>
 );
 

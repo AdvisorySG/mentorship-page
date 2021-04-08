@@ -4,6 +4,8 @@ import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 import { MdClose } from "react-icons/md";
 
 import "./profile-modal.css";
+import placeholder from "../assets/placeholder.jpg";
+
 
 const CloseButton = ({ onClose }) => (
   <button className="modal-close" onClick={onClose}>
@@ -39,7 +41,11 @@ const ProfileModal = ({ isOpen, mentor, onClose }) => {
         <div className="modal-left">
           <img
             className="modal-image"
-            src={process.env.PUBLIC_URL + mentor.fullImageUrl}
+            src={
+              mentor.thumbnailImageUrl 
+              ? process.env.PUBLIC_URL + mentor.thumbnailImageUrl
+              : placeholder
+            }
             alt={mentor.name}
           />
           <div class="modal-metadata-container">
