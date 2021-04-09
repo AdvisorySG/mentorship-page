@@ -6,7 +6,6 @@ import { MdClose } from "react-icons/md";
 import "./profile-modal.css";
 import placeholder from "../assets/placeholder.jpg";
 
-
 const CloseButton = ({ onClose }) => (
   <button className="modal-close" onClick={onClose}>
     <MdClose />
@@ -42,9 +41,9 @@ const ProfileModal = ({ isOpen, mentor, onClose }) => {
           <img
             className="modal-image"
             src={
-              mentor.thumbnailImageUrl 
-              ? process.env.PUBLIC_URL + mentor.thumbnailImageUrl
-              : placeholder
+              mentor.thumbnailImageUrl
+                ? process.env.PUBLIC_URL + mentor.thumbnailImageUrl
+                : placeholder
             }
             alt={mentor.name}
           />

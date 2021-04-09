@@ -3,9 +3,7 @@ import Header from "./components/header";
 import ProfileCard from "./components/profile-card";
 import ProfileModal from "./components/profile-modal";
 import SearchBar from "./components/search-bar";
-import { waves } from "./waves.json";
-import { mentorIds } from "./mentors";
-import { mentors } from "../src/mentors_copy";
+import { mentors } from "./mentors";
 
 import { fieldSearch } from "./search";
 
@@ -14,13 +12,7 @@ import "./App.css";
 
 const setHash = (hash) => window.history.replaceState({}, "", `#${hash}`);
 
-// Used to convert between wave and tab indices.
-const convertIndex = (index) => waves.length - 1 - index;
-
 function App() {
-  const [waveIndex, setWaveIndex] = useState(waves.length - 1);
-  const activateTab = (tabIndex) => setWaveIndex(convertIndex(tabIndex));
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeMentor, setActiveMentor] = useState("");
   const activateModal = (mentor) => {
@@ -31,17 +23,17 @@ function App() {
   useEffect(() => {
     // Checks hash and ensures that any modal with a corresponding name is open.
     const ensureModalFromHash = () => {
-      const mentorId = window.location.hash.slice(1);
-      if (mentors.hasOwnProperty(mentorId)) {
-        if (!isModalOpen || mentorId !== activeMentor) {
-          activateTab(convertIndex(mentors[mentorId].wave));
-          activateModal(mentorId);
+      const mentor = window.location.hash.slice(1);
+      if (mentors.hasOwnProperty(mentor)) {
+        if (!isModalOpen || mentor !== activeMentor) {
+          activateModal(mentor);
           return true;
         }
       }
     };
 
     console.log(mentors)
+    console.log(visibleMentor)
 
     // If modal is open, ensure that the hash is active.
     if (isModalOpen) {
@@ -69,14 +61,13 @@ function App() {
 
   const [searchValue, setSearchValue] = useState("");
   const [searchQuery, setSearchQuery] = useState({});
-  useEffect(() => setSearchValue(""), [waveIndex]);
 
-  const visibleMentorIds = useMemo(
+  const visibleMentor = useMemo(
     () =>
       searchValue.trim().length === 0
-        ? mentorIds[waveIndex]
-        : fieldSearch(searchQuery, waveIndex),
-    [searchQuery, searchValue, waveIndex]
+        ? mentors
+        : fieldSearch(searchQuery),
+    [searchQuery, searchValue]
   );
 
   return (

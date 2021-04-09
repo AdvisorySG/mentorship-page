@@ -20,8 +20,8 @@ const ProfileCard = ({ mentor, onReadMore }) => (
           className="card-image"
           src={
             mentor.thumbnailImageUrl 
-            ? process.env.PUBLIC_URL + mentor.thumbnailImageUrl
-            : placeholder
+              ? process.env.PUBLIC_URL + mentor.thumbnailImageUrl
+              : placeholder
           }
           alt={mentor.name}
         />
