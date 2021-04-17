@@ -20,8 +20,5 @@ exports.handler = async (event) => {
       fetchNextPage();
     });
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify(mentors),
-  };
+  return JSON.stringify({ mentors });
 };
