@@ -3,15 +3,15 @@ import React from "react";
 
 import "./profile-card.css";
 
-// const ReadMore = ({ onReadMore }) => (
-//   <div className="card-read-more-container">
-//     <button className="card-read-more" onClick={onReadMore}>
-//       Read More
-//     </button>
-//   </div>
-// );
+const ReadMore = ({ onReadMore }) => (
+  <div className="card-read-more-container">
+    <button className="card-read-more" onClick={onReadMore}>
+      Read More
+    </button>
+  </div>
+);
 
-const ProfileCard = ({ mentor }) => (
+const ProfileCard = ({ mentor, onReadMore }) => (
   <div className="card">
     <div className="card-image-region">
       <LazyLoad height={160} offset={480} once>
@@ -29,7 +29,7 @@ const ProfileCard = ({ mentor }) => (
         <div className="card-desc">{mentor.organization}</div>
       )}
     </div>
-    {/* <ReadMore onReadMore={onReadMore} /> */}
+    <ReadMore onReadMore={onReadMore} />
   </div>
 );
 
