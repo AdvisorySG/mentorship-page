@@ -1,6 +1,7 @@
 import { body } from "./mentors.json";
 
-const mentors = []
+const mentors = {};
+const mentorIds = [];
 
 body.forEach(({ 
     Biography: fullBio,
@@ -18,9 +19,9 @@ body.forEach(({
 
     var mentor = { courseOfStudy, fullBio, fullImageUrl, name, organization, role, school, thumbnailImageUrl }
 
-    mentors.push(mentor);
+    // The regex below serves to omit non-alphanumeric characters from name variable
+    mentors[mentor.name.replace(/\W/g, '')] = mentor;
+    mentorIds.push(name.replace(/\W/g, ''));
 });
-
-const mentorIds = mentors.map(({ name }) => name);
 
 export { mentors, mentorIds };

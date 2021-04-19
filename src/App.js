@@ -86,7 +86,8 @@ function App() {
         <div className="card-container">
           {visibleMentorIds.map((mentorId) => (
             <ProfileCard
-              mentor={mentors.filter(mentor => mentor.name === mentorId)[0]}
+              key={mentorId}
+              mentor={mentors[mentorId]}
               onReadMore={() => activateModal(mentorId)}
             />
           ))}
@@ -95,7 +96,7 @@ function App() {
 
       <ProfileModal
         isOpen={isModalOpen}
-        mentor={activeMentorId}
+        mentor={mentors[activeMentorId]}
         onClose={() => setIsModalOpen(false)}
       />
     </div>
