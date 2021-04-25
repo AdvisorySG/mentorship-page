@@ -33,9 +33,6 @@ function App() {
       }
     };
 
-    console.log(mentors)
-    console.log(visibleMentorIds)
-
     // If modal is open, ensure that the hash is active.
     if (isModalOpen) {
       setHash(activeMentorId);
@@ -65,9 +62,7 @@ function App() {
 
   const visibleMentorIds = useMemo(
     () =>
-      searchValue.trim().length === 0
-        ? mentorIds
-        : fieldSearch(searchQuery),
+      searchValue.trim().length === 0 ? mentorIds : fieldSearch(searchQuery),
     [searchQuery, searchValue]
   );
 
@@ -82,16 +77,14 @@ function App() {
         onSearchSelect={setSearchQuery}
       /> */}
 
-      <div className="tabs-container">
-        <div className="card-container">
-          {visibleMentorIds.map((mentorId) => (
-            <ProfileCard
-              key={mentorId}
-              mentor={mentors[mentorId]}
-              onReadMore={() => activateModal(mentorId)}
-            />
-          ))}
-        </div>
+      <div className="card-container">
+        {visibleMentorIds.map((mentorId) => (
+          <ProfileCard
+            key={mentorId}
+            mentor={mentors[mentorId]}
+            onReadMore={() => activateModal(mentorId)}
+          />
+        ))}
       </div>
 
       <ProfileModal

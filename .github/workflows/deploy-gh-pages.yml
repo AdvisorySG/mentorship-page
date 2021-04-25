@@ -27,21 +27,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
 
-      - name: Cache Pip modules
-        uses: actions/cache@v1
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/scripts/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-          architecture: x64
-      - run: pip install -r scripts/requirements.txt
-
-      - run: python3 scripts/process_mentors.py data/csv data/profile_images public/profile_images > src/mentors.json
       - run: npm run build
 
       - name: Upload build
