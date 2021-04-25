@@ -1,15 +1,38 @@
-import { waves } from "./waves.json";
-import { mentors } from "./mentors.json";
+import { body } from "./mentors.json";
 
-// Construct a 2-dimensional array where `mentorIds[0]` is the list of mentors
-// in the first wave.
-const mentorIds = waves.map((_, waveIndex) =>
-  Object.keys(mentors)
-    // Construct a new object to preserve the index before filtering.
-    .map((mentorId) => ({ mentorId, mentor: mentors[mentorId] }))
-    .filter(({ mentor }) => mentor.wave === waveIndex)
-    .sort((a, b) => a.mentor.name.localeCompare(b.mentor.name))
-    .map(({ mentorId }) => mentorId)
+const mentors = {};
+const mentorIds = [];
+
+body.forEach(
+  ({
+    Biography: fullBio,
+    Photo: images,
+    Organisation: organization,
+    Schools: school,
+    "Course of Study": courseOfStudy,
+    Name: name,
+    "Job Title": role,
+  }) => {
+    var fullImageUrl, thumbnailImageUrl;
+
+    fullImageUrl = images ? images[0].url : undefined;
+    thumbnailImageUrl = images ? images[0].thumbnails.large.url : undefined;
+
+    // The regex below serves to omit non-alphanumeric characters from name variable
+    var mentorId = name.replace(/\W/g, "");
+
+    mentors[mentorId] = {
+      courseOfStudy,
+      fullBio,
+      fullImageUrl,
+      name,
+      organization,
+      role,
+      school,
+      thumbnailImageUrl,
+    };
+    mentorIds.push(mentorId);
+  }
 );
 
 export { mentors, mentorIds };

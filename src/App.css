@@ -3,11 +3,6 @@
   background-color: white;
 }
 
-.tabs-container {
-  width: 80%;
-  margin: auto;
-}
-
 .card-container {
   display: flex;
   flex-flow: row wrap;

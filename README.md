@@ -8,24 +8,6 @@ If you wish to make changes to assets stored in this repository (such as those
 in `data/profile_images/`, `public/assets` and `public/profile_images`), you
 will need to set up [Git LFS](https://git-lfs.github.com/).
 
-## Processing Mentors
-
-You can use this nifty script here **in the root of the repository**, after
-placing the relevant profile images in `data/profile_images` and ensuring
-`data/mentors.csv` is updated. Firstly, install the required dependencies:
-
-```
-$ pip3 install -r scripts/requirements.txt
-```
-
-Then, purge the destination directory `public/profile_images` of all images
-before running this script:
-
-```
-$ rm -rf public/profile_images
-$ python3 scripts/process_mentors.py data/csv data/profile_images public/profile_images > src/mentors.json
-```
-
 ## Available Scripts
 
 In the project directory, you can run:
