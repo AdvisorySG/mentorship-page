@@ -57,8 +57,8 @@ function App() {
       window.removeEventListener("hashchange", ensureModalFromHash, false);
   }, [isModalOpen, activeMentorId]);
 
-  const [searchValue, setSearchValue] = useState("");
-  const [searchQuery, setSearchQuery] = useState({});
+  const [searchValue] = useState("");
+  const [searchQuery] = useState({});
 
   const visibleMentorIds = useMemo(
     () =>
