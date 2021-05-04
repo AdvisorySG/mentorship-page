@@ -4,7 +4,7 @@ import Header from "./components/header";
 import ProfileCard from "./components/profile-card";
 import ProfileModal from "./components/profile-modal";
 // import SearchBar from "./components/search-bar";
-import { mentors, mentorIds } from "./mentors";
+import { fetchMentors } from "./mentors";
 
 import { fieldSearch } from "./search";
 
@@ -14,12 +14,18 @@ import "./App.css";
 const setHash = (hash) => window.history.replaceState({}, "", `#${hash}`);
 
 function App() {
+  const [mentors, setMentors] = useState([]);
+  const [mentorIds, setMentorIds] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeMentorId, setActiveMentorId] = useState("");
   const activateModal = (mentorId) => {
     setActiveMentorId(mentorId);
     setIsModalOpen(true);
   };
+
+  useEffect(() => {
+    fetchMentors(setMentors, setMentorIds);
+  }, []);
 
   useEffect(() => {
     // Checks hash and ensures that any modal with a corresponding name is open.
@@ -55,7 +61,7 @@ function App() {
     window.addEventListener("hashchange", ensureModalFromHash, false);
     return () =>
       window.removeEventListener("hashchange", ensureModalFromHash, false);
-  }, [isModalOpen, activeMentorId]);
+  }, [isModalOpen, activeMentorId, mentors]);
 
   const [searchValue] = useState("");
   const [searchQuery] = useState({});
@@ -63,7 +69,7 @@ function App() {
   const visibleMentorIds = useMemo(
     () =>
       searchValue.trim().length === 0 ? mentorIds : fieldSearch(searchQuery),
-    [searchQuery, searchValue]
+    [searchQuery, searchValue, mentorIds]
   );
 
   return (
