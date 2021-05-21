@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import Header from "./components/header";
 import ProfileCard from "./components/profile-card";
 import ProfileModal from "./components/profile-modal";
-// import SearchBar from "./components/search-bar";
+import SearchBar from "./components/search-bar";
 import { fetchMentors } from "./mentors";
 
 import { fieldSearch } from "./search";
@@ -66,25 +66,24 @@ function App() {
       window.removeEventListener("hashchange", ensureModalFromHash, false);
   }, [isModalOpen, activeMentorId, mentors]);
 
-  const [searchValue] = useState("");
-  const [searchQuery] = useState({});
+  const [searchValue, setSearchValue] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
   const visibleMentorIds = useMemo(
-    () =>
-      searchValue.trim().length === 0 ? mentorIds : fieldSearch(searchQuery),
-    [searchQuery, searchValue, mentorIds]
+    () => (searchValue.trim().length === 0 ? mentorIds : searchResults),
+    [searchValue, searchResults, mentorIds]
   );
 
   return (
     <div className="container">
       <Header />
 
-      {/* <SearchBar
+      <SearchBar
         value={searchValue}
-        waveIndex={waveIndex}
-        onSearchChange={setSearchValue}
-        onSearchSelect={setSearchQuery}
-      /> */}
+        mentors={mentors}
+        setSearchValue={setSearchValue}
+        setSearchResults={setSearchResults}
+      />
 
       <div className="card-container">
         {hasMentorsFetched ? (

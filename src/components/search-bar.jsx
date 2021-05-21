@@ -1,110 +1,81 @@
-import Autosuggest from "react-autosuggest";
-import Fuse from "fuse.js";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-import { mentors } from "../mentors";
+import lunr from "lunr";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Select from "@material-ui/core/Select";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
 
 import "./search-bar.css";
 
-// const fields = [
-//   { field: "name", name: "Name" },
-//   { field: "role", name: "Role" },
-//   { field: "organization", name: "Organization" },
-//   { field: "school", name: "School" },
-//   { field: "courseOfStudy", name: "Course of Study" },
-// ];
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 150,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
 
-// const createFuse = (field, waveIndex) =>
-//   new Fuse(
-//     [
-//       ...new Set(
-//         mentorIds[waveIndex].map((mentorId) => mentors[mentorId][field])
-//       ),
-//     ]
-//       .filter((value) => value.length > 0)
-//       .map((value) => ({
-//         name: value,
-//         query: { field, value },
-//       })),
-//     {
-//       threshold: 0.2,
-//       distance: 400,
-//       keys: ["name"],
-//     }
-//   );
+const SearchBar = ({ value, mentors, setSearchValue, setSearchResults }) => {
+  const [field, setField] = useState("Name");
+  const classes = useStyles();
 
-// // Create an array of fuse objects for each separate wave.
-// const fuses = waves.map((_, waveIndex) =>
-//   Object.fromEntries(
-//     fields.map(({ field }) => [field, createFuse(field, waveIndex)])
-//   )
-// );
+  let documents = Object.values(mentors);
 
-// const getSuggestions = (value, waveIndex) => {
-//   const processedInput = value.trim();
-//   const sections = fields
-//     .map(({ name, field }) => {
-//       const searchResults = fuses[waveIndex][field].search(processedInput);
-//       return {
-//         title: name,
-//         fields: searchResults.map(({ item }) => item),
-//       };
-//     })
-//     .filter((section) => section.fields.length > 0);
+  var searchIndex = lunr(function () {
+    this.ref("name");
+    this.field("name");
+    this.field("school");
+    this.field("organization");
+    this.field("courseOfStudy");
+    this.field("role");
 
-//   const maxResults = 10;
-//   const computeResultsPerSection = (maxResultsPerSection) =>
-//     sections
-//       .map(({ fields }) => Math.min(fields.length, maxResultsPerSection))
-//       .reduce((sum, x) => sum + x, 0);
+    documents.forEach((doc) => {
+      this.add(doc);
+    }, this);
+  });
 
-//   for (let i = maxResults; i > 0; i--) {
-//     if (computeResultsPerSection(i) <= maxResults) {
-//       return sections.map(({ title, fields }) => ({
-//         title,
-//         fields: fields.slice(0, i),
-//       }));
-//     }
-//   }
-//   return [];
-// };
-// const getSectionSuggestions = (section) => section.fields;
-// const getSuggestionValue = (suggestion) => suggestion.name;
-// const renderSectionTitle = (section) => <strong>{section.title}</strong>;
-// const renderSuggestion = (suggestion) => <span>{suggestion.name}</span>;
+  return (
+    <form noValidate autoComplete="off" className="search-bar">
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-simple-select-label">
+          Filter by Category
+        </InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={field}
+          onChange={(event) => setField(event.target.value)}
+        >
+          <MenuItem value="Name">Name</MenuItem>
+          <MenuItem value="School">School</MenuItem>
+          <MenuItem value="Organization">Organization</MenuItem>
+          <MenuItem value="Course of Study">Course of Study</MenuItem>
+          <MenuItem value="Role">Role</MenuItem>
+        </Select>
+      </FormControl>
+      <TextField
+        label="Search mentors"
+        variant="outlined"
+        value={value}
+        onChange={async (newValue) => {
+          await setSearchValue(newValue.target.value);
+          const results = searchIndex
+            .search(value)
+            .map((item) => item.ref.replace(/\W/g, ""));
+          console.log("results");
+          console.log(value);
+          console.log(results);
+          console.log("end");
+          setSearchResults(results);
+        }}
+      />
+    </form>
+  );
+};
 
-// function SearchBar({ value, waveIndex, onSearchChange, onSearchSelect }) {
-//   const [suggestions, setSuggestions] = useState([]);
-
-//   const onChange = (event, { newValue }) => {
-//     onSearchChange(newValue);
-//   };
-//   const onSuggestionSelected = (event, { suggestion }) =>
-//     onSearchSelect(suggestion.query);
-//   const onSuggestionsClearRequested = () => setSuggestions([]);
-//   const onSuggestionsFetchRequested = ({ value }) =>
-//     setSuggestions(getSuggestions(value, waveIndex));
-
-//   return (
-//     <div className="search-bar">
-//       <Autosuggest
-//         multiSection={true}
-//         getSectionSuggestions={getSectionSuggestions}
-//         getSuggestionValue={getSuggestionValue}
-//         onSuggestionSelected={onSuggestionSelected}
-//         onSuggestionsClearRequested={onSuggestionsClearRequested}
-//         onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-//         renderSuggestion={renderSuggestion}
-//         renderSectionTitle={renderSectionTitle}
-//         suggestions={suggestions}
-//         inputProps={{
-//           onChange,
-//           placeholder: 'Search for mentors...',
-//           value,
-//         }}
-//       />
-//     </div>
-//   );
-// }
-
-// export default SearchBar;
+export default SearchBar;
