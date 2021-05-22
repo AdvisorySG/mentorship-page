@@ -17,14 +17,17 @@ function App() {
   const [mentors, setMentors] = useState([]);
   const [mentorIds, setMentorIds] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [activeMentorId, setActiveMentorId] = useState("");
   const activateModal = (mentorId) => {
     setActiveMentorId(mentorId);
     setIsModalOpen(true);
   };
 
+  const [hasMentorsFetched, setHasMentorsFetched] = useState(false);
   useEffect(() => {
     fetchMentors(setMentors, setMentorIds);
+    setHasMentorsFetched(true);
   }, []);
 
   useEffect(() => {
@@ -84,13 +87,17 @@ function App() {
       /> */}
 
       <div className="card-container">
-        {visibleMentorIds.map((mentorId) => (
-          <ProfileCard
-            key={mentorId}
-            mentor={mentors[mentorId]}
-            onReadMore={() => activateModal(mentorId)}
-          />
-        ))}
+        {hasMentorsFetched ? (
+          visibleMentorIds.map((mentorId) => (
+            <ProfileCard
+              key={mentorId}
+              mentor={mentors[mentorId]}
+              onReadMore={() => activateModal(mentorId)}
+            />
+          ))
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
 
       <ProfileModal
