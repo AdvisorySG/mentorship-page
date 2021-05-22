@@ -13,7 +13,7 @@ export const fetchMentors = async (setMentors, setMentorIds) => {
       Biography: fullBio,
       Photo: images,
       Organisation: organization,
-      Schools: school,
+      School: school,
       "Course of Study": courseOfStudy,
       Name: name,
       "Job Title": role,
