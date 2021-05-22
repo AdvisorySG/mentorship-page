@@ -24,10 +24,14 @@ const SearchBar = ({ mentors, setHasSearch, setSearchResults }) => {
   const searchIndex = lunr(function () {
     this.ref("name");
     this.field("name");
-    this.field("school");
-    this.field("organisation");
-    this.field("courseOfStudy");
     this.field("role");
+    this.field("industry");
+    this.field("organisation");
+    this.field("school");
+    this.field("courseOfStudy");
+
+    this.b(0.2);
+    this.k1(1.1);
 
     documents.forEach((doc) => this.add(doc), this);
   });
@@ -40,8 +44,11 @@ const SearchBar = ({ mentors, setHasSearch, setSearchResults }) => {
         return;
       }
 
+      const words = searchValue.trim().split(/\s+/);
+      const query = words.map((word) => field + ":" + word).join(" ");
+      console.log(query);
       const results = searchIndex
-        .search(field + ":" + searchValue)
+        .search(query)
         .map((item) => item.ref.replace(/\W/g, ""));
       setHasSearch(true);
       setSearchResults(results);
@@ -64,10 +71,11 @@ const SearchBar = ({ mentors, setHasSearch, setSearchResults }) => {
           onChange={(event) => setField(event.target.value)}
         >
           <MenuItem value="name">Name</MenuItem>
-          <MenuItem value="school">School</MenuItem>
-          <MenuItem value="organisation">Organisation</MenuItem>
-          <MenuItem value="courseOfStudy">Course</MenuItem>
           <MenuItem value="role">Role</MenuItem>
+          <MenuItem value="industry">Industry</MenuItem>
+          <MenuItem value="organisation">Organisation</MenuItem>
+          <MenuItem value="school">School</MenuItem>
+          <MenuItem value="courseOfStudy">Course</MenuItem>
         </Select>
       </FormControl>
     </form>
