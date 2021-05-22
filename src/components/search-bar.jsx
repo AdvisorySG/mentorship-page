@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import lunr from "lunr";
 import { makeStyles } from "@material-ui/core/styles";
@@ -17,11 +17,11 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
   },
 }));
-const SearchBar = ({ value, mentors, setSearchValue, setSearchResults }) => {
+const SearchBar = ({ mentors, setHasSearch, setSearchResults }) => {
   const [field, setField] = useState("name");
   const classes = useStyles();
   const documents = Object.values(mentors);
-  var searchIndex = lunr(function () {
+  const searchIndex = lunr(function () {
     this.ref("name");
     this.field("name");
     this.field("school");
@@ -32,22 +32,29 @@ const SearchBar = ({ value, mentors, setSearchValue, setSearchResults }) => {
     documents.forEach((doc) => this.add(doc), this);
   });
 
+  const [searchValue, setSearchValue] = useState("");
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      if (searchValue.trim().length === 0) {
+        setHasSearch(false);
+        return;
+      }
+
+      const results = searchIndex
+        .search(field + ":" + searchValue)
+        .map((item) => item.ref.replace(/\W/g, ""));
+      setHasSearch(true);
+      setSearchResults(results);
+    }, 200);
+    return () => clearTimeout(delayDebounceFn);
+  }, [field, searchIndex, searchValue, setHasSearch, setSearchResults]);
+
   return (
     <form noValidate autoComplete="off" className="search-bar">
       <TextField
         id="standard-search"
-        label={"Search mentors by..."}
-        value={value}
-        onChange={(newValue) => {
-          setSearchValue(newValue.target.value);
-
-          if (newValue.target.value.trim().length > 0) {
-            var results = searchIndex
-              .search(field + ":" + newValue.target.value)
-              .map((item) => item.ref.replace(/\W/g, ""));
-            setSearchResults(results);
-          }
-        }}
+        label="Search mentors by..."
+        onChange={(newValue) => setSearchValue(newValue.target.value)}
       />
       <FormControl className={classes.formControl}>
         <Select

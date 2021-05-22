@@ -63,12 +63,12 @@ function App() {
       window.removeEventListener("hashchange", ensureModalFromHash, false);
   }, [isModalOpen, activeMentorId, mentors]);
 
-  const [searchValue, setSearchValue] = useState("");
+  const [hasSearch, setHasSearch] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
 
   const visibleMentorIds = useMemo(
-    () => (searchValue.trim().length === 0 ? mentorIds : searchResults),
-    [searchValue, searchResults, mentorIds]
+    () => (hasSearch ? searchResults : mentorIds),
+    [hasSearch, searchResults, mentorIds]
   );
 
   return (
@@ -76,9 +76,8 @@ function App() {
       <Header />
 
       <SearchBar
-        value={searchValue}
         mentors={mentors}
-        setSearchValue={setSearchValue}
+        setHasSearch={setHasSearch}
         setSearchResults={setSearchResults}
       />
 
