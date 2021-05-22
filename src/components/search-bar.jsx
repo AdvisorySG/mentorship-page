@@ -38,7 +38,7 @@ const SearchBar = ({ value, mentors, setSearchValue, setSearchResults }) => {
     <form noValidate autoComplete="off" className="search-bar">
       <TextField
         id="standard-search"
-        label={`Search mentors by...`}
+        label={"Search mentors by..."}
         value={value}
         onChange={async (newValue) => {
           await setSearchValue(newValue.target.value);
