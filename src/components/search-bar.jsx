@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 const SearchBar = ({ value, mentors, setSearchValue, setSearchResults }) => {
   const [field, setField] = useState("name");
   const classes = useStyles();
-  let documents = Object.values(mentors);
+  const documents = Object.values(mentors);
   var searchIndex = lunr(function () {
     this.ref("name");
     this.field("name");
@@ -29,9 +29,7 @@ const SearchBar = ({ value, mentors, setSearchValue, setSearchResults }) => {
     this.field("courseOfStudy");
     this.field("role");
 
-    documents.forEach((doc) => {
-      this.add(doc);
-    }, this);
+    documents.forEach((doc) => this.add(doc), this);
   });
 
   return (
@@ -40,14 +38,14 @@ const SearchBar = ({ value, mentors, setSearchValue, setSearchResults }) => {
         id="standard-search"
         label={"Search mentors by..."}
         value={value}
-        onChange={async (newValue) => {
-          await setSearchValue(newValue.target.value);
+        onChange={(newValue) => {
+          setSearchValue(newValue.target.value);
 
           if (newValue.target.value.trim().length > 0) {
             var results = searchIndex
               .search(field + ":" + newValue.target.value)
               .map((item) => item.ref.replace(/\W/g, ""));
-            await setSearchResults(results);
+            setSearchResults(results);
           }
         }}
       />
