@@ -6,7 +6,6 @@ import ProfileModal from "./components/profile-modal";
 import SearchBar from "./components/search-bar";
 import { fetchMentors } from "./mentors";
 
-import "react-tabs/style/react-tabs.css";
 import "./App.css";
 
 const setHash = (hash) => window.history.replaceState({}, "", `#${hash}`);
