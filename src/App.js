@@ -81,18 +81,23 @@ function App() {
         setSearchResults={setSearchResults}
       />
 
-      <div className="card-container">
-        {hasMentorsFetched ? (
-          visibleMentorIds.map((mentorId) => (
-            <ProfileCard
-              key={mentorId}
-              mentor={mentors[mentorId]}
-              onReadMore={() => activateModal(mentorId)}
-            />
-          ))
-        ) : (
-          <p>Loading...</p>
-        )}
+      <div className="canvas">
+        <p className="results-text">
+          Displaying {visibleMentorIds.length} search result(s).
+        </p>
+        <div className="card-container">
+          {hasMentorsFetched ? (
+            visibleMentorIds.map((mentorId) => (
+              <ProfileCard
+                key={mentorId}
+                mentor={mentors[mentorId]}
+                onReadMore={() => activateModal(mentorId)}
+              />
+            ))
+          ) : (
+            <p>Loading...</p>
+          )}
+        </div>
       </div>
 
       <ProfileModal
