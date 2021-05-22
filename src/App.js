@@ -23,8 +23,11 @@ function App() {
 
   const [hasMentorsFetched, setHasMentorsFetched] = useState(false);
   useEffect(() => {
-    fetchMentors(setMentors, setMentorIds);
-    setHasMentorsFetched(true);
+    async function fetchData() {
+      await fetchMentors(setMentors, setMentorIds);
+      setHasMentorsFetched(true);
+    }
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -75,29 +78,30 @@ function App() {
     <div className="container">
       <Header />
 
-      <SearchBar
-        mentors={mentors}
-        setHasSearch={setHasSearch}
-        setSearchResults={setSearchResults}
-      />
-
       <div className="canvas">
-        <p className="results-text">
-          Displaying {visibleMentorIds.length} search result(s).
-        </p>
-        <div className="card-container">
-          {hasMentorsFetched ? (
-            visibleMentorIds.map((mentorId) => (
-              <ProfileCard
-                key={mentorId}
-                mentor={mentors[mentorId]}
-                onReadMore={() => activateModal(mentorId)}
-              />
-            ))
-          ) : (
-            <p>Loading...</p>
-          )}
-        </div>
+        {hasMentorsFetched ? (
+          <div>
+            <SearchBar
+              mentors={mentors}
+              setHasSearch={setHasSearch}
+              setSearchResults={setSearchResults}
+            />
+            <p className="results-text">
+              Displaying {visibleMentorIds.length} search result(s).
+            </p>
+            <div className="card-container">
+              {visibleMentorIds.map((mentorId) => (
+                <ProfileCard
+                  key={mentorId}
+                  mentor={mentors[mentorId]}
+                  onReadMore={() => activateModal(mentorId)}
+                />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <p className="placeholder-text">Loading...</p>
+        )}
       </div>
 
       <ProfileModal
