@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo, useState } from "react";
 
 import lunr from "lunr";
 import { makeStyles } from "@material-ui/core/styles";
@@ -37,7 +37,7 @@ const SearchBar = ({ mentors, setHasSearch, setSearchResults }) => {
   });
 
   const [searchValue, setSearchValue] = useState("");
-  useEffect(() => {
+  useMemo(() => {
     const delayDebounceFn = setTimeout(() => {
       if (searchValue.trim().length === 0) {
         setHasSearch(false);
@@ -46,7 +46,6 @@ const SearchBar = ({ mentors, setHasSearch, setSearchResults }) => {
 
       const words = searchValue.trim().split(/\s+/);
       const query = words.map((word) => field + ":" + word).join(" ");
-      console.log(query);
       const results = searchIndex
         .search(query)
         .map((item) => item.ref.replace(/\W/g, ""));
