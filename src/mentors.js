@@ -15,7 +15,7 @@ export const fetchMentors = async (setMentors, setMentorIds) => {
       Biography: fullBio,
       "Job Title": role,
       "Industry 1": industry,
-      Organisation: organization,
+      Organisation: organisation,
       School: school,
       "Course of Study": courseOfStudy,
     }) => {
@@ -33,7 +33,7 @@ export const fetchMentors = async (setMentors, setMentorIds) => {
         fullImageUrl,
         industry,
         name,
-        organization,
+        organisation,
         role,
         school,
         thumbnailImageUrl,
