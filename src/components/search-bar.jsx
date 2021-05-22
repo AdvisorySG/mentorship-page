@@ -5,7 +5,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 
 import "./search-bar.css";
@@ -26,7 +25,7 @@ const SearchBar = ({ value, mentors, setSearchValue, setSearchResults }) => {
     this.ref("name");
     this.field("name");
     this.field("school");
-    this.field("organization");
+    this.field("organisation");
     this.field("courseOfStudy");
     this.field("role");
 
@@ -61,7 +60,7 @@ const SearchBar = ({ value, mentors, setSearchValue, setSearchResults }) => {
         >
           <MenuItem value="name">Name</MenuItem>
           <MenuItem value="school">School</MenuItem>
-          <MenuItem value="organization">Organization</MenuItem>
+          <MenuItem value="organisation">Organisation</MenuItem>
           <MenuItem value="courseOfStudy">Course</MenuItem>
           <MenuItem value="role">Role</MenuItem>
         </Select>
