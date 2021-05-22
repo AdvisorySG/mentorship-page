@@ -47,9 +47,14 @@ const ProfileModal = ({ isOpen, mentor, onClose }) => {
             <div className="modal-metadata">
               <strong>Role:</strong> {mentor.role}
             </div>
-            {mentor.organization && (
+            {mentor.industry && (
               <div className="modal-metadata">
-                <strong>Organization:</strong> {mentor.organization}
+                <strong>Industry:</strong> {mentor.industry}
+              </div>
+            )}
+            {mentor.organisation && (
+              <div className="modal-metadata">
+                <strong>Organisation:</strong> {mentor.organisation}
               </div>
             )}
             {mentor.school && (

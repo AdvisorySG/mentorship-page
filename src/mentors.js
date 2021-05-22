@@ -10,13 +10,14 @@ export const fetchMentors = async (setMentors, setMentorIds) => {
 
   mentorsData.forEach(
     ({
-      Biography: fullBio,
       Photo: images,
-      Organisation: organization,
+      Name: name,
+      Biography: fullBio,
+      "Job Title": role,
+      "Industry 1": industry,
+      Organisation: organisation,
       School: school,
       "Course of Study": courseOfStudy,
-      Name: name,
-      "Job Title": role,
     }) => {
       var fullImageUrl, thumbnailImageUrl;
 
@@ -30,8 +31,9 @@ export const fetchMentors = async (setMentors, setMentorIds) => {
         courseOfStudy,
         fullBio,
         fullImageUrl,
+        industry,
         name,
-        organization,
+        organisation,
         role,
         school,
         thumbnailImageUrl,
