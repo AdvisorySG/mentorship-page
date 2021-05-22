@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import lunr from "lunr";
 import { makeStyles } from "@material-ui/core/styles";
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SearchBar = ({ value, mentors, setSearchValue, setSearchResults }) => {
-  const [field, setField] = useState("Name");
+  const [field, setField] = useState("name");
   const classes = useStyles();
 
   let documents = Object.values(mentors);
@@ -43,7 +43,7 @@ const SearchBar = ({ value, mentors, setSearchValue, setSearchResults }) => {
     <form noValidate autoComplete="off" className="search-bar">
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-simple-select-label">
-          Filter by Category
+          Search by Category
         </InputLabel>
         <Select
           labelId="demo-simple-select-label"
@@ -51,11 +51,11 @@ const SearchBar = ({ value, mentors, setSearchValue, setSearchResults }) => {
           value={field}
           onChange={(event) => setField(event.target.value)}
         >
-          <MenuItem value="Name">Name</MenuItem>
-          <MenuItem value="School">School</MenuItem>
-          <MenuItem value="Organization">Organization</MenuItem>
-          <MenuItem value="Course of Study">Course of Study</MenuItem>
-          <MenuItem value="Role">Role</MenuItem>
+          <MenuItem value="name">Name</MenuItem>
+          <MenuItem value="school">School</MenuItem>
+          <MenuItem value="organization">Organization</MenuItem>
+          <MenuItem value="courseOfStudy">Course of Study</MenuItem>
+          <MenuItem value="role">Role</MenuItem>
         </Select>
       </FormControl>
       <TextField
@@ -64,14 +64,13 @@ const SearchBar = ({ value, mentors, setSearchValue, setSearchResults }) => {
         value={value}
         onChange={async (newValue) => {
           await setSearchValue(newValue.target.value);
-          const results = searchIndex
-            .search(value)
-            .map((item) => item.ref.replace(/\W/g, ""));
-          console.log("results");
-          console.log(value);
-          console.log(results);
-          console.log("end");
-          setSearchResults(results);
+
+          if (newValue.target.value.trim().length > 0) {
+            var results = searchIndex
+              .search(field + ":" + newValue.target.value)
+              .map((item) => item.ref.replace(/\W/g, ""));
+            await setSearchResults(results);
+          }
         }}
       />
     </form>
