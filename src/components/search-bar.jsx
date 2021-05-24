@@ -20,20 +20,24 @@ const useStyles = makeStyles((theme) => ({
 const SearchBar = ({ mentors, setHasSearch, setSearchResults }) => {
   const [field, setField] = useState("name");
   const classes = useStyles();
-  const documents = Object.values(mentors);
-  const searchIndex = lunr(function () {
-    this.ref("name");
-    this.field("name");
-    this.field("role");
-    this.field("organisation");
-    this.field("school");
-    this.field("courseOfStudy");
+  const documents = useMemo(() => Object.values(mentors), [mentors]);
+  const searchIndex = useMemo(
+    () =>
+      lunr(function () {
+        this.ref("name");
+        this.field("name");
+        this.field("role");
+        this.field("organisation");
+        this.field("school");
+        this.field("courseOfStudy");
 
-    this.b(0.2);
-    this.k1(1.1);
+        this.b(0.2);
+        this.k1(1.1);
 
-    documents.forEach((doc) => this.add(doc), this);
-  });
+        documents.forEach((doc) => this.add(doc), this);
+      }),
+    [documents]
+  );
 
   const [searchValue, setSearchValue] = useState("");
   useMemo(() => {
