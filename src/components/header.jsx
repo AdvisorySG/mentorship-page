@@ -1,7 +1,11 @@
 import React from "react";
 import { IoIosArrowBack } from "react-icons/io";
 
-import { advisoryLogo, advisoryMentorshipLogo } from "../assets";
+import {
+  advisoryLogo,
+  advisoryMentorshipLogo,
+  advisoryMentorshipPartners,
+} from "../assets";
 
 import "./header.css";
 
@@ -23,6 +27,11 @@ const Header = () => (
         className="header-mentorship-logo"
         src={advisoryMentorshipLogo}
         alt="Advisory Mentorship Programme"
+      />
+      <img
+        className="header-mentorship-logo"
+        src={advisoryMentorshipPartners}
+        alt="Advisory Mentorship Programme Partners"
       />
       <div className="header-mentorship-intro">
         <p>
