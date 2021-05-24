@@ -3,10 +3,24 @@
   background-color: white;
 }
 
+.canvas {
+  max-width: 1056px;
+  min-height: 200px;
+  margin: auto;
+}
+
+.results-text {
+  font-style: italic;
+  text-align: center;
+}
+
+.placeholder-text {
+  font-style: italic;
+  text-align: center;
+}
+
 .card-container {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  max-width: 1152px;
-  margin: auto;
 }

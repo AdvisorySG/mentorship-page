@@ -1,110 +1,82 @@
-import Autosuggest from "react-autosuggest";
-import Fuse from "fuse.js";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
-import { mentors } from "../mentors";
+import lunr from "lunr";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Select from "@material-ui/core/Select";
+import FormControl from "@material-ui/core/FormControl";
+import MenuItem from "@material-ui/core/MenuItem";
 
 import "./search-bar.css";
 
-// const fields = [
-//   { field: "name", name: "Name" },
-//   { field: "role", name: "Role" },
-//   { field: "organization", name: "Organization" },
-//   { field: "school", name: "School" },
-//   { field: "courseOfStudy", name: "Course of Study" },
-// ];
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    minWidth: 150,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
+const SearchBar = ({ mentors, setHasSearch, setSearchResults }) => {
+  const [field, setField] = useState("name");
+  const classes = useStyles();
+  const documents = Object.values(mentors);
+  const searchIndex = lunr(function () {
+    this.ref("name");
+    this.field("name");
+    this.field("role");
+    this.field("organisation");
+    this.field("school");
+    this.field("courseOfStudy");
 
-// const createFuse = (field, waveIndex) =>
-//   new Fuse(
-//     [
-//       ...new Set(
-//         mentorIds[waveIndex].map((mentorId) => mentors[mentorId][field])
-//       ),
-//     ]
-//       .filter((value) => value.length > 0)
-//       .map((value) => ({
-//         name: value,
-//         query: { field, value },
-//       })),
-//     {
-//       threshold: 0.2,
-//       distance: 400,
-//       keys: ["name"],
-//     }
-//   );
+    this.b(0.2);
+    this.k1(1.1);
 
-// // Create an array of fuse objects for each separate wave.
-// const fuses = waves.map((_, waveIndex) =>
-//   Object.fromEntries(
-//     fields.map(({ field }) => [field, createFuse(field, waveIndex)])
-//   )
-// );
+    documents.forEach((doc) => this.add(doc), this);
+  });
 
-// const getSuggestions = (value, waveIndex) => {
-//   const processedInput = value.trim();
-//   const sections = fields
-//     .map(({ name, field }) => {
-//       const searchResults = fuses[waveIndex][field].search(processedInput);
-//       return {
-//         title: name,
-//         fields: searchResults.map(({ item }) => item),
-//       };
-//     })
-//     .filter((section) => section.fields.length > 0);
+  const [searchValue, setSearchValue] = useState("");
+  useMemo(() => {
+    const delayDebounceFn = setTimeout(() => {
+      if (searchValue.trim().length === 0) {
+        setHasSearch(false);
+        return;
+      }
 
-//   const maxResults = 10;
-//   const computeResultsPerSection = (maxResultsPerSection) =>
-//     sections
-//       .map(({ fields }) => Math.min(fields.length, maxResultsPerSection))
-//       .reduce((sum, x) => sum + x, 0);
+      const words = searchValue.trim().split(/\s+/);
+      const query = words.map((word) => field + ":" + word).join(" ");
+      const results = searchIndex
+        .search(query)
+        .map((item) => item.ref.replace(/\W/g, ""));
+      setHasSearch(true);
+      setSearchResults(results);
+    }, 200);
+    return () => clearTimeout(delayDebounceFn);
+  }, [field, searchIndex, searchValue, setHasSearch, setSearchResults]);
 
-//   for (let i = maxResults; i > 0; i--) {
-//     if (computeResultsPerSection(i) <= maxResults) {
-//       return sections.map(({ title, fields }) => ({
-//         title,
-//         fields: fields.slice(0, i),
-//       }));
-//     }
-//   }
-//   return [];
-// };
-// const getSectionSuggestions = (section) => section.fields;
-// const getSuggestionValue = (suggestion) => suggestion.name;
-// const renderSectionTitle = (section) => <strong>{section.title}</strong>;
-// const renderSuggestion = (suggestion) => <span>{suggestion.name}</span>;
+  return (
+    <form noValidate autoComplete="off" className="search-bar">
+      <TextField
+        id="standard-search"
+        label="Search mentors by..."
+        onChange={(newValue) => setSearchValue(newValue.target.value)}
+      />
+      <FormControl className={classes.formControl}>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={field}
+          onChange={(event) => setField(event.target.value)}
+        >
+          <MenuItem value="name">Name</MenuItem>
+          <MenuItem value="role">Role</MenuItem>
+          <MenuItem value="organisation">Organisation</MenuItem>
+          <MenuItem value="school">School</MenuItem>
+          <MenuItem value="courseOfStudy">Course</MenuItem>
+        </Select>
+      </FormControl>
+    </form>
+  );
+};
 
-// function SearchBar({ value, waveIndex, onSearchChange, onSearchSelect }) {
-//   const [suggestions, setSuggestions] = useState([]);
-
-//   const onChange = (event, { newValue }) => {
-//     onSearchChange(newValue);
-//   };
-//   const onSuggestionSelected = (event, { suggestion }) =>
-//     onSearchSelect(suggestion.query);
-//   const onSuggestionsClearRequested = () => setSuggestions([]);
-//   const onSuggestionsFetchRequested = ({ value }) =>
-//     setSuggestions(getSuggestions(value, waveIndex));
-
-//   return (
-//     <div className="search-bar">
-//       <Autosuggest
-//         multiSection={true}
-//         getSectionSuggestions={getSectionSuggestions}
-//         getSuggestionValue={getSuggestionValue}
-//         onSuggestionSelected={onSuggestionSelected}
-//         onSuggestionsClearRequested={onSuggestionsClearRequested}
-//         onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-//         renderSuggestion={renderSuggestion}
-//         renderSectionTitle={renderSectionTitle}
-//         suggestions={suggestions}
-//         inputProps={{
-//           onChange,
-//           placeholder: 'Search for mentors...',
-//           value,
-//         }}
-//       />
-//     </div>
-//   );
-// }
-
-// export default SearchBar;
+export default SearchBar;

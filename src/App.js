@@ -3,12 +3,9 @@ import React, { useEffect, useMemo, useState } from "react";
 import Header from "./components/header";
 import ProfileCard from "./components/profile-card";
 import ProfileModal from "./components/profile-modal";
-// import SearchBar from "./components/search-bar";
+import SearchBar from "./components/search-bar";
 import { fetchMentors } from "./mentors";
 
-import { fieldSearch } from "./search";
-
-import "react-tabs/style/react-tabs.css";
 import "./App.css";
 
 const setHash = (hash) => window.history.replaceState({}, "", `#${hash}`);
@@ -26,8 +23,11 @@ function App() {
 
   const [hasMentorsFetched, setHasMentorsFetched] = useState(false);
   useEffect(() => {
-    fetchMentors(setMentors, setMentorIds);
-    setHasMentorsFetched(true);
+    async function fetchData() {
+      await fetchMentors(setMentors, setMentorIds);
+      setHasMentorsFetched(true);
+    }
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -66,37 +66,41 @@ function App() {
       window.removeEventListener("hashchange", ensureModalFromHash, false);
   }, [isModalOpen, activeMentorId, mentors]);
 
-  const [searchValue] = useState("");
-  const [searchQuery] = useState({});
+  const [hasSearch, setHasSearch] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
 
   const visibleMentorIds = useMemo(
-    () =>
-      searchValue.trim().length === 0 ? mentorIds : fieldSearch(searchQuery),
-    [searchQuery, searchValue, mentorIds]
+    () => (hasSearch ? searchResults : mentorIds),
+    [hasSearch, searchResults, mentorIds]
   );
 
   return (
     <div className="container">
       <Header />
 
-      {/* <SearchBar
-        value={searchValue}
-        waveIndex={waveIndex}
-        onSearchChange={setSearchValue}
-        onSearchSelect={setSearchQuery}
-      /> */}
-
-      <div className="card-container">
+      <div className="canvas">
         {hasMentorsFetched ? (
-          visibleMentorIds.map((mentorId) => (
-            <ProfileCard
-              key={mentorId}
-              mentor={mentors[mentorId]}
-              onReadMore={() => activateModal(mentorId)}
+          <div>
+            <SearchBar
+              mentors={mentors}
+              setHasSearch={setHasSearch}
+              setSearchResults={setSearchResults}
             />
-          ))
+            <p className="results-text">
+              Displaying {visibleMentorIds.length} search result(s).
+            </p>
+            <div className="card-container">
+              {visibleMentorIds.map((mentorId) => (
+                <ProfileCard
+                  key={mentorId}
+                  mentor={mentors[mentorId]}
+                  onReadMore={() => activateModal(mentorId)}
+                />
+              ))}
+            </div>
+          </div>
         ) : (
-          <p>Loading...</p>
+          <p className="placeholder-text">Loading...</p>
         )}
       </div>
 
