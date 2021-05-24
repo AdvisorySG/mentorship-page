@@ -25,7 +25,6 @@ const SearchBar = ({ mentors, setHasSearch, setSearchResults }) => {
     this.ref("name");
     this.field("name");
     this.field("role");
-    this.field("industry");
     this.field("organisation");
     this.field("school");
     this.field("courseOfStudy");
@@ -71,7 +70,6 @@ const SearchBar = ({ mentors, setHasSearch, setSearchResults }) => {
         >
           <MenuItem value="name">Name</MenuItem>
           <MenuItem value="role">Role</MenuItem>
-          <MenuItem value="industry">Industry</MenuItem>
           <MenuItem value="organisation">Organisation</MenuItem>
           <MenuItem value="school">School</MenuItem>
           <MenuItem value="courseOfStudy">Course</MenuItem>
