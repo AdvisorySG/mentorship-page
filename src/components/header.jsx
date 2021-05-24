@@ -26,38 +26,14 @@ const Header = () => (
       />
       <div className="header-mentorship-intro">
         <p>
-          With the closure of applications for the final wave of The Mentorship
-          Programme: Online, we would like to take the opportunity to thank all
-          industry mentors and mentees for their immense support for this
-          initiative.
-        </p>
-        <p>
-          As the first public run of the Mentorship Programme, we garnered a
-          total of 1942 mentee applications vying for mentorship opportunities
-          with 560 industry mentors across all three waves. The large wave of
-          applications is testament to the urgent importance of career guidance
-          in this era of COVID-19 which has brought about numerous disruptions,
-          and we are glad to have been able to support students through this
-          difficult time.
-        </p>
-        <p>
-          Moving forward, we are happy to announce that the next cycle of the
-          Mentorship Programme will be commencing in 2021! You may keep a
-          lookout on our website or social media channels for regular updates on
-          Advisory events and in the meantime, we highly encourage you to
-          consider joining us for various other career guidance opportunities
-          that we offer, such as the Discover+ Series panel discussions that are
-          open to all to apply!
-        </p>
-        <p>
-          <small>
-            All Mentors have the rights to privacy and non-harassment that must
-            be respected. You are hereby informed not to misrepresent your
-            relationship or affiliation with Advisory in any way and on any
-            platform, if and when you communicate with any mentors. Failing
-            which you accept that you have been informed and therefore
-            understand that legal action may be taken against you.
-          </small>
+          The Advisory Mentorship Programme pairs students with working
+          professionals in their fields of interest on a 1-1 basis. Over the
+          course of four months, from June to September 2021, mentors give an
+          hour each month to meet with their mentee. In its first run in 2020,
+          the programme delivered over 2,000 hours of mentorship to 694 students
+          with the involvement of over 562 mentors. This year, we are delighted
+          to have more than 800 mentors, whose fields of expertise range across
+          48 different industries.
         </p>
         <p>
           Click{" "}
