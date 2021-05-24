@@ -31,6 +31,9 @@ a:hover {
     right: 15%;
     margin: auto;
   }
+  .header-mentorship-logo {
+    width: 80%;
+  }
 }
 @media only screen and (min-width: 601px) {
   .nav-logo {
@@ -59,6 +62,11 @@ a:hover {
 }
 .header-mentorship-logo {
   width: 60%;
+}
+@media only screen and (max-width: 600px) {
+  .header-mentorship-logo {
+    width: 80%;
+  }
 }
 .header-mentorship-intro {
   width: 80%;
