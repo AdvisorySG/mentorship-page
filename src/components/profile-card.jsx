@@ -13,15 +13,13 @@ const ReadMore = ({ onReadMore }) => (
 );
 
 const ProfileCard = ({ mentor, onReadMore }) => (
-  <div className="card">
+  <LazyLoad className="card" height={160} offset={800} once>
     <div className="card-image-region">
-      <LazyLoad height={160} offset={480} once>
-        <img
-          className="card-image"
-          src={process.env.PUBLIC_URL + mentor.thumbnailImageUrl}
-          alt={mentor.name}
-        />
-      </LazyLoad>
+      <img
+        className="card-image"
+        src={process.env.PUBLIC_URL + mentor.thumbnailImageUrl}
+        alt={mentor.name}
+      />
     </div>
     {mentor.industry && (
       <Chip
@@ -39,7 +37,7 @@ const ProfileCard = ({ mentor, onReadMore }) => (
       )}
     </div>
     <ReadMore onReadMore={onReadMore} />
-  </div>
+  </LazyLoad>
 );
 
 export default ProfileCard;
