@@ -15,6 +15,10 @@
   text-align: center;
 }
 
+.results {
+  min-height: 100vh;
+}
+
 .results-text {
   font-style: italic;
   text-align: center;

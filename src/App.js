@@ -90,7 +90,7 @@ function App() {
           </small>
         </p>
         {hasMentorsFetched ? (
-          <div>
+          <div className="results">
             <SearchBar
               mentors={mentors}
               setHasSearch={setHasSearch}
