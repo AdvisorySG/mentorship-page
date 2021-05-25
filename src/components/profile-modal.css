@@ -75,6 +75,9 @@
   width: 80%;
   margin: 10px auto;
 }
+.modal-metadata {
+  text-align: left;
+}
 .modal-bio {
   width: 80%;
   margin: 20px auto;
