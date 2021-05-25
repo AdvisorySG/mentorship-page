@@ -81,12 +81,15 @@ function App() {
       <div className="canvas">
         <p className="disclaimer">
           <small>
-            All Mentors have the rights to privacy and non-harassment that must
-            be respected. You are hereby informed not to misrepresent your
-            relationship or affiliation with Advisory in any way and on any
-            platform, if and when you communicate with any mentors. Failing
-            which you accept that you have been informed and therefore
-            understand that legal action may be taken against you.
+            The privacy and safety of our mentors is of utmost priority to
+            Advisory. Any attempt to approach or contact our mentors outside of
+            the parameters of the Advisory Mentorship Programme—whilst claiming
+            affiliation to Advisory, or misrepresenting a relationship to
+            Advisory—will be treated as misrepresentation, even fraudulent
+            misrepresentation, as considered under the Misrepresentation Act.
+            Advisory will take legal action against any individuals or
+            organisations who attempt to deceive, harass, or otherwise request
+            dishonest assistance from our mentors.
           </small>
         </p>
         {hasMentorsFetched ? (
