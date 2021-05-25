@@ -19,7 +19,6 @@
   width: 100%;
   overflow: hidden;
   background-size: cover;
-  margin-bottom: 8px;
 }
 .card-image {
   width: 100%;
@@ -32,12 +31,6 @@
   .card-image {
     height: 120px;
   }
-}
-.card-chip {
-  margin: 4px auto;
-  width: 80%;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 .card-descriptors {
   flex: 1;

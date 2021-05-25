@@ -1,6 +1,5 @@
 import LazyLoad from "react-lazyload";
 import React from "react";
-import Chip from "@material-ui/core/Chip";
 
 import "./profile-card.css";
 
@@ -23,14 +22,6 @@ const ProfileCard = ({ mentor, onReadMore }) => (
         />
       </LazyLoad>
     </div>
-    {mentor.industry && (
-      <Chip
-        className="card-chip"
-        size="small"
-        label={mentor.industry}
-        color="primary"
-      />
-    )}
     <div className="card-descriptors">
       <div className="card-name">{mentor.name}</div>
       {mentor.role && <div className="card-desc">{mentor.role}</div>}
