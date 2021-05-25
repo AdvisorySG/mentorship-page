@@ -12,6 +12,7 @@ import "./search-bar.css";
 const useStyles = makeStyles((theme) => ({
   formControl: {
     minWidth: 150,
+    marginLeft: "10px",
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
