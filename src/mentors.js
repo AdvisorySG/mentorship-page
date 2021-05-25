@@ -8,6 +8,8 @@ export const fetchMentors = async (setMentors, setMentorIds) => {
     .then((response) => response.json())
     .then((data) => data.mentors);
 
+  const mentorIdsMap = new Map();
+
   mentorsData.forEach(
     ({
       Photo: images,
@@ -19,13 +21,21 @@ export const fetchMentors = async (setMentors, setMentorIds) => {
       School: school,
       "Course of Study": courseOfStudy,
     }) => {
-      var fullImageUrl, thumbnailImageUrl;
-
-      fullImageUrl = images ? images[0].url : undefined;
-      thumbnailImageUrl = images ? images[0].thumbnails.large.url : undefined;
+      const fullImageUrl = images ? images[0].url : undefined;
+      const thumbnailImageUrl = images
+        ? images[0].thumbnails.large.url
+        : undefined;
 
       // The regex below serves to omit non-alphanumeric characters from name variable
-      var mentorId = name.replace(/\W/g, "");
+      let mentorId = name.replace(/\W/g, "");
+      let count = mentorIdsMap.get(mentorId);
+      if (count === undefined) {
+        mentorIdsMap.set(mentorId, 1);
+      } else {
+        count++;
+        mentorIdsMap.set(mentorId, count);
+        mentorId = mentorId + count;
+      }
 
       mentors[mentorId] = {
         courseOfStudy,

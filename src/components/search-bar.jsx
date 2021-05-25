@@ -19,12 +19,24 @@ const useStyles = makeStyles((theme) => ({
 }));
 const SearchBar = ({ mentors, setHasSearch, setSearchResults }) => {
   const [field, setField] = useState("name");
+
   const classes = useStyles();
-  const documents = useMemo(() => Object.values(mentors), [mentors]);
+  const documents = useMemo(
+    () =>
+      Object.keys(mentors).map((mentorId) =>
+        Object.assign(
+          {
+            mentorId,
+          },
+          mentors[mentorId]
+        )
+      ),
+    [mentors]
+  );
   const searchIndex = useMemo(
     () =>
       lunr(function () {
-        this.ref("name");
+        this.ref("mentorId");
         this.field("name");
         this.field("role");
         this.field("organisation");
@@ -49,9 +61,7 @@ const SearchBar = ({ mentors, setHasSearch, setSearchResults }) => {
 
       const words = searchValue.trim().split(/\s+/);
       const query = words.map((word) => field + ":" + word).join(" ");
-      const results = searchIndex
-        .search(query)
-        .map((item) => item.ref.replace(/\W/g, ""));
+      const results = searchIndex.search(query).map((item) => item.ref);
       setHasSearch(true);
       setSearchResults(results);
     }, 200);
