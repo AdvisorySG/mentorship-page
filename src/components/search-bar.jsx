@@ -42,8 +42,8 @@ const SearchBar = ({ mentors, setHasSearch, setSearchResults }) => {
         this.field("school");
         this.field("courseOfStudy");
 
-        this.b(0.2);
-        this.k1(1.1);
+        this.b(0);
+        this.k1(0);
 
         documents.forEach((doc) => {
           console.log(doc);
