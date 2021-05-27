@@ -49,7 +49,7 @@ const Header = () => (
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://advisorysg.typeform.com/to/Q5iHzn#source=mentorsite"
+            href="https://advisorysg.typeform.com/to/uYRYBpXk#source=mentorsite"
           >
             here
           </a>{" "}
@@ -76,6 +76,17 @@ const Header = () => (
             here
           </a>{" "}
           to view a sample application response.
+        </p>
+        <p>
+          Click{" "}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://drive.google.com/file/d/19lUr2BchbYFAPMjEbN_M2mf1pyw-n7pj/view?usp=sharing"
+          >
+            here
+          </a>{" "}
+          to view a list of 48 industries to filter mentors by industry.
         </p>
       </div>
     </div>
