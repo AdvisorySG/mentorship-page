@@ -45,10 +45,7 @@ const SearchBar = ({ mentors, setHasSearch, setSearchResults }) => {
         this.b(0);
         this.k1(0);
 
-        documents.forEach((doc) => {
-          console.log(doc);
-          this.add(doc);
-        }, this);
+        documents.forEach((doc) => this.add(doc), this);
       }),
     [documents]
   );
