@@ -113,7 +113,7 @@ function App() {
             </div>
           </div>
         ) : (
-          <p className="placeholder-text">Loading...</p>
+          <p className="placeholder-text">Loading Mentors Available...</p>
         )}
       </div>
 
