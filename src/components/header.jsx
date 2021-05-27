@@ -41,8 +41,8 @@ const Header = () => (
           hour each month to meet with their mentee. In its first run in 2020,
           the programme delivered over 2,000 hours of mentorship to 694 students
           with the involvement of over 562 mentors. This year, we are delighted
-          to have more than 800 mentors, whose fields of expertise range across
-          48 different industries.
+          to have more than 850 mentors, including from 16 mentorship partners,
+          whose fields of expertise range across 48 different industries.
         </p>
         <p>
           Click{" "}
