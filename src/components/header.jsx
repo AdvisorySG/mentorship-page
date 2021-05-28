@@ -37,7 +37,7 @@ const Header = () => (
       />
       <div className="header-mentorship-intro">
         <p>
-          The Advisory Mentorship Programme pairs students with working
+          The <b>Advisory Mentorship Programme</b> pairs students with working
           professionals in their fields of interest on a 1-1 basis. Over the
           course of four months, from June to September 2021, mentors give an
           hour each month to meet with their mentee. In its first run in 2020,
