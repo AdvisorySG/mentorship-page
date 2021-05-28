@@ -9,6 +9,8 @@ import {
 
 import "./header.css";
 
+//cake is good
+
 const NavBar = () => (
   <div className="nav">
     <a className="nav-back-to-main-site" href="https://advisory.sg">
