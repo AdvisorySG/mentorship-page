@@ -87,7 +87,7 @@ const Header = () => (
           >
             here
           </a>{" "}
-          to view a list of 48 industries to filter mentors by industry.
+          to view a list of 48 industries to filter mentors by industry!
         </p>
       </div>
     </div>
