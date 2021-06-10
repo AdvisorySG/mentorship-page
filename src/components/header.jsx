@@ -72,6 +72,17 @@ const Header = () => (
           <a
             target="_blank"
             rel="noopener noreferrer"
+            href="https://docs.google.com/document/d/1mGjAsgTP7KIheWVDm-TZ5Hxxf8WYPfWemiqcZ40XCwo/edit?usp=sharing"
+          >
+            here
+          </a>{" "}
+          to view a list of FAQs for applicants.
+        </p>
+        <p>
+          Click{" "}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
             href="https://drive.google.com/file/d/1aA3l_WQ1ehGO8UBKuRFLqj4URpQbAVzN/view?usp=sharing"
           >
             here
