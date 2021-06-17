@@ -16,15 +16,18 @@ export const fetchMentors = async (setMentors, setMentorIds) => {
       Name: name,
       Biography: fullBio,
       "Job Title": role,
-      "Industry 1": industry,
+      "Industry 1": industry1,
+      "Industry 2": industry2,
+      "Industry 3": industry3,
       Organisation: organisation,
       School: school,
       "Course of Study": courseOfStudy,
     }) => {
-      const fullImageUrl = images ? images[0].url : undefined;
-      const thumbnailImageUrl = images
-        ? images[0].thumbnails.large.url
-        : undefined;
+      const fullImageUrl = images.length > 0 ? images[0].url : undefined;
+      const thumbnailImageUrl =
+        images.length > 0 && images[0].thumbnails
+          ? images[0].thumbnails.large.url
+          : undefined;
 
       // The regex below serves to omit non-alphanumeric characters from name variable
       let mentorId = name.replace(/\W/g, "");
@@ -41,7 +44,7 @@ export const fetchMentors = async (setMentors, setMentorIds) => {
         courseOfStudy,
         fullBio,
         fullImageUrl,
-        industry,
+        industries: [industry1, industry2, industry3].filter(Boolean),
         name,
         organisation,
         role,
