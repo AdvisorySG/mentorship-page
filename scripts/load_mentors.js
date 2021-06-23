@@ -16,7 +16,7 @@ exports.handler = async (event) => {
   await base("4 Tech")
     .select({ sort: [{ field: "First Name", direction: "asc" }] })
     .eachPage((records, fetchNextPage) => {
-      mentors.push(...records.map((record) => record.fields));
+      mentors.push(...records.map(({ id, fields }) => ({ id, ...fields })));
       fetchNextPage();
     });
 
