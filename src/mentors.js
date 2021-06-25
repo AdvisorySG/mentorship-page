@@ -22,11 +22,14 @@ export const fetchMentors = async (setMentors, setMentorIds) => {
       School: school,
       "Course of Study": courseOfStudy,
     }) => {
-      const fullImageUrl = images.length > 0 ? images[0].url : undefined;
+      const fullImageUrl =
+        images.length > 0
+          ? images[0].url
+          : "https://dl.airtable.com/.attachmentThumbnails/3157ebe39c8653ac4e530235a70d83e7/2d3f0493";
       const thumbnailImageUrl =
         images.length > 0 && images[0].thumbnails
           ? images[0].thumbnails.large.url
-          : undefined;
+          : "https://dl.airtable.com/.attachmentThumbnails/3157ebe39c8653ac4e530235a70d83e7/2d3f0493";
 
       mentors[mentorId] = {
         courseOfStudy,
