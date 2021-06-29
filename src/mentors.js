@@ -22,11 +22,12 @@ export const fetchMentors = async (setMentors, setMentorIds) => {
       School: school,
       "Course of Study": courseOfStudy,
     }) => {
-      const fullImageUrl = images.length > 0 ? images[0].url : undefined;
+      const fullImageUrl =
+        images.length > 0 ? images[0].url : "/mentor-thumbnail.png";
       const thumbnailImageUrl =
         images.length > 0 && images[0].thumbnails
           ? images[0].thumbnails.large.url
-          : undefined;
+          : "/mentor-thumbnail.png";
 
       mentors[mentorId] = {
         courseOfStudy,
