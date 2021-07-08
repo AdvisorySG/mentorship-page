@@ -1,4 +1,4 @@
-# mentorship-page ![Build and Deploy Theme](https://github.com/AdvisorySG/mentorship-page/workflows/Build%20and%20Deploy%20Theme/badge.svg)
+# mentorship-page [![Netlify Status](https://api.netlify.com/api/v1/badges/f804919f-a599-456c-8127-496ed860123c/deploy-status)](https://app.netlify.com/sites/tender-meitner-99286b/deploys)
 
 React app for Advisory's Mentorship Network page. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
