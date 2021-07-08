@@ -2,12 +2,6 @@
 
 React app for Advisory's Mentorship Network page. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Setting up Git LFS
-
-If you wish to make changes to assets stored in this repository (such as those
-in `data/profile_images/`, `public/assets` and `public/profile_images`), you
-will need to set up [Git LFS](https://git-lfs.github.com/).
-
 ## Available Scripts
 
 In the project directory, you can run:
