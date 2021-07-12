@@ -4,7 +4,7 @@
   "homepage": "https://mentorship.advisory.sg/",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.11.4",
+    "@material-ui/core": "^4.12.1",
     "body-scroll-lock": "^3.1.5",
     "lunr": "^2.3.9",
     "react": "^17.0.2",
