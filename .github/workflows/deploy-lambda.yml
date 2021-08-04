@@ -1,10 +1,9 @@
 name: Deploy Lambda
 on:
+  pull_request:
   push:
-    branches:
-      - master
 jobs:
-  deploy-lambda:
+  build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -29,8 +28,24 @@ jobs:
       - run: mkdir lambda
       - run: cp scripts/load_mentors.js lambda/index.js
       - run: cp -r node_modules/ lambda/
-      - run: cd lambda && zip -r ../lambda.zip .
 
+      - name: Upload build
+        uses: actions/upload-artifact@v2
+        with:
+          name: mentorship-page-lambda-${{ github.sha }}
+          path: lambda/
+
+  deploy:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: mentorship-page-lambda-${{ github.sha }}
+          path: lambda/
+
+      - run: cd lambda && zip -r ../lambda.zip .
       - name: Deploy lambda
         uses: appleboy/lambda-action@master
         with:
