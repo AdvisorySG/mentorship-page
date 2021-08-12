@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.3",
+    "@material-ui/lab": "^4.0.0-alpha.60",
     "body-scroll-lock": "^3.1.5",
     "lunr": "^2.3.9",
     "react": "^17.0.2",

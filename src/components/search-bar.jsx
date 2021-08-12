@@ -6,6 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 import MenuItem from "@material-ui/core/MenuItem";
+import { Autocomplete } from "@material-ui/lab";
 
 import "./search-bar.css";
 
@@ -18,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
   },
 }));
+
 const SearchBar = ({ mentors, setHasSearch, setSearchResults }) => {
   const [field, setField] = useState("name");
 
@@ -67,13 +69,38 @@ const SearchBar = ({ mentors, setHasSearch, setSearchResults }) => {
     return () => clearTimeout(delayDebounceFn);
   }, [field, searchIndex, searchValue, setHasSearch, setSearchResults]);
 
+  const suggestions = useMemo(
+    () =>
+      [
+        ...new Set(
+          Object.values(mentors).flatMap(({ industries }) => industries)
+        ),
+      ].sort(),
+    [mentors]
+  );
+
   return (
     <form noValidate autoComplete="off" className="search-bar">
-      <TextField
-        id="standard-search"
-        label="Search mentors by..."
-        onChange={(newValue) => setSearchValue(newValue.target.value)}
-      />
+      {field === "industry" ? (
+        <Autocomplete
+          options={suggestions}
+          getOptionLabel={(option) => option}
+          onChange={(newValue) => setSearchValue(newValue.target.textContent)}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Search mentors by..."
+              style={{ width: 170 }}
+            />
+          )}
+        />
+      ) : (
+        <TextField
+          label="Search mentors by..."
+          style={{ width: 170 }}
+          onChange={(newValue) => setSearchValue(newValue.target.value)}
+        />
+      )}
       <FormControl className={classes.formControl}>
         <Select
           labelId="demo-simple-select-label"
