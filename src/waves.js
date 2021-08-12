@@ -32,7 +32,7 @@ export const fetchWaves = async (setWaves, setActiveWaveIndex) => {
           courseOfStudy,
           fullBio,
           fullImageUrl,
-          industries: [industry1, industry2, industry3].filter(Boolean),
+          industries: [industry1, industry2, industry3].filter(Boolean).flat(),
           name,
           organisation,
           role,
