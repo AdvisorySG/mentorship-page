@@ -4,8 +4,8 @@ const AWS = require("aws-sdk"),
   secretName = "airtable_api_key";
 
 exports.handler = async (event) => {
-  const waves = [];
   const waveTables = ["4 Tech", "5 Tech"];
+  const waves = new Array(waveTables.length).fill([]);
 
   const client = new AWS.SecretsManager({ region: region });
   const apiKey = await client
@@ -14,9 +14,9 @@ exports.handler = async (event) => {
     .then((data) => JSON.parse(data.SecretString)["APIKey"]);
   const base = new Airtable({ apiKey }).base("appDfSlmYKDyuAj51");
 
-  waveTables.forEach(
-    (table, i) =>
-      await base(table)
+  await Promise.all(
+    waveTables.map(async (table, i) =>
+      base(table)
         .select({ sort: [{ field: "First Name", direction: "asc" }] })
         .eachPage((records, fetchNextPage) => {
           waves[i].push(
@@ -24,6 +24,7 @@ exports.handler = async (event) => {
           );
           fetchNextPage();
         })
+    )
   );
 
   return JSON.stringify({ waves });
