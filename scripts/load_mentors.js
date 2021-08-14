@@ -4,7 +4,8 @@ const AWS = require("aws-sdk"),
   secretName = "airtable_api_key";
 
 exports.handler = async (event) => {
-  const mentors = [];
+  const waves = [];
+  const waveTables = ["4 Tech", "5 Tech"];
 
   const client = new AWS.SecretsManager({ region: region });
   const apiKey = await client
@@ -13,23 +14,17 @@ exports.handler = async (event) => {
     .then((data) => JSON.parse(data.SecretString)["APIKey"]);
   const base = new Airtable({ apiKey }).base("appDfSlmYKDyuAj51");
 
-  await base("4 Tech")
-    .select({ sort: [{ field: "First Name", direction: "asc" }] })
-    .eachPage((records, fetchNextPage) => {
-      mentors.push({
-        0: [...records.map(({ id, fields }) => ({ id, ...fields }))],
-      });
-      fetchNextPage();
-    });
+  waveTables.forEach(
+    (table, i) =>
+      await base(table)
+        .select({ sort: [{ field: "First Name", direction: "asc" }] })
+        .eachPage((records, fetchNextPage) => {
+          waves[i].push(
+            ...records.map(({ id, fields }) => ({ id, ...fields }))
+          );
+          fetchNextPage();
+        })
+  );
 
-  await base("5 Tech")
-    .select({ sort: [{ field: "First Name", direction: "asc" }] })
-    .eachPage((records, fetchNextPage) => {
-      mentors.push({
-        1: [...records.map(({ id, fields }) => ({ id, ...fields }))],
-      });
-      fetchNextPage();
-    });
-
-  return JSON.stringify({ mentors });
+  return JSON.stringify({ waves });
 };
