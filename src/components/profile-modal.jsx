@@ -42,7 +42,7 @@ const ProfileModal = ({ isOpen, mentor, onClose }) => {
             src={process.env.PUBLIC_URL + mentor.fullImageUrl}
             alt={mentor.name}
           />
-          <div class="modal-metadata-container">
+          <div className="modal-metadata-container">
             <h2>{mentor.name}</h2>
             <div className="modal-metadata">
               <strong>Role:</strong> {mentor.role}

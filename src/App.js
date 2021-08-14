@@ -1,31 +1,37 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { Tab, Tabs, TabList } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 
 import Header from "./components/header";
 import ProfileCard from "./components/profile-card";
 import ProfileModal from "./components/profile-modal";
 import SearchBar from "./components/search-bar";
-import { fetchMentors } from "./mentors";
+import { fetchWaves } from "./waves";
 
 import "./App.css";
 
 const setHash = (hash) => window.history.replaceState({}, "", `#${hash}`);
 
 function App() {
-  const [mentors, setMentors] = useState([]);
-  const [mentorIds, setMentorIds] = useState([]);
+  const [activeWaveIndex, setActiveWaveIndex] = useState(0);
+  const [waves, setWaves] = useState([{}]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const convertIndex = (index) => waves.length - 1 - index;
+  const activateTab = (tabIndex) => setActiveWaveIndex(convertIndex(tabIndex));
+
   const [activeMentorId, setActiveMentorId] = useState("");
-  const activateModal = (mentorId) => {
+  const activateModal = (waveIndex, mentorId) => {
+    setActiveWaveIndex(waveIndex);
     setActiveMentorId(mentorId);
     setIsModalOpen(true);
   };
 
-  const [hasMentorsFetched, setHasMentorsFetched] = useState(false);
+  const [hasWavesFetched, setHasWavesFetched] = useState(false);
   useEffect(() => {
     async function fetchData() {
-      await fetchMentors(setMentors, setMentorIds);
-      setHasMentorsFetched(true);
+      await fetchWaves(setWaves, setActiveWaveIndex);
+      setHasWavesFetched(true);
     }
     fetchData();
   }, []);
@@ -34,11 +40,16 @@ function App() {
     // Checks hash and ensures that any modal with a corresponding name is open.
     const ensureModalFromHash = () => {
       const mentorId = window.location.hash.slice(1);
-      if (mentors.hasOwnProperty(mentorId)) {
-        if (!isModalOpen || mentorId !== activeMentorId) {
-          activateModal(mentorId);
-          return true;
-        }
+      const matchingWaves = waves
+        .map((wave, waveIndex) => [wave, waveIndex])
+        .filter(([wave]) => wave.hasOwnProperty(mentorId));
+      if (
+        matchingWaves.length > 0 &&
+        (!isModalOpen || mentorId !== activeMentorId)
+      ) {
+        const [, waveIndex] = matchingWaves[0];
+        activateModal(waveIndex, mentorId);
+        return true;
       }
     };
 
@@ -64,14 +75,14 @@ function App() {
     window.addEventListener("hashchange", ensureModalFromHash, false);
     return () =>
       window.removeEventListener("hashchange", ensureModalFromHash, false);
-  }, [isModalOpen, activeMentorId, mentors]);
+  }, [isModalOpen, activeMentorId, waves]);
 
   const [hasSearch, setHasSearch] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
 
   const visibleMentorIds = useMemo(
-    () => (hasSearch ? searchResults : mentorIds),
-    [hasSearch, searchResults, mentorIds]
+    () => (hasSearch ? searchResults : Object.keys(waves[activeWaveIndex])),
+    [hasSearch, searchResults, waves, activeWaveIndex]
   );
 
   return (
@@ -92,36 +103,54 @@ function App() {
             dishonest assistance from our mentors.
           </small>
         </p>
-        {hasMentorsFetched ? (
+        {hasWavesFetched ? (
           <div className="results">
             <SearchBar
-              mentors={mentors}
+              mentors={waves[activeWaveIndex]}
               setHasSearch={setHasSearch}
               setSearchResults={setSearchResults}
             />
-            <p className="results-text">
-              Displaying {visibleMentorIds.length} search result(s).
-            </p>
-            <div className="card-container">
-              {visibleMentorIds.map((mentorId) => (
-                <ProfileCard
-                  key={mentorId}
-                  mentor={mentors[mentorId]}
-                  onReadMore={() => activateModal(mentorId)}
-                />
-              ))}
-            </div>
+            <Tabs
+              className="tabs-container"
+              selectedIndex={convertIndex(activeWaveIndex)}
+              onSelect={activateTab}
+            >
+              <TabList>
+                {waves
+                  .map((wave, waveIndex) => [wave, waveIndex])
+                  .reverse()
+                  .map(([, waveIndex]) => (
+                    <Tab key={waveIndex}>Wave {waveIndex + 1}</Tab>
+                  ))}
+              </TabList>
+
+              <p className="results-text">
+                Displaying {visibleMentorIds.length} search result(s).
+              </p>
+
+              <div className="card-container">
+                {visibleMentorIds.map((mentorId) => (
+                  <ProfileCard
+                    key={mentorId}
+                    mentor={waves[activeWaveIndex][mentorId]}
+                    onReadMore={() => activateModal(activeWaveIndex, mentorId)}
+                  />
+                ))}
+              </div>
+            </Tabs>
           </div>
         ) : (
           <p className="placeholder-text">Loading Mentors Available...</p>
         )}
       </div>
 
-      <ProfileModal
-        isOpen={isModalOpen}
-        mentor={mentors[activeMentorId]}
-        onClose={() => setIsModalOpen(false)}
-      />
+      {waves.length > 0 && (
+        <ProfileModal
+          isOpen={isModalOpen}
+          mentor={waves[activeWaveIndex][activeMentorId]}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
     </div>
   );
 }

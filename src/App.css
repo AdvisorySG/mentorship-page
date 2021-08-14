@@ -29,6 +29,10 @@
   text-align: center;
 }
 
+.tabs-container {
+  margin: auto;
+}
+
 .card-container {
   display: flex;
   flex-flow: row wrap;
