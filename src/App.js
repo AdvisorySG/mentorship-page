@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 import Header from "./components/header";
 import ProfileCard from "./components/profile-card";
@@ -12,8 +13,13 @@ const setHash = (hash) => window.history.replaceState({}, "", `#${hash}`);
 
 function App() {
   const [mentors, setMentors] = useState([]);
+  const [waveIndex, setWaveIndex] = useState(mentors.length - 1);
   const [mentorIds, setMentorIds] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const convertIndex = (index) => mentors.length - 1 - index;
+
+  const activateTab = (tabIndex) => setWaveIndex(convertIndex(tabIndex));
 
   const [activeMentorId, setActiveMentorId] = useState("");
   const activateModal = (mentorId) => {
@@ -99,18 +105,35 @@ function App() {
               setHasSearch={setHasSearch}
               setSearchResults={setSearchResults}
             />
-            <p className="results-text">
-              Displaying {visibleMentorIds.length} search result(s).
-            </p>
-            <div className="card-container">
-              {visibleMentorIds.map((mentorId) => (
-                <ProfileCard
-                  key={mentorId}
-                  mentor={mentors[mentorId]}
-                  onReadMore={() => activateModal(mentorId)}
-                />
+            <Tabs
+              selectedIndex={convertIndex(waveIndex)}
+              onSelect={activateTab}
+            >
+              <TabList>
+                {mentors
+                  .slice()
+                  .reverse()
+                  .map(({ name }, i) => (
+                    <Tab key={i}>{name}</Tab>
+                  ))}
+              </TabList>
+              {mentors.map((_, i) => (
+                <TabPanel key={i}>
+                  <p className="results-text">
+                    Displaying {visibleMentorIds.length} search result(s).
+                  </p>
+                  <div className="card-container">
+                    {visibleMentorIds.map((mentorId) => (
+                      <ProfileCard
+                        key={mentorId}
+                        mentor={mentors[waveIndex][mentorId]}
+                        onReadMore={() => activateModal(mentorId)}
+                      />
+                    ))}
+                  </div>
+                </TabPanel>
               ))}
-            </div>
+            </Tabs>
           </div>
         ) : (
           <p className="placeholder-text">Loading Mentors Available...</p>

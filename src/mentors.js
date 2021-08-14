@@ -2,47 +2,51 @@ export const fetchMentors = async (setMentors, setMentorIds) => {
   const mentors = {};
   const mentorIds = [];
 
-  const mentorsData = await fetch(
+  const wavesData = await fetch(
     "https://d21fj0gildolug.cloudfront.net/load_mentors"
   )
     .then((response) => response.json())
     .then((data) => data.mentors);
+  console.log(wavesData);
 
-  mentorsData.forEach(
-    ({
-      id: mentorId,
-      Photo: images,
-      Name: name,
-      Biography: fullBio,
-      "Job Title": role,
-      "Industry 1": industry1,
-      "Industry 2": industry2,
-      "Industry 3": industry3,
-      Organisation: organisation,
-      School: school,
-      "Course of Study": courseOfStudy,
-    }) => {
-      const fullImageUrl =
-        images.length > 0 ? images[0].url : "/mentor-thumbnail.png";
-      const thumbnailImageUrl =
-        images.length > 0 && images[0].thumbnails
-          ? images[0].thumbnails.large.url
-          : "/mentor-thumbnail.png";
+  wavesData.forEach((wave, index) => {
+    console.log(wave);
+    wave[index].forEach(
+      ({
+        id: mentorId,
+        Photo: images,
+        Name: name,
+        Biography: fullBio,
+        "Job Title": role,
+        "Industry 1": industry1,
+        "Industry 2": industry2,
+        "Industry 3": industry3,
+        Organisation: organisation,
+        School: school,
+        "Course of Study": courseOfStudy,
+      }) => {
+        const fullImageUrl =
+          images.length > 0 ? images[0].url : "/mentor-thumbnail.png";
+        const thumbnailImageUrl =
+          images.length > 0 && images[0].thumbnails
+            ? images[0].thumbnails.large.url
+            : "/mentor-thumbnail.png";
 
-      mentors[mentorId] = {
-        courseOfStudy,
-        fullBio,
-        fullImageUrl,
-        industries: [industry1, industry2, industry3].filter(Boolean),
-        name,
-        organisation,
-        role,
-        school,
-        thumbnailImageUrl,
-      };
-      mentorIds.push(mentorId);
-    }
-  );
+        mentors[index][mentorId] = {
+          courseOfStudy,
+          fullBio,
+          fullImageUrl,
+          industries: [industry1, industry2, industry3].filter(Boolean),
+          name,
+          organisation,
+          role,
+          school,
+          thumbnailImageUrl,
+        };
+        mentorIds.push(mentorId);
+      }
+    );
+  });
 
   setMentors(mentors);
   setMentorIds(mentorIds);
