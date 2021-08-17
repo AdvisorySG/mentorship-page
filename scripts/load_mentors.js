@@ -1,6 +1,6 @@
 exports.handler = async (event) => {
   const waveTables = ["4 Tech", "5 Tech"];
-  const waves = Array.from(waveTables, () => new Array());
+  const waves = Array.from(waveTables, () => []);
 
   const client = new AWS.SecretsManager({ region: region });
   const apiKey = await client

@@ -11,26 +11,27 @@ const ReadMore = ({ onReadMore }) => (
   </div>
 );
 
-const ProfileCard = ({ mentor, onReadMore }) => (
-  <div className="card">
-    <div className="card-image-region">
-      <LazyLoad height={160} offset={480} once>
-        <img
-          className="card-image"
-          src={process.env.PUBLIC_URL + mentor.thumbnailImageUrl}
-          alt={mentor.name}
-        />
-      </LazyLoad>
+const ProfileCard = ({ mentor, onReadMore }) => {
+  const { name, role, organisation, thumbnailImageUrl } = mentor;
+  return (
+    <div className="card">
+      <div className="card-image-region">
+        <LazyLoad height={160} offset={480} once>
+          <img
+            className="card-image"
+            src={process.env.PUBLIC_URL + thumbnailImageUrl}
+            alt={name}
+          />
+        </LazyLoad>
+      </div>
+      <div className="card-descriptors">
+        <div className="card-name">{name}</div>
+        {role && <div className="card-desc">{role}</div>}
+        {organisation && <div className="card-desc">{organisation}</div>}
+      </div>
+      <ReadMore onReadMore={onReadMore} />
     </div>
-    <div className="card-descriptors">
-      <div className="card-name">{mentor.name}</div>
-      {mentor.role && <div className="card-desc">{mentor.role}</div>}
-      {mentor.organisation && (
-        <div className="card-desc">{mentor.organisation}</div>
-      )}
-    </div>
-    <ReadMore onReadMore={onReadMore} />
-  </div>
-);
+  );
+};
 
 export default ProfileCard;
