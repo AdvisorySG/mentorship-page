@@ -22,9 +22,11 @@ export const fetchWaves = async (setWaves, setActiveWaveIndex) => {
         "Course of Study": courseOfStudy,
       }) => {
         const fullImageUrl =
-          images.length > 0 ? images[0].url : "/mentor-thumbnail.png";
+          Array.isArray(images) && images.length > 0
+            ? images[0].url
+            : "/mentor-thumbnail.png";
         const thumbnailImageUrl =
-          images.length > 0 && images[0].thumbnails
+          Array.isArray(images) && images.length > 0 && images[0].thumbnails
             ? images[0].thumbnails.large.url
             : "/mentor-thumbnail.png";
 
