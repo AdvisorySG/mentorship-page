@@ -1,3 +1,8 @@
+const Airtable = require("airtable");
+const AWS = require("aws-sdk"),
+  region = "ap-southeast-1",
+  secretName = "airtable_api_key";
+
 exports.handler = async (event) => {
   const waveTables = ["4 Tech", "5 Tech"];
   const waves = Array.from(waveTables, () => []);
