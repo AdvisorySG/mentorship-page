@@ -54,19 +54,16 @@ const SearchBar = ({ mentors, setHasSearch, setSearchResults }) => {
 
   const [searchValue, setSearchValue] = useState("");
   useMemo(() => {
-    const delayDebounceFn = setTimeout(() => {
-      if (searchValue.trim().length === 0) {
-        setHasSearch(false);
-        return;
-      }
+    if (searchValue.trim().length === 0) {
+      setHasSearch(false);
+      return;
+    }
 
-      const words = searchValue.trim().split(/\s+/);
-      const query = words.map((word) => field + ":" + word).join(" ");
-      const results = searchIndex.search(query).map((item) => item.ref);
-      setHasSearch(true);
-      setSearchResults(results);
-    }, 200);
-    return () => clearTimeout(delayDebounceFn);
+    const words = searchValue.trim().split(/\s+/);
+    const query = words.map((word) => field + ":" + word).join(" ");
+    const results = searchIndex.search(query).map((item) => item.ref);
+    setHasSearch(true);
+    setSearchResults(results);
   }, [field, searchIndex, searchValue, setHasSearch, setSearchResults]);
 
   const suggestions = useMemo(
