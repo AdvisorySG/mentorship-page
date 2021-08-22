@@ -14,7 +14,8 @@ const setHash = (hash) => window.history.replaceState({}, "", `#${hash}`);
 
 function App() {
   const [activeWaveIndex, setActiveWaveIndex] = useState(0);
-  const [waves, setWaves] = useState([{}]);
+  const [waves, setWaves] = useState([new Set()]);
+  const [mentors, setMentors] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const convertIndex = (index) => waves.length - 1 - index;
@@ -30,7 +31,7 @@ function App() {
   const [hasWavesFetched, setHasWavesFetched] = useState(false);
   useEffect(() => {
     async function fetchData() {
-      await fetchWaves(setWaves, setActiveWaveIndex);
+      await fetchWaves(setWaves, setMentors, setActiveWaveIndex);
       setHasWavesFetched(true);
     }
     fetchData();
@@ -42,7 +43,7 @@ function App() {
       const mentorId = window.location.hash.slice(1);
       const matchingWaves = waves
         .map((wave, waveIndex) => [wave, waveIndex])
-        .filter(([wave]) => wave.hasOwnProperty(mentorId));
+        .filter(([wave]) => wave.has(mentorId));
       if (
         matchingWaves.length > 0 &&
         (!isModalOpen || mentorId !== activeMentorId)
@@ -81,7 +82,7 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
 
   const visibleMentorIds = useMemo(
-    () => (hasSearch ? searchResults : Object.keys(waves[activeWaveIndex])),
+    () => (hasSearch ? searchResults : [...waves[activeWaveIndex]]),
     [hasSearch, searchResults, waves, activeWaveIndex]
   );
 
@@ -106,7 +107,8 @@ function App() {
         {hasWavesFetched ? (
           <div className="results">
             <SearchBar
-              mentors={waves[activeWaveIndex]}
+              mentors={mentors}
+              waveMentorIds={waves[activeWaveIndex]}
               setHasSearch={setHasSearch}
               setSearchResults={setSearchResults}
             />
@@ -117,9 +119,9 @@ function App() {
             >
               <TabList>
                 {waves
-                  .map((wave, waveIndex) => [wave, waveIndex])
+                  .map((wave, waveIndex) => waveIndex)
                   .reverse()
-                  .map(([, waveIndex]) => (
+                  .map((waveIndex) => (
                     <Tab key={waveIndex}>Wave {waveIndex + 1}</Tab>
                   ))}
               </TabList>
@@ -132,7 +134,7 @@ function App() {
                 {visibleMentorIds.map((mentorId) => (
                   <ProfileCard
                     key={mentorId}
-                    mentor={waves[activeWaveIndex][mentorId]}
+                    mentor={mentors[mentorId]}
                     onReadMore={() => activateModal(activeWaveIndex, mentorId)}
                   />
                 ))}
@@ -147,7 +149,7 @@ function App() {
       {waves.length > 0 && (
         <ProfileModal
           isOpen={isModalOpen}
-          mentor={waves[activeWaveIndex][activeMentorId]}
+          mentor={mentors[activeMentorId]}
           onClose={() => setIsModalOpen(false)}
         />
       )}

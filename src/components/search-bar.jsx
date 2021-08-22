@@ -20,18 +20,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SearchBar = ({ mentors, setHasSearch, setSearchResults }) => {
+const SearchBar = ({
+  mentors,
+  waveMentorIds,
+  setHasSearch,
+  setSearchResults,
+}) => {
   const [field, setField] = useState("name");
 
   const classes = useStyles();
   const documents = useMemo(
     () =>
-      Object.keys(mentors).map((mentorId) => ({
+      [...waveMentorIds].map((mentorId) => ({
         mentorId,
         industry: mentors[mentorId].industries.join(" "),
         ...mentors[mentorId],
       })),
-    [mentors]
+    [mentors, waveMentorIds]
   );
   const searchIndex = useMemo(
     () =>

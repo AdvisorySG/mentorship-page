@@ -1,11 +1,13 @@
-export const fetchWaves = async (setWaves, setActiveWaveIndex) => {
+export const fetchWaves = async (setWaves, setMentors, setActiveWaveIndex) => {
   const wavesData = await fetch(
     "https://d21fj0gildolug.cloudfront.net/load_mentors"
   )
     .then((response) => response.json())
     .then(({ waves }) => waves);
 
-  const waves = Array.from(wavesData, () => []);
+  const waves = Array.from(wavesData, () => new Set());
+  const mentors = {};
+
   wavesData.forEach((wave, i) => {
     wave.forEach(
       ({
@@ -30,7 +32,8 @@ export const fetchWaves = async (setWaves, setActiveWaveIndex) => {
             ? images[0].thumbnails.large.url
             : "/mentor-thumbnail.png";
 
-        waves[i][mentorId] = {
+        waves[i].add(mentorId);
+        mentors[mentorId] = {
           courseOfStudy,
           fullBio,
           fullImageUrl,
@@ -46,5 +49,6 @@ export const fetchWaves = async (setWaves, setActiveWaveIndex) => {
   });
 
   setWaves(waves);
+  setMentors(mentors);
   setActiveWaveIndex(waves.length - 1);
 };
