@@ -37,12 +37,16 @@ const Header = () => (
         <p>
           The Advisory Mentorship Programme pairs students with working
           professionals in their fields of interest on a 1-1 basis. Over the
-          course of four months, from June to September 2021, mentors give an
-          hour each month to meet with their mentee. In its first run in 2020,
-          the programme delivered over 2,000 hours of mentorship to 694 students
-          with the involvement of over 562 mentors. This year, we are delighted
-          to have more than 900 mentors, including from 16 mentorship partners,
-          whose fields of expertise range across 48 different industries.
+          course of four months, from September to December 2021, mentors give
+          an hour each month to meet with their mentee. In its first run in
+          2020, the programme delivered over 2000 hours of mentorship to 694
+          students with the involvement of over 562 mentors. This year, for Wave
+          1 of the programme which is taking place from June to September 2021,
+          nearly 900 working came aboard as mentors for 1,104 mentees. For Wave
+          2, we are pleased to have nearly 430 mentors, including from 10
+          mentorship partners, whose fields of expertise range across a wide
+          range of industries, such as Banking & Finance, Information &
+          Communications, Data Science & Analytics and more!
         </p>
         <p>
           Click{" "}
