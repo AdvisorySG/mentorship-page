@@ -42,11 +42,11 @@ const Header = () => (
           2020, the programme delivered over 2000 hours of mentorship to 694
           students with the involvement of over 562 mentors. This year, for Wave
           1 of the programme which is taking place from June to September 2021,
-          nearly 900 working came aboard as mentors for 1,104 mentees. For Wave
-          2, we are pleased to have nearly 430 mentors, including from 10
-          mentorship partners, whose fields of expertise range across a wide
-          range of industries, such as Banking & Finance, Information &
-          Communications, Data Science & Analytics and more!
+          nearly 900 working professionals came aboard as mentors for 1,104
+          mentees. For Wave 2, we are pleased to have nearly 430 mentors,
+          including from 10 mentorship partners, whose fields of expertise range
+          across a wide range of industries, such as Banking & Finance,
+          Information & Communications, Data Science & Analytics and more!
         </p>
         <p>
           Click{" "}
@@ -58,7 +58,7 @@ const Header = () => (
             here
           </a>{" "}
           to apply as a mentee. Applications close{" "}
-          <b>18 June 2021, 2359h (GMT +8).</b>
+          <b>10 September 2021, 2359h (GMT +8).</b>
         </p>
         <p>
           Click{" "}
