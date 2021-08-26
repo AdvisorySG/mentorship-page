@@ -45,8 +45,7 @@ const Header = () => (
           nearly 900 working professionals came aboard as mentors for 1,104
           mentees. For Wave 2, we are pleased to have nearly 430 mentors,
           including from 10 mentorship partners, whose fields of expertise range
-          across a wide range of industries, such as Banking & Finance,
-          Information & Communications, Data Science & Analytics and more!
+          across 48 different industries.
         </p>
         <p>
           Click{" "}
