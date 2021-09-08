@@ -43,7 +43,7 @@ const Header = () => (
           students with the involvement of over 562 mentors. This year, for Wave
           1 of the programme which is taking place from June to September 2021,
           nearly 900 working professionals came aboard as mentors for 1,104
-          mentees. For Wave 2, we are pleased to have nearly 430 mentors,
+          mentees. For Wave 2, we are pleased to have over 400 mentors,
           including from 10 mentorship partners, whose fields of expertise range
           across 48 different industries.
         </p>
