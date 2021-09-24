@@ -12,7 +12,8 @@
 .disclaimer {
   margin: 8px auto;
   max-width: 90ch;
-  text-align: center;
+  text-align: justify;
+  text-align-last: left;
 }
 
 .results {
