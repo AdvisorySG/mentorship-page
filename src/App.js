@@ -6,6 +6,7 @@ import Header from "./components/header";
 import ProfileCard from "./components/profile-card";
 import ProfileModal from "./components/profile-modal";
 import SearchBar from "./components/search-bar";
+import ScrollButton from './components/ScrollButton';
 import { fetchWaves } from "./waves";
 
 import "./App.css";
@@ -145,7 +146,7 @@ function App() {
           <p className="placeholder-text">Loading Mentors Available...</p>
         )}
       </div>
-
+      <ScrollButton />
       {waves.length > 0 && (
         <ProfileModal
           isOpen={isModalOpen}
