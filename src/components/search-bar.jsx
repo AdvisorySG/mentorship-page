@@ -98,8 +98,8 @@ const SearchBar = ({
         />
       ) : (
         <TextField
+          className = "textFieldStyle"
           label="Search mentors by..."
-          style={{ width: 170 }}
           onChange={(newValue) => setSearchValue(newValue.target.value)}
         />
       )}
