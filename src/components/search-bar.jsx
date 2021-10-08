@@ -82,7 +82,12 @@ const SearchBar = ({
   );
 
   return (
-    <form noValidate autoComplete="off" className="search-bar">
+    <form
+      noValidate
+      autoComplete="off"
+      className="search-bar"
+      id="search-mentors"
+    >
       {field === "industry" ? (
         <Autocomplete
           options={suggestions}

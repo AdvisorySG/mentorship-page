@@ -2,7 +2,8 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Tab, Tabs, TabList } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
-import Header from "./components/header";
+import Header, { NavBar } from "./components/header";
+/*import NavBar from "./components/header/NavBar/";*/
 import ProfileCard from "./components/profile-card";
 import ProfileModal from "./components/profile-modal";
 import SearchBar from "./components/search-bar";
@@ -88,6 +89,7 @@ function App() {
 
   return (
     <div className="container">
+      <NavBar />
       <Header />
 
       <div className="canvas">

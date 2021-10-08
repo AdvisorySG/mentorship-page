@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import { IoIosArrowBack } from "react-icons/io";
+/*import Button from 'react-bootstrap/Button';*/
 
 import {
   advisoryLogo,
@@ -9,19 +10,40 @@ import {
 
 import "./header.css";
 
-const NavBar = () => (
+export const NavBar = () => (
   <div className="nav">
     <a className="nav-back-to-main-site" href="https://advisory.sg">
       <IoIosArrowBack className="nav-arrow-icon" />
       back to main site
     </a>
     <img className="nav-logo" src={advisoryLogo} alt="Advisory" />
+    <a
+      className="nav-about-us"
+      href="#header-intro"
+      onClick={window.scrollBy(0, -10000)}
+    >
+      About us
+    </a>
+    <a className="nav-sponsors" href="#header-sponsors">
+      Sponsors
+    </a>
+    <a className="nav-mentors" href="#search-mentors">
+      Mentors
+    </a>
+    <a
+      className="nav-apply-now"
+      href="https://advisorysg.typeform.com/to/HQ8nWq2r#source=mentorsite"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Apply Now
+    </a>
   </div>
 );
 
 const Header = () => (
   <div className="header">
-    <NavBar />
+    {/*<NavBar />*/}
     <div className="header-bottom">
       <img
         className="header-mentorship-logo"
@@ -29,11 +51,12 @@ const Header = () => (
         alt="Advisory Mentorship Programme"
       />
       <img
+        id="header-sponsors"
         className="header-mentorship-logo"
         src={advisoryMentorshipPartners}
         alt="Advisory Mentorship Programme Partners"
       />
-      <div className="header-mentorship-intro">
+      <div className="header-mentorship-intro" id="header-intro">
         <p>
           The Advisory Mentorship Programme pairs students with working
           professionals in their fields of interest on a 1-1 basis. Over the
