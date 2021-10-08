@@ -20,7 +20,6 @@ export const NavBar = () => (
     <a
       className="nav-about-us"
       href="#header-intro"
-      onClick={window.scrollBy(0, -10000)}
     >
       About us
     </a>
