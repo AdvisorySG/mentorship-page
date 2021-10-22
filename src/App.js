@@ -146,7 +146,7 @@ function App() {
           <p className="placeholder-text">Loading Mentors Available...</p>
         )}
       </div>
-      <ScrollButton />
+      <ScrollButton showBelow={200}/>
       {waves.length > 0 && (
         <ProfileModal
           isOpen={isModalOpen}
