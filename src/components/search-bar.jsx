@@ -85,6 +85,7 @@ const SearchBar = ({
     <form noValidate autoComplete="off" className="search-bar">
       {field === "industry" ? (
         <Autocomplete
+          className = "textFieldStyle"
           options={suggestions}
           getOptionLabel={(option) => option}
           onChange={(newValue) => setSearchValue(newValue.target.textContent)}
@@ -92,7 +93,6 @@ const SearchBar = ({
             <TextField
               {...params}
               label="Search mentors by..."
-              style={{ width: 170 }}
             />
           )}
         />
