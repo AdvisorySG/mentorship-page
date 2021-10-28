@@ -14,7 +14,7 @@ const setHash = (hash) => window.history.replaceState({}, "", `#${hash}`);
 
 function App() {
   const [activeWaveIndex, setActiveWaveIndex] = useState(0);
-  const [waves, setWaves] = useState([new Set()]);
+  const [waves, setWaves] = useState([[]]);
   const [mentors, setMentors] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -43,7 +43,7 @@ function App() {
       const mentorId = window.location.hash.slice(1);
       const matchingWaves = waves
         .map((wave, waveIndex) => [wave, waveIndex])
-        .filter(([wave]) => wave.has(mentorId));
+        .filter(([wave]) => wave.includes(mentorId));
       if (
         matchingWaves.length > 0 &&
         (!isModalOpen || mentorId !== activeMentorId)

@@ -5,7 +5,7 @@ export const fetchWaves = async (setWaves, setMentors, setActiveWaveIndex) => {
     .then((response) => response.json())
     .then(({ waves }) => waves);
 
-  const waves = Array.from(wavesData, () => new Set());
+  const waves = Array.from(wavesData, () => []);
   const mentors = {};
 
   wavesData.forEach((wave, i) => {
@@ -32,7 +32,7 @@ export const fetchWaves = async (setWaves, setMentors, setActiveWaveIndex) => {
             ? images[0].thumbnails.large.url
             : "/mentor-thumbnail.png";
 
-        waves[i].add(mentorId);
+        waves[i].push(mentorId);
         mentors[mentorId] = {
           courseOfStudy,
           fullBio,
