@@ -7,6 +7,7 @@ import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 import MenuItem from "@material-ui/core/MenuItem";
 import { Autocomplete } from "@material-ui/lab";
+import { Mentor } from "../interfaces";
 
 import "./search-bar.css";
 
@@ -22,21 +23,26 @@ const useStyles = makeStyles((theme) => ({
 
 const SearchBar = ({
   mentors,
-  waveMentorIds,
   setHasSearch,
   setSearchResults,
+}: {
+  mentors: {
+    [key: string]: Mentor;
+  };
+  setHasSearch: (hasSearch: boolean) => void;
+  setSearchResults: (results: string[]) => void;
 }) => {
   const [field, setField] = useState("name");
 
   const classes = useStyles();
   const documents = useMemo(
     () =>
-      [...waveMentorIds].map((mentorId) => ({
+      Object.keys(mentors).map((mentorId) => ({
         mentorId,
         industry: mentors[mentorId].industries.join(" "),
         ...mentors[mentorId],
       })),
-    [mentors, waveMentorIds]
+    [mentors]
   );
   const searchIndex = useMemo(
     () =>
@@ -74,8 +80,10 @@ const SearchBar = ({
   const suggestions = useMemo(
     () =>
       [
-        ...new Set(
-          Object.values(mentors).flatMap(({ industries }) => industries)
+        ...Array.from(
+          new Set(
+            Object.values(mentors).flatMap(({ industries }) => industries)
+          )
         ),
       ].sort(),
     [mentors]
@@ -86,8 +94,10 @@ const SearchBar = ({
       {field === "industry" ? (
         <Autocomplete
           options={suggestions}
-          getOptionLabel={(option) => option}
-          onChange={(newValue) => setSearchValue(newValue.target.textContent)}
+          getOptionLabel={(option) => (option ? option : "")}
+          onChange={(event, values) =>
+            setSearchValue(typeof values === "string" ? values : "")
+          }
           renderInput={(params) => (
             <TextField
               {...params}
@@ -108,7 +118,11 @@ const SearchBar = ({
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={field}
-          onChange={(event) => setField(event.target.value)}
+          onChange={(event) => {
+            setField(
+              typeof event.target.value === "string" ? event.target.value : ""
+            );
+          }}
         >
           <MenuItem value="name">Name</MenuItem>
           <MenuItem value="role">Role</MenuItem>
