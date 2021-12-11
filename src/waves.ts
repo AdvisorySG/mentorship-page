@@ -1,4 +1,5 @@
 import { Mentor, RawData } from "./interfaces";
+import { config } from "../package.json";
 
 export const fetchWaves = async (
   setWaves: (
@@ -8,43 +9,34 @@ export const fetchWaves = async (
   ) => void,
   setActiveWaveIndex: (index: number) => void
 ) => {
-  const wavesData: RawData[][] = await fetch(
-    "https://d21fj0gildolug.cloudfront.net/load_mentors"
-  )
+  const { mentorsUrl } = config;
+  const mentorsData: RawData[] = await fetch(mentorsUrl)
     .then((response) => response.json())
-    .then(({ waves }) => waves);
+    .then(({ mentors }) => mentors);
 
-  const formatMentor = (mentor: RawData): Mentor => ({
-    courseOfStudy: mentor["Course of Study"],
-    fullBio: mentor.Biography,
-    fullImageUrl:
-      Array.isArray(mentor.Photo) && mentor.Photo.length > 0
-        ? mentor.Photo[0].url
-        : "/mentor-thumbnail.png",
-    industries: [
-      mentor["Industry 1"] ?? [],
-      mentor["Industry 2"] ?? [],
-      mentor["Industry 3"] ?? [],
-    ].flat(),
-    name: mentor.Name,
-    organisation: mentor.Organisation,
-    role: mentor["Job Title"],
-    school: mentor.School,
-    thumbnailImageUrl:
-      Array.isArray(mentor.Photo) &&
-      mentor.Photo.length > 0 &&
-      mentor.Photo[0].thumbnails
-        ? mentor.Photo[0].thumbnails.large.url
-        : "/mentor-thumbnail.png",
+  const createMentor = (mentor: RawData): Mentor => ({
+    courseOfStudy: mentor.course_of_study,
+    fullBio: mentor.full_bio,
+    fullImageUrl: mentor.full_image_url,
+    industries: mentor.industries,
+    name: mentor.name,
+    organisation: mentor.organisation,
+    role: mentor.role,
+    school: mentor.school,
+    thumbnailImageUrl: mentor.thumbnail_image_url,
   });
 
-  const waves: { [key: string]: Mentor }[] = [];
+  const numWaves =
+    Math.max(...mentorsData.map((mentorData) => mentorData.wave_id)) + 1;
+  const waves: { [key: string]: Mentor }[] = Array(numWaves).fill({});
 
-  wavesData.forEach((wave) => {
+  Array(numWaves).forEach((_, i) => {
     const newObj: { [key: string]: Mentor } = {};
-    wave.forEach((mentor) => {
-      newObj[mentor.id] = formatMentor(mentor);
-    });
+    mentorsData
+      .filter(({ wave_id }) => wave_id === i)
+      .forEach((mentorData) => {
+        newObj[mentorData.id] = createMentor(mentorData);
+      });
     waves.push(newObj);
   });
 
