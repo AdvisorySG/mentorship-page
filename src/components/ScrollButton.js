@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 const useStyles = makeStyles((theme) => ({
   toTop: {
-      zIndex: 2,
+      zIndex: 2.5,
       position: 'fixed',
       bottom: '2vh',
       backgroundColor: '#FF8C00',
