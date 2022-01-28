@@ -6,7 +6,7 @@ import Header from "./components/header";
 import ProfileCard from "./components/profile-card";
 import ProfileModal from "./components/profile-modal";
 import SearchBar from "./components/search-bar";
-import ScrollButton from './components/ScrollButton';
+import ScrollButton from "./components/ScrollButton";
 import { fetchWaves } from "./waves";
 
 import "./App.css";
@@ -32,7 +32,7 @@ function App() {
   const [hasWavesFetched, setHasWavesFetched] = useState(false);
   useEffect(() => {
     async function fetchData() {
-      await fetchWaves(setWaves, setMentors, setActiveWaveIndex);
+      await fetchWaves(setWaves, setActiveWaveIndex);
       setHasWavesFetched(true);
     }
     fetchData();
@@ -146,7 +146,7 @@ function App() {
           <p className="placeholder-text">Loading Mentors Available...</p>
         )}
       </div>
-      <ScrollButton showBelow={200}/>
+      <ScrollButton showBelow={200} />
       {waves.length > 0 && (
         <ProfileModal
           isOpen={isModalOpen}
