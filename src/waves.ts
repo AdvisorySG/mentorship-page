@@ -26,19 +26,20 @@ export const fetchWaves = async (
     thumbnailImageUrl: mentor.thumbnail_image_url,
   });
 
-  const numWaves =
-    Math.max(...mentorsData.map((mentorData) => mentorData.wave_id)) + 1;
-  const waves: { [key: string]: Mentor }[] = Array(numWaves).fill({});
+  const numWaves = Math.max(...mentorsData.map(({ wave_id }) => wave_id)) + 1;
+  const waves: { [key: string]: Mentor }[] = [];
 
-  Array(numWaves).forEach((_, i) => {
-    const newObj: { [key: string]: Mentor } = {};
-    mentorsData
-      .filter(({ wave_id }) => wave_id === i)
-      .forEach((mentorData) => {
-        newObj[mentorData.id] = createMentor(mentorData);
-      });
-    waves.push(newObj);
-  });
+  Array(numWaves)
+    .fill(0)
+    .forEach((_, i) => {
+      const newObj: { [key: string]: Mentor } = {};
+      mentorsData
+        .filter(({ wave_id }) => wave_id === i)
+        .forEach((mentorData) => {
+          newObj[mentorData.id] = createMentor(mentorData);
+        });
+      waves.push(newObj);
+    });
 
   setWaves(waves);
   setActiveWaveIndex(waves.length - 1);
