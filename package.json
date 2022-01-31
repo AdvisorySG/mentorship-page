@@ -16,9 +16,6 @@
     "react-scripts": "5.0.0",
     "react-tabs": "^3.2.3"
   },
-  "config": {
-    "mentorsUrl": "https://d21fj0gildolug.cloudfront.net/load_mentors"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

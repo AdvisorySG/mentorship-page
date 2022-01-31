@@ -1,5 +1,5 @@
 import { Mentor, RawData } from "./interfaces";
-import { config } from "../package.json";
+import * as config from "./config.json";
 
 export const fetchWaves = async (
   setWaves: (
