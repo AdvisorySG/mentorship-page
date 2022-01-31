@@ -1,5 +1,6 @@
 import { Mentor, RawData } from "./interfaces";
-import * as config from "./config.json";
+
+const mentorsUrl = "https://d21fj0gildolug.cloudfront.net/load_mentors";
 
 export const fetchWaves = async (
   setWaves: (
@@ -9,7 +10,6 @@ export const fetchWaves = async (
   ) => void,
   setActiveWaveIndex: (index: number) => void
 ) => {
-  const { mentorsUrl } = config;
   const mentorsData: RawData[] = await fetch(mentorsUrl)
     .then((response) => response.json())
     .then(({ mentors }) => mentors);
