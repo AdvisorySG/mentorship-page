@@ -9,6 +9,72 @@ import SearchBar from "./components/search-bar";
 import { fetchWaves } from "./waves";
 import { Mentor } from "./interfaces";
 import "./App.css";
+// import statement
+import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
+import { SearchProvider, Results, SearchBox } from "@elastic/react-search-ui";
+import { Layout } from "@elastic/react-search-ui-views";
+import "@elastic/react-search-ui-views/lib/styles/styles.css";
+
+// the connector
+const connector = new AppSearchAPIConnector({
+  searchKey: "search-2kdkz1y911uherajaewizm4v",
+  engineName: "my-advisory-mentorship-data",
+  endpointBase: "http://localhost:3002",
+});
+
+// configuration options
+const configurationOptions = {
+  apiConnector: connector,
+  searchQuery: {
+    search_fields: {
+      // 1. Search by full bio.
+      full_bio: {},
+    },
+    // 2. Results: name, role, organisation, industry, school, and course.
+    result_fields: {
+      name: {
+        // A snippet means that matching search terms will be wrapped in <em> tags.
+        snippet: {
+          size: 75, // Limit the snippet to 75 characters.
+          fallback: true, // Fallback to a "raw" result.
+        },
+      },
+      role: {
+        snippet: {
+          size: 50,
+          fallback: true,
+        },
+      },
+      organisation: {
+        snippet: {
+          size: 50,
+          fallback: true,
+        },
+      },
+      industries: {
+        snippet: {
+          size: 50,
+          fallback: true,
+        },
+      },
+      school: {
+        snippet: {
+          size: 50,
+          fallback: true,
+        },
+      },
+      course_of_stud: {
+        snippet: {
+          size: 50,
+          fallback: true,
+        },
+      },
+      thumbnail_imag: {
+        raw: {},
+      },
+    },
+  },
+};
 
 const setHash = (hash: string) => {
   window.history.replaceState({}, "", `#${hash}`);
@@ -111,6 +177,17 @@ function App() {
         </p>
         {hasWavesFetched ? (
           <div className="results">
+            <SearchProvider config={configurationOptions}>
+              <div className="App">
+                <Layout
+                  header={<SearchBox />}
+                  // titleField is the most prominent field within a result: the result header.
+                  bodyContent={
+                    <Results titleField="name" urlField="thumbnail_imag" />
+                  }
+                />
+              </div>
+            </SearchProvider>
             <SearchBar
               mentors={waves[activeWaveIndex]}
               setHasSearch={setHasSearch}
