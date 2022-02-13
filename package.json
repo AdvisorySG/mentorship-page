@@ -4,6 +4,8 @@
   "homepage": "https://mentorship.advisory.sg/",
   "private": true,
   "dependencies": {
+    "@elastic/react-search-ui": "^1.9.0",
+    "@elastic/search-ui-app-search-connector": "^1.9.0",
     "@material-ui/core": "^4.12.3",
     "@material-ui/lab": "^4.0.0-alpha.60",
     "body-scroll-lock": "^3.1.5",
@@ -14,7 +16,11 @@
     "react-lazyload": "^3.2.0",
     "react-modal": "^3.14.4",
     "react-scripts": "5.0.0",
-    "react-tabs": "^3.2.3"
+    "react-tabs": "^3.2.3",
+    "swiftype-app-search-javascript": "^2.4.0"
+  },
+  "config": {
+    "mentorsUrl": "https://d21fj0gildolug.cloudfront.net/load_mentors"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -49,6 +55,6 @@
     "husky": "^7.0.2",
     "prettier": "2.5.1",
     "pretty-quick": "^3.1.3",
-    "typescript": "^4.5.5"
+    "typescript": "^4.5.3"
   }
 }

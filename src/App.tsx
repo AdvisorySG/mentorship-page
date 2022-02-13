@@ -10,9 +10,81 @@ import { fetchWaves } from "./waves";
 import { Mentor } from "./interfaces";
 import "./App.css";
 
+import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
+import { Layout } from "@elastic/react-search-ui-views";
+import "@elastic/react-search-ui-views/lib/styles/styles.css";
+
+import {
+  PagingInfo,
+  ResultsPerPage,
+  Paging,
+  Facet,
+  SearchProvider,
+  Results,
+  SearchBox,
+  Sorting,
+} from "@elastic/react-search-ui";
+
+const connector = new AppSearchAPIConnector({
+  searchKey: "search-2kdkz1y911uherajaewizm4v",
+  engineName: "engine",
+  endpointBase: "http://localhost:3002",
+});
+
+// configuration options
+const configurationOptions = {
+  apiConnector: connector,
+  searchQuery: {
+    search_fields: {
+      // 1. Search by full bio.
+      full_bio: {},
+    },
+    // 2. Results: name, role, organisation, industry, school, and course.
+    result_fields: {
+      name: {
+        // A snippet means that matching search terms will be wrapped in <em> tags.
+        snippet: {
+          size: 75, // Limit the snippet to 75 characters.
+          fallback: true, 
+        },
+      },
+      role: {
+        snippet: {
+          size: 50,
+          fallback: true,
+        },
+      },
+      organisation: {
+        snippet: {
+          size: 50,
+          fallback: true,
+        },
+      },
+      industries: {
+        snippet: {
+          size: 50,
+          fallback: true,
+        },
+      },
+      school: {
+        snippet: {
+          size: 50,
+          fallback: true,
+        },
+      },
+      thumbnail_imag: {
+        raw: {},
+      },
+    },
+  },
+};
+
+//
 const setHash = (hash: string) => {
   window.history.replaceState({}, "", `#${hash}`);
 };
+
+//
 
 function App() {
   const [activeWaveIndex, setActiveWaveId] = useState(0);
