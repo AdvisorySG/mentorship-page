@@ -26,38 +26,34 @@ import {
 } from "@elastic/react-search-ui";
 
 const connector = new AppSearchAPIConnector({
-  searchKey: "search-2kdkz1y911uherajaewizm4v",
-  engineName: "engine",
+  engineName: "my-advisory-mentorship-data",
   endpointBase: "http://localhost:3002",
+  searchKey: "search-2kdkz1y911uherajaewizm4v",
 });
 
 // configuration options
 const configurationOptions = {
   apiConnector: connector,
-  searchQuery: {
-    search_fields: {
-      // 1. Search by full bio.
-      full_bio: {},
+  autocompleteQuery: {
+    suggestions: {
+      types: {
+        documents: {
+          // Which fields to search for suggestions.
+          fields: ["name", "role"],
+        },
+      },
+      // How many suggestions appear.
+      size: 5,
     },
-    // 2. Results: name, role, organisation, industry, school, and course.
+  },
+  searchQuery: {
+    // 2. Results: name of the video game, its genre, publisher, scores, and platform.
     result_fields: {
       name: {
-        // A snippet means that matching search terms will be wrapped in <em> tags.
+        // A snippet means that matching search terms will be highlighted via <em> tags.
         snippet: {
           size: 75, // Limit the snippet to 75 characters.
-          fallback: true, 
-        },
-      },
-      role: {
-        snippet: {
-          size: 50,
-          fallback: true,
-        },
-      },
-      organisation: {
-        snippet: {
-          size: 50,
-          fallback: true,
+          fallback: true, // Fallback to a "raw" result.
         },
       },
       industries: {
@@ -66,15 +62,31 @@ const configurationOptions = {
           fallback: true,
         },
       },
-      school: {
+      course_of_study: {
         snippet: {
           size: 50,
           fallback: true,
         },
       },
-      thumbnail_imag: {
+      organisation: {
+        snippet: {
+          size: 100,
+          fallback: true,
+        },
+      },
+      role: {
+        snippet: {
+          size: 100,
+          fallback: true,
+        },
+      },
+      thumbnail_image_url: {
         raw: {},
       },
+    },
+    // 3. Facet by scores, genre, publisher, and platform, which we'll use to build filters later.
+    facets: {
+      industries: { type: "value", size: 100 },
     },
   },
 };
@@ -183,39 +195,47 @@ function App() {
         </p>
         {hasWavesFetched ? (
           <div className="results">
-            <SearchBar
-              mentors={waves[activeWaveIndex]}
-              setHasSearch={setHasSearch}
-              setSearchResults={setSearchResults}
-            />
-            <Tabs
-              className="tabs-container"
-              selectedIndex={convertIndex(activeWaveIndex)}
-              onSelect={activateTab}
-            >
-              <TabList>
-                {waves
-                  .map((wave, waveId) => waveId)
-                  .reverse()
-                  .map((waveId) => (
-                    <Tab key={waveId}>Wave {waveId + 1}</Tab>
-                  ))}
-              </TabList>
-
-              <p className="results-text">
-                Displaying {visibleMentorIds.length} search result(s).
-              </p>
-
-              <div className="card-container">
-                {visibleMentorIds.map((mentorId) => (
-                  <ProfileCard
-                    key={mentorId}
-                    mentor={waves[activeWaveIndex][mentorId]}
-                    onReadMore={() => activateModal(activeWaveIndex, mentorId)}
-                  />
-                ))}
+            <SearchProvider config={configurationOptions}>
+              <div className="App">
+                <Layout
+                  header={<SearchBox autocompleteSuggestions={true} />}
+                  bodyContent={
+                    <Results
+                      titleField="name"
+                      urlField="thumbnail_image_url"
+                      thumbnailField="thumbnail_image_url"
+                    />
+                  }
+                  sideContent={
+                    <div>
+                      <Sorting
+                        label={"Sort by"}
+                        sortOptions={[
+                          {
+                            name: "Relevance",
+                            value: "",
+                            direction: "",
+                          },
+                          {
+                            name: "Name",
+                            value: "name",
+                            direction: "asc",
+                          },
+                        ]}
+                      />
+                      <Facet field="industries" label="Industries" />
+                    </div>
+                  }
+                  bodyHeader={
+                    <>
+                      <PagingInfo />
+                      <ResultsPerPage />
+                    </>
+                  }
+                  bodyFooter={<Paging />}
+                />
               </div>
-            </Tabs>
+            </SearchProvider>
           </div>
         ) : (
           <p className="placeholder-text">Loading Mentors Available...</p>
