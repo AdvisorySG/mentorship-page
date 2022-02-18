@@ -1,11 +1,8 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { Tab, Tabs, TabList } from "react-tabs";
+import React, { useEffect, useState } from "react";
 import "react-tabs/style/react-tabs.css";
 
 import Header from "./components/header";
-import ProfileCard from "./components/profile-card";
 import ProfileModal from "./components/profile-modal";
-import SearchBar from "./components/search-bar";
 import { fetchWaves } from "./waves";
 import { Mentor } from "./interfaces";
 import "./App.css";
@@ -103,10 +100,6 @@ function App() {
   const [waves, setWaves] = useState<{ [key: string]: Mentor }[]>([{}]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const convertIndex = (index: number) => waves.length - 1 - index;
-  const activateTab = (tabIndex: number) =>
-    setActiveWaveId(convertIndex(tabIndex));
-
   const [activeMentorId, setActiveMentorId] = useState("");
   const activateModal = (waveId: number, mentorId: string) => {
     setActiveWaveId(waveId);
@@ -166,14 +159,6 @@ function App() {
     return () =>
       window.removeEventListener("hashchange", ensureModalFromHash, false);
   }, [isModalOpen, activeMentorId, waves]);
-
-  const [hasSearch, setHasSearch] = useState(false);
-  const [searchResults, setSearchResults] = useState<string[]>([]);
-
-  const visibleMentorIds = useMemo(
-    () => (hasSearch ? searchResults : Object.keys(waves[activeWaveIndex])),
-    [hasSearch, searchResults, waves, activeWaveIndex]
-  );
 
   return (
     <div className="container">
