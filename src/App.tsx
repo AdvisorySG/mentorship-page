@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "react-tabs/style/react-tabs.css";
 
 import Header from "./components/header";
-import ProfileModal from "./components/profile-modal";
-import { fetchWaves } from "./waves";
-import { Mentor } from "./interfaces";
 import "./App.css";
 
 import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
@@ -28,7 +25,6 @@ const connector = new AppSearchAPIConnector({
   searchKey: "search-bv3s7kksqjinbswx7g4my9ur",
 });
 
-// configuration options
 const configurationOptions = {
   apiConnector: connector,
   autocompleteQuery: {
@@ -88,78 +84,7 @@ const configurationOptions = {
   },
 };
 
-//
-const setHash = (hash: string) => {
-  window.history.replaceState({}, "", `#${hash}`);
-};
-
-//
-
 function App() {
-  const [activeWaveIndex, setActiveWaveId] = useState(0);
-  const [waves, setWaves] = useState<{ [key: string]: Mentor }[]>([{}]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const [activeMentorId, setActiveMentorId] = useState("");
-  const activateModal = (waveId: number, mentorId: string) => {
-    setActiveWaveId(waveId);
-    setActiveMentorId(mentorId);
-    setIsModalOpen(true);
-  };
-
-  const [hasWavesFetched, setHasWavesFetched] = useState(false);
-  useEffect(() => {
-    async function fetchData() {
-      await fetchWaves(setWaves, setActiveWaveId);
-      setHasWavesFetched(true);
-    }
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    // Checks hash and ensures that any modal with a corresponding name is open.
-    const ensureModalFromHash = () => {
-      const mentorId = window.location.hash.slice(1);
-      const matchingWaves = waves
-        .map((wave, waveId) => [wave, waveId])
-        .filter(([wave]) => wave.hasOwnProperty(mentorId));
-      if (
-        matchingWaves.length > 0 &&
-        (!isModalOpen || mentorId !== activeMentorId)
-      ) {
-        const [, waveId] = matchingWaves[0];
-
-        if (typeof waveId === "number") {
-          activateModal(waveId, mentorId);
-          return true;
-        }
-      }
-    };
-
-    // If modal is open, ensure that the hash is active.
-    if (isModalOpen) {
-      setHash(activeMentorId);
-    } else {
-      // If modal is not open and `activeMentorId === ""`, this must be the
-      // initial load. Check for a hash, and open the modal if such an ID
-      // exists.
-      if (activeMentorId === "") {
-        if (!ensureModalFromHash()) {
-          // Otherwise, set a default ID, but do not open the modal.
-          setActiveMentorId("");
-        }
-      } else {
-        // An ID exists, but the modal is not open, so remove the hash.
-        setHash("");
-      }
-    }
-
-    // Add event listeners to catch if the user manually changes the hash.
-    window.addEventListener("hashchange", ensureModalFromHash, false);
-    return () =>
-      window.removeEventListener("hashchange", ensureModalFromHash, false);
-  }, [isModalOpen, activeMentorId, waves]);
-
   return (
     <div className="container">
       <Header />
@@ -178,62 +103,50 @@ function App() {
             dishonest assistance from our mentors.
           </small>
         </p>
-        {hasWavesFetched ? (
-          <div className="results">
-            <SearchProvider config={configurationOptions}>
-              <div className="App">
-                <Layout
-                  header={<SearchBox autocompleteSuggestions={true} />}
-                  bodyContent={
-                    <Results
-                      titleField="name"
-                      urlField="thumbnail_image_url"
-                      thumbnailField="thumbnail_image_url"
+        <div className="results">
+          <SearchProvider config={configurationOptions}>
+            <div className="App">
+              <Layout
+                header={<SearchBox autocompleteSuggestions={true} />}
+                bodyContent={
+                  <Results
+                    titleField="name"
+                    urlField="thumbnail_image_url"
+                    thumbnailField="thumbnail_image_url"
+                  />
+                }
+                sideContent={
+                  <div>
+                    <Sorting
+                      label={"Sort by"}
+                      sortOptions={[
+                        {
+                          name: "Relevance",
+                          value: "",
+                          direction: "",
+                        },
+                        {
+                          name: "Name",
+                          value: "name",
+                          direction: "asc",
+                        },
+                      ]}
                     />
-                  }
-                  sideContent={
-                    <div>
-                      <Sorting
-                        label={"Sort by"}
-                        sortOptions={[
-                          {
-                            name: "Relevance",
-                            value: "",
-                            direction: "",
-                          },
-                          {
-                            name: "Name",
-                            value: "name",
-                            direction: "asc",
-                          },
-                        ]}
-                      />
-                      <Facet field="industries" label="Industries" />
-                    </div>
-                  }
-                  bodyHeader={
-                    <>
-                      <PagingInfo />
-                      <ResultsPerPage />
-                    </>
-                  }
-                  bodyFooter={<Paging />}
-                />
-              </div>
-            </SearchProvider>
-          </div>
-        ) : (
-          <p className="placeholder-text">Loading Mentors Available...</p>
-        )}
+                    <Facet field="industries" label="Industries" />
+                  </div>
+                }
+                bodyHeader={
+                  <>
+                    <PagingInfo />
+                    <ResultsPerPage />
+                  </>
+                }
+                bodyFooter={<Paging />}
+              />
+            </div>
+          </SearchProvider>
+        </div>
       </div>
-
-      {waves.length > 0 && (
-        <ProfileModal
-          isOpen={isModalOpen}
-          mentor={waves[activeWaveIndex][activeMentorId]}
-          onClose={() => setIsModalOpen(false)}
-        />
-      )}
     </div>
   );
 }
