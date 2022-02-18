@@ -26,9 +26,9 @@ import {
 } from "@elastic/react-search-ui";
 
 const connector = new AppSearchAPIConnector({
-  engineName: "my-advisory-mentorship-data",
-  endpointBase: "http://localhost:3002",
-  searchKey: "search-2kdkz1y911uherajaewizm4v",
+  engineName: "mentorship-page",
+  endpointBase: "https://advisorysg.ent.ap-southeast-1.aws.found.io",
+  searchKey: "search-bv3s7kksqjinbswx7g4my9ur",
 });
 
 // configuration options
