@@ -20,6 +20,7 @@ import {
 } from "@elastic/react-search-ui";
 
 const connector = new AppSearchAPIConnector({
+<<<<<<< HEAD
   engineName: "mentorship-page",
   endpointBase: "https://advisorysg.ent.ap-southeast-1.aws.found.io",
   searchKey: "search-bv3s7kksqjinbswx7g4my9ur",
@@ -28,12 +29,20 @@ const connector = new AppSearchAPIConnector({
       ...result_fields,
       group: { field: "name" },
     }),
+=======
+  engineName: "my-advisory-mentorship-data",
+  endpointBase: "http://localhost:3002",
+  searchKey: "search-2kdkz1y911uherajaewizm4v",
+>>>>>>> cadeadb (successful implementation of elastic search ui)
 });
 
 const configurationOptions = {
   alwaysSearchOnInitialLoad: true,
   apiConnector: connector,
+<<<<<<< HEAD
   debug: true,
+=======
+>>>>>>> cadeadb (successful implementation of elastic search ui)
   autocompleteQuery: {
     suggestions: {
       types: {
@@ -112,6 +121,7 @@ function App() {
             dishonest assistance from our mentors.
           </small>
         </p>
+<<<<<<< HEAD
         <div className="results">
           <SearchProvider config={configurationOptions}>
             <div className="App">
@@ -155,6 +165,55 @@ function App() {
             </div>
           </SearchProvider>
         </div>
+=======
+        {hasWavesFetched ? (
+          <div className="results">
+            <SearchProvider config={configurationOptions}>
+              <div className="App">
+                <Layout
+                  header={<SearchBox autocompleteSuggestions={true} />}
+                  bodyContent={
+                    <Results
+                      titleField="name"
+                      urlField="thumbnail_image_url"
+                      thumbnailField="thumbnail_image_url"
+                    />
+                  }
+                  sideContent={
+                    <div>
+                      <Sorting
+                        label={"Sort by"}
+                        sortOptions={[
+                          {
+                            name: "Relevance",
+                            value: "",
+                            direction: "",
+                          },
+                          {
+                            name: "Name",
+                            value: "name",
+                            direction: "asc",
+                          },
+                        ]}
+                      />
+                      <Facet field="industries" label="Industries" />
+                    </div>
+                  }
+                  bodyHeader={
+                    <>
+                      <PagingInfo />
+                      <ResultsPerPage />
+                    </>
+                  }
+                  bodyFooter={<Paging />}
+                />
+              </div>
+            </SearchProvider>
+          </div>
+        ) : (
+          <p className="placeholder-text">Loading Mentors Available...</p>
+        )}
+>>>>>>> cadeadb (successful implementation of elastic search ui)
       </div>
     </div>
   );
