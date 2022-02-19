@@ -50,7 +50,6 @@ exports.handler = async (event) => {
     .promise()
     .then((data) => JSON.parse(data.SecretString)["APIKey"]);
   const base = new Airtable({ apiKey }).base("appDfSlmYKDyuAj51");
-
   const elasticApiKey = await client
     .getSecretValue({ SecretId: AWS_SECRET_ELASTIC_NAME })
     .promise()
