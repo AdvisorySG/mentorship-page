@@ -1,8 +1,13 @@
 const Airtable = require("airtable");
+const { Client } = require("@elastic/elasticsearch");
 const AWS = require("aws-sdk");
 
 const AWS_REGION = "ap-southeast-1";
-const AWS_SECRET_NAME = "airtable_api_key";
+const AWS_SECRET_AIRTABLE_NAME = "airtable_api_key";
+const AWS_SECRET_ELASTIC_NAME = "elasticsearch_api_key";
+const ELASTIC_ENDPOINT =
+  "https://advisorysg.es.ap-southeast-1.aws.found.io:9243";
+
 const PLACEHOLDER_THUMBNAIL_URL = "/mentor-thumbnail.png";
 const WAVE_INFO = [
   { tableId: "4 Tech", name: "2021 Wave 1" },
@@ -46,6 +51,17 @@ exports.handler = async (event) => {
     .then((data) => JSON.parse(data.SecretString)["APIKey"]);
   const base = new Airtable({ apiKey }).base("appDfSlmYKDyuAj51");
 
+  const elasticApiKey = await client
+    .getSecretValue({ SecretId: AWS_SECRET_ELASTIC_NAME })
+    .promise()
+    .then((data) => JSON.parse(data.SecretString)["APIKey"]);
+  const elasticClient = new Client({
+    node: ELASTIC_ENDPOINT,
+    auth: {
+      apiKey: elasticApiKey,
+    },
+  });
+
   await Promise.all(
     WAVE_INFO.map(async ({ tableId }, i) =>
       base(tableId)
@@ -59,5 +75,19 @@ exports.handler = async (event) => {
     )
   );
 
-  return JSON.stringify({ mentors });
+  elasticClient.deleteByQuery({
+    index: ".ent-search-engine-documents-mentorship-page",
+    type: "",
+    body: {
+      query: {
+        match_all: {},
+      },
+    },
+  });
+
+  const body = mentors.flatMap((mentor) => [
+    { index: { _index: ".ent-search-engine-documents-mentorship-page" } },
+    mentor,
+  ]);
+  elasticClient.bulk({ refresh: true, body });
 };
