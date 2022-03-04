@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "react-tabs/style/react-tabs.css";
 
 import Header from "./components/header";
@@ -27,6 +27,7 @@ const connector = new AppSearchAPIConnector({
 
 const configurationOptions = {
   apiConnector: connector,
+  debug: true,
   autocompleteQuery: {
     suggestions: {
       types: {
@@ -85,6 +86,9 @@ const configurationOptions = {
 };
 
 function App() {
+  useEffect(() => {
+    window.searchUI.addFilter("all");
+  }, [])
   return (
     <div className="container">
       <Header />
@@ -104,7 +108,7 @@ function App() {
           </small>
         </p>
         <div className="results">
-          <SearchProvider config={configurationOptions}>
+          <SearchProvider config={configurationOptions} >
             <div className="App">
               <Layout
                 header={<SearchBox autocompleteSuggestions={true} />}
