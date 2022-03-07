@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "react-tabs/style/react-tabs.css";
 
 import Header from "./components/header";
