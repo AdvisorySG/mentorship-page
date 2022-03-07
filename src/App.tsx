@@ -92,9 +92,6 @@ const configurationOptions = {
 };
 
 function App() {
-  useEffect(() => {
-    window.searchUI.addFilter("all");
-  }, [])
   return (
     <div className="container">
       <Header />
