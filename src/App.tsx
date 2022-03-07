@@ -26,6 +26,7 @@ const connector = new AppSearchAPIConnector({
 });
 
 const configurationOptions = {
+  alwaysSearchOnInitialLoad: true,
   apiConnector: connector,
   debug: true,
   autocompleteQuery: {
@@ -86,9 +87,6 @@ const configurationOptions = {
 };
 
 function App() {
-  useEffect(() => {
-    window.searchUI.addFilter("all");
-  }, [])
   return (
     <div className="container">
       <Header />
