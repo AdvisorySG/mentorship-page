@@ -23,6 +23,11 @@ const connector = new AppSearchAPIConnector({
   engineName: "mentorship-page",
   endpointBase: "https://advisorysg.ent.ap-southeast-1.aws.found.io",
   searchKey: "search-bv3s7kksqjinbswx7g4my9ur",
+  beforeSearchCall: (result_fields: any, next: (arg0: any) => any) =>
+    next({
+      ...result_fields,
+      group: { field: "name" },
+    }),
 });
 
 const configurationOptions = {
@@ -124,8 +129,8 @@ function App() {
                       sortOptions={[
                         {
                           name: "Relevance",
-                          value: "",
-                          direction: "",
+                          value: "name",
+                          direction: "desc",
                         },
                         {
                           name: "Name",
