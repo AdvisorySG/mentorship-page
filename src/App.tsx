@@ -110,7 +110,7 @@ function App() {
             dishonest assistance from our mentors.
           </small>
         </p>
-        <div className="results">
+        <div className="results" id="mentors">
           <SearchProvider config={configurationOptions}>
             <div className="App">
               <Layout

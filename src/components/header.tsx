@@ -8,8 +8,6 @@ import {
 } from "../assets";
 
 import "./header.css";
-import "./search-bar.tsx";
-
 //for responsive drawer
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -22,7 +20,6 @@ import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import MenuIcon from "@mui/icons-material/Menu";
 import ListItemButton from "@mui/material/ListItemButton";
-//import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -33,7 +30,6 @@ interface Props {
    */
   window?: () => Window;
 }
-
 //drawer
 function ResponsiveDrawer(props: Props) {
   const { window } = props;
@@ -74,7 +70,7 @@ function ResponsiveDrawer(props: Props) {
         <ListItem disablePadding>
           <ListItemButton
             component="a"
-            href="#search-bar"
+            href="#mentors"
             onClick={handleDrawerToggle}
           >
             <ListItemText primary="Mentors" />
@@ -148,7 +144,6 @@ function ResponsiveDrawer(props: Props) {
     </Box>
   );
 }
-
 //const aboutus = document.getElementById("aboutus");
 const Header = () => (
   <div className="header">
