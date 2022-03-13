@@ -11,34 +11,20 @@ import "./header.css";
 import "./search-bar.tsx";
 
 //for responsive drawer
-import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
 import ListItemButton from "@mui/material/ListItemButton";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
-
-const NavBar = () => (
-  <div className="nav">
-    <a className="nav-back-to-main-site" href="https://advisory.sg">
-      <IoIosArrowBack className="nav-arrow-icon" />
-      back to main site
-    </a>
-    <img className="nav-logo" src={advisoryLogo} alt="Advisory" />
-  </div>
-);
 
 interface Props {
   /**
