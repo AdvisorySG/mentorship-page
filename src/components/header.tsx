@@ -47,6 +47,7 @@ interface Props {
    */
   window?: () => Window;
 }
+
 //drawer
 function ResponsiveDrawer(props: Props) {
   const { window } = props;
