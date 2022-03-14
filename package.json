@@ -41,7 +41,7 @@
     ]
   },
   "devDependencies": {
-    "@elastic/elasticsearch": "^7.16.0",
+    "@elastic/elasticsearch": "^8.1.0",
     "@types/body-scroll-lock": "^3.1.0",
     "@types/lunr": "^2.3.4",
     "@types/react": "^17.0.39",
