@@ -18,6 +18,7 @@ import {
   SearchBox,
   Sorting,
 } from "@elastic/react-search-ui";
+import ResultView from "./ResultView";
 
 const connector = new AppSearchAPIConnector({
   engineName: "mentorship-page",
@@ -29,6 +30,14 @@ const connector = new AppSearchAPIConnector({
       group: { field: "name" },
     }),
 });
+
+/*
+const connector = new AppSearchAPIConnector({
+  engineName: "my-advisory-mentorship-data",
+  endpointBase: "http://localhost:3002",
+  searchKey: "search-2kdkz1y911uherajaewizm4v",
+});
+*/
 
 const configurationOptions = {
   alwaysSearchOnInitialLoad: true,
@@ -62,12 +71,6 @@ const configurationOptions = {
           fallback: true,
         },
       },
-      course_of_study: {
-        snippet: {
-          size: 50,
-          fallback: true,
-        },
-      },
       organisation: {
         snippet: {
           size: 100,
@@ -79,6 +82,34 @@ const configurationOptions = {
           size: 100,
           fallback: true,
         },
+      },
+      full_bio: {
+        snippet: {
+          size: 50,
+          fallback: true,
+        },
+        raw: {},
+      },
+      school: {
+        snippet: {
+          size: 50,
+          fallback: true,
+        },
+      },
+      course_of_study: {
+        snippet: {
+          size: 50,
+          fallback: false,
+        },
+      },
+      wave_name: {
+        snippet: {
+          size: 50,
+          fallback: true,
+        },
+      },
+      wave_id: {
+        raw: {},
       },
       thumbnail_image_url: {
         raw: {},
@@ -115,13 +146,7 @@ function App() {
             <div className="App">
               <Layout
                 header={<SearchBox autocompleteSuggestions={true} />}
-                bodyContent={
-                  <Results
-                    titleField="name"
-                    urlField="thumbnail_image_url"
-                    thumbnailField="thumbnail_image_url"
-                  />
-                }
+                bodyContent={<Results resultView={ResultView} />}
                 sideContent={
                   <div>
                     <Sorting
