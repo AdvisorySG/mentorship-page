@@ -13,26 +13,40 @@
   top: 5%;
   padding-right: 10px;
 }
-.nav-back-to-main-site {
-  position: relative;
-  left: 5%;
-  top: 25%;
-  color: black;
-  text-decoration: none;
+
+@media only screen and (min-width: 601px) {
+  .nav-back-to-main-site {
+    position: relative;
+    top: 4%;
+    color: black;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
 }
-a:hover {
-  text-decoration: underline;
-}
+
 @media only screen and (max-width: 600px) {
   .nav-logo {
-    height: 60%;
-    position: absolute;
+    height: auto;
+    position: relative;
     top: 20%;
-    right: 15%;
+    left: -4%;
     margin: auto;
+    width: 16%;
   }
   .header-mentorship-logo {
     width: 80%;
+  }
+  .nav-back-to-main-site {
+    display: none;
+  }
+  .header-mentorship-intro {
+    width: 80%;
+    margin: 0 auto;
+    text-align: justify;
+    font-size: 14px;
   }
 }
 @media only screen and (min-width: 601px) {
@@ -49,7 +63,7 @@ a:hover {
 .header-bottom {
   min-height: 200px;
   background-color: white;
-
+  position: relative;
   border-top-style: solid;
   border-bottom-style: solid;
   border-width: 1px;
@@ -58,7 +72,6 @@ a:hover {
   text-align: center;
   max-width: 90ch;
   margin: 0 auto;
-  padding: 20px;
 }
 .header-mentorship-logo {
   width: 60%;
@@ -71,5 +84,21 @@ a:hover {
 .header-mentorship-intro {
   width: 80%;
   margin: 0 auto;
-  text-align: start;
+  text-align: justify;
+}
+#aboutus {
+  padding-top: 55px;
+}
+#sponsors {
+  padding-top: 55px;
+}
+.toolbar-component {
+  position: sticky;
+}
+.content-body {
+  position: relative;
+  padding-top: 55px;
+}
+#mentors {
+  padding-top: 55px;
 }
