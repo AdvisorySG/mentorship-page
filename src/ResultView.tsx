@@ -67,20 +67,20 @@ export default ({ result }: { result: any }) => (
           />
         </li>
         <li>
+          <span className="sui-result__key">Course of study</span>{" "}
+          <span
+            className="sui-result__value"
+            dangerouslySetInnerHTML={{
+              __html: result.wave_name.snippet,
+            }}
+          />
+        </li>
+        <li>
           <span className="sui-result__key">School graduated from</span>{" "}
           <span
             className="sui-result__value"
             dangerouslySetInnerHTML={{
               __html: result.school.snippet,
-            }}
-          />
-        </li>
-        <li>
-          <span className="sui-result__key">Course of study</span>{" "}
-          <span
-            className="sui-result__value"
-            dangerouslySetInnerHTML={{
-              __html: result.course_of_study.snippet,
             }}
           />
         </li>
