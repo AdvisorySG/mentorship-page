@@ -5,7 +5,7 @@
   "private": true,
   "dependencies": {
     "@elastic/app-search-javascript": "^8.0.0",
-    "@elastic/react-search-ui": "^1.9.0",
+    "@elastic/react-search-ui": "^1.10.0",
     "@elastic/search-ui-app-search-connector": "^1.9.0",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
