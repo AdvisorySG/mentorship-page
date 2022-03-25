@@ -8,8 +8,6 @@ import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
 import { Layout } from "@elastic/react-search-ui-views";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 
-import { Paging as PagingView } from "@elastic/react-search-ui-views";
-
 import {
   PagingInfo,
   ResultsPerPage,
@@ -22,13 +20,23 @@ import {
 } from "@elastic/react-search-ui";
 import ResultView from "./ResultView";
 
-/*  */
-
 const connector = new AppSearchAPIConnector({
+  engineName: "mentorship-page",
+  endpointBase: "https://advisorysg.ent.ap-southeast-1.aws.found.io",
+  searchKey: "search-bv3s7kksqjinbswx7g4my9ur",
+  beforeSearchCall: (result_fields: any, next: (arg0: any) => any) =>
+    next({
+      ...result_fields,
+      group: { field: "name" },
+    }),
+});
+
+/* const connector = new AppSearchAPIConnector({
   engineName: "my-advisory-mentorship-data",
   endpointBase: "http://localhost:3002",
   searchKey: "search-2kdkz1y911uherajaewizm4v",
 });
+ */
 
 const configurationOptions = {
   alwaysSearchOnInitialLoad: true,
@@ -88,15 +96,6 @@ const configurationOptions = {
         },
       },
       course_of_study: {
-        raw: {},
-      },
-      wave_name: {
-        snippet: {
-          size: 50,
-          fallback: true,
-        },
-      },
-      wave_id: {
         raw: {},
       },
       thumbnail_image_url: {
