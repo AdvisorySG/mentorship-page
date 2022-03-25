@@ -31,13 +31,12 @@ const connector = new AppSearchAPIConnector({
     }),
 });
 
-/*
-const connector = new AppSearchAPIConnector({
+/* const connector = new AppSearchAPIConnector({
   engineName: "my-advisory-mentorship-data",
   endpointBase: "http://localhost:3002",
   searchKey: "search-2kdkz1y911uherajaewizm4v",
 });
-*/
+ */
 
 const configurationOptions = {
   alwaysSearchOnInitialLoad: true,
@@ -97,10 +96,7 @@ const configurationOptions = {
         },
       },
       course_of_study: {
-        snippet: {
-          size: 50,
-          fallback: false,
-        },
+        raw: {},
       },
       wave_name: {
         snippet: {
@@ -142,7 +138,7 @@ function App() {
           </small>
         </p>
         <div className="results">
-          <SearchProvider config={configurationOptions} >
+          <SearchProvider config={configurationOptions}>
             <div className="App">
               <Layout
                 header={<SearchBox autocompleteSuggestions={true} />}
@@ -168,10 +164,10 @@ function App() {
                   </div>
                 }
                 bodyHeader={
-                  <>
-                    <PagingInfo />
-                    <ResultsPerPage />
-                  </>
+                  <React.Fragment>
+                    {<PagingInfo />}
+                    {<ResultsPerPage />}
+                  </React.Fragment>
                 }
                 bodyFooter={<Paging />}
               />
