@@ -4,6 +4,26 @@ import { Chip } from "@mui/material";
 
 import "./ResultView.css";
 
+// This function is needed as ElasticSearch trims off closed brackets at the
+// end of snippets. Please refer to the following issue:
+// https://github.com/AdvisorySG/mentorship-page/issues/440
+const fillMissing = (snippet: any) => {
+  const str = String(snippet);
+  let open = 0;
+  let close = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (str.charAt(i) === "(") {
+      open += 1;
+    } else if (str.charAt(i) === ")") {
+      close += 1;
+    }
+  }
+  if (open - close === 1) {
+    snippet = snippet + ")";
+  }
+  return snippet;
+};
+
 const ResultView = ({ result }: { result: any }) => {
   const {
     course_of_study: courseOfStudy,
@@ -16,7 +36,9 @@ const ResultView = ({ result }: { result: any }) => {
   } = result;
 
   const displayCourseOfStudy =
-    courseOfStudy && courseOfStudy.snippet ? courseOfStudy.snippet : "NA";
+    courseOfStudy && courseOfStudy.snippet
+      ? fillMissing(courseOfStudy.snippet)
+      : "NA";
   const displayFullBio =
     fullBio && fullBio.snippet ? fullBio.snippet + "..." : "NA";
   const displayIndustries =
@@ -24,7 +46,7 @@ const ResultView = ({ result }: { result: any }) => {
   const displayName = name && name.snippet ? name.snippet : "NA";
   const displayOrganisation =
     organisation && organisation.snippet ? organisation.snippet : "NA";
-  const displayRole = role && role.snippet ? role.snippet : "NA";
+  const displayRole = role && role.snippet ? fillMissing(role.snippet) : "NA";
   const displaySchool = school && school.snippet ? school.snippet : "NA";
 
   return (
