@@ -77,9 +77,9 @@ export default ({ result }: { result: any }) => {
                   __html: resultBio,
                 }}
               />
-              <button onClick={toggleIsSnip}>
-                {isSnip ? "Read More" : "Read less"}
-              </button>
+            </li>
+            <li>
+              <p onClick={toggleIsSnip}>{isSnip ? "Read More" : "Read less"}</p>
             </li>
             <li>
               <span className="sui-result__key">Course of study</span>{" "}
