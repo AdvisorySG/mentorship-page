@@ -60,13 +60,13 @@ const configurationOptions = {
       name: {
         // A snippet means that matching search terms will be highlighted via <em> tags.
         snippet: {
-          size: 75, // Limit the snippet to 75 characters.
+          size: 100, // Limit the snippet to 75 characters.
           fallback: true, // Fallback to a "raw" result.
         },
       },
       industries: {
         snippet: {
-          size: 50,
+          size: 100,
           fallback: true,
         },
       },
@@ -91,7 +91,7 @@ const configurationOptions = {
       },
       school: {
         snippet: {
-          size: 50,
+          size: 100,
           fallback: true,
         },
       },
