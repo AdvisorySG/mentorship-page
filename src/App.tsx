@@ -87,6 +87,8 @@ const configurationOptions = {
     // 3. Facet by scores, genre, publisher, and platform, which we'll use to build filters later.
     facets: {
       industries: { type: "value", size: 100 },
+      course_of_study: { type: "value", size: 100 },
+      role: { type: "value", size: 100 },
     },
   },
 };
@@ -140,6 +142,8 @@ function App() {
                       ]}
                     />
                     <Facet field="industries" label="Industries" />
+                    <Facet field="course_of_study" label="Course of Study" />
+                    <Facet field="role" label="Role" />
                   </div>
                 }
                 bodyHeader={
