@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default ({ result }: { result: any }) => {
-  //console.log(result.course_of_study ? result.course_of_study.raw : "NA");
+  console.log(result.course_of_study ? result.course_of_study.raw : "NA");
+  const [isSnip, Snip] = useState(true);
+  const resultBio = isSnip
+    ? result.full_bio.snippet + "... "
+    : result.full_bio.raw + " ";
+  function toggleIsSnip() {
+    Snip(!isSnip);
+  }
   return (
     <div>
       <li className="sui-result">
@@ -67,9 +74,12 @@ export default ({ result }: { result: any }) => {
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
-                  __html: result.full_bio ? result.full_bio.raw : "NA",
+                  __html: resultBio,
                 }}
               />
+              <button onClick={toggleIsSnip}>
+                {isSnip ? "Read More" : "Read less"}
+              </button>
             </li>
             <li>
               <span className="sui-result__key">Course of study</span>{" "}

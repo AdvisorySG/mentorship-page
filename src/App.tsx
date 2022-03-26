@@ -36,8 +36,7 @@ const connector = new AppSearchAPIConnector({
   engineName: "my-advisory-mentorship-data",
   endpointBase: "http://localhost:3002",
   searchKey: "search-2kdkz1y911uherajaewizm4v",
-});
- */
+}); */
 
 const configurationOptions = {
   alwaysSearchOnInitialLoad: true,
