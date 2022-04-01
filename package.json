@@ -4,7 +4,7 @@
   "homepage": "https://mentorship.advisory.sg/",
   "private": true,
   "dependencies": {
-    "@elastic/app-search-javascript": "^8.0.0",
+    "@elastic/app-search-javascript": "^8.1.0",
     "@elastic/react-search-ui": "^1.10.0",
     "@elastic/search-ui-app-search-connector": "^1.10.1",
     "@emotion/react": "^11.8.2",
