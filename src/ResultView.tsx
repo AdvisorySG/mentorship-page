@@ -6,16 +6,13 @@ const result_category = {
   color: "#7C7C72",
 };
 
-const func = ({ result }: { result: any }) => {
-  console.log(result.course_of_study ? result.course_of_study.raw : "NA");
+const ResultView = ({ result }: { result: any }) => {
   return (
     <div>
       <li className="sui-result">
         <div className="sui-result__header">
           <span
             className="sui-result__title"
-            // Snippeted results contain search term highlights with html and are
-            // 100% safe and santitized, so we dangerously set them here
             dangerouslySetInnerHTML={{ __html: result.name.snippet }}
           />
         </div>
@@ -40,7 +37,7 @@ const func = ({ result }: { result: any }) => {
           </div>
           <ul className="sui-result__details">
             <li>
-              <span style={result_category}>Role: </span>
+              <span className="sui-result__label">Role: </span>
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
@@ -49,7 +46,7 @@ const func = ({ result }: { result: any }) => {
               />
             </li>
             <li>
-              <span style={result_category}>Organisation: </span>
+              <span className="sui-result__label">Organisation: </span>
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
@@ -60,7 +57,7 @@ const func = ({ result }: { result: any }) => {
               />
             </li>
             <li>
-              <span style={result_category}>School graduated from: </span>
+              <span className="sui-result__label">School graduated from: </span>
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
@@ -69,18 +66,18 @@ const func = ({ result }: { result: any }) => {
               />
             </li>
             <li>
-              <span style={result_category}>Course of study: </span>
+              <span className="sui-result__label">Course of study: </span>
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
                   __html: result.course_of_study
-                    ? result.course_of_study.raw
+                    ? result.course_of_study.snippet
                     : "NA",
                 }}
               />
             </li>
             <li>
-              <span style={result_category}>Biography: </span>
+              <span className="sui-result__label">Biography: </span>
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
@@ -97,4 +94,4 @@ const func = ({ result }: { result: any }) => {
   );
 };
 
-export default func;
+export default ResultView;

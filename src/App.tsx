@@ -32,12 +32,6 @@ const connector = new AppSearchAPIConnector({
     }),
 });
 
-/* const connector = new AppSearchAPIConnector({
-  engineName: "my-advisory-mentorship-data",
-  endpointBase: "http://localhost:3002",
-  searchKey: "search-2kdkz1y911uherajaewizm4v",
-}); */
-
 const configurationOptions = {
   alwaysSearchOnInitialLoad: true,
   apiConnector: connector,
@@ -46,22 +40,18 @@ const configurationOptions = {
     suggestions: {
       types: {
         documents: {
-          // Which fields to search for suggestions.
           fields: ["name", "role"],
         },
       },
-      // How many suggestions appear.
       size: 5,
     },
   },
   searchQuery: {
-    // 2. Results: name of the video game, its genre, publisher, scores, and platform.
     result_fields: {
       name: {
-        // A snippet means that matching search terms will be highlighted via <em> tags.
         snippet: {
-          size: 100, // Limit the snippet to 75 characters.
-          fallback: true, // Fallback to a "raw" result.
+          size: 100,
+          fallback: true,
         },
       },
       industries: {
@@ -69,6 +59,7 @@ const configurationOptions = {
           size: 100,
           fallback: true,
         },
+        raw: {},
       },
       organisation: {
         snippet: {
@@ -96,13 +87,15 @@ const configurationOptions = {
         },
       },
       course_of_study: {
-        raw: {},
+        snippet: {
+          size: 100,
+          fallback: true,
+        },
       },
       thumbnail_image_url: {
         raw: {},
       },
     },
-    // 3. Facet by scores, genre, publisher, and platform, which we'll use to build filters later.
     facets: {
       industries: { type: "value", size: 100 },
       course_of_study: { type: "value", size: 100 },

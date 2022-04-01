@@ -17,7 +17,6 @@
     "react-lazyload": "^3.2.0",
     "react-modal": "^3.14.4",
     "react-scripts": "5.0.0",
-    "react-tabs": "^4.0.1",
     "readmore-js": "^2.2.1"
   },
   "scripts": {
