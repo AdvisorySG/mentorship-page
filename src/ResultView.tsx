@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 
+const result_category = {
+  fontFamily: "Helvetica",
+  fontSize: 14,
+  color: "#7C7C72",
+};
+
 export default ({ result }: { result: any }) => {
   console.log(result.course_of_study ? result.course_of_study.raw : "NA");
   const [isSnip, Snip] = useState(true);
@@ -41,7 +47,7 @@ export default ({ result }: { result: any }) => {
           </div>
           <ul className="sui-result__details">
             <li>
-              <span>Role: </span>
+              <span style={result_category}>Role: </span>
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
@@ -50,7 +56,7 @@ export default ({ result }: { result: any }) => {
               />
             </li>
             <li>
-              <span>Organisation: </span>
+              <span style={result_category}>Organisation: </span>
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
@@ -61,7 +67,7 @@ export default ({ result }: { result: any }) => {
               />
             </li>
             <li>
-              <span>School graduated from: </span>
+              <span style={result_category}>School graduated from: </span>
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
@@ -70,7 +76,7 @@ export default ({ result }: { result: any }) => {
               />
             </li>
             <li>
-              <span>Course of study: </span>
+              <span style={result_category}>Course of study: </span>
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
@@ -81,7 +87,7 @@ export default ({ result }: { result: any }) => {
               />
             </li>
             <li>
-              <span>Biography: </span>
+              <span style={result_category}>Biography: </span>
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
