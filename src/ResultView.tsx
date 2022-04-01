@@ -1,11 +1,5 @@
 import React from "react";
 
-const result_category = {
-  fontFamily: "Helvetica",
-  fontSize: 14,
-  color: "#7C7C72",
-};
-
 const ResultView = ({ result }: { result: any }) => {
   return (
     <div>
