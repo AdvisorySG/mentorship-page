@@ -41,16 +41,16 @@ export default ({ result }: { result: any }) => {
           </div>
           <ul className="sui-result__details">
             <li>
-              <span className="sui-result__key">Industries</span>{" "}
+              <span>Role: </span>
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
-                  __html: result.industries ? result.industries.snippet : "NA",
+                  __html: result.role ? result.role.snippet : "NA",
                 }}
               />
             </li>
             <li>
-              <span className="sui-result__key">Organisation</span>{" "}
+              <span>Organisation: </span>
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
@@ -61,28 +61,16 @@ export default ({ result }: { result: any }) => {
               />
             </li>
             <li>
-              <span className="sui-result__key">Role</span>{" "}
+              <span>School graduated from: </span>
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
-                  __html: result.role ? result.role.snippet : "NA",
+                  __html: result.school ? result.school.snippet : "NA",
                 }}
               />
             </li>
             <li>
-              <span className="sui-result__key">Biography</span>{" "}
-              <span
-                className="sui-result__value"
-                dangerouslySetInnerHTML={{
-                  __html: resultBio,
-                }}
-              />
-            </li>
-            <li>
-              <p onClick={toggleIsSnip}>{isSnip ? "Read More" : "Read less"}</p>
-            </li>
-            <li>
-              <span className="sui-result__key">Course of study</span>{" "}
+              <span>Course of study: </span>
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
@@ -93,11 +81,11 @@ export default ({ result }: { result: any }) => {
               />
             </li>
             <li>
-              <span className="sui-result__key">School graduated from</span>{" "}
+              <span>Biography: </span>
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
-                  __html: result.school ? result.school.snippet : "NA",
+                  __html: resultBio,
                 }}
               />
             </li>
