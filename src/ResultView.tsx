@@ -6,7 +6,7 @@ const result_category = {
   color: "#7C7C72",
 };
 
-export default ({ result }: { result: any }) => {
+const func = ({ result }: { result: any }) => {
   console.log(result.course_of_study ? result.course_of_study.raw : "NA");
   return (
     <div>
@@ -94,3 +94,5 @@ export default ({ result }: { result: any }) => {
     </div>
   );
 };
+
+export default func;
