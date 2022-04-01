@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "react-tabs/style/react-tabs.css";
 
 import Header from "./components/header";
 import "./App.css";
+import ResultView from "./ResultsView";
 
 import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
 import { Layout } from "@elastic/react-search-ui-views";
@@ -18,6 +19,7 @@ import {
   SearchBox,
   Sorting,
 } from "@elastic/react-search-ui";
+import ResultsView from "./ResultsView";
 
 const connector = new AppSearchAPIConnector({
   engineName: "mentorship-page",
@@ -83,6 +85,12 @@ const configurationOptions = {
       thumbnail_image_url: {
         raw: {},
       },
+      full_bio: {
+        snippet: {
+          size: 1000,
+          fallback: true,
+        },
+      }
     },
     // 3. Facet by scores, genre, publisher, and platform, which we'll use to build filters later.
     facets: {
@@ -115,12 +123,14 @@ function App() {
             <div className="App">
               <Layout
                 header={<SearchBox autocompleteSuggestions={true} />}
-                bodyContent={
-                  <Results
+                bodyContent={<>
+                  <Results 
                     titleField="name"
                     urlField="thumbnail_image_url"
                     thumbnailField="thumbnail_image_url"
+                    resultView={ResultsView}
                   />
+                  </>
                 }
                 sideContent={
                   <div>
