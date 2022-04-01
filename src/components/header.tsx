@@ -1,6 +1,4 @@
 import React from "react";
-import { IoIosArrowBack } from "react-icons/io";
-
 import {
   advisoryLogo,
   advisoryMentorshipLogo,
@@ -113,8 +111,7 @@ function ResponsiveDrawer(props: Props) {
             style={{ alignSelf: "center" }}
           />
           <a className="nav-back-to-main-site" href="https://advisory.sg">
-            <IoIosArrowBack className="nav-arrow-icon" />
-            back to main site
+            &#x3c; back to main site
           </a>
         </Toolbar>
       </AppBar>
