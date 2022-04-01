@@ -54,13 +54,6 @@ const configurationOptions = {
           fallback: true,
         },
       },
-      industries: {
-        snippet: {
-          size: 100,
-          fallback: true,
-        },
-        raw: {},
-      },
       organisation: {
         snippet: {
           size: 100,
@@ -78,7 +71,6 @@ const configurationOptions = {
           size: 50,
           fallback: true,
         },
-        raw: {},
       },
       school: {
         snippet: {
