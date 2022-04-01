@@ -8,13 +8,6 @@ const result_category = {
 
 export default ({ result }: { result: any }) => {
   console.log(result.course_of_study ? result.course_of_study.raw : "NA");
-  const [isSnip, Snip] = useState(true);
-  const resultBio = isSnip
-    ? result.full_bio.snippet + "... "
-    : result.full_bio.raw + " ";
-  function toggleIsSnip() {
-    Snip(!isSnip);
-  }
   return (
     <div>
       <li className="sui-result">
@@ -91,7 +84,7 @@ export default ({ result }: { result: any }) => {
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
-                  __html: resultBio,
+                  __html: result.full_bio ? result.full_bio.snippet : "NA",
                 }}
               />
             </li>
