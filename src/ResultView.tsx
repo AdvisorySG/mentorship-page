@@ -84,7 +84,9 @@ const func = ({ result }: { result: any }) => {
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
-                  __html: result.full_bio ? result.full_bio.snippet : "NA",
+                  __html: result.full_bio
+                    ? result.full_bio.snippet + " ..."
+                    : "NA",
                 }}
               />
             </li>
