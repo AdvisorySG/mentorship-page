@@ -1,22 +1,6 @@
 import React from "react";
 
-type FieldRaw<T> = { raw: T };
-type FieldSnippet<T> = { snippet: T };
-
-type MentorResult = {
-  course_of_study: FieldSnippet<string>;
-  full_bio: FieldRaw<string> & FieldSnippet<string>;
-  full_image_url: FieldRaw<string>;
-  industries: FieldRaw<string[]>;
-  name: FieldSnippet<string>;
-  organisation: FieldSnippet<string>;
-  role: FieldSnippet<string>;
-  school: FieldSnippet<string>;
-  thumbnail_image_url: FieldRaw<string>;
-  wave_id: FieldRaw<number>;
-};
-
-const ResultView = ({ result }: { result: MentorResult }) => {
+const ResultView = ({ result }: { result: any }) => {
   const {
     course_of_study,
     full_bio,
@@ -33,7 +17,9 @@ const ResultView = ({ result }: { result: MentorResult }) => {
         <div className="sui-result__header">
           <span
             className="sui-result__title"
-            dangerouslySetInnerHTML={{ __html: name.snippet }}
+            dangerouslySetInnerHTML={{
+              __html: name && name.snippet ? name.snippet : "NA",
+            }}
           />
         </div>
         <div className="sui-result__body">
@@ -61,7 +47,10 @@ const ResultView = ({ result }: { result: MentorResult }) => {
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
-                  __html: industries.raw ? industries.raw.join(", ") : "NA",
+                  __html:
+                    industries && industries.raw
+                      ? industries.raw.join(", ")
+                      : "NA",
                 }}
               />
             </li>
@@ -69,7 +58,9 @@ const ResultView = ({ result }: { result: MentorResult }) => {
               <span className="sui-result__label">Role: </span>
               <span
                 className="sui-result__value"
-                dangerouslySetInnerHTML={{ __html: role.snippet ?? "NA" }}
+                dangerouslySetInnerHTML={{
+                  __html: role && role.snippet ? role.snippet : "NA",
+                }}
               />
             </li>
             <li>
@@ -77,7 +68,10 @@ const ResultView = ({ result }: { result: MentorResult }) => {
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
-                  __html: organisation.snippet ?? "NA",
+                  __html:
+                    organisation && organisation.snippet
+                      ? organisation.snippet
+                      : "NA",
                 }}
               />
             </li>
@@ -85,7 +79,9 @@ const ResultView = ({ result }: { result: MentorResult }) => {
               <span className="sui-result__label">School graduated from: </span>
               <span
                 className="sui-result__value"
-                dangerouslySetInnerHTML={{ __html: school.snippet ?? "NA" }}
+                dangerouslySetInnerHTML={{
+                  __html: school && school.snippet ? school.snippet : "NA",
+                }}
               />
             </li>
             <li>
@@ -93,7 +89,10 @@ const ResultView = ({ result }: { result: MentorResult }) => {
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
-                  __html: course_of_study.snippet ?? "NA",
+                  __html:
+                    course_of_study && course_of_study.snippet
+                      ? course_of_study.snippet
+                      : "NA",
                 }}
               />
             </li>
@@ -102,7 +101,10 @@ const ResultView = ({ result }: { result: MentorResult }) => {
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
-                  __html: full_bio.snippet ? full_bio.snippet + "..." : "NA",
+                  __html:
+                    full_bio && full_bio.snippet
+                      ? full_bio.snippet + "..."
+                      : "NA",
                 }}
               />
             </li>
