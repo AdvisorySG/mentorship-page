@@ -1,10 +1,13 @@
 import React from "react";
+
 import { Chip } from "@mui/material";
+
+import "./ResultView.css";
 
 const ResultView = ({ result }: { result: any }) => {
   const {
-    course_of_study,
-    full_bio,
+    course_of_study: courseOfStudy,
+    full_bio: fullBio,
     industries,
     name,
     organisation,
@@ -12,39 +15,34 @@ const ResultView = ({ result }: { result: any }) => {
     school,
   } = result;
 
+  const displayCourseOfStudy =
+    courseOfStudy && courseOfStudy.snippet ? courseOfStudy.snippet : "NA";
+  const displayFullBio =
+    fullBio && fullBio.snippet ? fullBio.snippet + "..." : "NA";
+  const displayIndustries =
+    industries && Array.isArray(industries.raw) ? industries.raw : [];
+  const displayName = name && name.snippet ? name.snippet : "NA";
+  const displayOrganisation =
+    organisation && organisation.snippet ? organisation.snippet : "NA";
+  const displayRole = role && role.snippet ? role.snippet : "NA";
+  const displaySchool = school && school.snippet ? school.snippet : "NA";
+
   return (
     <div>
       <li className="sui-result">
         <div className="sui-result__header">
           <span
             className="sui-result__title"
-            dangerouslySetInnerHTML={{
-              __html: name && name.snippet ? name.snippet : "NA",
-            }}
+            dangerouslySetInnerHTML={{ __html: displayName }}
           />
         </div>
         <div className="sui-result__body">
-          <div
-            className="sui-result__image"
-            style={{
-              maxWidth: "140px",
-              paddingLeft: "24px",
-              paddingTop: "10px",
-            }}
-          >
-            <img
-              src={result.thumbnail_image_url.raw}
-              alt="thumb"
-              style={{
-                display: "block",
-                objectFit: "cover",
-                objectPosition: "center",
-              }}
-            />
+          <div className="sui-result__image">
+            <img src={result.thumbnail_image_url.raw} alt={displayName} />
           </div>
           <ul className="sui-result__details">
             <li>
-              {industries.raw.map((industry: any) => (
+              {displayIndustries.map((industry: any) => (
                 <Chip
                   style={{ marginRight: 10, marginBottom: 7 }}
                   label={industry}
@@ -55,54 +53,35 @@ const ResultView = ({ result }: { result: any }) => {
               <span className="sui-result__label">Role: </span>
               <span
                 className="sui-result__value"
-                dangerouslySetInnerHTML={{
-                  __html: role && role.snippet ? role.snippet : "NA",
-                }}
+                dangerouslySetInnerHTML={{ __html: displayRole }}
               />
             </li>
             <li>
               <span className="sui-result__label">Organisation: </span>
               <span
                 className="sui-result__value"
-                dangerouslySetInnerHTML={{
-                  __html:
-                    organisation && organisation.snippet
-                      ? organisation.snippet
-                      : "NA",
-                }}
+                dangerouslySetInnerHTML={{ __html: displayOrganisation }}
               />
             </li>
             <li>
               <span className="sui-result__label">School graduated from: </span>
               <span
                 className="sui-result__value"
-                dangerouslySetInnerHTML={{
-                  __html: school && school.snippet ? school.snippet : "NA",
-                }}
+                dangerouslySetInnerHTML={{ __html: displaySchool }}
               />
             </li>
             <li>
               <span className="sui-result__label">Course of study: </span>
               <span
                 className="sui-result__value"
-                dangerouslySetInnerHTML={{
-                  __html:
-                    course_of_study && course_of_study.snippet
-                      ? course_of_study.snippet
-                      : "NA",
-                }}
+                dangerouslySetInnerHTML={{ __html: displayCourseOfStudy }}
               />
             </li>
             <li>
               <span className="sui-result__label">Biography: </span>
               <span
                 className="sui-result__value"
-                dangerouslySetInnerHTML={{
-                  __html:
-                    full_bio && full_bio.snippet
-                      ? full_bio.snippet + "..."
-                      : "NA",
-                }}
+                dangerouslySetInnerHTML={{ __html: displayFullBio }}
               />
             </li>
           </ul>
