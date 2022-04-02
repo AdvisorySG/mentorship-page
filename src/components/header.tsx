@@ -1,14 +1,6 @@
 import React from "react";
-import {
-  advisoryLogo,
-  advisoryMentorshipLogo,
-  advisoryMentorshipPartners,
-} from "../assets";
-
-import "./header.css";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
@@ -19,7 +11,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import LaunchIcon from "@mui/icons-material/Launch";
+import {
+  advisoryLogo,
+  advisoryMentorshipLogo,
+  advisoryMentorshipPartners,
+} from "../assets";
 
+import "./header.css";
 const drawerWidth = 240;
 
 interface Props {
@@ -91,7 +89,7 @@ const ResponsiveDrawer = (props: Props) => {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar style={{ background: "#f89b27" }} className="toolbar-component">
+      <AppBar style={{ background: "white" }} className="toolbar-component">
         <Toolbar>
           <IconButton
             color="inherit"
