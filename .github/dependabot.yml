@@ -4,4 +4,6 @@ updates:
     directory: "/"
     schedule:
       interval: weekly
+    reviewers:
+      - "AdvisorySG/mentorship-reviewers"
     open-pull-requests-limit: 4

@@ -15,16 +15,17 @@ jobs:
         uses: actions/cache@v1
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-airtable-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-lambda-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-airtable-
+            ${{ runner.os }}-node-lambda-
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
       - run: export VERSION_AIRTABLE=`node -p -e "require('./package-lock.json').packages['node_modules/airtable'].version"`
+      - run: export VERSION_ELASTICSEARCH=`node -p -e "require('./package-lock.json').packages['node_modules/@elastic/elasticsearch'].version"`
       - run: rm package.json package-lock.json
-      - run: npm install --no-save airtable@"$VERSION_AIRTABLE"
+      - run: npm install --no-save airtable@"$VERSION_AIRTABLE" @elastic/elasticsearch@"$VERSION_ELASTICSEARCH"
 
       - run: mkdir lambda
       - run: cp scripts/load_mentors.js lambda/index.js
