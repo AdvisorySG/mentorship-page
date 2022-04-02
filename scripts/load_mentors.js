@@ -78,7 +78,6 @@ exports.handler = async (event) => {
 
   await elasticClient.deleteByQuery({
     index: ".ent-search-engine-documents-mentorship-page",
-    type: "",
     body: {
       query: {
         match_all: {},
