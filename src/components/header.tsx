@@ -1,17 +1,6 @@
 import React from "react";
-import { IoIosArrowBack } from "react-icons/io";
-
-import {
-  advisoryLogo,
-  advisoryMentorshipLogo,
-  advisoryMentorshipPartners,
-} from "../assets";
-
-import "./header.css";
-//for responsive drawer
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
@@ -20,18 +9,22 @@ import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import MenuIcon from "@mui/icons-material/Menu";
 import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import LaunchIcon from "@mui/icons-material/Launch";
+import {
+  advisoryLogo,
+  advisoryMentorshipLogo,
+  advisoryMentorshipPartners,
+} from "../assets";
 
+import "./header.css";
 const drawerWidth = 240;
 
 interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window?: () => Window;
 }
-//drawer
-function ResponsiveDrawer(props: Props) {
+
+const ResponsiveDrawer = (props: Props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -39,63 +32,66 @@ function ResponsiveDrawer(props: Props) {
     setMobileOpen(!mobileOpen);
   };
 
-  const drawer = (
-    <div>
-      <Toolbar style={{ background: "#f89b27" }} />
-      <Divider style={{ background: "#f89b27" }} />
-      <List>
-        <ListItem disablePadding>
-          <ListItemButton component="a" href="https://advisory.sg">
-            <ListItemText primary="Back To Main Site" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton
-            component="a"
-            href="#aboutus"
-            onClick={handleDrawerToggle}
-          >
-            <ListItemText primary="About Us" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton
-            component="a"
-            href="#sponsors"
-            onClick={handleDrawerToggle}
-          >
-            <ListItemText primary="Sponsors" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton
-            component="a"
-            href="#mentors"
-            onClick={handleDrawerToggle}
-          >
-            <ListItemText primary="Mentors" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton
-            component="a"
-            href="https://advisorysg.typeform.com/to/HQ8nWq2r#source=mentorsite"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <ListItemText primary="Apply Now" />
-          </ListItemButton>
-        </ListItem>
-      </List>
-      <Divider />
-    </div>
-  );
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
+  const LinkList = () => {
+    return (
+      <div>
+        <List>
+          <ListItem disablePadding>
+            <ListItemButton component="a" href="https://advisory.sg">
+              <ListItemText primary="Back To Main Site" />
+              <ListItemIcon style={{ minWidth: "60px" }}>
+                <LaunchIcon />
+              </ListItemIcon>
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton
+              component="a"
+              href="#aboutus"
+              onClick={handleDrawerToggle}
+            >
+              <ListItemText primary="About Us" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton
+              component="a"
+              href="#partners"
+              onClick={handleDrawerToggle}
+            >
+              <ListItemText primary="Partners" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton
+              component="a"
+              href="#mentors"
+              onClick={handleDrawerToggle}
+            >
+              <ListItemText primary="Mentors" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton
+              component="a"
+              href="https://advisorysg.typeform.com/to/HQ8nWq2r#source=mentorsite"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ListItemText primary="Apply Now" />
+            </ListItemButton>
+            <ListItemIcon style={{ minWidth: "130px" }}>
+              <LaunchIcon />
+            </ListItemIcon>
+          </ListItem>
+        </List>
+      </div>
+    );
+  };
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar style={{ background: "#f89b27" }} className="toolbar-component">
+      <AppBar style={{ background: "white" }} className="toolbar-component">
         <Toolbar>
           <IconButton
             color="inherit"
@@ -104,7 +100,7 @@ function ResponsiveDrawer(props: Props) {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}
           >
-            <MenuIcon />
+            <MenuIcon style={{ color: "black" }} />
           </IconButton>
           <img
             className="nav-logo"
@@ -113,8 +109,7 @@ function ResponsiveDrawer(props: Props) {
             style={{ alignSelf: "center" }}
           />
           <a className="nav-back-to-main-site" href="https://advisory.sg">
-            <IoIosArrowBack className="nav-arrow-icon" />
-            back to main site
+            &#x3c; back to main site
           </a>
         </Toolbar>
       </AppBar>
@@ -123,12 +118,14 @@ function ResponsiveDrawer(props: Props) {
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
       >
         <Drawer
-          container={container}
+          container={
+            window !== undefined ? () => window().document.body : undefined
+          }
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: false, // Better open performance on mobile.
+            keepMounted: false,
           }}
           sx={{
             display: { xs: "block", sm: "none" },
@@ -138,13 +135,12 @@ function ResponsiveDrawer(props: Props) {
             },
           }}
         >
-          {drawer}
+          <LinkList />
         </Drawer>
       </Box>
     </Box>
   );
-}
-//const aboutus = document.getElementById("aboutus");
+};
 const Header = () => (
   <div className="header">
     <ResponsiveDrawer />
@@ -157,7 +153,7 @@ const Header = () => (
             alt="Advisory Mentorship Programme"
           />
           <img
-            id="sponsors"
+            id="partners"
             className="header-mentorship-logo"
             src={advisoryMentorshipPartners}
             alt="Advisory Mentorship Programme Partners"

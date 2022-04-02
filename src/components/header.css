@@ -8,12 +8,6 @@
   border-width: 1px;
   border-color: #cccccc;
 }
-.nav-arrow-icon {
-  position: relative;
-  top: 5%;
-  padding-right: 10px;
-}
-
 @media only screen and (min-width: 601px) {
   .nav-back-to-main-site {
     position: relative;
@@ -75,22 +69,20 @@
 }
 .header-mentorship-logo {
   width: 60%;
+  padding-top: 40px;
+  position: relative;
 }
 @media only screen and (max-width: 600px) {
   .header-mentorship-logo {
     width: 80%;
+    position: relative;
+    padding-top: 0px;
   }
 }
 .header-mentorship-intro {
   width: 80%;
   margin: 0 auto;
   text-align: justify;
-}
-#aboutus {
-  padding-top: 55px;
-}
-#sponsors {
-  padding-top: 55px;
 }
 .toolbar-component {
   position: sticky;
@@ -99,6 +91,6 @@
   position: relative;
   padding-top: 55px;
 }
-#mentors {
-  padding-top: 55px;
+html {
+  scroll-padding-top: 60px;
 }
