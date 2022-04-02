@@ -32,60 +32,62 @@ const ResponsiveDrawer = (props: Props) => {
     setMobileOpen(!mobileOpen);
   };
 
-  const LinkList = (
-    <div>
-      <List>
-        <ListItem disablePadding>
-          <ListItemButton component="a" href="https://advisory.sg">
-            <ListItemText primary="Back To Main Site" />
-            <ListItemIcon style={{ minWidth: "60px" }}>
+  const LinkList = () => {
+    return (
+      <div>
+        <List>
+          <ListItem disablePadding>
+            <ListItemButton component="a" href="https://advisory.sg">
+              <ListItemText primary="Back To Main Site" />
+              <ListItemIcon style={{ minWidth: "60px" }}>
+                <LaunchIcon />
+              </ListItemIcon>
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton
+              component="a"
+              href="#aboutus"
+              onClick={handleDrawerToggle}
+            >
+              <ListItemText primary="About Us" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton
+              component="a"
+              href="#partners"
+              onClick={handleDrawerToggle}
+            >
+              <ListItemText primary="Partners" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton
+              component="a"
+              href="#mentors"
+              onClick={handleDrawerToggle}
+            >
+              <ListItemText primary="Mentors" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton
+              component="a"
+              href="https://advisorysg.typeform.com/to/HQ8nWq2r#source=mentorsite"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ListItemText primary="Apply Now" />
+            </ListItemButton>
+            <ListItemIcon style={{ minWidth: "130px" }}>
               <LaunchIcon />
             </ListItemIcon>
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton
-            component="a"
-            href="#aboutus"
-            onClick={handleDrawerToggle}
-          >
-            <ListItemText primary="About Us" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton
-            component="a"
-            href="#partners"
-            onClick={handleDrawerToggle}
-          >
-            <ListItemText primary="Partners" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton
-            component="a"
-            href="#mentors"
-            onClick={handleDrawerToggle}
-          >
-            <ListItemText primary="Mentors" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton
-            component="a"
-            href="https://advisorysg.typeform.com/to/HQ8nWq2r#source=mentorsite"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <ListItemText primary="Apply Now" />
-          </ListItemButton>
-          <ListItemIcon style={{ minWidth: "130px" }}>
-            <LaunchIcon />
-          </ListItemIcon>
-        </ListItem>
-      </List>
-    </div>
-  );
+          </ListItem>
+        </List>
+      </div>
+    );
+  };
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -98,7 +100,7 @@ const ResponsiveDrawer = (props: Props) => {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}
           >
-            <MenuIcon />
+            <MenuIcon style={{ color: "black" }} />
           </IconButton>
           <img
             className="nav-logo"
@@ -133,7 +135,7 @@ const ResponsiveDrawer = (props: Props) => {
             },
           }}
         >
-          {LinkList}
+          <LinkList />
         </Drawer>
       </Box>
     </Box>
