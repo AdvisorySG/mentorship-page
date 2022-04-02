@@ -1,13 +1,39 @@
 import React from "react";
 
-const ResultView = ({ result }: { result: any }) => {
+type FieldRaw<T> = { raw: T };
+type FieldSnippet<T> = { snippet: T };
+
+type MentorResult = {
+  course_of_study: FieldSnippet<string>;
+  full_bio: FieldRaw<string> & FieldSnippet<string>;
+  full_image_url: FieldRaw<string>;
+  industries: FieldRaw<string[]>;
+  name: FieldSnippet<string>;
+  organisation: FieldSnippet<string>;
+  role: FieldSnippet<string>;
+  school: FieldSnippet<string>;
+  thumbnail_image_url: FieldRaw<string>;
+  wave_id: FieldRaw<number>;
+};
+
+const ResultView = ({ result }: { result: MentorResult }) => {
+  const {
+    course_of_study,
+    full_bio,
+    industries,
+    name,
+    organisation,
+    role,
+    school,
+  } = result;
+
   return (
     <div>
       <li className="sui-result">
         <div className="sui-result__header">
           <span
             className="sui-result__title"
-            dangerouslySetInnerHTML={{ __html: result.name.snippet }}
+            dangerouslySetInnerHTML={{ __html: name.snippet }}
           />
         </div>
         <div className="sui-result__body">
@@ -31,12 +57,19 @@ const ResultView = ({ result }: { result: any }) => {
           </div>
           <ul className="sui-result__details">
             <li>
-              <span className="sui-result__label">Role: </span>
+              <span className="sui-result__label">Industries: </span>
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
-                  __html: result.role ? result.role.snippet : "NA",
+                  __html: industries.raw ? industries.raw.join(", ") : "NA",
                 }}
+              />
+            </li>
+            <li>
+              <span className="sui-result__label">Role: </span>
+              <span
+                className="sui-result__value"
+                dangerouslySetInnerHTML={{ __html: role.snippet ?? "NA" }}
               />
             </li>
             <li>
@@ -44,9 +77,7 @@ const ResultView = ({ result }: { result: any }) => {
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
-                  __html: result.organisation
-                    ? result.organisation.snippet
-                    : "NA",
+                  __html: organisation.snippet ?? "NA",
                 }}
               />
             </li>
@@ -54,9 +85,7 @@ const ResultView = ({ result }: { result: any }) => {
               <span className="sui-result__label">School graduated from: </span>
               <span
                 className="sui-result__value"
-                dangerouslySetInnerHTML={{
-                  __html: result.school ? result.school.snippet : "NA",
-                }}
+                dangerouslySetInnerHTML={{ __html: school.snippet ?? "NA" }}
               />
             </li>
             <li>
@@ -64,9 +93,7 @@ const ResultView = ({ result }: { result: any }) => {
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
-                  __html: result.course_of_study
-                    ? result.course_of_study.snippet
-                    : "NA",
+                  __html: course_of_study.snippet ?? "NA",
                 }}
               />
             </li>
@@ -75,9 +102,7 @@ const ResultView = ({ result }: { result: any }) => {
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
-                  __html: result.full_bio
-                    ? result.full_bio.snippet + " ..."
-                    : "NA",
+                  __html: full_bio.snippet ? full_bio.snippet + "..." : "NA",
                 }}
               />
             </li>
