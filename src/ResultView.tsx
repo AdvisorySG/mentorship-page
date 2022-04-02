@@ -1,6 +1,17 @@
 import React from "react";
 
 const ResultView = ({ result }: { result: any }) => {
+  console.log("Start of loop");
+  var string = "";
+  for (const entry of result.industries.raw) {
+    if (result.industries.snippet.toString() === entry) {
+    } else {
+      string += entry.toString() + ", ";
+    }
+  }
+  string = string.slice(0, string.length - 2);
+  console.log(result.industries.snippet + ", " + string);
+
   return (
     <div>
       <li className="sui-result">
@@ -30,6 +41,17 @@ const ResultView = ({ result }: { result: any }) => {
             />
           </div>
           <ul className="sui-result__details">
+            <li>
+              <span className="sui-result__label">Industries: </span>
+              <span
+                className="sui-result__value"
+                dangerouslySetInnerHTML={{
+                  __html: result.industries
+                    ? result.industries.snippet + ", " + string
+                    : "NA",
+                }}
+              />
+            </li>
             <li>
               <span className="sui-result__label">Role: </span>
               <span
