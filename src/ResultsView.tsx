@@ -1,10 +1,23 @@
 import React from "react";
+import ReactTextCollapse from "react-text-collapse";
+
+const TEXT_COLLAPSE_OPTIONS = {
+  collapse: false, // default state when component rendered
+  collapseText: '... show more', // text to show when collapsed
+  expandText: 'show less', // text to show when expanded
+  minHeight: 50, // component height when closed
+  maxHeight: 300,
+  textStyle: { 
+    color: "orange",
+    fontSize: "14px"
+  }
+}
 
 export default ({ result }: any) => {
   const openFullBio = "View Full Bio";
   const closeFullBio = "Close Full Bio";
   const [open, setOpen] = React.useState(false);
-  const [buttonText, setButtonText] = React.useState("View Full Bio");
+  const [buttonText, setButtonText] = React.useState("View More");
   const onButtonClick = () => {
     setOpen(!open);
     if (open) {
@@ -68,18 +81,12 @@ export default ({ result }: any) => {
           <span className="sui-result__key">Role</span>{" "}
           <span className="sui-result__value">{result.role.snippet}</span>
         </li>
-        <button 
-         style={{
-          background: '#ff9700',
-          border: 'none',
-          }}
-          onClick={() => onButtonClick()}>{buttonText} 
-        </button>
-        {open && <li>
+        <ReactTextCollapse options={TEXT_COLLAPSE_OPTIONS}>
+          <li>
           <span className="sui-result__key">Full Bio</span>{" "}
           <span className="sui-result__value">{result.full_bio.snippet}</span>
-        </li>
-        } 
+          </li>
+        </ReactTextCollapse>
       </ul>
     </div>
   </li>);

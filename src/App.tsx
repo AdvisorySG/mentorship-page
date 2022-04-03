@@ -1,9 +1,7 @@
-import React, { useState } from "react";
 import "react-tabs/style/react-tabs.css";
 
 import Header from "./components/header";
 import "./App.css";
-import ResultView from "./ResultsView";
 
 import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
 import { Layout } from "@elastic/react-search-ui-views";
