@@ -72,6 +72,19 @@ const ResultBody = ({ body }: { body: any }) => {
   );
 };
 
+const ResultTitleMobile = ({ title }: { title: any }) => {
+  const { name } = title;
+  return (
+    <span
+      className="sui-result__title"
+      dangerouslySetInnerHTML={{
+        __html: name && name.snippet ? name.snippet : "NA",
+      }}
+      style={{ textAlign: "center", width: "100%" }}
+    />
+  );
+};
+
 const ResultTitle = ({ title }: { title: any }) => {
   const { name } = title;
   return (
@@ -91,15 +104,16 @@ const ResultView = ({ result }: { result: any }) => {
       <div>
         <li className="sui-result">
           <div className="sui-result__header">
-            <ResultTitle title={result} />
+            <ResultTitleMobile title={result} />
           </div>
           <div
             className="sui-result__image"
             style={{
               width: "100%",
               display: "flex",
-              position: "relative",
               justifyContent: "center",
+              paddingLeft: "0px",
+              paddingTop: "0px",
             }}
           >
             <img
@@ -109,6 +123,7 @@ const ResultView = ({ result }: { result: any }) => {
                 display: "block",
                 objectFit: "cover",
                 objectPosition: "center",
+                paddingLeft: "-24px",
               }}
               className="mentor-image"
             />
