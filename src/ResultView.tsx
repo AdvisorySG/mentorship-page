@@ -1,4 +1,5 @@
 import React from "react";
+import { Chip } from "@mui/material";
 
 const ResultView = ({ result }: { result: any }) => {
   const {
@@ -43,16 +44,12 @@ const ResultView = ({ result }: { result: any }) => {
           </div>
           <ul className="sui-result__details">
             <li>
-              <span className="sui-result__label">Industries: </span>
-              <span
-                className="sui-result__value"
-                dangerouslySetInnerHTML={{
-                  __html:
-                    industries && industries.raw
-                      ? industries.raw.join(", ")
-                      : "NA",
-                }}
-              />
+              {industries.raw.map((industry: any) => (
+                <Chip
+                  style={{ marginRight: 10, marginBottom: 7 }}
+                  label={industry}
+                />
+              ))}
             </li>
             <li>
               <span className="sui-result__label">Role: </span>
