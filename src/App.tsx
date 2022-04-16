@@ -40,6 +40,9 @@ const configurationOptions = {
       size: 5,
     },
   },
+  initialState: {
+    sort: [{ value: "title", direction: "asc" }],
+  },
   searchQuery: {
     result_fields: {
       course_of_study: { snippet: { size: 100, fallback: true } },
@@ -92,8 +95,8 @@ const App = () => (
                   <Sorting
                     label={"Sort by"}
                     sortOptions={[
-                      { name: "Relevance", value: "", direction: "" },
                       { name: "Name", value: "name", direction: "asc" },
+                      { name: "Relevance", value: "", direction: "" },
                     ]}
                   />
                   <Facet field="industries" label="Industries" />
