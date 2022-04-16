@@ -29,7 +29,6 @@ const connector = new AppSearchAPIConnector({
 const configurationOptions = {
   alwaysSearchOnInitialLoad: true,
   apiConnector: connector,
-  debug: true,
   autocompleteQuery: {
     suggestions: {
       types: {
@@ -41,7 +40,8 @@ const configurationOptions = {
     },
   },
   initialState: {
-    sort: [{ value: "title", direction: "asc" }],
+    sortField: "name",
+    sortDirection: "asc",
   },
   searchQuery: {
     result_fields: {
