@@ -80,12 +80,12 @@ const ResponsiveDrawer = (props: Props) => {
             >
               <ListItemText
                 primary="Apply Now"
-                style={{ flexGrow: "0", marginRight: "0.5 rem" }}
+                style={{ flexGrow: "0", marginRight: "0.5rem" }}
               />
+              <ListItemIcon>
+                <LaunchIcon />
+              </ListItemIcon>
             </ListItemButton>
-            <ListItemIcon>
-              <LaunchIcon />
-            </ListItemIcon>
           </ListItem>
         </List>
       </div>
