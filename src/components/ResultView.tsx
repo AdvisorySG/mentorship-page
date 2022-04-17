@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Chip } from "@mui/material";
 import {
@@ -70,8 +70,8 @@ const ResultView = ({ result }: { result: any }) => {
     courseOfStudy && courseOfStudy.snippet
       ? fillMissing(courseOfStudy.snippet)
       : "NA";
-  const displayFullBio =
-    fullBio && fullBio.snippet ? fullBio.snippet + "..." : "NA";
+  const displayShortBio = fullBio && fullBio.snippet ? fullBio.snippet : "NA";
+  const displayFullBio = fullBio && fullBio.raw ? fullBio.raw : "NA";
   const displayIndustries =
     industries && Array.isArray(industries.raw) ? industries.raw : [];
   const displayName = name && name.snippet ? name.snippet : "NA";
@@ -85,6 +85,8 @@ const ResultView = ({ result }: { result: any }) => {
       industryColors.set(industry, COLORS[industryColors.size % COLORS.length]);
     }
   });
+
+  const [readMore, setReadMore] = useState(false);
 
   return (
     <div>
@@ -146,10 +148,23 @@ const ResultView = ({ result }: { result: any }) => {
             <hr />
             <li>
               <span
-                className="sui-result__value"
+                className="sui-result__biography"
                 style={{ fontSize: 14 }}
-                dangerouslySetInnerHTML={{ __html: displayFullBio }}
+                dangerouslySetInnerHTML={{
+                  __html: readMore ? displayFullBio : displayShortBio,
+                }}
               />
+              <a
+                className="sui-result__readMore"
+                style={{ fontSize: 14 }}
+                href="#readMore"
+                onClick={(e: any) => {
+                  e.preventDefault();
+                  setReadMore(!readMore);
+                }}
+              >
+                {readMore ? "Read Less" : "Read More"}
+              </a>
             </li>
           </ul>
         </div>
