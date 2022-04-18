@@ -40,8 +40,8 @@ const configurationOptions = {
     },
   },
   initialState: {
-    sortField: "name",
-    sortDirection: "asc",
+    sortField: "",
+    sortDirection: "",
   },
   searchQuery: {
     result_fields: {
@@ -95,8 +95,8 @@ const App = () => (
                   <Sorting
                     label={"Sort by"}
                     sortOptions={[
-                      { name: "Name", value: "name", direction: "asc" },
                       { name: "Relevance", value: "", direction: "" },
+                      { name: "Name", value: "name", direction: "asc" },
                     ]}
                   />
                   <Facet field="industries" label="Industries" />
