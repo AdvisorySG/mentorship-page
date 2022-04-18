@@ -18,7 +18,7 @@ import {
   Sorting,
 } from "@elastic/react-search-ui";
 
-import ResultView from "./ResultView";
+import ResultView from "./components/ResultView";
 
 const connector = new AppSearchAPIConnector({
   engineName: "mentorship-page",
