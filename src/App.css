@@ -43,3 +43,7 @@
 .sui-result__label {
   color: "#7c7c72";
 }
+
+.sui-layout-sidebar.sui-layout-sidebar--toggled {
+  z-index: 1101;
+}
