@@ -12,7 +12,7 @@ const ResultView = ({ result }: { result: any }) => {
     school,
   } = result;
 
-  var str = new String(role.snippet);
+  var str = String(role.snippet);
   var open = 0;
   var close = 0;
   for (var i = 0; i < str.length; i++) {
@@ -26,7 +26,7 @@ const ResultView = ({ result }: { result: any }) => {
     role.snippet = role.snippet + ")";
   }
 
-  str = new String(course_of_study.snippet);
+  str = String(course_of_study.snippet);
   open = 0;
   close = 0;
   for (var j = 0; i < str.length; i++) {
