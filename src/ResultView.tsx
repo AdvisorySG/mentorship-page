@@ -44,14 +44,12 @@ const ResultView = ({ result }: { result: any }) => {
           </div>
           <ul className="sui-result__details">
             <li>
-              <tbody>
-                {industries.raw.map((industry: any) => (
-                  <Chip
-                    style={{ marginRight: 10, marginBottom: 7 }}
-                    label={industry}
-                  />
-                ))}
-              </tbody>
+              {industries.raw.map((industry: any) => (
+                <Chip
+                  style={{ marginRight: 10, marginBottom: 7 }}
+                  label={industry}
+                />
+              ))}
             </li>
             <li>
               <span className="sui-result__label">Role: </span>
