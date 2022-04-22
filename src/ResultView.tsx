@@ -12,6 +12,34 @@ const ResultView = ({ result }: { result: any }) => {
     school,
   } = result;
 
+  var str = new String(role.snippet);
+  var open = 0;
+  var close = 0;
+  for (var i = 0; i < str.length; i++) {
+    if (str.charAt(i) === "(") {
+      open += 1;
+    } else if (str.charAt(i) === ")") {
+      close += 1;
+    }
+  }
+  if (open - close === 1) {
+    role.snippet = role.snippet + ")";
+  }
+
+  str = new String(course_of_study.snippet);
+  open = 0;
+  close = 0;
+  for (var j = 0; i < str.length; i++) {
+    if (str.charAt(j) === "(") {
+      open += 1;
+    } else if (str.charAt(j) === ")") {
+      close += 1;
+    }
+  }
+  if (open - close === 1) {
+    course_of_study.snippet = course_of_study.snippet + ")";
+  }
+
   return (
     <div>
       <li className="sui-result">
