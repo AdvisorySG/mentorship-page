@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "homepage": "https://mentorship.advisory.sg/",
   "private": true,
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "@elastic/react-search-ui": "^1.10.2",
     "@elastic/react-search-ui-views": "^1.10.2",
