@@ -4,7 +4,7 @@ import { Chip } from "@mui/material";
 
 import "./ResultView.css";
 
-var filling_missing = function (snippet: any) {
+const filling_missing = function (snippet: any) {
   var str = String(snippet);
   var open = 0;
   var close = 0;
