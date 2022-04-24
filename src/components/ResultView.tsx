@@ -89,18 +89,18 @@ const ResultView = ({ result }: { result: any }) => {
   return (
     <div>
       <li className="sui-result">
-        <div className="sui-result__header">
-          <span
-            className="sui-result__title"
-            dangerouslySetInnerHTML={{ __html: displayName }}
-          />
+        <div className="sui-result__image">
+          <img src={result.thumbnail_image_url.raw} alt={displayName} />
         </div>
         <div className="sui-result__body">
-          <div className="sui-result__image">
-            <img src={result.thumbnail_image_url.raw} alt={displayName} />
+          <div className="sui-result__header">
+            <span
+              className="sui-result__title"
+              dangerouslySetInnerHTML={{ __html: displayName }}
+            />
           </div>
           <ul className="sui-result__details">
-            <li>
+            <li className="sui-result__industries">
               {displayIndustries.map((industry: string) => (
                 <Chip
                   style={{
@@ -115,37 +115,39 @@ const ResultView = ({ result }: { result: any }) => {
               ))}
             </li>
             <li>
-              <span className="sui-result__label">Role: </span>
               <span
                 className="sui-result__value"
+                style={{ fontSize: 16, fontWeight: 600 }}
                 dangerouslySetInnerHTML={{ __html: displayRole }}
               />
-            </li>
-            <li>
-              <span className="sui-result__label">Organisation: </span>
+              <span> at </span>
               <span
                 className="sui-result__value"
+                style={{ fontSize: 16, fontWeight: 600 }}
                 dangerouslySetInnerHTML={{ __html: displayOrganisation }}
               />
             </li>
             <li>
-              <span className="sui-result__label">School graduated from: </span>
+              <span className="sui-result__label">Studied </span>
               <span
                 className="sui-result__value"
-                dangerouslySetInnerHTML={{ __html: displaySchool }}
-              />
-            </li>
-            <li>
-              <span className="sui-result__label">Course of study: </span>
-              <span
-                className="sui-result__value"
+                style={{ fontSize: 16, fontWeight: 600 }}
                 dangerouslySetInnerHTML={{ __html: displayCourseOfStudy }}
               />
             </li>
             <li>
-              <span className="sui-result__label">Biography: </span>
+              <span className="sui-result__label">Graduated from </span>
               <span
                 className="sui-result__value"
+                style={{ fontSize: 16, fontWeight: 600 }}
+                dangerouslySetInnerHTML={{ __html: displaySchool }}
+              />
+            </li>
+            <hr />
+            <li>
+              <span
+                className="sui-result__value"
+                style={{ fontSize: 14 }}
                 dangerouslySetInnerHTML={{ __html: displayFullBio }}
               />
             </li>

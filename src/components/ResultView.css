@@ -1,15 +1,32 @@
+.sui-result {
+  display: flex;
+}
+
 .sui-result__body {
   display: flex;
-  flex-direction: row;
+  flex: 4;
+  flex-direction: column;
+}
+
+.sui-result__image {
+  flex: 1;
 }
 
 .sui-result__image img {
   display: block;
   object-fit: cover;
   object-position: center;
+  height: 80%;
+}
+
+.sui-result__title {
+  font-weight: 600;
 }
 
 @media only screen and (max-width: 800px) {
+  .sui-result {
+    flex-direction: column;
+  }
   .sui-result__title {
     text-align: center;
     width: 100%;
@@ -34,12 +51,20 @@
     max-width: 160px;
     margin: 0 auto;
   }
+
+  .sui-result__industries {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    justify-content: center;
+  }
 }
 
 @media only screen and (min-width: 801px) {
   .sui-result__image {
-    max-width: 140px;
-    padding-left: 24px;
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: cover;
     padding-top: 10px;
   }
 }
