@@ -1,6 +1,25 @@
 import React from "react";
 import { Chip } from "@mui/material";
 
+var missing_bracket = function ({ snippet }: any) {
+  var str = snippet;
+  var open = 0;
+  var close = 0;
+  for (var i = 0; i < str.length; i++) {
+    if (str.charAt(i) == "(") {
+      open += 1;
+    } else if (str.charAt(i) == ")") {
+      close += 1;
+    }
+  }
+  if (open - close === 1) {
+    snippet = snippet + ")";
+  }
+  console.log(snippet);
+
+  return snippet;
+};
+
 const ResultView = ({ result }: { result: any }) => {
   const {
     course_of_study,
@@ -11,6 +30,8 @@ const ResultView = ({ result }: { result: any }) => {
     role,
     school,
   } = result;
+
+  console.log("Hi");
 
   return (
     <div>
@@ -44,19 +65,20 @@ const ResultView = ({ result }: { result: any }) => {
           </div>
           <ul className="sui-result__details">
             <li>
-                {industries.raw.map((industry: any) => (
-                  <Chip
-                    style={{ marginRight: 10, marginBottom: 7 }}
-                    label={industry}
-                  />
-                ))}
+              {industries.raw.map((industry: any) => (
+                <Chip
+                  style={{ marginRight: 10, marginBottom: 7 }}
+                  label={industry}
+                />
+              ))}
             </li>
             <li>
               <span className="sui-result__label">Role: </span>
               <span
                 className="sui-result__value"
                 dangerouslySetInnerHTML={{
-                  __html: role && role.snippet ? role.snippet : "NA",
+                  __html:
+                    role && role.snippet ? missing_bracket(role.snippet) : "NA",
                 }}
               />
             </li>
