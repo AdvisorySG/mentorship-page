@@ -4,6 +4,23 @@ import { Chip } from "@mui/material";
 
 import "./ResultView.css";
 
+var filling_missing = function (snippet: any) {
+  var str = String(snippet);
+  var open = 0;
+  var close = 0;
+  for (var i = 0; i < str.length; i++) {
+    if (str.charAt(i) == "(") {
+      open += 1;
+    } else if (str.charAt(i) == ")") {
+      close += 1;
+    }
+  }
+  if (open - close == 1) {
+    snippet = snippet + ")";
+  }
+  return snippet;
+};
+
 const ResultView = ({ result }: { result: any }) => {
   const {
     course_of_study: courseOfStudy,
@@ -15,36 +32,10 @@ const ResultView = ({ result }: { result: any }) => {
     school,
   } = result;
 
-  var str = String(role.snippet);
-  var open = 0;
-  var close = 0;
-  for (var i = 0; i < str.length; i++) {
-    if (str.charAt(i) === "(") {
-      open += 1;
-    } else if (str.charAt(i) === ")") {
-      close += 1;
-    }
-  }
-  if (open - close === 1) {
-    role.snippet = role.snippet + ")";
-  }
-
-  str = String(courseOfStudy.snippet);
-  open = 0;
-  close = 0;
-  for (var j = 0; i < str.length; i++) {
-    if (str.charAt(j) === "(") {
-      open += 1;
-    } else if (str.charAt(j) === ")") {
-      close += 1;
-    }
-  }
-  if (open - close === 1) {
-    courseOfStudy.snippet = courseOfStudy.snippet + ")";
-  }
-  
   const displayCourseOfStudy =
-    courseOfStudy && courseOfStudy.snippet ? courseOfStudy.snippet : "NA";
+    courseOfStudy && courseOfStudy.snippet
+      ? filling_missing(courseOfStudy.snippet)
+      : "NA";
   const displayFullBio =
     fullBio && fullBio.snippet ? fullBio.snippet + "..." : "NA";
   const displayIndustries =
@@ -52,7 +43,8 @@ const ResultView = ({ result }: { result: any }) => {
   const displayName = name && name.snippet ? name.snippet : "NA";
   const displayOrganisation =
     organisation && organisation.snippet ? organisation.snippet : "NA";
-  const displayRole = role && role.snippet ? role.snippet : "NA";
+  const displayRole =
+    role && role.snippet ? filling_missing(role.snippet) : "NA";
   const displaySchool = school && school.snippet ? school.snippet : "NA";
 
   return (
