@@ -1,6 +1,20 @@
 import React from "react";
 
 import { Chip } from "@mui/material";
+import {
+  red,
+  pink,
+  deepPurple,
+  indigo,
+  blue,
+  cyan,
+  teal,
+  lightGreen,
+  yellow,
+  deepOrange,
+  brown,
+  blueGrey,
+} from "@mui/material/colors";
 
 import "./ResultView.css";
 
@@ -23,6 +37,23 @@ const fillMissing = (snippet: any) => {
   }
   return snippet;
 };
+
+const COLORS = [
+  red,
+  pink,
+  deepPurple,
+  indigo,
+  blue,
+  cyan,
+  teal,
+  lightGreen,
+  yellow,
+  deepOrange,
+  brown,
+  blueGrey,
+].map((color) => color[200]);
+
+const industryColors = new Map();
 
 const ResultView = ({ result }: { result: any }) => {
   const {
@@ -49,6 +80,12 @@ const ResultView = ({ result }: { result: any }) => {
   const displayRole = role && role.snippet ? fillMissing(role.snippet) : "NA";
   const displaySchool = school && school.snippet ? school.snippet : "NA";
 
+  displayIndustries.forEach((industry: string) => {
+    if (!industryColors.has(industry)) {
+      industryColors.set(industry, COLORS[industryColors.size % COLORS.length]);
+    }
+  });
+
   return (
     <div>
       <li className="sui-result">
@@ -64,9 +101,15 @@ const ResultView = ({ result }: { result: any }) => {
           </div>
           <ul className="sui-result__details">
             <li>
-              {displayIndustries.map((industry: any) => (
+              {displayIndustries.map((industry: string) => (
                 <Chip
-                  style={{ marginRight: 10, marginBottom: 7 }}
+                  style={{
+                    backgroundColor: industryColors.get(industry),
+                    fontSize: "0.8rem",
+                    fontWeight: 500,
+                    marginRight: 10,
+                    marginBottom: 7,
+                  }}
                   label={industry}
                 />
               ))}
