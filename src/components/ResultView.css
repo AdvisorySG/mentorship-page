@@ -23,6 +23,10 @@
   font-weight: 600;
 }
 
+.sui-result__biography::after {
+  content: " ";
+}
+
 @media only screen and (max-width: 800px) {
   .sui-result {
     flex-direction: column;

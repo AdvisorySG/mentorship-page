@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Chip } from "@mui/material";
 import {
@@ -16,12 +16,14 @@ import {
   blueGrey,
 } from "@mui/material/colors";
 
+import { htmlToText } from "html-to-text";
+
 import "./ResultView.css";
 
 // This function is needed as ElasticSearch trims off closed brackets at the
 // end of snippets. Please refer to the following issue:
 // https://github.com/AdvisorySG/mentorship-page/issues/440
-const fillMissing = (snippet: any) => {
+const fillMissing = (snippet: string) => {
   const str = String(snippet);
   let open = 0;
   let close = 0;
@@ -36,6 +38,43 @@ const fillMissing = (snippet: any) => {
     snippet = snippet + ")";
   }
   return snippet;
+};
+
+// Performs intelligent snippet truncation by removing leading/trailing periods and
+// whitespace, and filling with ellipsis accordingly.
+const fillEllipsis = (snippet: string, full: string) => {
+  const snippetRaw = htmlToText(snippet, { wordwrap: false });
+
+  const startRegex = /^[\s.!?]+/g;
+  const endRegex = /[\s.!?]+$/g;
+
+  const snippetRawTrimmedStart = snippetRaw.replace(startRegex, "");
+  const snippetRawTrimmedEnd = snippetRaw.replace(endRegex, "");
+
+  const fullTrimmedStart = full.replace(startRegex, "");
+  const fullTrimmedEnd = full.replace(endRegex, "");
+
+  if (snippetRaw.trim() === full.trim()) {
+    return snippet;
+  } else if (fullTrimmedStart.indexOf(snippetRawTrimmedStart) === 0) {
+    return snippet.replace(endRegex, "") + "...";
+  } else if (
+    fullTrimmedEnd.indexOf(snippetRawTrimmedEnd) +
+      snippetRawTrimmedEnd.length ===
+    fullTrimmedEnd.length
+  ) {
+    return "..." + snippet.replace(startRegex, "");
+  } else {
+    return (
+      "..." + snippet.replace(startRegex, "").replace(endRegex, "") + "..."
+    );
+  }
+};
+
+// Fills in highlights from snippet text.
+const fillHighlights = (snippet: string, full: string) => {
+  const snippetRaw = htmlToText(snippet, { wordwrap: false });
+  return full.replace(snippetRaw, snippet);
 };
 
 const COLORS = [
@@ -70,8 +109,14 @@ const ResultView = ({ result }: { result: any }) => {
     courseOfStudy && courseOfStudy.snippet
       ? fillMissing(courseOfStudy.snippet)
       : "NA";
+  const displayShortBio =
+    fullBio && fullBio.snippet && fullBio.raw
+      ? fillEllipsis(fullBio.snippet, fullBio.raw)
+      : "NA";
   const displayFullBio =
-    fullBio && fullBio.snippet ? fullBio.snippet + "..." : "NA";
+    fullBio && fullBio.snippet && fullBio.raw
+      ? fillHighlights(fullBio.snippet, fullBio.raw)
+      : "NA";
   const displayIndustries =
     industries && Array.isArray(industries.raw) ? industries.raw : [];
   const displayName = name && name.snippet ? name.snippet : "NA";
@@ -85,6 +130,8 @@ const ResultView = ({ result }: { result: any }) => {
       industryColors.set(industry, COLORS[industryColors.size % COLORS.length]);
     }
   });
+
+  const [readMore, setReadMore] = useState(false);
 
   return (
     <div>
@@ -146,10 +193,23 @@ const ResultView = ({ result }: { result: any }) => {
             <hr />
             <li>
               <span
-                className="sui-result__value"
+                className="sui-result__biography"
                 style={{ fontSize: 14 }}
-                dangerouslySetInnerHTML={{ __html: displayFullBio }}
+                dangerouslySetInnerHTML={{
+                  __html: readMore ? displayFullBio : displayShortBio,
+                }}
               />
+              <a
+                className="sui-result__readMore"
+                style={{ fontSize: 14 }}
+                href="#readMore"
+                onClick={(e: any) => {
+                  e.preventDefault();
+                  setReadMore(!readMore);
+                }}
+              >
+                {readMore ? "Read Less" : "Read More"}
+              </a>
             </li>
           </ul>
         </div>
