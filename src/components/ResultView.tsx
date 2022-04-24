@@ -9,13 +9,13 @@ var filling_missing = function (snippet: any) {
   var open = 0;
   var close = 0;
   for (var i = 0; i < str.length; i++) {
-    if (str.charAt(i) == "(") {
+    if (str.charAt(i) === "(") {
       open += 1;
-    } else if (str.charAt(i) == ")") {
+    } else if (str.charAt(i) === ")") {
       close += 1;
     }
   }
-  if (open - close == 1) {
+  if (open - close === 1) {
     snippet = snippet + ")";
   }
   return snippet;
