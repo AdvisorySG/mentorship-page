@@ -8,6 +8,7 @@
   border-width: 1px;
   border-color: #cccccc;
 }
+
 @media only screen and (min-width: 601px) {
   .nav-back-to-main-site {
     position: relative;
@@ -30,12 +31,15 @@
     margin: auto;
     width: 16%;
   }
+
   .header-mentorship-logo {
     width: 80%;
   }
+
   .nav-back-to-main-site {
     display: none;
   }
+
   .header-mentorship-intro {
     width: 80%;
     margin: 0 auto;
@@ -43,6 +47,7 @@
     font-size: 14px;
   }
 }
+
 @media only screen and (min-width: 601px) {
   .nav-logo {
     height: 60%;
@@ -54,6 +59,7 @@
     margin: auto;
   }
 }
+
 .header-bottom {
   min-height: 200px;
   background-color: white;
@@ -67,11 +73,18 @@
   max-width: 90ch;
   margin: 0 auto;
 }
+
 .header-mentorship-logo {
   width: 60%;
   padding-top: 40px;
   position: relative;
 }
+
+.header-mentorship-partners {
+  width: 80%;
+  position: relative;
+}
+
 @media only screen and (max-width: 600px) {
   .header-mentorship-logo {
     width: 80%;
@@ -79,18 +92,22 @@
     padding-top: 0px;
   }
 }
+
 .header-mentorship-intro {
   width: 80%;
   margin: 0 auto;
   text-align: justify;
 }
+
 .toolbar-component {
   position: sticky;
 }
+
 .content-body {
   position: relative;
   padding-top: 55px;
 }
+
 html {
   scroll-padding-top: 60px;
 }

@@ -17,7 +17,7 @@ const Header = () => (
           />
           <img
             id="partners"
-            className="header-mentorship-logo"
+            className="header-mentorship-partners"
             src={advisoryMentorshipPartners}
             alt="Advisory Mentorship Programme Partners"
           />
