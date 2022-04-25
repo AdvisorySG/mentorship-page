@@ -27,10 +27,15 @@
   content: " ";
 }
 
+.sui-result__details {
+  padding: 0 24px;
+}
+
 @media only screen and (max-width: 800px) {
   .sui-result {
     flex-direction: column;
   }
+
   .sui-result__title {
     text-align: center;
     width: 100%;
@@ -39,6 +44,7 @@
   .sui-result__body {
     display: flex;
     flex-direction: column;
+    padding-top: 8px;
   }
 
   .sui-result__image {
