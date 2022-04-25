@@ -25,27 +25,26 @@ const Header = () => (
             <p>
               The Advisory Mentorship Programme pairs students with working
               professionals in their fields of interest on a 1-1 basis. Over the
-              course of four months, from September to December 2021, mentors
-              give an hour each month to meet with their mentee. In its first
-              run in 2020, the programme delivered over 2000 hours of mentorship
-              to 694 students with the involvement of over 562 mentors. This
-              year, for Wave 1 of the programme which is taking place from June
-              to September 2021, nearly 900 working professionals came aboard as
-              mentors for 1,104 mentees. For Wave 2, we are pleased to have over
-              400 mentors, including from 10 mentorship partners, whose fields
-              of expertise range across 48 different industries.
+              course of four months, from June to September 2022, mentors give
+              an hour each month to meet with their mentee. Over the past 2
+              years, the programme delivered over 8,000 hours of mentorship to
+              2,211 students with the involvement of 1,826 mentors. This year,
+              we’re excited to share that over 1,600 working professionals and
+              27 mentorship partners whose fields of expertise range across 48
+              different industries have come aboard in support of this
+              programme.
             </p>
             <p>
               Click{" "}
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://advisorysg.typeform.com/to/HQ8nWq2r#source=mentorsite"
+                href="https://advisorysg.typeform.com/Mentorship2022#source=mentorsite"
               >
                 here
               </a>{" "}
               to apply as a mentee. Applications close{" "}
-              <b>17 September 2021, 2359h (GMT +8).</b>
+              <b>15 May 2022, 2359h (GMT +8)</b>.
             </p>
             <p>
               Click{" "}
