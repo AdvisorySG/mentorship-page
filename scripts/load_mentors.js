@@ -12,6 +12,7 @@ const PLACEHOLDER_THUMBNAIL_URL = "/mentor-thumbnail.png";
 const WAVE_INFO = [
   { tableId: "4 Tech", name: "2021 Wave 1" },
   { tableId: "5 Tech", name: "2021 Wave 2" },
+  { tableId: "2022 Mentorship", name: "2022 Wave 1" },
 ];
 
 const formatMentor = (id, waveId, fields) => ({

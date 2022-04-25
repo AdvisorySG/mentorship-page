@@ -56,7 +56,7 @@ const configurationOptions = {
       thumbnail_image_url: { raw: {} },
       wave_id: { raw: {} },
     },
-    filters: [{ field: "wave_id", values: [1] }],
+    filters: [{ field: "wave_id", values: [2] }],
     disjunctiveFacets: ["organisation", "school", "course_of_study"],
     facets: {
       industries: { type: "value", size: 100 },
