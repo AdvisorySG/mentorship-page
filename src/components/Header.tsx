@@ -44,7 +44,7 @@ const Header = () => (
                 here
               </a>{" "}
               to apply as a mentee. Applications close{" "}
-              <b>15 May 2022, 2359h (GMT +8)</b>.
+              <b>18 May 2022, 2359h (GMT +8)</b>.
             </p>
             <p>
               Click{" "}
