@@ -174,22 +174,26 @@ const ResultView = ({ result }: { result: any }) => {
                 dangerouslySetInnerHTML={{ __html: displayOrganisation }}
               />
             </li>
-            <li>
-              <span className="sui-result__label">Studied </span>
-              <span
-                className="sui-result__value"
-                style={{ fontSize: 16, fontWeight: 600 }}
-                dangerouslySetInnerHTML={{ __html: displayCourseOfStudy }}
-              />
-            </li>
-            <li>
-              <span className="sui-result__label">Graduated from </span>
-              <span
-                className="sui-result__value"
-                style={{ fontSize: 16, fontWeight: 600 }}
-                dangerouslySetInnerHTML={{ __html: displaySchool }}
-              />
-            </li>
+            {displayCourseOfStudy !== "NA" && (
+              <li>
+                <span className="sui-result__label">Studied </span>
+                <span
+                  className="sui-result__value"
+                  style={{ fontSize: 16, fontWeight: 600 }}
+                  dangerouslySetInnerHTML={{ __html: displayCourseOfStudy }}
+                />
+              </li>
+            )}
+            {displaySchool !== "NA" && (
+              <li>
+                <span className="sui-result__label">Graduated from </span>
+                <span
+                  className="sui-result__value"
+                  style={{ fontSize: 16, fontWeight: 600 }}
+                  dangerouslySetInnerHTML={{ __html: displaySchool }}
+                />
+              </li>
+            )}
             <hr />
             <li>
               <span
