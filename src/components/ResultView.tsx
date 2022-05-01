@@ -119,11 +119,14 @@ const ResultView = ({ result }: { result: any }) => {
       : "NA";
   const displayIndustries =
     industries && Array.isArray(industries.raw) ? industries.raw : [];
-  const displayName = name && name.snippet ? name.snippet : "NA";
+  const displayName = name && name.snippet ? fillMissing(name.snippet) : "NA";
   const displayOrganisation =
-    organisation && organisation.snippet ? organisation.snippet : "NA";
+    organisation && organisation.snippet
+      ? fillMissing(organisation.snippet)
+      : "NA";
   const displayRole = role && role.snippet ? fillMissing(role.snippet) : "NA";
-  const displaySchool = school && school.snippet ? school.snippet : "NA";
+  const displaySchool =
+    school && school.snippet ? fillMissing(school.snippet) : "NA";
 
   displayIndustries.forEach((industry: string) => {
     if (!industryColors.has(industry)) {
