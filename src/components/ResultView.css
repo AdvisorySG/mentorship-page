@@ -72,8 +72,7 @@
 
 @media only screen and (min-width: 801px) {
   .sui-result__image {
-    max-width: 200px;
-    max-height: 200px;
+    width: 200px;
     object-fit: cover;
     padding-top: 10px;
   }
