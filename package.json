@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@elastic/react-search-ui": "^1.10.2",
-    "@elastic/react-search-ui-views": "^1.10.2",
+    "@elastic/react-search-ui-views": "^1.11.2",
     "@elastic/search-ui-app-search-connector": "^1.10.2",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
