@@ -93,8 +93,6 @@ const ResultView = ({ result }: { result: any }) => {
     school,
   } = result;
 
-  console.log(industries);
-
   const displayCourseOfStudy =
     courseOfStudy && courseOfStudy.raw
       ? fillHighlights(courseOfStudy.snippet, courseOfStudy.raw)
