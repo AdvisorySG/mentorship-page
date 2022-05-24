@@ -46,6 +46,11 @@
   color: "#7c7c72";
 }
 
+.search-config {
+  display: flex;
+  gap: 20px;
+}
+
 .sui-layout-sidebar.sui-layout-sidebar--toggled {
   z-index: 1101;
 }

@@ -15,7 +15,7 @@ import {
   brown,
   blueGrey,
 } from "@mui/material/colors";
-
+import { SearchResult } from "@elastic/search-ui";
 import { htmlToText } from "html-to-text";
 
 import "./ResultView.css";
@@ -82,7 +82,13 @@ const COLORS = [
 
 const industryColors = new Map();
 
-const ResultView = ({ result }: { result: any }) => {
+const ResultView = ({
+  result,
+  isListView,
+}: {
+  result: SearchResult;
+  isListView: boolean;
+}) => {
   const {
     course_of_study: courseOfStudy,
     full_bio: fullBio,
@@ -217,6 +223,13 @@ const ResultView = ({ result }: { result: any }) => {
                 </a>
               </li>
             )}
+            <li>
+              {isListView ? (
+                <span style={{ color: "red" }}>List view</span>
+              ) : (
+                <span style={{ color: "red" }}>Card view</span>
+              )}
+            </li>
           </ul>
         </div>
       </li>

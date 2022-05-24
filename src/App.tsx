@@ -1,7 +1,4 @@
-import React from "react";
-
-import Header from "./components/Header";
-import "./App.css";
+import React, { useState } from "react";
 
 import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
 import { Layout } from "@elastic/react-search-ui-views";
@@ -19,7 +16,9 @@ import {
 } from "@elastic/react-search-ui";
 import { FilterType, SortDirection } from "@elastic/search-ui";
 
+import Header from "./components/Header";
 import ResultView from "./components/ResultView";
+import "./App.css";
 
 const connector = new AppSearchAPIConnector({
   engineName: "mentorship-page",
@@ -67,65 +66,84 @@ const configurationOptions = {
   },
 };
 
-const App = () => (
-  <div className="container">
-    <Header />
-    <div className="canvas">
-      <p className="disclaimer">
-        <small>
-          The privacy and safety of our mentors is of utmost priority to
-          Advisory. Any attempt to approach or contact our mentors outside of
-          the parameters of the Advisory Mentorship Programme—whilst claiming
-          affiliation to Advisory, or misrepresenting a relationship to
-          Advisory—will be treated as misrepresentation, even fraudulent
-          misrepresentation, as considered under the Misrepresentation Act.
-          Advisory will take legal action against any individuals or
-          organisations who attempt to deceive, harass, or otherwise request
-          dishonest assistance from our mentors.
-        </small>
-      </p>
-      <div className="results" id="mentors">
-        <SearchProvider config={configurationOptions}>
-          <div className="App">
-            <Layout
-              header={<SearchBox autocompleteSuggestions={true} />}
-              bodyContent={<Results resultView={ResultView} />}
-              sideContent={
-                <div>
-                  <Sorting
-                    label={"Sort by"}
-                    sortOptions={[
-                      { name: "Relevance", value: "", direction: "" },
-                      { name: "Name", value: "name", direction: "asc" },
-                    ]}
+const App = () => {
+  const [isListView, setIsListView] = useState(false);
+  return (
+    <div className="container">
+      <Header />
+      <div className="canvas">
+        <p className="disclaimer">
+          <small>
+            The privacy and safety of our mentors is of utmost priority to
+            Advisory. Any attempt to approach or contact our mentors outside of
+            the parameters of the Advisory Mentorship Programme—whilst claiming
+            affiliation to Advisory, or misrepresenting a relationship to
+            Advisory—will be treated as misrepresentation, even fraudulent
+            misrepresentation, as considered under the Misrepresentation Act.
+            Advisory will take legal action against any individuals or
+            organisations who attempt to deceive, harass, or otherwise request
+            dishonest assistance from our mentors.
+          </small>
+        </p>
+        <div className="results" id="mentors">
+          <SearchProvider config={configurationOptions}>
+            <div className="App">
+              <Layout
+                header={<SearchBox autocompleteSuggestions={true} />}
+                bodyContent={
+                  <Results
+                    resultView={({ result }) => (
+                      <ResultView result={result} isListView={isListView} />
+                    )}
                   />
-                  <Facet field="industries" label="Industries" />
-                  <Facet
-                    field="organisation"
-                    filterType="any"
-                    label="Organisation"
-                  />
-                  <Facet field="school" filterType="any" label="School" />
-                  <Facet
-                    field="course_of_study"
-                    filterType="any"
-                    label="Course of Study"
-                  />
-                </div>
-              }
-              bodyHeader={
-                <React.Fragment>
-                  {<PagingInfo />}
-                  {<ResultsPerPage />}
-                </React.Fragment>
-              }
-              bodyFooter={<Paging />}
-            />
-          </div>
-        </SearchProvider>
+                }
+                sideContent={
+                  <div>
+                    <Sorting
+                      label={"Sort by"}
+                      sortOptions={[
+                        { name: "Relevance", value: "", direction: "" },
+                        { name: "Name", value: "name", direction: "asc" },
+                      ]}
+                    />
+                    <Facet field="industries" label="Industries" />
+                    <Facet
+                      field="organisation"
+                      filterType="any"
+                      label="Organisation"
+                    />
+                    <Facet field="school" filterType="any" label="School" />
+                    <Facet
+                      field="course_of_study"
+                      filterType="any"
+                      label="Course of Study"
+                    />
+                  </div>
+                }
+                bodyHeader={
+                  <React.Fragment>
+                    {<PagingInfo />}
+                    <div className="search-config">
+                      {<ResultsPerPage />}
+                      <span>
+                        <button onClick={() => setIsListView(false)}>
+                          Card
+                        </button>
+                        <button onClick={() => setIsListView(true)}>
+                          List
+                        </button>
+                      </span>
+                    </div>
+                  </React.Fragment>
+                }
+                bodyFooter={<Paging />}
+              />
+            </div>
+          </SearchProvider>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default App;
