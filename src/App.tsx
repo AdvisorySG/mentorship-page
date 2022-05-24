@@ -17,6 +17,7 @@ import {
   SearchBox,
   Sorting,
 } from "@elastic/react-search-ui";
+import { FilterType, SortDirection } from "@elastic/search-ui";
 
 import ResultView from "./components/ResultView";
 
@@ -40,8 +41,7 @@ const configurationOptions = {
     },
   },
   initialState: {
-    sortField: "",
-    sortDirection: "",
+    sort: [{ field: "", direction: "asc" as SortDirection }],
   },
   searchQuery: {
     result_fields: {
@@ -56,7 +56,7 @@ const configurationOptions = {
       thumbnail_image_url: { raw: {} },
       wave_id: { raw: {} },
     },
-    filters: [{ field: "wave_id", values: [2] }],
+    filters: [{ type: "all" as FilterType, field: "wave_id", values: [2] }],
     disjunctiveFacets: ["organisation", "school", "course_of_study"],
     facets: {
       industries: { type: "value", size: 100 },
