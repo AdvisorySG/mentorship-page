@@ -1,6 +1,5 @@
-import React, { Fragment, useState } from "react";
+import React from "react";
 
-import { Chip } from "@mui/material";
 import {
   red,
   pink,
@@ -18,6 +17,8 @@ import {
 import { SearchResult } from "@elastic/search-ui";
 import { htmlToText } from "html-to-text";
 
+import ResultGridView from "./ResultGridView";
+import ResultListView from "./ResultListView";
 import "./ResultView.css";
 
 // Performs intelligent snippet truncation by removing leading/trailing periods and
@@ -82,6 +83,19 @@ const COLORS = [
 
 const industryColors = new Map();
 
+type DisplayResult = {
+  displayName: string | null;
+  displayIndustries: Array<string>;
+  displayRole: string | null;
+  displayOrganisation: string | null;
+  displayCourseOfStudy: string | null;
+  displayFullBio: string | null;
+  displayShortBio: string | null;
+  displaySchool: string | null;
+  industryColors: Map<string, string>;
+  thumbnailImageUrl?: string;
+};
+
 const ResultView = ({
   result,
   isListView,
@@ -97,11 +111,12 @@ const ResultView = ({
     organisation,
     role,
     school,
+    thumbnail_image_url,
   } = result;
 
   const displayCourseOfStudy =
     courseOfStudy && courseOfStudy.raw
-      ? fillHighlights(courseOfStudy.snippet, courseOfStudy.raw)
+      ? fillEllipsis(courseOfStudy.snippet, courseOfStudy.raw)
       : null;
   const displayShortBio =
     fullBio && fullBio.raw ? fillEllipsis(fullBio.snippet, fullBio.raw) : null;
@@ -128,113 +143,30 @@ const ResultView = ({
     }
   });
 
-  const [readMore, setReadMore] = useState(false);
+  const thumbnailImageUrl =
+    thumbnail_image_url && thumbnail_image_url.raw
+      ? thumbnail_image_url.raw
+      : null;
 
-  return (
-    <div>
-      <li className="sui-result">
-        <div className="sui-result__image">
-          <img src={result.thumbnail_image_url.raw} alt={displayName ?? ""} />
-        </div>
-        <div className="sui-result__body">
-          <div className="sui-result__header">
-            {displayName && (
-              <span
-                className="sui-result__title"
-                dangerouslySetInnerHTML={{ __html: displayName }}
-              />
-            )}
-          </div>
-          <ul className="sui-result__details">
-            <li className="sui-result__industries">
-              {displayIndustries.map((industry: string) => (
-                <Chip
-                  style={{
-                    backgroundColor: industryColors.get(industry),
-                    fontSize: "0.8rem",
-                    fontWeight: 500,
-                    marginRight: 10,
-                    marginBottom: 7,
-                  }}
-                  label={industry}
-                />
-              ))}
-            </li>
-            {displayRole && (
-              <li>
-                <span
-                  className="sui-result__value"
-                  style={{ fontSize: 16, fontWeight: 600 }}
-                  dangerouslySetInnerHTML={{ __html: displayRole }}
-                />
-                {displayOrganisation && (
-                  <Fragment>
-                    {" "}
-                    <span> at </span>
-                    <span
-                      className="sui-result__value"
-                      style={{ fontSize: 16, fontWeight: 600 }}
-                      dangerouslySetInnerHTML={{ __html: displayOrganisation }}
-                    />
-                  </Fragment>
-                )}
-              </li>
-            )}
-            {displayCourseOfStudy && (
-              <li>
-                <span className="sui-result__label">Studied </span>
-                <span
-                  className="sui-result__value"
-                  style={{ fontSize: 16, fontWeight: 600 }}
-                  dangerouslySetInnerHTML={{ __html: displayCourseOfStudy }}
-                />
-              </li>
-            )}
-            {displaySchool && (
-              <li>
-                <span className="sui-result__label">Graduated from </span>
-                <span
-                  className="sui-result__value"
-                  style={{ fontSize: 16, fontWeight: 600 }}
-                  dangerouslySetInnerHTML={{ __html: displaySchool }}
-                />
-              </li>
-            )}
-            <hr />
-            {displayFullBio && displayShortBio && (
-              <li>
-                <span
-                  className="sui-result__biography"
-                  style={{ fontSize: 14 }}
-                  dangerouslySetInnerHTML={{
-                    __html: readMore ? displayFullBio : displayShortBio,
-                  }}
-                />
-                <a
-                  className="sui-result__readMore"
-                  style={{ fontSize: 14 }}
-                  href="#readMore"
-                  onClick={(e: any) => {
-                    e.preventDefault();
-                    setReadMore(!readMore);
-                  }}
-                >
-                  {readMore ? "Read Less" : "Read More"}
-                </a>
-              </li>
-            )}
-            <li>
-              {isListView ? (
-                <span style={{ color: "red" }}>List view</span>
-              ) : (
-                <span style={{ color: "red" }}>Card view</span>
-              )}
-            </li>
-          </ul>
-        </div>
-      </li>
-    </div>
+  const displayResult: DisplayResult = {
+    displayName,
+    displayIndustries,
+    displayRole,
+    displayOrganisation,
+    displayCourseOfStudy,
+    displayFullBio,
+    displayShortBio,
+    displaySchool,
+    industryColors,
+    thumbnailImageUrl,
+  };
+
+  return isListView ? (
+    <ResultListView displayResult={displayResult} />
+  ) : (
+    <ResultGridView displayResult={displayResult} />
   );
 };
 
 export default ResultView;
+export type { DisplayResult };

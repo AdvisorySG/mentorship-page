@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
 import { Layout } from "@elastic/react-search-ui-views";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
-
 import {
   PagingInfo,
   ResultsPerPage,
@@ -15,6 +14,9 @@ import {
   Sorting,
 } from "@elastic/react-search-ui";
 import { FilterType, SortDirection } from "@elastic/search-ui";
+import IconButton from "@mui/material/IconButton";
+import GridViewIcon from "@mui/icons-material/GridView";
+import ViewListIcon from "@mui/icons-material/ViewList";
 
 import Header from "./components/Header";
 import ResultView from "./components/ResultView";
@@ -124,14 +126,20 @@ const App = () => {
                   <React.Fragment>
                     {<PagingInfo />}
                     <div className="search-config">
-                      {<ResultsPerPage />}
+                      <ResultsPerPage />
                       <span>
-                        <button onClick={() => setIsListView(false)}>
-                          Card
-                        </button>
-                        <button onClick={() => setIsListView(true)}>
-                          List
-                        </button>
+                        <IconButton
+                          aria-label="grid view"
+                          onClick={() => setIsListView(false)}
+                        >
+                          <GridViewIcon />
+                        </IconButton>
+                        <IconButton
+                          aria-label="list view"
+                          onClick={() => setIsListView(true)}
+                        >
+                          <ViewListIcon />
+                        </IconButton>
                       </span>
                     </div>
                   </React.Fragment>
