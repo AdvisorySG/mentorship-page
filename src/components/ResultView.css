@@ -78,3 +78,26 @@
     padding-top: 10px;
   }
 }
+
+.flex-item {
+  width: 220px;
+}
+
+.flex-container {
+  /* We first create a flex layout context */
+  display: flex;
+
+  /* Then we define the flow direction 
+     and if we allow the items to wrap 
+   * Remember this is the same as:
+   * flex-direction: row;
+   * flex-wrap: wrap;
+   */
+  flex-flow: row wrap;
+
+  /* Then we define how is distributed the remaining space */
+  justify-content: flex-start;
+
+  row-gap: 20px;
+  column-gap: 20px;
+}
