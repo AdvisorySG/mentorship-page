@@ -94,7 +94,6 @@ const App = () => {
                 header={<SearchBox autocompleteSuggestions={true} />}
                 bodyContent={
                   <Results
-                    className="flex-container"
                     resultView={({ result }) => (
                       <ResultView result={result} isListView={isListView} />
                     )}

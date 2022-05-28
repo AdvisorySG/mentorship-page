@@ -17,8 +17,8 @@ import {
 import { SearchResult } from "@elastic/search-ui";
 import { htmlToText } from "html-to-text";
 
-import ResultGridView from "./ResultGridView";
-import ResultListView from "./ResultListView";
+import ResultViewGrid from "./ResultViewGrid";
+import ResultViewList from "./ResultViewList";
 import "./ResultView.css";
 
 // Performs intelligent snippet truncation by removing leading/trailing periods and
@@ -114,57 +114,60 @@ const ResultView = ({
     thumbnail_image_url,
   } = result;
 
-  const displayCourseOfStudy =
-    courseOfStudy && courseOfStudy.raw
-      ? fillEllipsis(courseOfStudy.snippet, courseOfStudy.raw)
-      : null;
-  const displayShortBio =
-    fullBio && fullBio.raw ? fillEllipsis(fullBio.snippet, fullBio.raw) : null;
-  const displayFullBio =
-    fullBio && fullBio.raw
-      ? fillHighlights(fullBio.snippet, fullBio.raw)
-      : null;
-  const displayIndustries =
-    industries && Array.isArray(industries.raw) ? industries.raw : [];
   const displayName =
     name && name.raw ? fillHighlights(name.snippet, name.raw) : null;
-  const displayOrganisation =
-    organisation && organisation.raw
-      ? fillHighlights(organisation.snippet, organisation.raw)
-      : null;
-  const displayRole =
-    role && role.raw ? fillHighlights(role.snippet, role.raw) : null;
-  const displaySchool =
-    school && school.raw ? fillHighlights(school.snippet, school.raw) : null;
-
-  displayIndustries.forEach((industry: string) => {
-    if (!industryColors.has(industry)) {
-      industryColors.set(industry, COLORS[industryColors.size % COLORS.length]);
-    }
-  });
 
   const thumbnailImageUrl =
     thumbnail_image_url && thumbnail_image_url.raw
       ? thumbnail_image_url.raw
       : null;
 
+  const displayIndustries =
+    industries && Array.isArray(industries.raw) ? industries.raw : [];
+  displayIndustries.forEach((industry: string) => {
+    if (!industryColors.has(industry)) {
+      industryColors.set(industry, COLORS[industryColors.size % COLORS.length]);
+    }
+  });
+
+  const displayRole =
+    role && role.raw ? fillHighlights(role.snippet, role.raw) : null;
+  const displayOrganisation =
+    organisation && organisation.raw
+      ? fillHighlights(organisation.snippet, organisation.raw)
+      : null;
+
+  const displayCourseOfStudy =
+    courseOfStudy && courseOfStudy.raw
+      ? fillHighlights(courseOfStudy.snippet, courseOfStudy.raw)
+      : null;
+  const displaySchool =
+    school && school.raw ? fillHighlights(school.snippet, school.raw) : null;
+
+  const displayShortBio =
+    fullBio && fullBio.raw ? fillEllipsis(fullBio.snippet, fullBio.raw) : null;
+  const displayFullBio =
+    fullBio && fullBio.raw
+      ? fillHighlights(fullBio.snippet, fullBio.raw)
+      : null;
+
   const displayResult: DisplayResult = {
-    displayName,
-    displayIndustries,
-    displayRole,
-    displayOrganisation,
     displayCourseOfStudy,
     displayFullBio,
-    displayShortBio,
+    displayIndustries,
+    displayName,
+    displayOrganisation,
+    displayRole,
     displaySchool,
+    displayShortBio,
     industryColors,
     thumbnailImageUrl,
   };
 
   return isListView ? (
-    <ResultListView displayResult={displayResult} />
+    <ResultViewList displayResult={displayResult} />
   ) : (
-    <ResultGridView displayResult={displayResult} />
+    <ResultViewGrid displayResult={displayResult} />
   );
 };
 

@@ -2,6 +2,10 @@
   display: flex;
 }
 
+.sui-result + .sui-result {
+  margin-top: 0px;
+}
+
 .sui-result__body {
   display: flex;
   flex: 4;
@@ -79,25 +83,10 @@
   }
 }
 
-.flex-item {
-  width: 220px;
-}
-
-.flex-container {
-  /* We first create a flex layout context */
+.sui-results-container {
   display: flex;
-
-  /* Then we define the flow direction 
-     and if we allow the items to wrap 
-   * Remember this is the same as:
-   * flex-direction: row;
-   * flex-wrap: wrap;
-   */
   flex-flow: row wrap;
-
-  /* Then we define how is distributed the remaining space */
-  justify-content: flex-start;
-
-  row-gap: 20px;
-  column-gap: 20px;
+  justify-content: space-evenly;
+  align-items: stretch;
+  gap: 24px;
 }
