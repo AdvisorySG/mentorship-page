@@ -99,7 +99,3 @@
   max-height: 80%;
   overflow: scroll;
 }
-
-.sui-result__modal > .sui-result {
-  height: 100%;
-}
