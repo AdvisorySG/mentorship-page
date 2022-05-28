@@ -46,6 +46,7 @@ const ResultViewGrid = ({
           {displayName && (
             <span
               className="sui-result__title"
+              style={{ fontSize: 18 }}
               dangerouslySetInnerHTML={{ __html: displayName }}
             />
           )}
@@ -54,7 +55,7 @@ const ResultViewGrid = ({
               <li>
                 <span
                   className="sui-result__value"
-                  style={{ fontSize: 16 }}
+                  style={{ fontSize: 14 }}
                   dangerouslySetInnerHTML={{ __html: displayOrganisation }}
                 />
               </li>
@@ -63,7 +64,7 @@ const ResultViewGrid = ({
               <li>
                 <span
                   className="sui-result__value"
-                  style={{ fontSize: 16 }}
+                  style={{ fontSize: 14 }}
                   dangerouslySetInnerHTML={{ __html: displayRole }}
                 />
               </li>
@@ -73,7 +74,9 @@ const ResultViewGrid = ({
         <CardActions
           style={{ display: "flex", flexGrow: 1, alignItems: "flex-end" }}
         >
-          <Button onClick={() => setIsModalOpen(true)}>Read More</Button>
+          <Button onClick={() => setIsModalOpen(true)} style={{ fontSize: 12 }}>
+            Read More
+          </Button>
         </CardActions>
       </CardActionArea>
       <Modal
@@ -84,7 +87,7 @@ const ResultViewGrid = ({
         aria-describedby="modal-description"
         style={{
           display: "flex",
-          alignItems: "center",
+          alignItems: "flex-start",
           margin: "auto",
           maxWidth: "800px",
           maxHeight: "80%",
