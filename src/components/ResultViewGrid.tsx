@@ -77,10 +77,17 @@ const ResultViewGrid = ({
         </CardActions>
       </CardActionArea>
       <Modal
+        className="sui-result__modal"
         open={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         aria-labelledby="modal-title"
         aria-describedby="modal-description"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          margin: "auto",
+          maxWidth: "800px",
+        }}
       >
         <ResultViewList
           displayResult={displayResult}
