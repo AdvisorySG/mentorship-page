@@ -46,10 +46,20 @@
   color: "#7c7c72";
 }
 
+.sui-layout-main-header__inner {
+  gap: 10px;
+}
+
 .search-config {
   display: flex;
   gap: 10px;
   align-items: center;
+}
+
+@media only screen and (max-width: 800px) {
+  .material-icons {
+    font-size: 16px;
+  }
 }
 
 .sui-layout-sidebar.sui-layout-sidebar--toggled {

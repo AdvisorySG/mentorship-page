@@ -15,6 +15,7 @@ import {
 } from "@elastic/react-search-ui";
 import { FilterType, SortDirection } from "@elastic/search-ui";
 import IconButton from "@mui/material/IconButton";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import GridViewIcon from "@mui/icons-material/GridView";
 import ViewListIcon from "@mui/icons-material/ViewList";
 
@@ -69,7 +70,9 @@ const configurationOptions = {
 };
 
 const App = () => {
+  const isSmall = useMediaQuery("(max-width: 800px)");
   const [isListView, setIsListView] = useState(false);
+
   return (
     <div className="container">
       <Header />
@@ -127,16 +130,20 @@ const App = () => {
                     {<PagingInfo />}
                     <div className="search-config">
                       <ResultsPerPage />
-                      <span>
+                      <span
+                        style={{ display: "flex", justifyContent: "flex-end" }}
+                      >
                         <IconButton
                           aria-label="grid view"
                           onClick={() => setIsListView(false)}
+                          size={isSmall ? "small" : "medium"}
                         >
                           <GridViewIcon />
                         </IconButton>
                         <IconButton
                           aria-label="list view"
                           onClick={() => setIsListView(true)}
+                          size={isSmall ? "small" : "medium"}
                         >
                           <ViewListIcon />
                         </IconButton>

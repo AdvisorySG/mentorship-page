@@ -90,3 +90,16 @@
   align-items: stretch;
   gap: 24px;
 }
+
+.sui-result__modal {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  max-width: 800px;
+  max-height: 80%;
+  overflow: scroll;
+}
+
+.sui-result__modal > .sui-result {
+  height: 100%;
+}
