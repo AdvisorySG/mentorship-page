@@ -91,7 +91,7 @@ const ResultViewGrid = ({
           margin: "auto",
           maxWidth: "800px",
           maxHeight: "80%",
-          overflow: "scroll",
+          overflow: "auto",
         }}
       >
         <ResultViewList
