@@ -44,7 +44,7 @@ const Header = () => (
                 here
               </a>{" "}
               to apply as a mentee. Applications close{" "}
-              <b>5 June 2022, 2359h (GMT +8)</b>.
+              <b>20 June 2022, 2359h (GMT +8)</b>.
             </p>
             <p>
               Click{" "}
@@ -89,6 +89,11 @@ const Header = () => (
                 here
               </a>{" "}
               to view a list of 48 industries to filter mentors by industry.
+            </p>
+            <p>
+              Do take note that matching will commence on a rolling basis from 5
+              June onwards, and mentors that have been matched will no longer be
+              displayed on the website thereafter.
             </p>
           </div>
         </div>
