@@ -1,6 +1,5 @@
-import React, { Fragment, useState } from "react";
+import React from "react";
 
-import { Chip } from "@mui/material";
 import {
   red,
   pink,
@@ -15,9 +14,11 @@ import {
   brown,
   blueGrey,
 } from "@mui/material/colors";
-
+import { SearchResult } from "@elastic/search-ui";
 import { htmlToText } from "html-to-text";
 
+import ResultViewGrid from "./ResultViewGrid";
+import ResultViewList from "./ResultViewList";
 import "./ResultView.css";
 
 // Performs intelligent snippet truncation by removing leading/trailing periods and
@@ -82,7 +83,26 @@ const COLORS = [
 
 const industryColors = new Map();
 
-const ResultView = ({ result }: { result: any }) => {
+type DisplayResult = {
+  displayName: string | null;
+  displayIndustries: Array<string>;
+  displayRole: string | null;
+  displayOrganisation: string | null;
+  displayCourseOfStudy: string | null;
+  displayFullBio: string | null;
+  displayShortBio: string | null;
+  displaySchool: string | null;
+  industryColors: Map<string, string>;
+  thumbnailImageUrl?: string;
+};
+
+const ResultView = ({
+  result,
+  isListView,
+}: {
+  result: SearchResult;
+  isListView: boolean;
+}) => {
   const {
     course_of_study: courseOfStudy,
     full_bio: fullBio,
@@ -91,137 +111,65 @@ const ResultView = ({ result }: { result: any }) => {
     organisation,
     role,
     school,
+    thumbnail_image_url,
   } = result;
 
-  const displayCourseOfStudy =
-    courseOfStudy && courseOfStudy.raw
-      ? fillHighlights(courseOfStudy.snippet, courseOfStudy.raw)
-      : null;
-  const displayShortBio =
-    fullBio && fullBio.raw ? fillEllipsis(fullBio.snippet, fullBio.raw) : null;
-  const displayFullBio =
-    fullBio && fullBio.raw
-      ? fillHighlights(fullBio.snippet, fullBio.raw)
-      : null;
-  const displayIndustries =
-    industries && Array.isArray(industries.raw) ? industries.raw : [];
   const displayName =
     name && name.raw ? fillHighlights(name.snippet, name.raw) : null;
-  const displayOrganisation =
-    organisation && organisation.raw
-      ? fillHighlights(organisation.snippet, organisation.raw)
-      : null;
-  const displayRole =
-    role && role.raw ? fillHighlights(role.snippet, role.raw) : null;
-  const displaySchool =
-    school && school.raw ? fillHighlights(school.snippet, school.raw) : null;
 
+  const thumbnailImageUrl =
+    thumbnail_image_url && thumbnail_image_url.raw
+      ? thumbnail_image_url.raw
+      : null;
+
+  const displayIndustries =
+    industries && Array.isArray(industries.raw) ? industries.raw : [];
   displayIndustries.forEach((industry: string) => {
     if (!industryColors.has(industry)) {
       industryColors.set(industry, COLORS[industryColors.size % COLORS.length]);
     }
   });
 
-  const [readMore, setReadMore] = useState(false);
+  const displayRole =
+    role && role.raw ? fillHighlights(role.snippet, role.raw) : null;
+  const displayOrganisation =
+    organisation && organisation.raw
+      ? fillHighlights(organisation.snippet, organisation.raw)
+      : null;
 
-  return (
-    <div>
-      <li className="sui-result">
-        <div className="sui-result__image">
-          <img src={result.thumbnail_image_url.raw} alt={displayName ?? ""} />
-        </div>
-        <div className="sui-result__body">
-          <div className="sui-result__header">
-            {displayName && (
-              <span
-                className="sui-result__title"
-                dangerouslySetInnerHTML={{ __html: displayName }}
-              />
-            )}
-          </div>
-          <ul className="sui-result__details">
-            <li className="sui-result__industries">
-              {displayIndustries.map((industry: string) => (
-                <Chip
-                  style={{
-                    backgroundColor: industryColors.get(industry),
-                    fontSize: "0.8rem",
-                    fontWeight: 500,
-                    marginRight: 10,
-                    marginBottom: 7,
-                  }}
-                  label={industry}
-                />
-              ))}
-            </li>
-            {displayRole && (
-              <li>
-                <span
-                  className="sui-result__value"
-                  style={{ fontSize: 16, fontWeight: 600 }}
-                  dangerouslySetInnerHTML={{ __html: displayRole }}
-                />
-                {displayOrganisation && (
-                  <Fragment>
-                    {" "}
-                    <span> at </span>
-                    <span
-                      className="sui-result__value"
-                      style={{ fontSize: 16, fontWeight: 600 }}
-                      dangerouslySetInnerHTML={{ __html: displayOrganisation }}
-                    />
-                  </Fragment>
-                )}
-              </li>
-            )}
-            {displayCourseOfStudy && (
-              <li>
-                <span className="sui-result__label">Studied </span>
-                <span
-                  className="sui-result__value"
-                  style={{ fontSize: 16, fontWeight: 600 }}
-                  dangerouslySetInnerHTML={{ __html: displayCourseOfStudy }}
-                />
-              </li>
-            )}
-            {displaySchool && (
-              <li>
-                <span className="sui-result__label">Graduated from </span>
-                <span
-                  className="sui-result__value"
-                  style={{ fontSize: 16, fontWeight: 600 }}
-                  dangerouslySetInnerHTML={{ __html: displaySchool }}
-                />
-              </li>
-            )}
-            <hr />
-            {displayFullBio && displayShortBio && (
-              <li>
-                <span
-                  className="sui-result__biography"
-                  style={{ fontSize: 14 }}
-                  dangerouslySetInnerHTML={{
-                    __html: readMore ? displayFullBio : displayShortBio,
-                  }}
-                />
-                <a
-                  className="sui-result__readMore"
-                  style={{ fontSize: 14 }}
-                  href="#readMore"
-                  onClick={(e: any) => {
-                    e.preventDefault();
-                    setReadMore(!readMore);
-                  }}
-                >
-                  {readMore ? "Read Less" : "Read More"}
-                </a>
-              </li>
-            )}
-          </ul>
-        </div>
-      </li>
-    </div>
+  const displayCourseOfStudy =
+    courseOfStudy && courseOfStudy.raw
+      ? fillHighlights(courseOfStudy.snippet, courseOfStudy.raw)
+      : null;
+  const displaySchool =
+    school && school.raw ? fillHighlights(school.snippet, school.raw) : null;
+
+  const displayShortBio =
+    fullBio && fullBio.raw ? fillEllipsis(fullBio.snippet, fullBio.raw) : null;
+  const displayFullBio =
+    fullBio && fullBio.raw
+      ? fillHighlights(fullBio.snippet, fullBio.raw)
+      : null;
+
+  const displayResult: DisplayResult = {
+    displayCourseOfStudy,
+    displayFullBio,
+    displayIndustries,
+    displayName,
+    displayOrganisation,
+    displayRole,
+    displaySchool,
+    displayShortBio,
+    industryColors,
+    thumbnailImageUrl,
+  };
+
+  return isListView ? (
+    <ResultViewList displayResult={displayResult} isShowReadMore={true} />
+  ) : (
+    <ResultViewGrid displayResult={displayResult} />
   );
 };
 
 export default ResultView;
+export type { DisplayResult };
