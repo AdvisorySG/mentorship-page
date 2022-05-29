@@ -165,7 +165,7 @@ const ResultView = ({
   };
 
   return isListView ? (
-    <ResultViewList displayResult={displayResult} />
+    <ResultViewList displayResult={displayResult} isShowReadMore={true} />
   ) : (
     <ResultViewGrid displayResult={displayResult} />
   );

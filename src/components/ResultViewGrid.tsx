@@ -94,10 +94,7 @@ const ResultViewGrid = ({
           overflow: "auto",
         }}
       >
-        <ResultViewList
-          displayResult={displayResult}
-          defaultIsReadMore={true}
-        />
+        <ResultViewList displayResult={displayResult} isShowReadMore={false} />
       </Modal>
     </Card>
   );

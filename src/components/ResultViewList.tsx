@@ -5,10 +5,10 @@ import type { DisplayResult } from "./ResultView";
 
 const ResultViewList = ({
   displayResult,
-  defaultIsReadMore,
+  isShowReadMore,
 }: {
   displayResult: DisplayResult;
-  defaultIsReadMore?: boolean;
+  isShowReadMore?: boolean;
 }) => {
   const {
     displayName,
@@ -23,7 +23,7 @@ const ResultViewList = ({
     thumbnailImageUrl,
   } = displayResult;
 
-  const [isReadMore, setIsReadMore] = useState(defaultIsReadMore ?? false);
+  const [isReadMore, setIsReadMore] = useState(isShowReadMore ? false : true);
 
   return (
     <div className="sui-result">
@@ -108,17 +108,19 @@ const ResultViewList = ({
                   __html: isReadMore ? displayFullBio : displayShortBio,
                 }}
               />
-              <a
-                className="sui-result__isReadMore"
-                style={{ fontSize: 14 }}
-                href="#isReadMore"
-                onClick={(e: any) => {
-                  e.preventDefault();
-                  setIsReadMore(!isReadMore);
-                }}
-              >
-                {isReadMore ? "Read Less" : "Read More"}
-              </a>
+              {isShowReadMore && (
+                <a
+                  className="sui-result__isReadMore"
+                  style={{ fontSize: 14 }}
+                  href="#isReadMore"
+                  onClick={(e: any) => {
+                    e.preventDefault();
+                    setIsReadMore(!isReadMore);
+                  }}
+                >
+                  {isReadMore ? "Read Less" : "Read More"}
+                </a>
+              )}
             </li>
           )}
         </ul>
