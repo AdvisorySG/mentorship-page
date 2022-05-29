@@ -52,7 +52,7 @@ const ResultViewGrid = ({
           )}
           <ul className="sui-result__details" style={{ padding: 0 }}>
             {displayOrganisation && (
-              <li>
+              <li style={{ margin: "5px 0" }}>
                 <span
                   className="sui-result__value"
                   style={{ fontSize: 14 }}
@@ -61,7 +61,7 @@ const ResultViewGrid = ({
               </li>
             )}
             {displayRole && (
-              <li>
+              <li style={{ margin: "5px 0" }}>
                 <span
                   className="sui-result__value"
                   style={{ fontSize: 14 }}
