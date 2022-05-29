@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
 import { Layout } from "@elastic/react-search-ui-views";
@@ -137,6 +137,9 @@ const App = () => {
                           aria-label="grid view"
                           onClick={() => setIsListView(false)}
                           size={isSmall ? "small" : "medium"}
+                          sx={{
+                            color: isListView ? "default" : "primary",
+                          }}
                         >
                           <GridViewIcon />
                         </IconButton>
@@ -144,6 +147,9 @@ const App = () => {
                           aria-label="list view"
                           onClick={() => setIsListView(true)}
                           size={isSmall ? "small" : "medium"}
+                          sx={{
+                            color: isListView ? "primary" : "default",
+                          }}
                         >
                           <ViewListIcon />
                         </IconButton>
