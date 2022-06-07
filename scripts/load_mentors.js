@@ -2,11 +2,14 @@ const Airtable = require("airtable");
 const { Client } = require("@elastic/elasticsearch");
 const AWS = require("aws-sdk");
 
+const AIRTABLE_BASE = "appDfSlmYKDyuAj51";
 const AWS_REGION = "ap-southeast-1";
 const AWS_SECRET_AIRTABLE_NAME = "airtable_api_key";
 const AWS_SECRET_ELASTIC_NAME = "elasticsearch_api_key";
 const ELASTIC_ENDPOINT =
   "https://advisorysg.es.ap-southeast-1.aws.found.io:9243";
+const ELASTIC_INDEX = ".ent-search-engine-documents-mentorship-page";
+const ELASTIC_CHUNK_SIZE = 200;
 
 const PLACEHOLDER_THUMBNAIL_URL = "/mentor-thumbnail.png";
 const WAVE_INFO = [
@@ -14,6 +17,12 @@ const WAVE_INFO = [
   { tableId: "5 Tech", name: "2021 Wave 2" },
   { tableId: "2022 Mentorship", name: "2022 Wave 1" },
 ];
+
+function* chunks(arr, n) {
+  for (let i = 0; i < arr.length; i += n) {
+    yield arr.slice(i, i + n);
+  }
+}
 
 const formatMentor = (id, waveId, fields) => ({
   id,
@@ -51,9 +60,7 @@ exports.handler = async (event) => {
     .promise()
     .then((data) => JSON.parse(data.SecretString)["APIKey"]);
 
-  const base = new Airtable({ apiKey: airtableApiKey }).base(
-    "appDfSlmYKDyuAj51"
-  );
+  const base = new Airtable({ apiKey: airtableApiKey }).base(AIRTABLE_BASE);
 
   const elasticApiKey = await awsClient
     .getSecretValue({ SecretId: AWS_SECRET_ELASTIC_NAME })
@@ -77,18 +84,36 @@ exports.handler = async (event) => {
     )
   );
 
-  await elasticClient.deleteByQuery({
-    index: ".ent-search-engine-documents-mentorship-page",
-    body: {
-      query: {
-        match_all: {},
-      },
-    },
-  });
+  const mentorIds = new Set(mentors.map(({ id }) => id));
+  const oldMentorIds = [];
 
-  const body = mentors.flatMap((mentor) => [
-    { index: { _index: ".ent-search-engine-documents-mentorship-page" } },
-    mentor,
-  ]);
-  await elasticClient.bulk({ refresh: true, body });
+  const scrollSearch = await elasticClient.helpers.scrollDocuments({
+    index: ELASTIC_INDEX,
+    query: { match_all: {} },
+  });
+  for await (const result of scrollSearch) {
+    const { id: mentorId } = result;
+    if (!mentorIds.has(mentorId)) {
+      oldMentorIds.push(mentorId);
+    }
+  }
+
+  if (oldMentorIds.size > 0) {
+    console.log("Deleting old mentors...");
+    const deleteBody = [...oldMentorIds].map((mentorId) => ({
+      delete: { _index: ELASTIC_INDEX, _id: mentorId },
+    }));
+    await elasticClient.bulk({ refresh: true, body: deleteBody });
+  }
+
+  let i = 0;
+  for (const mentorsChunk of chunks(mentors, ELASTIC_CHUNK_SIZE)) {
+    i += 1;
+    console.log(`Indexing mentors (chunk ${i})...`);
+    const indexBody = mentorsChunk.flatMap((mentor) => [
+      { index: { _index: ELASTIC_INDEX, _id: mentor.id } },
+      mentor,
+    ]);
+    await elasticClient.bulk({ refresh: true, body: indexBody });
+  }
 };
