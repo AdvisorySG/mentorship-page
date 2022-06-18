@@ -87,18 +87,25 @@ exports.handler = async (event) => {
   const mentorIds = new Set(mentors.map(({ id }) => id));
   const oldMentorIds = [];
 
+  console.log(`No. of Airtable mentors: ${mentorIds.size}`);
+
+  let count = 0;
   const scrollSearch = await elasticClient.helpers.scrollDocuments({
     index: ELASTIC_INDEX,
     query: { match_all: {} },
   });
   for await (const result of scrollSearch) {
+    count += 1;
     const { id: mentorId } = result;
     if (!mentorIds.has(mentorId)) {
       oldMentorIds.push(mentorId);
     }
   }
 
-  if (oldMentorIds.size > 0) {
+  console.log(`No. of Elasticsearch mentors: ${count}`);
+  console.log(`No. of old mentors: ${oldMentorIds.length}`);
+
+  if (oldMentorIds.length > 0) {
     console.log("Deleting old mentors...");
     const deleteBody = [...oldMentorIds].map((mentorId) => ({
       delete: { _index: ELASTIC_INDEX, _id: mentorId },
