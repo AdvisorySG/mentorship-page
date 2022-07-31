@@ -51,6 +51,29 @@ const formatMentor = (id, waveId, fields) => ({
   wave_name: WAVE_INFO[waveId].name,
 });
 
+function deepEqual(object1, object2) {
+  const keys1 = Object.keys(object1);
+  const keys2 = Object.keys(object2);
+  if (keys1.length !== keys2.length) {
+    return false;
+  }
+  for (const key of keys1) {
+    const val1 = object1[key];
+    const val2 = object2[key];
+    const areObjects = isObject(val1) && isObject(val2);
+    if (
+      (areObjects && !deepEqual(val1, val2)) ||
+      (!areObjects && val1 !== val2)
+    ) {
+      return false;
+    }
+  }
+  return true;
+}
+function isObject(object) {
+  return object != null && typeof object === "object";
+}
+
 exports.handler = async (event) => {
   const mentors = [];
 
@@ -89,7 +112,7 @@ exports.handler = async (event) => {
 
   const mentorMap = new Map(mentors.map((mentor) => [mentor.id, mentor]));
   const modifiedMentorIds = [];
-  
+
   console.log(`No. of Airtable mentors: ${mentorIds.size}`);
 
   let count = 0;
@@ -102,8 +125,7 @@ exports.handler = async (event) => {
     const { id: mentorId } = result;
     if (!mentorIds.has(mentorId)) {
       oldMentorIds.push(mentorId);
-    }
-    if (mentorMap.get(mentorId) !== result) {
+    } else if (!deepEqual(mentorMap.get(mentorId), result)) {
       modifiedMentorIds.push(mentorId);
     }
   }
