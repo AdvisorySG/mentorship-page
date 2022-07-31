@@ -110,6 +110,7 @@ exports.handler = async (event) => {
 
   console.log(`No. of Elasticsearch mentors: ${count}`);
   console.log(`No. of old mentors: ${oldMentorIds.length}`);
+  console.log(`No. of modified mentors: ${modifiedMentorIds.length}`);
 
   if (oldMentorIds.length > 0) {
     console.log("Deleting old mentors...");
