@@ -87,6 +87,9 @@ exports.handler = async (event) => {
   const mentorIds = new Set(mentors.map(({ id }) => id));
   const oldMentorIds = [];
 
+  const mentorMap = new Map(mentors.map((mentor) => [mentor.id, mentor]));
+  const modifiedMentorIds = [];
+  
   console.log(`No. of Airtable mentors: ${mentorIds.size}`);
 
   let count = 0;
@@ -99,6 +102,9 @@ exports.handler = async (event) => {
     const { id: mentorId } = result;
     if (!mentorIds.has(mentorId)) {
       oldMentorIds.push(mentorId);
+    }
+    if (mentorMap.get(mentorId) !== result) {
+      modifiedMentorIds.push(mentorId);
     }
   }
 
@@ -114,12 +120,12 @@ exports.handler = async (event) => {
   }
 
   let i = 0;
-  for (const mentorsChunk of chunks(mentors, ELASTIC_CHUNK_SIZE)) {
+  for (const mentorIdsChunk of chunks(modifiedMentorIds, ELASTIC_CHUNK_SIZE)) {
     i += 1;
     console.log(`Indexing mentors (chunk ${i})...`);
-    const indexBody = mentorsChunk.flatMap((mentor) => [
-      { index: { _index: ELASTIC_INDEX, _id: mentor.id } },
-      mentor,
+    const indexBody = mentorIdsChunk.flatMap((id) => [
+      { index: { _index: ELASTIC_INDEX, _id: id } },
+      mentorMap.get(id),
     ]);
     await elasticClient.bulk({ refresh: true, body: indexBody });
   }
