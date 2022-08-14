@@ -94,7 +94,13 @@ const App = () => {
           <SearchProvider config={configurationOptions}>
             <div className="App">
               <Layout
-                header={<SearchBox autocompleteSuggestions={true} />}
+                header={
+                  <SearchBox
+                    autocompleteSuggestions={true}
+                    searchAsYouType={true}
+                    debounceLength={300}
+                  />
+                }
                 bodyContent={
                   <Results
                     resultView={({ result }) => (
