@@ -18,6 +18,7 @@ import IconButton from "@mui/material/IconButton";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import GridViewIcon from "@mui/icons-material/GridView";
 import ViewListIcon from "@mui/icons-material/ViewList";
+import Scroll from "./components/ScrollToTop";
 
 import Header from "./components/Header";
 import ResultView from "./components/ResultView";
@@ -76,6 +77,7 @@ const App = () => {
   return (
     <div className="container">
       <Header />
+      <Scroll showBelow={120} />
       <div className="canvas">
         <p className="disclaimer">
           <small>
