@@ -77,7 +77,7 @@ const App = () => {
   return (
     <div className="container">
       <Header />
-      <Scroll showBelow={120} />
+      <Scroll />
       <div className="canvas">
         <p className="disclaimer">
           <small>
