@@ -97,21 +97,21 @@ exports.handler = async (event) => {
   for await (const result of scrollSearch) {
     count += 1;
     const { id: mentorId } = result;
-    if (!mentorIds.has(mentorId)) {
-      oldMentorIds.push(mentorId);
-    }
+    // if (!mentorIds.has(mentorId)) {
+    //   oldMentorIds.push(mentorId);
+    // }
   }
 
   console.log(`No. of Elasticsearch mentors: ${count}`);
   console.log(`No. of old mentors: ${oldMentorIds.length}`);
 
-  if (oldMentorIds.length > 0) {
-    console.log("Deleting old mentors...");
-    const deleteBody = [...oldMentorIds].map((mentorId) => ({
-      delete: { _index: ELASTIC_INDEX, _id: mentorId },
-    }));
-    await elasticClient.bulk({ refresh: true, body: deleteBody });
-  }
+  // if (oldMentorIds.length > 0) {
+  //   console.log("Deleting old mentors...");
+  //   const deleteBody = [...oldMentorIds].map((mentorId) => ({
+  //     delete: { _index: ELASTIC_INDEX, _id: mentorId },
+  //   }));
+  //   await elasticClient.bulk({ refresh: true, body: deleteBody });
+  // }
 
   let i = 0;
   for (const mentorsChunk of chunks(mentors, ELASTIC_CHUNK_SIZE)) {
