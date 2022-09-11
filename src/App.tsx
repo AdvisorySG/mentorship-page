@@ -18,6 +18,8 @@ import IconButton from "@mui/material/IconButton";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import GridViewIcon from "@mui/icons-material/GridView";
 import ViewListIcon from "@mui/icons-material/ViewList";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
 
 import Header from "./components/Header";
 import ResultView from "./components/ResultView";
@@ -27,6 +29,7 @@ const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
   const [isListView, setIsListView] = useState(false);
   const [tab, setTab] = useState("2022 Wave 1");
+  const [value, setValue] = useState("");
 
   const connector = new AppSearchAPIConnector({
     engineName: "mentorship-page",
@@ -79,6 +82,25 @@ const App = () => {
     },
   });
 
+  function handleTabChange(waveId: Number) {
+    const newConfigurationOptions = JSON.parse(
+      JSON.stringify(configurationOptions)
+    );
+    newConfigurationOptions.searchQuery.filters = [
+      {
+        type: "all" as FilterType,
+        field: "wave_id",
+        values: [waveId],
+      },
+    ];
+    setConfigurationOptions(newConfigurationOptions);
+    setTab("2022 Wave 1");
+  }
+
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    setValue(newValue);
+  };
+
   return (
     <div className="container">
       <Header />
@@ -102,71 +124,41 @@ const App = () => {
               <Layout
                 header={
                   <div>
-                    <SearchBox autocompleteSuggestions={true} />
+                    <SearchBox
+                      autocompleteSuggestions={true}
+                      searchAsYouType={true}
+                      debounceLength={300}
+                    />
                     <br></br>
                     <div>
-                      <a
-                        href="/"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          const newConfigurationOptions = JSON.parse(
-                            JSON.stringify(configurationOptions)
-                          );
-                          newConfigurationOptions.searchQuery.filters = [
-                            {
-                              type: "all" as FilterType,
-                              field: "wave_id",
-                              values: [2],
-                            },
-                          ];
-                          setConfigurationOptions(newConfigurationOptions);
-                          setTab("2022 Wave 1");
-                        }}
+                      <Tabs
+                        value={value}
+                        onChange={handleChange}
+                        textColor="primary"
+                        indicatorColor="primary"
                       >
-                        2022 Wave 1
-                      </a>
-                      &nbsp;&nbsp;&nbsp;
-                      <a
-                        href="/"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          const newConfigurationOptions = JSON.parse(
-                            JSON.stringify(configurationOptions)
-                          );
-                          newConfigurationOptions.searchQuery.filters = [
-                            {
-                              type: "all" as FilterType,
-                              field: "wave_id",
-                              values: [1],
-                            },
-                          ];
-                          setConfigurationOptions(newConfigurationOptions);
-                          setTab("2021 Wave 2");
-                        }}
-                      >
-                        2021 Wave 2
-                      </a>
-                      &nbsp;&nbsp;&nbsp;
-                      <a
-                        href="/"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          const newConfigurationOptions = JSON.parse(
-                            JSON.stringify(configurationOptions)
-                          );
-                          newConfigurationOptions.searchQuery.filters = [
-                            {
-                              type: "all" as FilterType,
-                              field: "wave_id",
-                              values: [0],
-                            },
-                          ];
-                          setConfigurationOptions(newConfigurationOptions);
-                          setTab("2021 Wave 1");
-                        }}
-                      >
-                        2021 Wave 1
-                      </a>
+                        <Tab
+                          label="2022 Wave 1"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleTabChange(2);
+                          }}
+                        />
+                        <Tab
+                          label="2021 Wave 2"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleTabChange(1);
+                          }}
+                        />
+                        <Tab
+                          label="2021 Wave 3"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleTabChange(0);
+                          }}
+                        />
+                      </Tabs>
                     </div>
                   </div>
                 }
