@@ -47,7 +47,6 @@ const App = () => {
               "role",
               "school",
               "course_of_study",
-              "wave_id",
             ],
           },
         },
@@ -68,21 +67,14 @@ const App = () => {
         role: { raw: {}, snippet: { size: 100 } },
         school: { raw: {}, snippet: { size: 100 } },
         thumbnail_image_url: { raw: {} },
-        wave_id: { raw: {}, snippet: { size: 100 } },
       },
       filters: [{ type: "all" as FilterType, field: "wave_id", values: [2] }],
-      disjunctiveFacets: [
-        "organisation",
-        "school",
-        "course_of_study",
-        "wave_id",
-      ],
+      disjunctiveFacets: ["organisation", "school", "course_of_study"],
       facets: {
         industries: { type: "value", size: 100 },
         organisation: { type: "value", size: 100 },
         school: { type: "value", size: 100 },
         course_of_study: { type: "value", size: 100 },
-        wave_id: { type: "value", size: 100 },
       },
     },
   });
@@ -176,7 +168,6 @@ const App = () => {
                         2021 Wave 1
                       </a>
                     </div>
-                    <div>Current Tab: {tab}</div>
                   </div>
                 }
                 bodyContent={
