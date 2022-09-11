@@ -19,6 +19,7 @@ const ResultViewList = ({
     displayFullBio,
     displayShortBio,
     displaySchool,
+    displayWaveId,
     industryColors,
     thumbnailImageUrl,
   } = displayResult;
@@ -95,6 +96,16 @@ const ResultViewList = ({
                 className="sui-result__value"
                 style={{ fontSize: 16, fontWeight: 600 }}
                 dangerouslySetInnerHTML={{ __html: displaySchool }}
+              />
+            </li>
+          )}
+          {displayWaveId && (
+            <li>
+              <span className="sui-result__label">Wave </span>
+              <span
+                className="sui-result__value"
+                style={{ fontSize: 16, fontWeight: 600 }}
+                dangerouslySetInnerHTML={{ __html: displayWaveId }}
               />
             </li>
           )}

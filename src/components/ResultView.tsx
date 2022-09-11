@@ -92,6 +92,7 @@ type DisplayResult = {
   displayFullBio: string | null;
   displayShortBio: string | null;
   displaySchool: string | null;
+  displayWaveId: string | null;
   industryColors: Map<string, string>;
   thumbnailImageUrl?: string;
 };
@@ -112,6 +113,7 @@ const ResultView = ({
     role,
     school,
     thumbnail_image_url,
+    waveId,
   } = result;
 
   const displayName =
@@ -141,8 +143,12 @@ const ResultView = ({
     courseOfStudy && courseOfStudy.raw
       ? fillHighlights(courseOfStudy.snippet, courseOfStudy.raw)
       : null;
+
   const displaySchool =
     school && school.raw ? fillHighlights(school.snippet, school.raw) : null;
+
+  const displayWaveId =
+    waveId && waveId.raw ? fillHighlights(waveId.snippet, waveId.raw) : null;
 
   const displayShortBio =
     fullBio && fullBio.raw ? fillEllipsis(fullBio.snippet, fullBio.raw) : null;
@@ -160,6 +166,7 @@ const ResultView = ({
     displayRole,
     displaySchool,
     displayShortBio,
+    displayWaveId,
     industryColors,
     thumbnailImageUrl,
   };

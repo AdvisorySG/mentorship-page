@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 
 import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
 import { Layout } from "@elastic/react-search-ui-views";
@@ -24,19 +24,17 @@ import ResultView from "./components/ResultView";
 import "./App.css";
 
 const App = () => {
-  const [engine, setEngine] = useState("mentorship-page");
-  const [apiKey, setApiKey] = useState("search-bv3s7kksqjinbswx7g4my9ur");
   const isSmall = useMediaQuery("(max-width: 800px)");
   const [isListView, setIsListView] = useState(false);
   const [tab, setTab] = useState("2022 Wave 1");
 
   const connector = new AppSearchAPIConnector({
-    engineName: engine,
+    engineName: "mentorship-page",
     endpointBase: "https://advisorysg.ent.ap-southeast-1.aws.found.io",
-    searchKey: apiKey,
+    searchKey: "search-bv3s7kksqjinbswx7g4my9ur",
   });
 
-  const configurationOptions = {
+  const [configurationOptions, setConfigurationOptions] = useState({
     alwaysSearchOnInitialLoad: true,
     apiConnector: connector,
     autocompleteQuery: {
@@ -49,6 +47,7 @@ const App = () => {
               "role",
               "school",
               "course_of_study",
+              "wave_id",
             ],
           },
         },
@@ -69,18 +68,24 @@ const App = () => {
         role: { raw: {}, snippet: { size: 100 } },
         school: { raw: {}, snippet: { size: 100 } },
         thumbnail_image_url: { raw: {} },
-        wave_id: { raw: {} },
+        wave_id: { raw: {}, snippet: { size: 100 } },
       },
       filters: [{ type: "all" as FilterType, field: "wave_id", values: [2] }],
-      disjunctiveFacets: ["organisation", "school", "course_of_study"],
+      disjunctiveFacets: [
+        "organisation",
+        "school",
+        "course_of_study",
+        "wave_id",
+      ],
       facets: {
         industries: { type: "value", size: 100 },
         organisation: { type: "value", size: 100 },
         school: { type: "value", size: 100 },
         course_of_study: { type: "value", size: 100 },
+        wave_id: { type: "value", size: 100 },
       },
     },
-  };
+  });
 
   return (
     <div className="container">
@@ -112,9 +117,18 @@ const App = () => {
                         href="/"
                         onClick={(e) => {
                           e.preventDefault();
+                          const newConfigurationOptions = JSON.parse(
+                            JSON.stringify(configurationOptions)
+                          );
+                          newConfigurationOptions.searchQuery.filters = [
+                            {
+                              type: "all" as FilterType,
+                              field: "wave_id",
+                              values: [2],
+                            },
+                          ];
+                          setConfigurationOptions(newConfigurationOptions);
                           setTab("2022 Wave 1");
-                          setEngine("mentorship-page");
-                          setApiKey("search-bv3s7kksqjinbswx7g4my9ur");
                         }}
                       >
                         2022 Wave 1
@@ -124,9 +138,18 @@ const App = () => {
                         href="/"
                         onClick={(e) => {
                           e.preventDefault();
+                          const newConfigurationOptions = JSON.parse(
+                            JSON.stringify(configurationOptions)
+                          );
+                          newConfigurationOptions.searchQuery.filters = [
+                            {
+                              type: "all" as FilterType,
+                              field: "wave_id",
+                              values: [1],
+                            },
+                          ];
+                          setConfigurationOptions(newConfigurationOptions);
                           setTab("2021 Wave 2");
-                          setEngine("mentorship-page");
-                          setApiKey("search-bv3s7kksqjinbswx7g4my9ur");
                         }}
                       >
                         2021 Wave 2
@@ -136,9 +159,18 @@ const App = () => {
                         href="/"
                         onClick={(e) => {
                           e.preventDefault();
+                          const newConfigurationOptions = JSON.parse(
+                            JSON.stringify(configurationOptions)
+                          );
+                          newConfigurationOptions.searchQuery.filters = [
+                            {
+                              type: "all" as FilterType,
+                              field: "wave_id",
+                              values: [0],
+                            },
+                          ];
+                          setConfigurationOptions(newConfigurationOptions);
                           setTab("2021 Wave 1");
-                          setEngine("mentorship-page");
-                          setApiKey("search-bv3s7kksqjinbswx7g4my9ur");
                         }}
                       >
                         2021 Wave 1
@@ -170,6 +202,7 @@ const App = () => {
                       label="Organisation"
                     />
                     <Facet field="school" filterType="any" label="School" />
+                    <Facet field="wave_id" filterType="any" label="wave" />
                     <Facet
                       field="course_of_study"
                       filterType="any"
