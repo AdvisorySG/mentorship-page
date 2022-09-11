@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState } from "react";
 
 import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
 import { Layout } from "@elastic/react-search-ui-views";
