@@ -24,12 +24,12 @@ import Tab from "@mui/material/Tab";
 import Header from "./components/Header";
 import ResultView from "./components/ResultView";
 import "./App.css";
+import { SliderValueLabelUnstyled } from "@mui/base";
 
 const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
   const [isListView, setIsListView] = useState(false);
   const [tab, setTab] = useState("2022 Wave 1");
-  const [value, setValue] = useState("");
 
   const connector = new AppSearchAPIConnector({
     engineName: "mentorship-page",
@@ -82,23 +82,22 @@ const App = () => {
     },
   });
 
-  function handleTabChange(waveId: Number) {
-    const newConfigurationOptions = JSON.parse(
-      JSON.stringify(configurationOptions)
-    );
-    newConfigurationOptions.searchQuery.filters = [
-      {
-        type: "all" as FilterType,
-        field: "wave_id",
-        values: [waveId],
-      },
-    ];
-    setConfigurationOptions(newConfigurationOptions);
-    setTab("2022 Wave 1");
-  }
+  const WAVES_LIST = ["2021 Wave 1", "2021 Wave 2", "2022 Wave 1"];
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
+  const handleWaveIdChange = (waveId: number) => {
+    setConfigurationOptions({
+      ...configurationOptions,
+      searchQuery: {
+        ...configurationOptions.searchQuery,
+        filters: [
+          { type: "all" as FilterType, field: "wave_id", values: [waveId] },
+        ],
+      },
+    });
+  };
+
+  const handleTabChange = (_: any, waveId: string) => {
+    setTab(waveId);
   };
 
   return (
@@ -130,36 +129,24 @@ const App = () => {
                       debounceLength={300}
                     />
                     <br></br>
-                    <div>
-                      <Tabs
-                        value={value}
-                        onChange={handleChange}
-                        textColor="primary"
-                        indicatorColor="primary"
-                      >
-                        <Tab
-                          label="2022 Wave 1"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleTabChange(2);
-                          }}
-                        />
-                        <Tab
-                          label="2021 Wave 2"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleTabChange(1);
-                          }}
-                        />
-                        <Tab
-                          label="2021 Wave 3"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleTabChange(0);
-                          }}
-                        />
-                      </Tabs>
-                    </div>
+                    <Tabs
+                      value={tab}
+                      onChange={handleTabChange}
+                      textColor="primary"
+                      indicatorColor="primary"
+                    >
+                      {WAVES_LIST.map((wave: string, index: number) => {
+                        return (
+                          <Tab
+                            label={wave}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              handleWaveIdChange(index);
+                            }}
+                          />
+                        );
+                      })}
+                    </Tabs>
                   </div>
                 }
                 bodyContent={
@@ -185,7 +172,6 @@ const App = () => {
                       label="Organisation"
                     />
                     <Facet field="school" filterType="any" label="School" />
-                    <Facet field="wave_id" filterType="any" label="wave" />
                     <Facet
                       field="course_of_study"
                       filterType="any"
