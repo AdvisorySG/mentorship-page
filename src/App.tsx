@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
 import { Layout } from "@elastic/react-search-ui-views";
@@ -28,7 +28,8 @@ import "./App.css";
 const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
   const [isListView, setIsListView] = useState(false);
-  const [tab, setTab] = useState("2022 Wave 1");
+  const [waveId, setWaveId] = useState(2);
+  const WAVES_LIST = ["2021 Wave 1", "2021 Wave 2", "2022 Wave 1"];
 
   const connector = new AppSearchAPIConnector({
     engineName: "mentorship-page",
@@ -81,9 +82,7 @@ const App = () => {
     },
   });
 
-  const WAVES_LIST = ["2021 Wave 1", "2021 Wave 2", "2022 Wave 1"];
-
-  const handleWaveIdChange = (waveId: number) => {
+  const handleWaveIdChange = (event: React.ChangeEvent<{}>, waveId: number) => {
     setConfigurationOptions({
       ...configurationOptions,
       searchQuery: {
@@ -93,10 +92,7 @@ const App = () => {
         ],
       },
     });
-  };
-
-  const handleTabChange = (_: any, waveId: string) => {
-    setTab(waveId);
+    setWaveId(waveId);
   };
 
   return (
@@ -129,21 +125,13 @@ const App = () => {
                     />
                     <br></br>
                     <Tabs
-                      value={tab}
-                      onChange={handleTabChange}
+                      value={waveId}
+                      onChange={handleWaveIdChange}
                       textColor="primary"
                       indicatorColor="primary"
                     >
-                      {WAVES_LIST.map((wave: string, index: number) => {
-                        return (
-                          <Tab
-                            label={wave}
-                            onClick={(e) => {
-                              e.preventDefault();
-                              handleWaveIdChange(index);
-                            }}
-                          />
-                        );
+                      {WAVES_LIST.map((wave: string) => {
+                        return <Tab label={wave} />;
                       })}
                     </Tabs>
                   </div>
