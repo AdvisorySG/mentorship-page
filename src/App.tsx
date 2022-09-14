@@ -28,7 +28,7 @@ import "./App.css";
 const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
   const [isListView, setIsListView] = useState(false);
-  const [waveId, setWaveId] = useState(2);
+  const [currentWaveId, setCurrentWaveId] = useState(2);
   const WAVES_LIST = ["2021 Wave 1", "2021 Wave 2", "2022 Wave 1"];
 
   const connector = new AppSearchAPIConnector({
@@ -92,7 +92,7 @@ const App = () => {
         ],
       },
     });
-    setWaveId(waveId);
+    setCurrentWaveId(waveId);
   };
 
   return (
@@ -125,7 +125,7 @@ const App = () => {
                     />
                     <br></br>
                     <Tabs
-                      value={waveId}
+                      value={currentWaveId}
                       onChange={handleWaveIdChange}
                       textColor="primary"
                       indicatorColor="primary"
