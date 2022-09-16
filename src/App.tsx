@@ -28,8 +28,15 @@ import "./App.css";
 const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
   const [isListView, setIsListView] = useState(false);
+
+  const WAVES = new Map<number, string>([
+    [0, "2021 Wave 1"],
+    [1, "2021 Wave 2"],
+    [2, "2022 Wave 1"],
+  ]);
+  const WAVES_DISPLAY_LIST = [2, 1, 0];
   const [currentWaveId, setCurrentWaveId] = useState(2);
-  const WAVES_LIST = ["2021 Wave 1", "2021 Wave 2", "2022 Wave 1"];
+  const [currentTab, setCurrentTab] = useState(0);
 
   const connector = new AppSearchAPIConnector({
     engineName: "mentorship-page",
@@ -37,7 +44,7 @@ const App = () => {
     searchKey: "search-bv3s7kksqjinbswx7g4my9ur",
   });
 
-  const [configurationOptions, setConfigurationOptions] = useState({
+  const configurationOptions = {
     alwaysSearchOnInitialLoad: true,
     apiConnector: connector,
     autocompleteQuery: {
@@ -71,7 +78,13 @@ const App = () => {
         school: { raw: {}, snippet: { size: 100 } },
         thumbnail_image_url: { raw: {} },
       },
-      filters: [{ type: "all" as FilterType, field: "wave_id", values: [2] }],
+      filters: [
+        {
+          type: "all" as FilterType,
+          field: "wave_id",
+          values: [currentWaveId],
+        },
+      ],
       disjunctiveFacets: ["organisation", "school", "course_of_study"],
       facets: {
         industries: { type: "value", size: 100 },
@@ -80,18 +93,11 @@ const App = () => {
         course_of_study: { type: "value", size: 100 },
       },
     },
-  });
+  };
 
-  const handleWaveIdChange = (event: React.ChangeEvent<{}>, waveId: number) => {
-    setConfigurationOptions({
-      ...configurationOptions,
-      searchQuery: {
-        ...configurationOptions.searchQuery,
-        filters: [
-          { type: "all" as FilterType, field: "wave_id", values: [waveId] },
-        ],
-      },
-    });
+  const handleTabChange = (_: React.ChangeEvent<{}>, tab: number) => {
+    setCurrentTab(tab);
+    const waveId = WAVES_DISPLAY_LIST[tab];
     setCurrentWaveId(waveId);
   };
 
@@ -125,14 +131,14 @@ const App = () => {
                     />
                     <br></br>
                     <Tabs
-                      value={currentWaveId}
-                      onChange={handleWaveIdChange}
+                      value={currentTab}
+                      onChange={handleTabChange}
                       textColor="primary"
                       indicatorColor="primary"
                     >
-                      {WAVES_LIST.map((wave: string) => {
-                        return <Tab label={wave} />;
-                      })}
+                      {WAVES_DISPLAY_LIST.map((waveId: number) => (
+                        <Tab label={WAVES.get(waveId)} />
+                      ))}
                     </Tabs>
                   </div>
                 }
