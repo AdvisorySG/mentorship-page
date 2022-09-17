@@ -33,10 +33,14 @@ const formatMentor = (id, waveId, fields) => ({
       ? fields.Photo[0].url
       : PLACEHOLDER_THUMBNAIL_URL,
   industries: [
-    fields["Industry 1"] ?? [],
-    fields["Industry 2"] ?? [],
-    fields["Industry 3"] ?? [],
-  ].flat(),
+    ...new Set(
+      [
+        fields["Industry 1"] ?? [],
+        fields["Industry 2"] ?? [],
+        fields["Industry 3"] ?? [],
+      ].flat()
+    ),
+  ],
   name: fields.Name,
   organisation: fields.Organisation,
   role: fields["Job Title"],
