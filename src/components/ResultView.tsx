@@ -141,6 +141,7 @@ const ResultView = ({
     courseOfStudy && courseOfStudy.raw
       ? fillHighlights(courseOfStudy.snippet, courseOfStudy.raw)
       : null;
+
   const displaySchool =
     school && school.raw ? fillHighlights(school.snippet, school.raw) : null;
 
