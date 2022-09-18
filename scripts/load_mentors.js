@@ -12,11 +12,19 @@ const ELASTIC_INDEX = ".ent-search-engine-documents-mentorship-page";
 const ELASTIC_CHUNK_SIZE = 200;
 
 const PLACEHOLDER_THUMBNAIL_URL = "/mentor-thumbnail.png";
-const WAVE_INFO = [
-  { tableId: "4 Tech", name: "2021 Wave 1" },
-  { tableId: "5 Tech", name: "2021 Wave 2" },
-  { tableId: "2022 Mentorship", name: "2022 Wave 1" },
-];
+
+const WAVES_INFO = new Map([
+  [0, { tableId: "4 Tech", waveName: "2021 Wave 1" }],
+  [1, { tableId: "5 Tech", waveName: "2021 Wave 2" }],
+  [2, { tableId: "2022 Mentorship [Complete]", waveName: "2022 Wave" }],
+  [
+    3,
+    {
+      tableId: "Institution-Specific Mentorship",
+      waveName: "Institution-Specific Wave",
+    },
+  ],
+]);
 
 function* chunks(arr, n) {
   for (let i = 0; i < arr.length; i += n) {
@@ -52,7 +60,7 @@ const formatMentor = (id, waveId, fields) => ({
       ? fields.Photo[0].thumbnails.large.url
       : PLACEHOLDER_THUMBNAIL_URL,
   wave_id: waveId,
-  wave_name: WAVE_INFO[waveId].name,
+  wave_name: WAVES_INFO.get(waveId).waveName,
 });
 
 exports.handler = async (event) => {
@@ -76,12 +84,12 @@ exports.handler = async (event) => {
   });
 
   await Promise.all(
-    WAVE_INFO.map(async ({ tableId }, i) =>
+    WAVES_INFO.entries().map(async ([waveId, { tableId }]) =>
       base(tableId)
         .select({ sort: [{ field: "First Name", direction: "asc" }] })
         .eachPage((records, fetchNextPage) => {
           mentors.push(
-            ...records.map(({ id, fields }) => formatMentor(id, i, fields))
+            ...records.map(({ id, fields }) => formatMentor(id, waveId, fields))
           );
           fetchNextPage();
         })
@@ -117,14 +125,12 @@ exports.handler = async (event) => {
     await elasticClient.bulk({ refresh: true, body: deleteBody });
   }
 
-  let i = 0;
-  for (const mentorsChunk of chunks(mentors, ELASTIC_CHUNK_SIZE)) {
-    i += 1;
+  chunks(mentors, ELASTIC_CHUNK_SIZE).map(async (mentorsChunk, i) => {
     console.log(`Indexing mentors (chunk ${i})...`);
     const indexBody = mentorsChunk.flatMap((mentor) => [
       { index: { _index: ELASTIC_INDEX, _id: mentor.id } },
       mentor,
     ]);
     await elasticClient.bulk({ refresh: true, body: indexBody });
-  }
+  });
 };

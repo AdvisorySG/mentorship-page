@@ -29,14 +29,11 @@ const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
   const [isListView, setIsListView] = useState(false);
 
-  const WAVES = new Map<number, string>([
-    [0, "2021 Wave 1"],
-    [1, "2021 Wave 2"],
-    [2, "2022 Wave 1"],
-  ]);
-  const WAVES_DISPLAY_LIST = [2, 1, 0];
-  const [currentWaveId, setCurrentWaveId] = useState(2);
-  const [currentTab, setCurrentTab] = useState(0);
+  const WAVES = [
+    { waveId: 3, waveName: "Institution-Specific Wave" },
+    { waveId: 2, waveName: "2022 Wave" },
+  ];
+  const [currentTabId, setCurrentTabId] = useState(0);
 
   const connector = new AppSearchAPIConnector({
     engineName: "mentorship-page",
@@ -82,7 +79,7 @@ const App = () => {
         {
           type: "all" as FilterType,
           field: "wave_id",
-          values: [currentWaveId],
+          values: [WAVES[currentTabId].waveId],
         },
       ],
       disjunctiveFacets: ["organisation", "school", "course_of_study"],
@@ -95,11 +92,8 @@ const App = () => {
     },
   };
 
-  const handleTabChange = (_: React.ChangeEvent<{}>, tab: number) => {
-    setCurrentTab(tab);
-    const waveId = WAVES_DISPLAY_LIST[tab];
-    setCurrentWaveId(waveId);
-  };
+  const handleTabChange = (_: React.ChangeEvent<{}>, tab: number) =>
+    setCurrentTabId(tab);
 
   return (
     <div className="container">
@@ -131,13 +125,13 @@ const App = () => {
                     />
                     <br></br>
                     <Tabs
-                      value={currentTab}
+                      value={currentTabId}
                       onChange={handleTabChange}
                       textColor="primary"
                       indicatorColor="primary"
                     >
-                      {WAVES_DISPLAY_LIST.map((waveId: number) => (
-                        <Tab label={WAVES.get(waveId)} />
+                      {WAVES.map(({ waveName }) => (
+                        <Tab label={waveName} />
                       ))}
                     </Tabs>
                   </div>
