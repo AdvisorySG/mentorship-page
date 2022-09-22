@@ -84,7 +84,7 @@ exports.handler = async (event) => {
   });
 
   await Promise.all(
-    WAVES_INFO.entries().map(async ([waveId, { tableId }]) =>
+    [...WAVES_INFO.entries()].map(async ([waveId, { tableId }]) =>
       base(tableId)
         .select({ sort: [{ field: "First Name", direction: "asc" }] })
         .eachPage((records, fetchNextPage) => {
@@ -125,12 +125,14 @@ exports.handler = async (event) => {
     await elasticClient.bulk({ refresh: true, body: deleteBody });
   }
 
-  chunks(mentors, ELASTIC_CHUNK_SIZE).map(async (mentorsChunk, i) => {
+  let i = 0;
+  for (const mentorsChunk of chunks(mentors, ELASTIC_CHUNK_SIZE)) {
+    i += 1;
     console.log(`Indexing mentors (chunk ${i})...`);
     const indexBody = mentorsChunk.flatMap((mentor) => [
       { index: { _index: ELASTIC_INDEX, _id: mentor.id } },
       mentor,
     ]);
     await elasticClient.bulk({ refresh: true, body: indexBody });
-  });
+  }
 };
