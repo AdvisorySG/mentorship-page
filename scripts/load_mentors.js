@@ -85,10 +85,8 @@ exports.handler = async (event) => {
     )
   );
 
-  const mentorIds = new Set(mentors.map(({ id }) => id));
-  const oldMentorIds = [];
-
   const mentorMap = new Map(mentors.map((mentor) => [mentor.id, mentor]));
+  const deletedMentorIds = [];
   const modifiedMentorIds = [];
 
   console.log(`No. of Airtable mentors: ${mentorIds.size}`);
@@ -101,8 +99,8 @@ exports.handler = async (event) => {
   for await (const result of scrollSearch) {
     count += 1;
     const { id: mentorId } = result;
-    if (!mentorIds.has(mentorId)) {
-      oldMentorIds.push(mentorId);
+    if (mentorMap.get(mentorId) === undefined) {
+      deletedMentorIds.push(mentorId);
     } else if (
       mentorMap.get(mentorId).last_modified_time !== result.last_modified_time
     ) {
@@ -111,12 +109,12 @@ exports.handler = async (event) => {
   }
 
   console.log(`No. of Elasticsearch mentors: ${count}`);
-  console.log(`No. of old mentors: ${oldMentorIds.length}`);
+  console.log(`No. of deleted mentors: ${deletedMentorIds.length}`);
   console.log(`No. of modified mentors: ${modifiedMentorIds.length}`);
 
-  if (oldMentorIds.length > 0) {
+  if (deletedMentorIds.length > 0) {
     console.log("Deleting old mentors...");
-    const deleteBody = [...oldMentorIds].map((mentorId) => ({
+    const deleteBody = [...deletedMentorIds].map((mentorId) => ({
       delete: { _index: ELASTIC_INDEX, _id: mentorId },
     }));
     await elasticClient.bulk({ refresh: true, body: deleteBody });
