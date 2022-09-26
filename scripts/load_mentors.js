@@ -61,6 +61,7 @@ const formatMentor = (id, waveId, fields) => ({
       : PLACEHOLDER_THUMBNAIL_URL,
   wave_id: waveId,
   wave_name: WAVES_INFO.get(waveId).waveName,
+  last_modified_time: fields["Last Modified Time"],
 });
 
 exports.handler = async (event) => {
@@ -96,8 +97,9 @@ exports.handler = async (event) => {
     )
   );
 
-  const mentorIds = new Set(mentors.map(({ id }) => id));
-  const oldMentorIds = [];
+  const mentorMap = new Map(mentors.map((mentor) => [mentor.id, mentor]));
+  const deletedMentorIds = [];
+  const modifiedMentorIds = [];
 
   console.log(`No. of Airtable mentors: ${mentorIds.size}`);
 
@@ -109,29 +111,34 @@ exports.handler = async (event) => {
   for await (const result of scrollSearch) {
     count += 1;
     const { id: mentorId } = result;
-    if (!mentorIds.has(mentorId)) {
-      oldMentorIds.push(mentorId);
+    if (mentorMap.get(mentorId) === undefined) {
+      deletedMentorIds.push(mentorId);
+    } else if (
+      mentorMap.get(mentorId).last_modified_time !== result.last_modified_time
+    ) {
+      modifiedMentorIds.push(mentorId);
     }
   }
 
   console.log(`No. of Elasticsearch mentors: ${count}`);
-  console.log(`No. of old mentors: ${oldMentorIds.length}`);
+  console.log(`No. of deleted mentors: ${deletedMentorIds.length}`);
+  console.log(`No. of modified mentors: ${modifiedMentorIds.length}`);
 
-  if (oldMentorIds.length > 0) {
+  if (deletedMentorIds.length > 0) {
     console.log("Deleting old mentors...");
-    const deleteBody = [...oldMentorIds].map((mentorId) => ({
+    const deleteBody = [...deletedMentorIds].map((mentorId) => ({
       delete: { _index: ELASTIC_INDEX, _id: mentorId },
     }));
     await elasticClient.bulk({ refresh: true, body: deleteBody });
   }
 
   let i = 0;
-  for (const mentorsChunk of chunks(mentors, ELASTIC_CHUNK_SIZE)) {
+  for (const mentorIdsChunk of chunks(modifiedMentorIds, ELASTIC_CHUNK_SIZE)) {
     i += 1;
     console.log(`Indexing mentors (chunk ${i})...`);
-    const indexBody = mentorsChunk.flatMap((mentor) => [
-      { index: { _index: ELASTIC_INDEX, _id: mentor.id } },
-      mentor,
+    const indexBody = mentorIdsChunk.flatMap((id) => [
+      { index: { _index: ELASTIC_INDEX, _id: id } },
+      mentorMap.get(id),
     ]);
     await elasticClient.bulk({ refresh: true, body: indexBody });
   }
