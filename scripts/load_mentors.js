@@ -101,7 +101,7 @@ exports.handler = async (event) => {
   const deletedMentorIds = [];
   const modifiedMentorIds = [];
 
-  console.log(`No. of Airtable mentors: ${mentorIds.size}`);
+  console.log(`No. of Airtable mentors: ${mentorMap.size}`);
 
   let count = 0;
   const scrollSearch = await elasticClient.helpers.scrollDocuments({
