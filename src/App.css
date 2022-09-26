@@ -46,6 +46,10 @@
   color: "#7c7c72";
 }
 
+.sui-layout-header {
+  padding-bottom: 0px;
+}
+
 .sui-layout-main-header__inner {
   gap: 10px;
 }

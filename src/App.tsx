@@ -18,60 +18,82 @@ import IconButton from "@mui/material/IconButton";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import GridViewIcon from "@mui/icons-material/GridView";
 import ViewListIcon from "@mui/icons-material/ViewList";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
 
 import Header from "./components/Header";
 import ResultView from "./components/ResultView";
 import "./App.css";
 
-const connector = new AppSearchAPIConnector({
-  engineName: "mentorship-page",
-  endpointBase: "https://advisorysg.ent.ap-southeast-1.aws.found.io",
-  searchKey: "search-bv3s7kksqjinbswx7g4my9ur",
-});
-
-const configurationOptions = {
-  alwaysSearchOnInitialLoad: true,
-  apiConnector: connector,
-  autocompleteQuery: {
-    suggestions: {
-      types: {
-        documents: {
-          fields: ["name", "organisation", "role", "school", "course_of_study"],
-        },
-      },
-      size: 5,
-    },
-  },
-  initialState: {
-    sort: [{ field: "", direction: "asc" as SortDirection }],
-  },
-  searchQuery: {
-    result_fields: {
-      course_of_study: { raw: {}, snippet: { size: 100 } },
-      full_bio: { raw: {}, snippet: { size: 200, fallback: true } },
-      full_image_url: { raw: {} },
-      industries: { raw: {} },
-      name: { raw: {}, snippet: { size: 100 } },
-      organisation: { raw: {}, snippet: { size: 100 } },
-      role: { raw: {}, snippet: { size: 100 } },
-      school: { raw: {}, snippet: { size: 100 } },
-      thumbnail_image_url: { raw: {} },
-      wave_id: { raw: {} },
-    },
-    filters: [{ type: "all" as FilterType, field: "wave_id", values: [2] }],
-    disjunctiveFacets: ["organisation", "school", "course_of_study"],
-    facets: {
-      industries: { type: "value", size: 100 },
-      organisation: { type: "value", size: 100 },
-      school: { type: "value", size: 100 },
-      course_of_study: { type: "value", size: 100 },
-    },
-  },
-};
-
 const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
   const [isListView, setIsListView] = useState(false);
+
+  const WAVES = [
+    { waveId: 3, waveName: "Institution-Specific Wave" },
+    { waveId: 2, waveName: "2022 Wave" },
+  ];
+  const [currentTabId, setCurrentTabId] = useState(0);
+
+  const connector = new AppSearchAPIConnector({
+    engineName: "mentorship-page",
+    endpointBase: "https://advisorysg.ent.ap-southeast-1.aws.found.io",
+    searchKey: "search-bv3s7kksqjinbswx7g4my9ur",
+  });
+
+  const configurationOptions = {
+    alwaysSearchOnInitialLoad: true,
+    apiConnector: connector,
+    autocompleteQuery: {
+      suggestions: {
+        types: {
+          documents: {
+            fields: [
+              "name",
+              "organisation",
+              "role",
+              "school",
+              "course_of_study",
+            ],
+          },
+        },
+        size: 5,
+      },
+    },
+    initialState: {
+      sort: [{ field: "", direction: "asc" as SortDirection }],
+    },
+    searchQuery: {
+      result_fields: {
+        course_of_study: { raw: {}, snippet: { size: 100 } },
+        full_bio: { raw: {}, snippet: { size: 200, fallback: true } },
+        full_image_url: { raw: {} },
+        industries: { raw: {} },
+        name: { raw: {}, snippet: { size: 100 } },
+        organisation: { raw: {}, snippet: { size: 100 } },
+        role: { raw: {}, snippet: { size: 100 } },
+        school: { raw: {}, snippet: { size: 100 } },
+        thumbnail_image_url: { raw: {} },
+      },
+      filters: [
+        {
+          type: "all" as FilterType,
+          field: "wave_id",
+          values: [WAVES[currentTabId].waveId],
+        },
+      ],
+      disjunctiveFacets: ["organisation", "school", "course_of_study"],
+      facets: {
+        industries: { type: "value", size: 100 },
+        organisation: { type: "value", size: 100 },
+        school: { type: "value", size: 100 },
+        course_of_study: { type: "value", size: 100 },
+      },
+    },
+  };
+
+  const handleTabChange = (_: React.ChangeEvent<{}>, tab: number) =>
+    setCurrentTabId(tab);
 
   return (
     <div className="container">
@@ -95,11 +117,26 @@ const App = () => {
             <div className="App">
               <Layout
                 header={
-                  <SearchBox
-                    autocompleteSuggestions={true}
-                    searchAsYouType={true}
-                    debounceLength={300}
-                  />
+                  <div>
+                    <SearchBox
+                      autocompleteSuggestions={true}
+                      searchAsYouType={true}
+                      debounceLength={300}
+                    />
+                    <br></br>
+                    <Tabs
+                      value={currentTabId}
+                      onChange={handleTabChange}
+                      variant="scrollable"
+                      scrollButtons="auto"
+                      textColor="primary"
+                      indicatorColor="primary"
+                    >
+                      {WAVES.map(({ waveName }) => (
+                        <Tab label={waveName} />
+                      ))}
+                    </Tabs>
+                  </div>
                 }
                 bodyContent={
                   <Results
