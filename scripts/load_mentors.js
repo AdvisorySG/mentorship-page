@@ -98,8 +98,10 @@ exports.handler = async (event) => {
   );
 
   const mentorMap = new Map(mentors.map((mentor) => [mentor.id, mentor]));
+  const leftoverMentorIdsSet = new Set(mentors.map(({ id }) => id));
   const deletedMentorIds = [];
   const modifiedMentorIds = [];
+  const addedMentorIds = [];
 
   console.log(`No. of Airtable mentors: ${mentorMap.size}`);
 
@@ -113,16 +115,26 @@ exports.handler = async (event) => {
     const { id: mentorId } = result;
     if (mentorMap.get(mentorId) === undefined) {
       deletedMentorIds.push(mentorId);
-    } else if (
-      mentorMap.get(mentorId).last_modified_time !== result.last_modified_time
-    ) {
-      modifiedMentorIds.push(mentorId);
+    } else {
+      leftoverMentorIdsSet.delete(mentorId);
+      if (
+        mentorMap.get(mentorId).last_modified_time !== result.last_modified_time
+      ) {
+        modifiedMentorIds.push(mentorId);
+      }
+    }
+  }
+  for (const mentorId of leftoverMentorIdsSet) {
+    const mentor = mentorMap.get(mentorId);
+    if (mentor.name) {
+      addedMentorIds.push(mentorId);
     }
   }
 
   console.log(`No. of Elasticsearch mentors: ${count}`);
   console.log(`No. of deleted mentors: ${deletedMentorIds.length}`);
   console.log(`No. of modified mentors: ${modifiedMentorIds.length}`);
+  console.log(`No. of added mentors: ${addedMentorIds.length}`);
 
   if (deletedMentorIds.length > 0) {
     console.log("Deleting old mentors...");
@@ -132,8 +144,9 @@ exports.handler = async (event) => {
     await elasticClient.bulk({ refresh: true, body: deleteBody });
   }
 
+  const indexMentorIds = modifiedMentorIds.concat(Array.from(addedMentorIds));
   let i = 0;
-  for (const mentorIdsChunk of chunks(modifiedMentorIds, ELASTIC_CHUNK_SIZE)) {
+  for (const mentorIdsChunk of chunks(indexMentorIds, ELASTIC_CHUNK_SIZE)) {
     i += 1;
     console.log(`Indexing mentors (chunk ${i})...`);
     const indexBody = mentorIdsChunk.flatMap((id) => [
