@@ -5,16 +5,17 @@ React app for Advisory's Mentorship Network page.
 ## Project Architecture
 
 ```
-[ AirTable Mentor Entries ]
+[ Airtable Mentor Entries ]
             ▼
-   [ AWS Lamba Script ]
+ [ AWS Lambda Function ]
             ▼
     [ ElasticSearch ]
             ▼
     [ React Web App ]
 ```
 
-ElasticSearch is used to make searching for mentors fast and easy.
+The AWS Lambda Function reads the Airtable mentor entries, filters them out, and updates the ElasticSearch service.
+The React Web App queries the ElasticSearch Service and displays mentors. This allows for fast and easy searching of mentors.
 
 ## Project Structure
 
