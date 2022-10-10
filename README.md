@@ -1,6 +1,56 @@
 # mentorship-page [![Netlify Status](https://api.netlify.com/api/v1/badges/f804919f-a599-456c-8127-496ed860123c/deploy-status)](https://app.netlify.com/sites/tender-meitner-99286b/deploys)
 
-React app for Advisory's Mentorship Network page. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React app for Advisory's Mentorship Network page.
+
+## Project Architecture
+
+```
+[ AirTable Mentor Entries ]
+            ▼
+   [ AWS Lamba Script ]
+            ▼
+    [ ElasticSearch ]
+            ▼
+    [ React Web App ]
+```
+
+ElasticSearch is used to make searching for mentors fast and easy.
+
+## Project Structure
+
+### `/public/`
+
+The public folder in a react project contains static files
+such as the `index.html` file, Javascript library files, images,
+and other assets.
+
+### `/src/`
+
+Contains the Typescript code files and CSS Styles. The main app Logic is in `App.tsx`
+
+### `/scripts/`
+
+Contains backend scripts used.
+
+1. `/scripts/load_mentors.js` is run on AWS Lambda. It connects to the AirTable Database, retrieves & filters the mentor data, and updates the ElasticSearch service.
+
+### `/.github/`
+
+Contains files related to Github about the repo,
+
+1.  `dependabot.yml` -> Configuration options for dependency updates. More info [here](https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates).
+2.  `workflows/` -> Configuration files for Github workflows (automated processes). More info [here](https://docs.github.com/en/actions/using-workflows/about-workflows)
+
+### `/tsconfig.json`
+
+Used to specify the root of a Typescript project
+Also specifies the compiler options required to compile the project
+
+### `/package.json`
+
+This file is a JSON file that lies at the root of an existing Javascript/Node project.
+It holds metadata relevant to the project and is used for managing an application’s dependencies.
+It also contains instructions that enable npm to start the project, run the script and install dependencies.
 
 ## Available Scripts
 
