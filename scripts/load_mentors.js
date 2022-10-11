@@ -126,7 +126,6 @@ exports.handler = async (event) => {
   const indexMentors = [...mentorMap.entries()].filter(
     ([mentorId, mentor]) => !unmodifiedMentorIds.has(mentorId) && mentor.name
   );
-  console.log(indexMentors);
 
   console.log(`No. of Elasticsearch mentors: ${count}`);
   console.log(`No. of deleted mentors: ${deletedMentorIds.length}`);
