@@ -99,7 +99,7 @@ exports.handler = async (event) => {
 
   const mentorMap = new Map(mentors.map((mentor) => [mentor.id, mentor]));
   const deletedMentorIds = [];
-  const modifiedMentorIds = [];
+  const unmodifiedMentorIds = new Set();
 
   console.log(`No. of Airtable mentors: ${mentorMap.size}`);
 
@@ -111,18 +111,26 @@ exports.handler = async (event) => {
   for await (const result of scrollSearch) {
     count += 1;
     const { id: mentorId } = result;
-    if (mentorMap.get(mentorId) === undefined) {
+    if (
+      mentorMap.get(mentorId) === undefined ||
+      !mentorMap.get(mentorId).name
+    ) {
       deletedMentorIds.push(mentorId);
     } else if (
-      mentorMap.get(mentorId).last_modified_time !== result.last_modified_time
+      mentorMap.get(mentorId).last_modified_time === result.last_modified_time
     ) {
-      modifiedMentorIds.push(mentorId);
+      unmodifiedMentorIds.add(mentorId);
     }
   }
 
+  const indexMentors = [...mentorMap.entries()].filter(
+    ([mentorId, mentor]) => !unmodifiedMentorIds.has(mentorId) && mentor.name
+  );
+  console.log(indexMentors);
+
   console.log(`No. of Elasticsearch mentors: ${count}`);
   console.log(`No. of deleted mentors: ${deletedMentorIds.length}`);
-  console.log(`No. of modified mentors: ${modifiedMentorIds.length}`);
+  console.log(`No. of index mentors: ${indexMentors.length}`);
 
   if (deletedMentorIds.length > 0) {
     console.log("Deleting old mentors...");
@@ -133,12 +141,12 @@ exports.handler = async (event) => {
   }
 
   let i = 0;
-  for (const mentorIdsChunk of chunks(modifiedMentorIds, ELASTIC_CHUNK_SIZE)) {
+  for (const mentorsChunk of chunks(indexMentors, ELASTIC_CHUNK_SIZE)) {
     i += 1;
     console.log(`Indexing mentors (chunk ${i})...`);
-    const indexBody = mentorIdsChunk.flatMap((id) => [
+    const indexBody = mentorsChunk.flatMap(([id, mentor]) => [
       { index: { _index: ELASTIC_INDEX, _id: id } },
-      mentorMap.get(id),
+      mentor,
     ]);
     await elasticClient.bulk({ refresh: true, body: indexBody });
   }
