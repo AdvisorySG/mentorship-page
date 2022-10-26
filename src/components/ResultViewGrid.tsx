@@ -40,7 +40,10 @@ const ResultViewGrid = ({
         <CardMedia
           component="img"
           image={thumbnailImageUrl}
-          style={{ width: "100%" }}
+          style={{
+            width: "100%",
+            height: "163px",
+          }}
         />
         <CardContent>
           {displayName && (
