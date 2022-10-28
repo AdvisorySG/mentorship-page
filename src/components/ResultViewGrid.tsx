@@ -20,11 +20,9 @@ const ResultViewGrid = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   React.useEffect(() => {
-    if (isModalOpen) {
-      window.onpopstate = () => {
-        setIsModalOpen(false);
-      };
-    }
+    window.onpopstate = () => {
+      setIsModalOpen(false);
+    };
   });
 
   return (
