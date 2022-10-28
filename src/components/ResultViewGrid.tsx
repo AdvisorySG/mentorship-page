@@ -19,6 +19,14 @@ const ResultViewGrid = ({
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  React.useEffect(() => {
+    if (isModalOpen) {
+      window.onpopstate = () => {
+        setIsModalOpen(false);
+      };
+    }
+  });
+
   return (
     <Card
       className="sui-result"
@@ -104,3 +112,6 @@ const ResultViewGrid = ({
 };
 
 export default ResultViewGrid;
+function componentDidMount() {
+  throw new Error("Function not implemented.");
+}
