@@ -112,6 +112,3 @@ const ResultViewGrid = ({
 };
 
 export default ResultViewGrid;
-function componentDidMount() {
-  throw new Error("Function not implemented.");
-}
