@@ -21,8 +21,8 @@ const ResultViewGrid = ({
 
   React.useEffect(() => {
     window.onpopstate = () => {
-      setIsModalOpen(false);
       window.history.forward();
+      setIsModalOpen(false);
     };
   });
 
