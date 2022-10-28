@@ -19,17 +19,13 @@ const ResultViewGrid = ({
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  var foo = { foo: true }; // state object
-  history.pushState(foo, "unused argument", "#newInitialUri");
-  var bar = { bar: true };
-  history.pushState(bar, "unused argument", "#newStateOfWebApp");
-
   React.useEffect(() => {
-    window.onpopstate = () => {
-      var baz = { baz: true };
-      history.pushState(baz, "unused argument", "#baseState");
-      setIsModalOpen(false);
-    };
+    if (isModalOpen) {
+      history.pushState(null, "unused argument", null);
+      window.onpopstate = () => {
+        setIsModalOpen(false);
+      };
+    }
   });
 
   return (
