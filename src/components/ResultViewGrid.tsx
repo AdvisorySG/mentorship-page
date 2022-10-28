@@ -23,7 +23,7 @@ const ResultViewGrid = ({
     if (isModalOpen) {
       const state = { page_id: 1, user_id: 5 };
       const url = "hello-world.html";
-      history.pushState(state, "", url);
+      window.history.pushState(state, "", url);
       window.onpopstate = () => {
         setIsModalOpen(false);
       };
