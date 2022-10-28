@@ -21,7 +21,9 @@ const ResultViewGrid = ({
 
   React.useEffect(() => {
     if (isModalOpen) {
-      history.pushState({}, "");
+      const state = { page_id: 1, user_id: 5 };
+      const url = "hello-world.html";
+      history.pushState(state, "", url);
       window.onpopstate = () => {
         setIsModalOpen(false);
       };
