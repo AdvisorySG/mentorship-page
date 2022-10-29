@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Button, CardActionArea } from "@mui/material";
 
 import type { DisplayResult } from "./ResultView";
@@ -19,9 +19,17 @@ const ResultViewGrid = ({
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  React.useEffect(() => {
+  const handleOpen = () => {
+    window.history.pushState({}, "");
+    setIsModalOpen(true);
+  };
+
+  const handleClose = () => {
+    window.history.back();
+  };
+
+  useEffect(() => {
     if (isModalOpen) {
-      window.history.pushState({}, "");
       window.onpopstate = () => {
         setIsModalOpen(false);
       };
@@ -37,7 +45,7 @@ const ResultViewGrid = ({
       }}
     >
       <CardActionArea
-        onClick={() => setIsModalOpen(true)}
+        onClick={handleOpen}
         style={{
           display: "flex",
           flexFlow: "column nowrap",
@@ -86,7 +94,7 @@ const ResultViewGrid = ({
         <CardActions
           style={{ display: "flex", flexGrow: 1, alignItems: "flex-end" }}
         >
-          <Button onClick={() => setIsModalOpen(true)} style={{ fontSize: 12 }}>
+          <Button onClick={handleOpen} style={{ fontSize: 12 }}>
             Read More
           </Button>
         </CardActions>
@@ -94,7 +102,7 @@ const ResultViewGrid = ({
       <Modal
         className="sui-result__modal"
         open={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={handleClose}
         aria-labelledby="modal-title"
         aria-describedby="modal-description"
         style={{
