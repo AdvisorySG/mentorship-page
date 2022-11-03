@@ -14,8 +14,42 @@ React app for Advisory's Mentorship Network page.
     [ React Web App ]
 ```
 
-The AWS Lambda Function reads the Airtable mentor entries, filters them out, and updates the ElasticSearch service.
-The React Web App queries the ElasticSearch Service and displays mentors. This allows for fast and easy searching of mentors.
+Airtable is a database we use to easily store our mentor data, such as
+Mentor name, images, educational background, and more.
+
+AWS Lambda is a compute service which allows us to run custom code on the
+cloud without managing infrastructure. We can run our AWS Lambda script
+periodically to read the Airtable mentor entries using the API, filter
+them out, and update the ElasticSearch service with our Airtable Mentor Data.
+
+ElasticSearch is an open source search and analytics engine. It allows
+us to store, search and analyse huge volumes of mentor data quickly and
+in near real-time and give back answers in milliseconds. We hosted an
+ElasticSearch instance on Elastic Cloud.
+
+Our React Web App queries the ElasticSearch Service and displays the mentors.
+A search query is sent from the web app and is used to retrieve the relevant
+mentors.
+
+Our React Web App is hosted on Netlify. Netlify also has deploy previews
+which are created for each pull request, which allows us to easily test
+our code changes
+
+## Getting Started
+
+To get started, make sure NodeJS is installed on your computer.
+You can install it following the instructions [here](https://nodejs.org/en/)
+
+Afterwards, we can download this repo onto our computer, or we can clone
+this repo using the command
+`git clone https://github.com/AdvisorySG/mentorship-page.git`
+
+We can run the web application using these commands
+
+```
+npm install # Update and Install the required dependency packages
+npm start
+```
 
 ## Project Structure
 
