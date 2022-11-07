@@ -12,7 +12,7 @@
     "@elastic/search-ui": "^1.18.2",
     "@elastic/search-ui-app-search-connector": "^1.16.0",
     "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
+    "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.10.6",
     "@mui/material": "^5.9.1",
     "body-scroll-lock": "^3.1.5",
