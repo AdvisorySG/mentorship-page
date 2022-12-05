@@ -47,6 +47,9 @@ const ResultViewGrid = ({
 
     // If modal is open, ensure that the hash is active.
     if (isModalOpen) {
+      window.onpopstate = () => {
+        setIsModalOpen(false);
+      };
       setHash(displayId);
     } else if (activeMentorId === "" && !ensureModalFromHash()) {
       setActiveMentorId("");
@@ -58,6 +61,15 @@ const ResultViewGrid = ({
     window.removeEventListener("hashchange", ensureModalFromHash, false);
   });
 
+  const handleOpen = () => {
+    window.history.pushState({}, "");
+    setIsModalOpen(true);
+  };
+
+  const handleClose = () => {
+    window.history.back();
+  };
+
   return (
     <Card
       className="sui-result"
@@ -67,7 +79,7 @@ const ResultViewGrid = ({
       }}
     >
       <CardActionArea
-        onClick={() => setIsModalOpen(true)}
+        onClick={handleOpen}
         style={{
           display: "flex",
           flexFlow: "column nowrap",
@@ -79,7 +91,10 @@ const ResultViewGrid = ({
         <CardMedia
           component="img"
           image={thumbnailImageUrl}
-          style={{ width: "100%" }}
+          style={{
+            width: "100%",
+            height: "163px",
+          }}
         />
         <CardContent>
           {displayName && (
@@ -113,7 +128,7 @@ const ResultViewGrid = ({
         <CardActions
           style={{ display: "flex", flexGrow: 1, alignItems: "flex-end" }}
         >
-          <Button onClick={() => setIsModalOpen(true)} style={{ fontSize: 12 }}>
+          <Button onClick={handleOpen} style={{ fontSize: 12 }}>
             Read More
           </Button>
         </CardActions>
@@ -121,7 +136,7 @@ const ResultViewGrid = ({
       <Modal
         className="sui-result__modal"
         open={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={handleClose}
         aria-labelledby="modal-title"
         aria-describedby="modal-description"
         style={{

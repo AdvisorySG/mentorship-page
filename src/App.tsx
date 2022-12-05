@@ -129,6 +129,8 @@ const App = () => {
                     <Tabs
                       value={currentTabId}
                       onChange={handleTabChange}
+                      variant="scrollable"
+                      scrollButtons="auto"
                       textColor="primary"
                       indicatorColor="primary"
                     >

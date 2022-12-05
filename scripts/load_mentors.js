@@ -61,6 +61,7 @@ const formatMentor = (id, waveId, fields) => ({
       : PLACEHOLDER_THUMBNAIL_URL,
   wave_id: waveId,
   wave_name: WAVES_INFO.get(waveId).waveName,
+  last_modified_time: fields["Last Modified Time"],
 });
 
 exports.handler = async (event) => {
@@ -84,7 +85,7 @@ exports.handler = async (event) => {
   });
 
   await Promise.all(
-    WAVES_INFO.entries().map(async ([waveId, { tableId }]) =>
+    [...WAVES_INFO.entries()].map(async ([waveId, { tableId }]) =>
       base(tableId)
         .select({ sort: [{ field: "First Name", direction: "asc" }] })
         .eachPage((records, fetchNextPage) => {
@@ -96,10 +97,11 @@ exports.handler = async (event) => {
     )
   );
 
-  const mentorIds = new Set(mentors.map(({ id }) => id));
-  const oldMentorIds = [];
+  const mentorMap = new Map(mentors.map((mentor) => [mentor.id, mentor]));
+  const deletedMentorIds = [];
+  const unmodifiedMentorIds = new Set();
 
-  console.log(`No. of Airtable mentors: ${mentorIds.size}`);
+  console.log(`No. of Airtable mentors: ${mentorMap.size}`);
 
   let count = 0;
   const scrollSearch = await elasticClient.helpers.scrollDocuments({
@@ -109,28 +111,42 @@ exports.handler = async (event) => {
   for await (const result of scrollSearch) {
     count += 1;
     const { id: mentorId } = result;
-    if (!mentorIds.has(mentorId)) {
-      oldMentorIds.push(mentorId);
+    if (
+      mentorMap.get(mentorId) === undefined ||
+      !mentorMap.get(mentorId).name
+    ) {
+      deletedMentorIds.push(mentorId);
+    } else if (
+      mentorMap.get(mentorId).last_modified_time === result.last_modified_time
+    ) {
+      unmodifiedMentorIds.add(mentorId);
     }
   }
 
-  console.log(`No. of Elasticsearch mentors: ${count}`);
-  console.log(`No. of old mentors: ${oldMentorIds.length}`);
+  const indexMentors = [...mentorMap.entries()].filter(
+    ([mentorId, mentor]) => !unmodifiedMentorIds.has(mentorId) && mentor.name
+  );
 
-  if (oldMentorIds.length > 0) {
+  console.log(`No. of Elasticsearch mentors: ${count}`);
+  console.log(`No. of deleted mentors: ${deletedMentorIds.length}`);
+  console.log(`No. of index mentors: ${indexMentors.length}`);
+
+  if (deletedMentorIds.length > 0) {
     console.log("Deleting old mentors...");
-    const deleteBody = [...oldMentorIds].map((mentorId) => ({
+    const deleteBody = [...deletedMentorIds].map((mentorId) => ({
       delete: { _index: ELASTIC_INDEX, _id: mentorId },
     }));
     await elasticClient.bulk({ refresh: true, body: deleteBody });
   }
 
-  chunks(mentors, ELASTIC_CHUNK_SIZE).map(async (mentorsChunk, i) => {
+  let i = 0;
+  for (const mentorsChunk of chunks(indexMentors, ELASTIC_CHUNK_SIZE)) {
+    i += 1;
     console.log(`Indexing mentors (chunk ${i})...`);
-    const indexBody = mentorsChunk.flatMap((mentor) => [
-      { index: { _index: ELASTIC_INDEX, _id: mentor.id } },
+    const indexBody = mentorsChunk.flatMap(([id, mentor]) => [
+      { index: { _index: ELASTIC_INDEX, _id: id } },
       mentor,
     ]);
     await elasticClient.bulk({ refresh: true, body: indexBody });
-  });
+  }
 };
