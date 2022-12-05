@@ -28,6 +28,7 @@ import "./App.css";
 const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
   const [isListView, setIsListView] = useState(false);
+  const results = [];
 
   const WAVES = [
     { waveId: 3, waveName: "Institution-Specific Wave" },
@@ -49,6 +50,7 @@ const App = () => {
         types: {
           documents: {
             fields: [
+              "id",
               "name",
               "organisation",
               "role",

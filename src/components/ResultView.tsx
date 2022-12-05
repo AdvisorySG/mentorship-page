@@ -1,5 +1,3 @@
-import React from "react";
-
 import {
   red,
   pink,
@@ -84,6 +82,7 @@ const COLORS = [
 const industryColors = new Map();
 
 type DisplayResult = {
+  displayId: string;
   displayName: string | null;
   displayIndustries: Array<string>;
   displayRole: string | null;
@@ -104,6 +103,7 @@ const ResultView = ({
   isListView: boolean;
 }) => {
   const {
+    id,
     course_of_study: courseOfStudy,
     full_bio: fullBio,
     industries,
@@ -113,6 +113,8 @@ const ResultView = ({
     school,
     thumbnail_image_url,
   } = result;
+
+  const displayId = id && id.raw ? id.raw : null;
 
   const displayName =
     name && name.raw ? fillHighlights(name.snippet, name.raw) : null;
@@ -153,6 +155,7 @@ const ResultView = ({
       : null;
 
   const displayResult: DisplayResult = {
+    displayId,
     displayCourseOfStudy,
     displayFullBio,
     displayIndustries,

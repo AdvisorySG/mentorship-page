@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Button, CardActionArea } from "@mui/material";
 
 import type { DisplayResult } from "./ResultView";
@@ -14,10 +14,49 @@ const ResultViewGrid = ({
 }: {
   displayResult: DisplayResult;
 }) => {
-  const { displayName, displayOrganisation, displayRole, thumbnailImageUrl } =
-    displayResult;
+  const {
+    displayId,
+    displayName,
+    displayOrganisation,
+    displayRole,
+    thumbnailImageUrl,
+  } = displayResult;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const setHash = (hash: any) =>
+    window.history.replaceState({}, "", `#${hash}`);
+  const WAVES = [
+    { waveId: 3, waveName: "Institution-Specific Wave" },
+    { waveId: 2, waveName: "2022 Wave" },
+  ];
+
+  const [activeMentorId, setActiveMentorId] = useState("");
+
+  useEffect(() => {
+    const ensureModalFromHash = () => {
+      const mentorId = window.location.hash.slice(1);
+      if (displayId.hasOwnProperty(mentorId)) {
+        if (!isModalOpen || mentorId !== activeMentorId) {
+          setActiveMentorId(mentorId);
+          setIsModalOpen(true);
+          return true;
+        }
+      }
+    };
+
+    // If modal is open, ensure that the hash is active.
+    if (isModalOpen) {
+      setHash(displayId);
+    } else if (activeMentorId === "" && !ensureModalFromHash()) {
+      setActiveMentorId("");
+    } else {
+      setHash("");
+    }
+
+    window.addEventListener("hashchange", ensureModalFromHash, false);
+    window.removeEventListener("hashchange", ensureModalFromHash, false);
+  });
 
   return (
     <Card
