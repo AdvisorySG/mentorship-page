@@ -7,7 +7,7 @@ React app for Advisory's Mentorship Network page.
 To get started, make sure NodeJS v18 is installed on your computer.
 You can install it following the instructions on the [Official NodeJS Website](https://nodejs.org/en/)
 
-Afterwards, we can download this repo onto our computer, or we can clone
+Afterwards, you can download this repo onto our computer, or clone
 this repo using the command
 
 ```bash
@@ -19,7 +19,20 @@ We can run the web application using these commands
 ```bash
 $ npm install # Update and Install the required dependency packages
 $ npm start
-``` 
+```
+
+## Contributing
+
+This project uses the [GitHub flow](https://guides.github.com/introduction/flow/).
+Contributors should create a new branch for every Pull Request to be submitted.
+Before submitting the Pull Request, make sure to run `prettier` to format the code for readability purposes.
+A Github workflow is configured to run `prettier` to check for proper code formatting for every pull request.
+
+```
+$ npx prettier --write . # Automatically formats the code to look nice
+```
+
+For more information on contributing guidelines, please read this [CONTRIBUTING.md](https://github.com/AdvisorySG/dawn-advisory-theme/blob/main/CONTRIBUTING.md)
 
 ## Project Architecture
 
@@ -49,7 +62,7 @@ ElasticSearch instance on [Elastic Cloud](https://www.elastic.co/cloud/).
 Our [React](https://reactjs.org/) Web App queries the ElasticSearch Service and displays the relevant mentors.
 The web app is hosted on [Netlify](https://www.netlify.com/). Netlify also has deploy previews
 which are created for each pull request, which allows us to easily test
-our code changes. 
+our code changes.
 
 ## Project Structure
 
