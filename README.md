@@ -41,7 +41,7 @@ For more information on contributing guidelines, please read this [CONTRIBUTING.
             ▼
  [ AWS Lambda Function ]
             ▼
-    [ ElasticSearch ]
+    [ Elasticsearch ]
             ▼
     [ React Web App ]
 ```
@@ -52,14 +52,14 @@ Mentor name, images, educational background, and more.
 [AWS Lambda](https://aws.amazon.com/lambda/) is a compute service which allows us to run custom code on the
 cloud without managing infrastructure. We can run our AWS Lambda script
 periodically to read the Airtable mentor entries using the [Airtable API](https://github.com/Airtable/airtable.js), filter
-them out, and update the ElasticSearch service with our Airtable Mentor Data.
+them out, and update the Elasticsearch service with our Airtable Mentor Data.
 
 [Elasticsearch](https://www.elastic.co/elasticsearch/) is an open source search and analytics engine. It allows
 us to store, search and analyse huge volumes of mentor data quickly and
 in near real-time and give back answers in milliseconds. We hosted an
-ElasticSearch instance on [Elastic Cloud](https://www.elastic.co/cloud/).
+Elasticsearch instance on [Elastic Cloud](https://www.elastic.co/cloud/).
 
-Our [React](https://reactjs.org/) Web App queries the ElasticSearch Service and displays the relevant mentors.
+Our [React](https://reactjs.org/) Web App queries the Elasticsearch Service and displays the relevant mentors.
 The web app is hosted on [Netlify](https://www.netlify.com/). Netlify also has deploy previews
 which are created for each pull request, which allows us to easily test
 our code changes.
@@ -80,7 +80,7 @@ Contains the Typescript code files and CSS Styles. The main app Logic is in `App
 
 Contains backend scripts used.
 
-1. `/scripts/load_mentors.js` is run on AWS Lambda. It connects to the Airtable Database, retrieves & filters the mentor data, and updates the ElasticSearch service.
+1. `/scripts/load_mentors.js` is run on AWS Lambda. It connects to the Airtable Database, retrieves & filters the mentor data, and updates the Elasticsearch service.
 
 ### `/.github/`
 
