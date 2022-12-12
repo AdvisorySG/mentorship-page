@@ -2,6 +2,25 @@
 
 React app for Advisory's Mentorship Network page.
 
+## Getting Started
+
+To get started, make sure NodeJS v18 is installed on your computer.
+You can install it following the instructions on the [Official NodeJS Website](https://nodejs.org/en/)
+
+Afterwards, we can download this repo onto our computer, or we can clone
+this repo using the command
+
+```bash
+$ git clone https://github.com/AdvisorySG/mentorship-page.git`
+```
+
+We can run the web application using these commands
+
+```bash
+$ npm install # Update and Install the required dependency packages
+$ npm start
+``` 
+
 ## Project Architecture
 
 ```
@@ -14,42 +33,23 @@ React app for Advisory's Mentorship Network page.
     [ React Web App ]
 ```
 
-Airtable is a database we use to easily store our mentor data, such as
+[Airtable](https://www.airtable.com/) is a database we use to easily store our mentor data, such as
 Mentor name, images, educational background, and more.
 
-AWS Lambda is a compute service which allows us to run custom code on the
+[AWS Lambda](https://aws.amazon.com/lambda/) is a compute service which allows us to run custom code on the
 cloud without managing infrastructure. We can run our AWS Lambda script
-periodically to read the Airtable mentor entries using the API, filter
+periodically to read the Airtable mentor entries using the [Airtable API](https://github.com/Airtable/airtable.js), filter
 them out, and update the ElasticSearch service with our Airtable Mentor Data.
 
-ElasticSearch is an open source search and analytics engine. It allows
+[Elasticsearch](https://www.elastic.co/elasticsearch/) is an open source search and analytics engine. It allows
 us to store, search and analyse huge volumes of mentor data quickly and
 in near real-time and give back answers in milliseconds. We hosted an
-ElasticSearch instance on Elastic Cloud.
+ElasticSearch instance on [Elastic Cloud](https://www.elastic.co/cloud/).
 
-Our React Web App queries the ElasticSearch Service and displays the mentors.
-A search query is sent from the web app and is used to retrieve the relevant
-mentors.
-
-Our React Web App is hosted on Netlify. Netlify also has deploy previews
+Our [React](https://reactjs.org/) Web App queries the ElasticSearch Service and displays the relevant mentors.
+The web app is hosted on [Netlify](https://www.netlify.com/). Netlify also has deploy previews
 which are created for each pull request, which allows us to easily test
-our code changes
-
-## Getting Started
-
-To get started, make sure NodeJS is installed on your computer.
-You can install it following the instructions [here](https://nodejs.org/en/)
-
-Afterwards, we can download this repo onto our computer, or we can clone
-this repo using the command
-`git clone https://github.com/AdvisorySG/mentorship-page.git`
-
-We can run the web application using these commands
-
-```
-npm install # Update and Install the required dependency packages
-npm start
-```
+our code changes. 
 
 ## Project Structure
 
@@ -67,14 +67,14 @@ Contains the Typescript code files and CSS Styles. The main app Logic is in `App
 
 Contains backend scripts used.
 
-1. `/scripts/load_mentors.js` is run on AWS Lambda. It connects to the AirTable Database, retrieves & filters the mentor data, and updates the ElasticSearch service.
+1. `/scripts/load_mentors.js` is run on AWS Lambda. It connects to the Airtable Database, retrieves & filters the mentor data, and updates the ElasticSearch service.
 
 ### `/.github/`
 
 Contains files related to Github about the repo,
 
-1.  `dependabot.yml` -> Configuration options for dependency updates. More info [here](https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates).
-2.  `workflows/` -> Configuration files for Github workflows (automated processes). More info [here](https://docs.github.com/en/actions/using-workflows/about-workflows)
+1.  `dependabot.yml` -> Configuration options for dependency updates. More info can be found at [Configuration Options for Dependency Updates](https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates).
+2.  `workflows/` -> Configuration files for Github workflows (automated processes). More info can be found at [About Workflows](https://docs.github.com/en/actions/using-workflows/about-workflows)
 
 ### `/tsconfig.json`
 
@@ -85,7 +85,7 @@ Also specifies the compiler options required to compile the project
 
 This file is a JSON file that lies at the root of an existing Javascript/Node project.
 It holds metadata relevant to the project and is used for managing an application’s dependencies.
-It also contains instructions that enable npm to start the project, run the script and install dependencies.
+It also contains instructions that enable `npm` to start the project, run the script and install dependencies.
 
 ## Available Scripts
 
