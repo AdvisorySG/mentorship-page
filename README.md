@@ -25,14 +25,18 @@ $ npm start
 
 This project uses the [GitHub flow](https://guides.github.com/introduction/flow/).
 Contributors should create a new branch for every Pull Request to be submitted.
-Before submitting the Pull Request, make sure to run `prettier` to format the code for readability purposes.
-A Github workflow is configured to run `prettier` to check for proper code formatting for every pull request.
 
-```
-$ npx prettier --write . # Automatically formats the code to look nice
-```
+Make sure to commit on your local git instance and then push to Github.
+`prettier` automatically runs everytime you commit (through a husky hook).
+It formats the code for readability purposes.
 
-For more information on contributing guidelines, please read this [CONTRIBUTING.md](https://github.com/AdvisorySG/dawn-advisory-theme/blob/main/CONTRIBUTING.md)
+- If you are commiting directly on the Github Website, you can run `prettier` manually to format the code before commiting
+  ```
+  $ npx prettier --write <filename> # Formats the code & Overwrites the file
+  ```
+- A Github workflow is configured to run `prettier` to check for proper code formatting for every pull request, so this formatting step must be done
+
+For more information on contributing guidelines, please read this [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Project Architecture
 
