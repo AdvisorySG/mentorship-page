@@ -13,7 +13,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import LaunchIcon from "@mui/icons-material/Launch";
 
-import { advisoryLogo } from "../assets";
+import { advisoryLogo } from "./assets";
 
 const drawerWidth = 240;
 

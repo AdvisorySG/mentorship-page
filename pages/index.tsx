@@ -21,9 +21,9 @@ import ViewListIcon from "@mui/icons-material/ViewList";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
-import Header from "../src/components/Header";
-import ResultView from "../src/components/ResultView";
-import "../src/App.css";
+import Header from "../components/Header";
+import ResultView from "../components/ResultView";
+import "../styles/App.module.css";
 
 const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
