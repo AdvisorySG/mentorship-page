@@ -1,4 +1,10 @@
 {
+  "awesomeTypescriptLoaderOptions": {
+    "useWebpackText": true,
+    "useTranspileModule": true,
+    "doTypeCheck": true,
+    "forkChecker": true
+  },
   "compilerOptions": {
     "target": "es5",
     "module": "esnext",
