@@ -103,10 +103,10 @@
   position: sticky;
 }
 
-/*.content-body {
+.content-body {
   position: relative;
   padding-top: 55px;
-}*/
+}
 
 html {
   scroll-padding-top: 60px;
