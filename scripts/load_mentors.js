@@ -68,6 +68,11 @@ const formatMentor = (id, waveId, fields) => ({
   last_modified_time: fields["Last Modified Time"],
 });
 
+const generateAWSBucketKey = (id, size) => ({
+  Bucket: AWS_S3_BUCKET_NAME,
+  Key: `${AWS_S3_IMAGE_FOLDER}${id}-${size}`,
+});
+
 exports.handler = async (event) => {
   const mentors = [];
 
@@ -139,13 +144,10 @@ exports.handler = async (event) => {
 
   if (deletedMentorIds.length > 0) {
     console.log("Deleting old mentors...");
-    [...deletedMentorIds].flatMap((mentorId) => {
-      [`${mentorId}-full`, `${mentorId}-thumbnail`].map((imageKey) => {
+    [...deletedMentorIds].forEach((mentorId) => {
+      ["full", "thumbnail"].map((imageSize) => {
         s3.deleteObject(
-          {
-            Bucket: AWS_S3_BUCKET_NAME,
-            Key: `${AWS_S3_IMAGE_FOLDER}${imageKey}.jpg`,
-          },
+          generateAWSBucketKey(mentorId, imageSize),
           function (err, data) {}
         );
       });
@@ -166,30 +168,24 @@ exports.handler = async (event) => {
           const newMentorObject = { ...mentor };
           await Promise.all(
             [
-              [mentor.full_image_url, `${id}-full`, "full_image_url"],
-              [
-                mentor.thumbnail_image_url,
-                `${id}-thumbnail`,
-                "thumbnail_image_url",
-              ],
-            ].map(async ([imageURL, imageKey, objectProperty]) => {
+              [mentor.full_image_url, "full", "full_image_url"],
+              [mentor.thumbnail_image_url, "thumbnail", "thumbnail_image_url"],
+            ].map(async ([imageURL, imageSize, objectProperty]) => {
               if (imageURL === PLACEHOLDER_THUMBNAIL_URL) {
                 s3.deleteObject(
-                  {
-                    Bucket: AWS_S3_BUCKET_NAME,
-                    Key: `${AWS_S3_IMAGE_FOLDER}${imageKey}.jpg`,
-                  },
+                  generateAWSBucketKey(id, imageSize),
                   function (err, data) {}
                 );
                 return [{ index: { _index: ELASTIC_INDEX, _id: id } }, mentor];
               }
               const res = await fetch(imageURL);
+              const contentType = res.headers.get("Content-Type");
               const blob = await res.buffer();
 
               const uploadedImage = await s3
                 .upload({
-                  Bucket: AWS_S3_BUCKET_NAME,
-                  Key: `${AWS_S3_IMAGE_FOLDER}${imageKey}.jpg`,
+                  ...generateAWSBucketKey(id, imageSize),
+                  ContentType: contentType,
                   Body: blob,
                 })
                 .promise();
@@ -202,7 +198,7 @@ exports.handler = async (event) => {
           ];
         })
       )
-    ).flatMap((x) => x);
+    ).flat();
     await elasticClient.bulk({ refresh: true, body: indexBody });
   }
 };
