@@ -1,6 +1,8 @@
 const Airtable = require("airtable");
 const { Client } = require("@elastic/elasticsearch");
 const AWS = require("aws-sdk");
+const fetch = (...args) =>
+  import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
 const AIRTABLE_BASE = "appDfSlmYKDyuAj51";
 const AWS_REGION = "ap-southeast-1";
@@ -10,6 +12,8 @@ const ELASTIC_ENDPOINT =
   "https://advisorysg.es.ap-southeast-1.aws.found.io:9243";
 const ELASTIC_INDEX = ".ent-search-engine-documents-mentorship-page";
 const ELASTIC_CHUNK_SIZE = 200;
+const AWS_S3_BUCKET_NAME = "advisorysg-mentorship";
+const AWS_S3_IMAGE_FOLDER = "images/";
 
 const PLACEHOLDER_THUMBNAIL_URL = "/mentor-thumbnail.png";
 
@@ -64,6 +68,11 @@ const formatMentor = (id, waveId, fields) => ({
   last_modified_time: fields["Last Modified Time"],
 });
 
+const generateAWSBucketKey = (id, size) => ({
+  Bucket: AWS_S3_BUCKET_NAME,
+  Key: `${AWS_S3_IMAGE_FOLDER}${id}-${size}`,
+});
+
 exports.handler = async (event) => {
   const mentors = [];
 
@@ -83,6 +92,8 @@ exports.handler = async (event) => {
     node: ELASTIC_ENDPOINT,
     auth: { apiKey: elasticApiKey },
   });
+
+  const s3 = new AWS.S3();
 
   await Promise.all(
     [...WAVES_INFO.entries()].map(async ([waveId, { tableId }]) =>
@@ -133,6 +144,14 @@ exports.handler = async (event) => {
 
   if (deletedMentorIds.length > 0) {
     console.log("Deleting old mentors...");
+    [...deletedMentorIds].forEach((mentorId) => {
+      ["full", "thumbnail"].map((imageSize) => {
+        s3.deleteObject(
+          generateAWSBucketKey(mentorId, imageSize),
+          function (err, data) {}
+        );
+      });
+    });
     const deleteBody = [...deletedMentorIds].map((mentorId) => ({
       delete: { _index: ELASTIC_INDEX, _id: mentorId },
     }));
@@ -143,10 +162,43 @@ exports.handler = async (event) => {
   for (const mentorsChunk of chunks(indexMentors, ELASTIC_CHUNK_SIZE)) {
     i += 1;
     console.log(`Indexing mentors (chunk ${i})...`);
-    const indexBody = mentorsChunk.flatMap(([id, mentor]) => [
-      { index: { _index: ELASTIC_INDEX, _id: id } },
-      mentor,
-    ]);
+    const indexBody = (
+      await Promise.all(
+        mentorsChunk.map(async ([id, mentor]) => {
+          const newMentorObject = { ...mentor };
+          await Promise.all(
+            [
+              [mentor.full_image_url, "full", "full_image_url"],
+              [mentor.thumbnail_image_url, "thumbnail", "thumbnail_image_url"],
+            ].map(async ([imageURL, imageSize, objectProperty]) => {
+              if (imageURL === PLACEHOLDER_THUMBNAIL_URL) {
+                s3.deleteObject(
+                  generateAWSBucketKey(id, imageSize),
+                  function (err, data) {}
+                );
+                return [{ index: { _index: ELASTIC_INDEX, _id: id } }, mentor];
+              }
+              const res = await fetch(imageURL);
+              const contentType = res.headers.get("Content-Type");
+              const blob = await res.buffer();
+
+              const uploadedImage = await s3
+                .upload({
+                  ...generateAWSBucketKey(id, imageSize),
+                  ContentType: contentType,
+                  Body: blob,
+                })
+                .promise();
+              newMentorObject[objectProperty] = uploadedImage.Location;
+            })
+          );
+          return [
+            { index: { _index: ELASTIC_INDEX, _id: id } },
+            newMentorObject,
+          ];
+        })
+      )
+    ).flat();
     await elasticClient.bulk({ refresh: true, body: indexBody });
   }
 };
