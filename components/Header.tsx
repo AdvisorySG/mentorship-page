@@ -2,7 +2,6 @@ import Box from "@mui/material/Box";
 
 import { advisoryMentorshipLogo, advisoryMentorshipPartners } from "./assets";
 import ResponsiveDrawer from "./Drawer";
-//import "./Header.css";
 
 const Header = () => (
   <div className="header">

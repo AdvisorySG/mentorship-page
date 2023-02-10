@@ -23,7 +23,6 @@ import Tab from "@mui/material/Tab";
 
 import Header from "../components/Header";
 import ResultView from "../components/ResultView";
-//import "../styles/App.module.css";
 
 const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
