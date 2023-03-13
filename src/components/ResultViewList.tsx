@@ -11,6 +11,7 @@ const ResultViewList = ({
   isShowReadMore?: boolean;
 }) => {
   const {
+    displayId,
     displayName,
     displayIndustries,
     displayRole,
