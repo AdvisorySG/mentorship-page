@@ -116,7 +116,7 @@ const ResponsiveDrawer = (props: Props) => {
           </a>
         </Toolbar>
       </AppBar>
-      {/*<Box
+      <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
       >
@@ -140,7 +140,7 @@ const ResponsiveDrawer = (props: Props) => {
         >
           <LinkList />
         </Drawer>
-      </Box>*/}
+      </Box>
     </Box>
   );
 };
