@@ -9,20 +9,20 @@
   "dependencies": {
     "@elastic/react-search-ui": "1.12.0",
     "@elastic/react-search-ui-views": "^1.17.0",
-    "@elastic/search-ui": "^1.18.2",
+    "@elastic/search-ui": "^1.18.3",
     "@elastic/search-ui-app-search-connector": "^1.16.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.10.16",
     "@mui/material": "^5.9.1",
     "body-scroll-lock": "^3.1.5",
-    "html-to-text": "^7.1.1",
+    "html-to-text": "^9.0.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-ga4": "^1.4.1",
     "react-icons": "^4.6.0",
     "react-lazyload": "^3.2.0",
-    "react-modal": "^3.15.1",
+    "react-modal": "^3.16.1",
     "react-scripts": "^5.0.1"
   },
   "scripts": {
@@ -48,7 +48,7 @@
     ]
   },
   "devDependencies": {
-    "@elastic/elasticsearch": "^8.4.0",
+    "@elastic/elasticsearch": "^8.5.0",
     "@types/body-scroll-lock": "^3.1.0",
     "@types/react": "^18.0.1",
     "@types/react-dom": "^18.0.1",
@@ -56,8 +56,8 @@
     "airtable": "^0.11.2",
     "husky": "^8.0.1",
     "next": "^12.2.0",
-    "prettier": "^2.6.2",
+    "prettier": "^2.8.4",
     "pretty-quick": "^3.1.3",
-    "typescript": "^4.8.4"
+    "typescript": "^4.9.4"
   }
 }
