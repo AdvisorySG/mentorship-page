@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 
 import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
 import { Layout } from "@elastic/react-search-ui-views";
@@ -41,6 +42,8 @@ const App = () => {
     searchKey: "search-bv3s7kksqjinbswx7g4my9ur",
   });
 
+  const router = useRouter();
+
   const configurationOptions = {
     alwaysSearchOnInitialLoad: true,
     apiConnector: connector,
@@ -82,13 +85,13 @@ const App = () => {
           values: [WAVES[currentTabId].waveId],
         },
       ],
-      disjunctiveFacets: ["organisation", "school", "course_of_study"],
       facets: {
         industries: { type: "value", size: 100 },
         organisation: { type: "value", size: 100 },
         school: { type: "value", size: 100 },
         course_of_study: { type: "value", size: 100 },
       },
+      disjunctiveFacets: ["organisation", "school", "course_of_study"],
     },
   };
 
@@ -122,6 +125,13 @@ const App = () => {
                       autocompleteSuggestions={true}
                       searchAsYouType={true}
                       debounceLength={300}
+                      onSubmit={(searchTerm) => {
+                        const urlEncodedQuery = encodeURI(searchTerm).replace(
+                          /%20/g,
+                          "+"
+                        );
+                        router.push(`/search?q=${urlEncodedQuery}`);
+                      }}
                     />
                     <br></br>
                     <Tabs
