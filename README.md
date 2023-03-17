@@ -4,20 +4,19 @@ React app for Advisory's Mentorship Network page.
 
 ## Getting Started
 
-To get started, make sure NodeJS v18 is installed on your computer.
-You can install it following the instructions on the [Official NodeJS Website](https://nodejs.org/en/)
+To get started, make sure NodeJS v16 is installed on your computer.
+You can install it following the instructions on the [official NodeJS website](https://nodejs.org/en/).
 
-Afterwards, you can download this repo onto our computer, or clone
-this repo using the command
+Afterwards, clone the repository:
 
 ```bash
-$ git clone https://github.com/AdvisorySG/mentorship-page.git`
+$ git clone https://github.com/AdvisorySG/mentorship-page.git
 ```
 
-We can run the web application using these commands
+Then run the web application using these commands:
 
 ```bash
-$ npm install # Update and Install the required dependency packages
+$ npm install # Update and install the required dependency packages
 $ npm start
 ```
 
@@ -36,7 +35,7 @@ It formats the code for readability purposes.
   ```
 - A Github workflow is configured to run `prettier` to check for proper code formatting for every pull request, so this formatting step must be done
 
-For more information on contributing guidelines, please read this [CONTRIBUTING.md](CONTRIBUTING.md)
+For more information on contributing guidelines, please read [CONTRIBUTING.md](https://github.com/AdvisorySG/CONTRIBUTING.md/blob/main/CONTRIBUTING.md).
 
 ## Project Architecture
 
@@ -60,13 +59,13 @@ them out, and update the Elasticsearch service with our Airtable Mentor Data.
 
 [Elasticsearch](https://www.elastic.co/elasticsearch/) is an open source search and analytics engine. It allows
 us to store, search and analyse huge volumes of mentor data quickly and
-in near real-time and give back answers in milliseconds. We hosted an
+in near real-time and give back answers in milliseconds. We host our
 Elasticsearch instance on [Elastic Cloud](https://www.elastic.co/cloud/).
 
 Our [React](https://reactjs.org/) Web App queries the Elasticsearch Service and displays the relevant mentors.
 The web app is hosted on [Netlify](https://www.netlify.com/). Netlify also has deploy previews
-which are created for each pull request, which allows us to easily test
-our code changes.
+which are created for each pull request, enabling us to easily test
+out code changes.
 
 ## Project Structure
 
@@ -135,33 +134,3 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
