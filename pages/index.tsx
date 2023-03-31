@@ -30,6 +30,7 @@ const App = () => {
   const [isListView, setIsListView] = useState(false);
 
   const WAVES = [
+    { waveId: 4, waveName: "VJC Mentorship 2023" },
     { waveId: 3, waveName: "Institution-Specific Wave" },
     { waveId: 2, waveName: "2022 Wave" },
   ];
