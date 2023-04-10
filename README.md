@@ -1,6 +1,6 @@
 # mentorship-page [![Netlify Status](https://api.netlify.com/api/v1/badges/f804919f-a599-456c-8127-496ed860123c/deploy-status)](https://app.netlify.com/sites/tender-meitner-99286b/deploys)
 
-React app for Advisory's Mentorship Network page.
+NextJS app for Advisory's Mentorship Network page.
 
 ## Getting Started
 
@@ -103,7 +103,7 @@ Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+You will also see any errors in the console.
 
 ### `npm run build`
 
