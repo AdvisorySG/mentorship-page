@@ -26,10 +26,10 @@ Please read [CONTRIBUTING.md](https://github.com/AdvisorySG/CONTRIBUTING.md/blob
 for our contributing guidelines.
 
 Make sure to commit on your local git instance and then push to Github.
-`prettier` automatically runs everytime you commit (through a husky hook).
+[Prettier](https://prettier.io/) automatically runs everytime you commit (through a [Husky](https://typicode.github.io/husky/#/) hook).
 It formats the code for readability purposes.
 
-> If you are commiting directly on the Github Website, you can run `prettier` manually to format the code before commiting
+> If you are commiting directly on the Github Website, you can run Prettier manually to format the code before commiting
 
     ```
     $ npx prettier --write <filename> # Formats the code & Overwrites the file
