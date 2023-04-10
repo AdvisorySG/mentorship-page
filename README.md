@@ -17,7 +17,7 @@ Then run the web application using these commands:
 
 ```bash
 $ npm install # Update and install the required dependency packages
-$ npm start
+$ npm run dev
 ```
 
 ## Contributing
@@ -46,7 +46,7 @@ For more information on contributing guidelines, please read [CONTRIBUTING.md](h
             ▼
     [ Elasticsearch ]
             ▼
-    [ React Web App ]
+    [ NextJS Web App ]
 ```
 
 [Airtable](https://www.airtable.com/) is a database we use to easily store our mentor data, such as
@@ -62,7 +62,7 @@ us to store, search and analyse huge volumes of mentor data quickly and
 in near real-time and give back answers in milliseconds. We host our
 Elasticsearch instance on [Elastic Cloud](https://www.elastic.co/cloud/).
 
-Our [React](https://reactjs.org/) Web App queries the Elasticsearch Service and displays the relevant mentors.
+Our [NextJS](https://nextjs.org/) Web App queries the Elasticsearch Service and displays the relevant mentors.
 The web app is hosted on [Netlify](https://www.netlify.com/). Netlify also has deploy previews
 which are created for each pull request, enabling us to easily test
 out code changes.
@@ -107,7 +107,7 @@ It also contains instructions that enable `npm` to start the project, run the sc
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm run dev`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
