@@ -29,7 +29,7 @@
     top: 20%;
     left: -4%;
     margin: auto;
-    width: 16%;
+    width: 50%;
   }
 
   .header-mentorship-logo {
@@ -52,8 +52,7 @@
   .nav-logo {
     height: 60%;
     position: absolute;
-    right: 0;
-    left: 0;
+    left: 3%;
     top: 0;
     bottom: 0;
     margin: auto;

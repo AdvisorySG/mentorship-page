@@ -12,6 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import LaunchIcon from "@mui/icons-material/Launch";
+import Button from "@mui/material/Button";
 
 import { advisoryLogo } from "./assets";
 
@@ -45,30 +46,13 @@ const ResponsiveDrawer = (props: Props) => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton
-              component="a"
-              href="#aboutus"
-              onClick={handleDrawerToggle}
-            >
-              <ListItemText primary="About Us" />
+            <ListItemButton component="a" onClick={handleDrawerToggle}>
+              <ListItemText primary="Find A Mentor" />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton
-              component="a"
-              href="#partners"
-              onClick={handleDrawerToggle}
-            >
-              <ListItemText primary="Partners" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton
-              component="a"
-              href="#mentors"
-              onClick={handleDrawerToggle}
-            >
-              <ListItemText primary="Mentors" />
+            <ListItemButton component="a" onClick={handleDrawerToggle}>
+              <ListItemText primary="FAQ" />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
@@ -95,7 +79,18 @@ const ResponsiveDrawer = (props: Props) => {
   return (
     <Box sx={{ display: "flex" }}>
       <AppBar style={{ background: "white" }} className="toolbar-component">
-        <Toolbar>
+        <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
+          <Box style={{ display: "flex", justifyContent: "flex-start" }}>
+            <img className="nav-logo" src={advisoryLogo} alt="Advisory" />
+          </Box>
+          <Box
+            style={{ justifyContent: "flex-end" }}
+            sx={{ display: { xs: "none", sm: "flex", md: "flex" } }}
+          >
+            <Button>Find A Mentor</Button>
+            <Button>FAQ</Button>
+            <Button>Apply Now</Button>
+          </Box>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -105,15 +100,6 @@ const ResponsiveDrawer = (props: Props) => {
           >
             <MenuIcon style={{ color: "black" }} />
           </IconButton>
-          <img
-            className="nav-logo"
-            src={advisoryLogo}
-            alt="Advisory"
-            style={{ alignSelf: "center" }}
-          />
-          <a className="nav-back-to-main-site" href="https://advisory.sg">
-            &#x3c; back to main site
-          </a>
         </Toolbar>
       </AppBar>
       <Box
