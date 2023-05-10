@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Head from "next/head";
 
 import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
 import { Layout } from "@elastic/react-search-ui-views";
