@@ -66,7 +66,7 @@ The web app is exported as static HTML, and then hosted on [Netlify](https://www
 Netlify also has deploy previews which are created for each pull request, enabling us to easily test.
 out code changes.
 
-Some libraries we use on NextJS are [Material UI](https://mui.com/) (a components library)
+Some libraries we use on NextJS are [Material UI](https://mui.com/) (a component library)
 and [react-search-ui](https://www.npmjs.com/package/@elastic/react-search-ui).
 
 ## Project Structure
