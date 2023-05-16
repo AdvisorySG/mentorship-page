@@ -24,6 +24,8 @@ import Tab from "@mui/material/Tab";
 import Header from "../components/Header";
 import ResultView from "../components/ResultView";
 import "../styles/App.css";
+import Testimonial from "../components/Testimonial";
+import data from "../components/assets/data.json";
 
 const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
@@ -95,7 +97,11 @@ const App = () => {
   return (
     <div className="container">
       <Header />
+
       <div className="canvas">
+        {/* <hr /> */}
+        <Testimonial testimonialData={data} />
+        <hr />
         <p className="disclaimer">
           <small>
             The privacy and safety of our mentors is of utmost priority to
