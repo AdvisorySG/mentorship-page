@@ -42,13 +42,15 @@ const App = () => {
         <h1>Frequently Asked Questions</h1>
         <div>
           {questions.map(({ question, answer }, index) => (
-            <Accordion>
+            <Accordion key={index}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography>{question}</Typography>
+                <Typography>
+                  <b>{question}</b>
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography>{answer}</Typography>
