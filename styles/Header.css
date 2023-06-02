@@ -9,27 +9,11 @@
   border-color: #cccccc;
 }
 
-@media only screen and (min-width: 601px) {
-  .nav-back-to-main-site {
-    position: relative;
-    top: 4%;
-    color: black;
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-}
-
 @media only screen and (max-width: 600px) {
   .nav-logo {
-    height: auto;
+    max-height: 40px;
     position: relative;
-    top: 20%;
-    left: -4%;
     margin: auto;
-    width: 16%;
   }
 
   .header-mentorship-logo {
@@ -52,11 +36,21 @@
   .nav-logo {
     height: 60%;
     position: absolute;
-    right: 0;
-    left: 0;
+    left: 3%;
     top: 0;
     bottom: 0;
     margin: auto;
+  }
+
+  .nav-back-to-main-site {
+    position: relative;
+    top: 4%;
+    color: black;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 }
 

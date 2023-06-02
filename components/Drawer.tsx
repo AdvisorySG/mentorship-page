@@ -12,6 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import LaunchIcon from "@mui/icons-material/Launch";
+import Button from "@mui/material/Button";
 
 import { advisoryLogo } from "./assets";
 
@@ -20,6 +21,10 @@ const drawerWidth = 240;
 interface Props {
   window?: () => Window;
 }
+
+const URL_HOME = "https://advisory.sg/";
+const URL_TYPEFORM =
+  "https://advisorysg.typeform.com/to/NQaJmE6j#source=mentorsite";
 
 const ResponsiveDrawer = (props: Props) => {
   const { window } = props;
@@ -34,57 +39,23 @@ const ResponsiveDrawer = (props: Props) => {
       <div>
         <List>
           <ListItem disablePadding>
-            <ListItemButton component="a" href="https://advisory.sg">
-              <ListItemText
-                primary="Back To Main Site"
-                style={{ flexGrow: "0", marginRight: "0.5rem" }}
-              />
-              <ListItemIcon>
-                <LaunchIcon />
-              </ListItemIcon>
+            <ListItemButton component="a" onClick={handleDrawerToggle}>
+              <ListItemText primary="Find A Mentor" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton component="a" onClick={handleDrawerToggle}>
+              <ListItemText primary="FAQ" />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
             <ListItemButton
               component="a"
-              href="#aboutus"
-              onClick={handleDrawerToggle}
-            >
-              <ListItemText primary="About Us" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton
-              component="a"
-              href="#partners"
-              onClick={handleDrawerToggle}
-            >
-              <ListItemText primary="Partners" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton
-              component="a"
-              href="#mentors"
-              onClick={handleDrawerToggle}
-            >
-              <ListItemText primary="Mentors" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton
-              component="a"
-              href="https://advisorysg.typeform.com/to/HQ8nWq2r#source=mentorsite"
+              href={URL_TYPEFORM}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <ListItemText
-                primary="Apply Now"
-                style={{ flexGrow: "0", marginRight: "0.5rem" }}
-              />
-              <ListItemIcon>
-                <LaunchIcon />
-              </ListItemIcon>
+              <ListItemText primary="Apply Now" />
             </ListItemButton>
           </ListItem>
         </List>
@@ -95,7 +66,30 @@ const ResponsiveDrawer = (props: Props) => {
   return (
     <Box sx={{ display: "flex" }}>
       <AppBar style={{ background: "white" }} className="toolbar-component">
-        <Toolbar>
+        <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
+          <Box style={{ display: "flex", justifyContent: "flex-start" }}>
+            <a href={URL_HOME} target="_blank" rel="noopener noreferrer">
+              <img className="nav-logo" src={advisoryLogo} alt="Advisory" />
+            </a>
+          </Box>
+          <Box
+            style={{ justifyContent: "flex-end" }}
+            sx={{ display: { xs: "none", sm: "flex", md: "flex" } }}
+          >
+            <Button>Find A Mentor</Button>
+            <Button>FAQ</Button>
+            <Button
+              component="a"
+              href={URL_TYPEFORM}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Apply Now
+            </Button>
+            <ListItemIcon>
+              <LaunchIcon />
+            </ListItemIcon>
+          </Box>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -105,15 +99,6 @@ const ResponsiveDrawer = (props: Props) => {
           >
             <MenuIcon style={{ color: "black" }} />
           </IconButton>
-          <img
-            className="nav-logo"
-            src={advisoryLogo}
-            alt="Advisory"
-            style={{ alignSelf: "center" }}
-          />
-          <a className="nav-back-to-main-site" href="https://advisory.sg">
-            &#x3c; back to main site
-          </a>
         </Toolbar>
       </AppBar>
       <Box
