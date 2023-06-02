@@ -22,6 +22,10 @@ interface Props {
   window?: () => Window;
 }
 
+const URL_HOME = "https://advisory.sg/";
+const URL_TYPEFORM =
+  "https://advisorysg.typeform.com/to/NQaJmE6j#source=mentorsite";
+
 const ResponsiveDrawer = (props: Props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -35,17 +39,6 @@ const ResponsiveDrawer = (props: Props) => {
       <div>
         <List>
           <ListItem disablePadding>
-            <ListItemButton component="a" href="https://advisory.sg">
-              <ListItemText
-                primary="Back To Main Site"
-                style={{ flexGrow: "0", marginRight: "0.5rem" }}
-              />
-              <ListItemIcon>
-                <LaunchIcon />
-              </ListItemIcon>
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
             <ListItemButton component="a" onClick={handleDrawerToggle}>
               <ListItemText primary="Find A Mentor" />
             </ListItemButton>
@@ -58,17 +51,11 @@ const ResponsiveDrawer = (props: Props) => {
           <ListItem disablePadding>
             <ListItemButton
               component="a"
-              href="https://advisorysg.typeform.com/to/HQ8nWq2r#source=mentorsite"
+              href={URL_TYPEFORM}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <ListItemText
-                primary="Apply Now"
-                style={{ flexGrow: "0", marginRight: "0.5rem" }}
-              />
-              <ListItemIcon>
-                <LaunchIcon />
-              </ListItemIcon>
+              <ListItemText primary="Apply Now" />
             </ListItemButton>
           </ListItem>
         </List>
@@ -81,7 +68,9 @@ const ResponsiveDrawer = (props: Props) => {
       <AppBar style={{ background: "white" }} className="toolbar-component">
         <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
           <Box style={{ display: "flex", justifyContent: "flex-start" }}>
-            <img className="nav-logo" src={advisoryLogo} alt="Advisory" />
+            <a href={URL_HOME} target="_blank" rel="noopener noreferrer">
+              <img className="nav-logo" src={advisoryLogo} alt="Advisory" />
+            </a>
           </Box>
           <Box
             style={{ justifyContent: "flex-end" }}
@@ -89,7 +78,17 @@ const ResponsiveDrawer = (props: Props) => {
           >
             <Button>Find A Mentor</Button>
             <Button>FAQ</Button>
-            <Button>Apply Now</Button>
+            <Button
+              component="a"
+              href={URL_TYPEFORM}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Apply Now
+            </Button>
+            <ListItemIcon>
+              <LaunchIcon />
+            </ListItemIcon>
           </Box>
           <IconButton
             color="inherit"
