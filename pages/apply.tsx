@@ -36,39 +36,30 @@ const App = () => {
         </div>
         <div>
           <h2>Resources</h2>
-          <p>
-            Click{" "}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://drive.google.com/file/d/1w7zlMuGY_7hVXeW0LaNKXWWjLRt3ic4G/view?usp=sharing"
-            >
-              here
-            </a>{" "}
-            to view the application guide on CVs and resumes.
-          </p>
-          <p>
-            Click{" "}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://drive.google.com/file/d/1aA3l_WQ1ehGO8UBKuRFLqj4URpQbAVzN/view?usp=sharing"
-            >
-              here
-            </a>{" "}
-            to view a sample application response.
-          </p>
-          <p>
-            Click{" "}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://drive.google.com/file/d/19lUr2BchbYFAPMjEbN_M2mf1pyw-n7pj/view?usp=sharing"
-            >
-              here
-            </a>{" "}
-            to view a list of 48 industries to filter mentors by industry.
-          </p>
+          <Button
+            variant="text"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://drive.google.com/file/d/1w7zlMuGY_7hVXeW0LaNKXWWjLRt3ic4G/view?usp=sharing"
+          >
+            Application guide on CV and resumes.
+          </Button>{" "}
+          <Button
+            variant="text"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://drive.google.com/file/d/1aA3l_WQ1ehGO8UBKuRFLqj4URpQbAVzN/view?usp=sharing"
+          >
+            Sample Application Response
+          </Button>{" "}
+          <Button
+            variant="text"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://drive.google.com/file/d/19lUr2BchbYFAPMjEbN_M2mf1pyw-n7pj/view?usp=sharing"
+          >
+            View list of industries
+          </Button>
         </div>
         <div
           style={{
@@ -81,7 +72,7 @@ const App = () => {
         >
           <Button
             variant="contained"
-            color="primary"
+            color="success"
             target="_blank"
             rel="noopener noreferrer"
             href="https://advisorysg.typeform.com/to/NQaJmE6j#source=mentorsite"
