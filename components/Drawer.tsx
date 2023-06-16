@@ -23,6 +23,7 @@ interface Props {
 }
 
 const URL_HOME = "https://advisory.sg/";
+const URL_FAQ = "/faq";
 const URL_TYPEFORM =
   "https://advisorysg.typeform.com/to/NQaJmE6j#source=mentorsite";
 
@@ -44,7 +45,11 @@ const ResponsiveDrawer = (props: Props) => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton component="a" onClick={handleDrawerToggle}>
+            <ListItemButton
+              component="a"
+              href={URL_FAQ}
+              onClick={handleDrawerToggle}
+            >
               <ListItemText primary="FAQ" />
             </ListItemButton>
           </ListItem>
@@ -77,7 +82,9 @@ const ResponsiveDrawer = (props: Props) => {
             sx={{ display: { xs: "none", sm: "flex", md: "flex" } }}
           >
             <Button>Find A Mentor</Button>
-            <Button>FAQ</Button>
+            <Button component="a" href={URL_FAQ}>
+              FAQ
+            </Button>
             <Button
               component="a"
               href={URL_TYPEFORM}
