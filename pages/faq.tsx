@@ -1,15 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
-import Header from "../components/Header";
-import ResultView from "../components/ResultView";
-import "../styles/App.css";
 
 const questions = [
   {
@@ -29,7 +25,6 @@ const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
   return (
     <div className="container">
-      {/*<Header />*/}
       <div
         className="canvas"
         style={{
