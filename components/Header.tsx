@@ -33,66 +33,6 @@ const Header = () => (
               whose fields of expertise range across 48 different industries
               have come aboard in support of this programme.
             </p>
-            <p>
-              Click{" "}
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://advisorysg.typeform.com/to/hZuzIUR5#source=mentorsite"
-              >
-                here
-              </a>{" "}
-              to apply as a mentee.
-            </p>
-            <p>
-              Click{" "}
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://drive.google.com/file/d/1w7zlMuGY_7hVXeW0LaNKXWWjLRt3ic4G/view?usp=sharing"
-              >
-                here
-              </a>{" "}
-              to view the application guide on CVs and resumes.
-            </p>
-            <p>
-              Click{" "}
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://docs.google.com/document/d/1mGjAsgTP7KIheWVDm-TZ5Hxxf8WYPfWemiqcZ40XCwo/edit?usp=sharing"
-              >
-                here
-              </a>{" "}
-              to view a list of FAQs for applicants.
-            </p>
-            <p>
-              Click{" "}
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://drive.google.com/file/d/1aA3l_WQ1ehGO8UBKuRFLqj4URpQbAVzN/view?usp=sharing"
-              >
-                here
-              </a>{" "}
-              to view a sample application response.
-            </p>
-            <p>
-              Click{" "}
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://drive.google.com/file/d/19lUr2BchbYFAPMjEbN_M2mf1pyw-n7pj/view?usp=sharing"
-              >
-                here
-              </a>{" "}
-              to view a list of 48 industries to filter mentors by industry.
-            </p>
-            <p>
-              Do take note that matching will commence on a rolling basis from 5
-              June onwards, and mentors that have been matched will no longer be
-              displayed on the website thereafter.
-            </p>
           </div>
         </div>
       </Box>
