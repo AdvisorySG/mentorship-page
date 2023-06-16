@@ -10,8 +10,6 @@ import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import MenuIcon from "@mui/icons-material/Menu";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import LaunchIcon from "@mui/icons-material/Launch";
 import Button from "@mui/material/Button";
 
 import { advisoryLogo } from "./assets";
@@ -22,11 +20,10 @@ interface Props {
   window?: () => Window;
 }
 
+const URL_APPLY = "/apply";
 const URL_HOME = "https://advisory.sg/";
 const URL_FAQ = "/faq";
 const URL_MENTORS = "/mentors";
-const URL_TYPEFORM =
-  "https://advisorysg.typeform.com/to/NQaJmE6j#source=mentorsite";
 
 const ResponsiveDrawer = (props: Props) => {
   const { window } = props;
@@ -61,9 +58,8 @@ const ResponsiveDrawer = (props: Props) => {
           <ListItem disablePadding>
             <ListItemButton
               component="a"
-              href={URL_TYPEFORM}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={URL_APPLY}
+              onClick={handleDrawerToggle}
             >
               <ListItemText primary="Apply Now" />
             </ListItemButton>
@@ -92,17 +88,9 @@ const ResponsiveDrawer = (props: Props) => {
             <Button component="a" href={URL_FAQ}>
               FAQ
             </Button>
-            <Button
-              component="a"
-              href={URL_TYPEFORM}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Button component="a" href={URL_APPLY}>
               Apply Now
             </Button>
-            <ListItemIcon>
-              <LaunchIcon />
-            </ListItemIcon>
           </Box>
           <IconButton
             color="inherit"
