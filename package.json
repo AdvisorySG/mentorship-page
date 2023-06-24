@@ -34,7 +34,8 @@
     "prepare": "husky install"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "sourceType": "module",
+    "extends": "plugin:@next/next/recommended"
   },
   "browserslist": {
     "production": [
@@ -50,6 +51,7 @@
   },
   "devDependencies": {
     "@elastic/elasticsearch": "^8.8.0",
+    "@next/eslint-plugin-next": "^13.4.7",
     "@types/body-scroll-lock": "^3.1.0",
     "@types/react": "^18.0.1",
     "@types/react-dom": "^18.0.1",

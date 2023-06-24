@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Head from "next/head";
 
 import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
 import { Layout } from "@elastic/react-search-ui-views";
@@ -26,7 +25,7 @@ import Header from "../components/Header";
 import ResultView from "../components/ResultView";
 import "../styles/App.css";
 
-const App = () => {
+const Index = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
   const [isListView, setIsListView] = useState(false);
 
@@ -131,7 +130,7 @@ const App = () => {
                       indicatorColor="primary"
                     >
                       {WAVES.map(({ waveName }) => (
-                        <Tab label={waveName} />
+                        <Tab key={waveName} label={waveName} />
                       ))}
                     </Tabs>
                   </div>
@@ -204,4 +203,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Index;
