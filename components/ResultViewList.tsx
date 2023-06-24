@@ -117,6 +117,11 @@ const ResultViewList = ({
                     e.preventDefault();
                     setIsReadMore(!isReadMore);
                   }}
+                  data-umami-event={
+                    isReadMore
+                      ? "Read less (list view)"
+                      : "Read more (list view)"
+                  }
                 >
                   {isReadMore ? "Read Less" : "Read More"}
                 </a>

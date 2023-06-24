@@ -54,6 +54,7 @@ const ResultViewGrid = ({
           justifyContent: "flex-start",
           height: "100%",
         }}
+        data-umami-event="Read more (grid view)"
       >
         <CardMedia
           component="img"
@@ -95,7 +96,11 @@ const ResultViewGrid = ({
         <CardActions
           style={{ display: "flex", flexGrow: 1, alignItems: "flex-end" }}
         >
-          <Button onClick={handleOpen} style={{ fontSize: 12 }}>
+          <Button
+            onClick={handleOpen}
+            style={{ fontSize: 12 }}
+            data-umami-event="Read more (grid view)"
+          >
             Read More
           </Button>
         </CardActions>
