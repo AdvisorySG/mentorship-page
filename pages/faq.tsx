@@ -7,6 +7,8 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 
+import Header from "../components/Header";
+
 // programme structure and timeline questions
 const programmeQuestions = [
   {
@@ -154,6 +156,7 @@ const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
   return (
     <div className="container">
+      <Header />
       <div
         className="canvas"
         style={{

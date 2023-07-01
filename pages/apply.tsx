@@ -16,7 +16,7 @@ const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
   return (
     <div className="container">
-      {/*<Header />*/}
+      <Header />
       <div
         className="canvas"
         style={{
