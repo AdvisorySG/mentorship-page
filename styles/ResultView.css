@@ -1,5 +1,7 @@
+.sui-resultgrid,
 .sui-result {
   display: flex;
+  box-sizing: border-box;
 }
 
 .sui-result + .sui-result {
@@ -36,6 +38,7 @@
 }
 
 @media only screen and (max-width: 800px) {
+  .sui-resultgrid,
   .sui-result {
     flex-direction: column;
   }
@@ -95,7 +98,7 @@
 .sui-result__modal {
   display: flex;
   align-items: center;
-  margin: auto;
+  margin: 0 auto;
   max-width: 800px;
   max-height: 80%;
   overflow: scroll;

@@ -1,6 +1,8 @@
+.sui-resultgrid,
 .sui-result {
   display: flex;
   @media only screen and (max-width: 800px) {
+    .sui-resultgrid,
     .sui-result {
       flex-direction: column;
     }
@@ -42,7 +44,7 @@
 }
 
 .sui-result + .sui-result {
-  margin-top: 0px;
+  margin-top: 32px;
 }
 
 .sui-result__body {
