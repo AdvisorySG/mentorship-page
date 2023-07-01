@@ -149,6 +149,7 @@ const applicationQuestions = [
       "Students outside of Singapore can still apply, but unfortunately, you must be a) a Singapore Citizen; b) a Singapore Permanent Resident; or c) one who has spent a significant amount of time in or has a significant connection to Singapore. If you’d like us to bring Advisory to your country, do drop us an email at contact@advisory.sg!",
   },
 ];
+
 const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
   return (
