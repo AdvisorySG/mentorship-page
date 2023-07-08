@@ -98,7 +98,7 @@
 .sui-result__modal {
   display: flex;
   align-items: center;
-  margin: 0 auto;
+  margin: auto;
   max-width: 800px;
   max-height: 80%;
   overflow: scroll;
