@@ -55,6 +55,9 @@ const ResultViewGrid = ({
           height: "100%",
         }}
         data-umami-event="Read more (grid view)"
+        data-umami-event-name={displayName}
+        data-umami-event-organisation={displayOrganisation}
+        data-umami-event-role={displayRole}
       >
         <CardMedia
           component="img"
@@ -100,6 +103,9 @@ const ResultViewGrid = ({
             onClick={handleOpen}
             style={{ fontSize: 12 }}
             data-umami-event="Read more (grid view)"
+            data-umami-event-name={displayName}
+            data-umami-event-organisation={displayOrganisation}
+            data-umami-event-role={displayRole}
           >
             Read More
           </Button>

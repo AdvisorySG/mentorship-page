@@ -122,6 +122,9 @@ const ResultViewList = ({
                       ? "Read less (list view)"
                       : "Read more (list view)"
                   }
+                  data-umami-event-name={displayName}
+                  data-umami-event-organisation={displayOrganisation}
+                  data-umami-event-role={displayRole}
                 >
                   {isReadMore ? "Read Less" : "Read More"}
                 </a>
