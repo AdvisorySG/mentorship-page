@@ -130,7 +130,11 @@ const Index = () => {
                       indicatorColor="primary"
                     >
                       {WAVES.map(({ waveName }) => (
-                        <Tab key={waveName} label={waveName} />
+                        <Tab
+                          key={waveName}
+                          label={waveName}
+                          data-umami-event={`Tab '${waveName}'`}
+                        />
                       ))}
                     </Tabs>
                   </div>
@@ -178,6 +182,7 @@ const Index = () => {
                           color={isListView ? "default" : "primary"}
                           onClick={() => setIsListView(false)}
                           size={isSmall ? "small" : "medium"}
+                          data-umami-event={"Grid view"}
                         >
                           <GridViewIcon />
                         </IconButton>
@@ -186,6 +191,7 @@ const Index = () => {
                           color={isListView ? "primary" : "default"}
                           onClick={() => setIsListView(true)}
                           size={isSmall ? "small" : "medium"}
+                          data-umami-event={"List view"}
                         >
                           <ViewListIcon />
                         </IconButton>
