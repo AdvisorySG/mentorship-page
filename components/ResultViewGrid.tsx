@@ -54,7 +54,7 @@ const ResultViewGrid = ({
           justifyContent: "flex-start",
           height: "100%",
         }}
-        data-umami-event="Read more (grid view)"
+        data-umami-event="Read more"
         data-umami-event-name={displayName}
         data-umami-event-organisation={displayOrganisation}
         data-umami-event-role={displayRole}
@@ -102,7 +102,7 @@ const ResultViewGrid = ({
           <Button
             onClick={handleOpen}
             style={{ fontSize: 12 }}
-            data-umami-event="Read more (grid view)"
+            data-umami-event="Read more"
             data-umami-event-name={displayName}
             data-umami-event-organisation={displayOrganisation}
             data-umami-event-role={displayRole}

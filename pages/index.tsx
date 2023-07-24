@@ -27,7 +27,6 @@ import "../styles/App.css";
 
 const Index = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
-  const [isListView, setIsListView] = useState(false);
 
   const WAVES = [{ waveId: 4, waveName: "VJC Mentorship 2023" }];
   const [currentTabId, setCurrentTabId] = useState(0);
@@ -141,9 +140,7 @@ const Index = () => {
                 }
                 bodyContent={
                   <Results
-                    resultView={({ result }) => (
-                      <ResultView result={result} isListView={isListView} />
-                    )}
+                    resultView={({ result }) => <ResultView result={result} />}
                   />
                 }
                 sideContent={
@@ -176,26 +173,7 @@ const Index = () => {
                       <ResultsPerPage />
                       <span
                         style={{ display: "flex", justifyContent: "flex-end" }}
-                      >
-                        <IconButton
-                          aria-label="grid view"
-                          color={isListView ? "default" : "primary"}
-                          onClick={() => setIsListView(false)}
-                          size={isSmall ? "small" : "medium"}
-                          data-umami-event={"Grid view"}
-                        >
-                          <GridViewIcon />
-                        </IconButton>
-                        <IconButton
-                          aria-label="list view"
-                          color={isListView ? "primary" : "default"}
-                          onClick={() => setIsListView(true)}
-                          size={isSmall ? "small" : "medium"}
-                          data-umami-event={"List view"}
-                        >
-                          <ViewListIcon />
-                        </IconButton>
-                      </span>
+                      ></span>
                     </div>
                   </React.Fragment>
                 }

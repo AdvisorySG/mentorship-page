@@ -95,13 +95,7 @@ type DisplayResult = {
   thumbnailImageUrl?: string;
 };
 
-const ResultView = ({
-  result,
-  isListView,
-}: {
-  result: SearchResult;
-  isListView: boolean;
-}) => {
+const ResultView = ({ result }: { result: SearchResult }) => {
   const {
     course_of_study: courseOfStudy,
     full_bio: fullBio,
@@ -164,11 +158,7 @@ const ResultView = ({
     thumbnailImageUrl,
   };
 
-  return isListView ? (
-    <ResultViewList displayResult={displayResult} isShowReadMore={true} />
-  ) : (
-    <ResultViewGrid displayResult={displayResult} />
-  );
+  return <ResultViewGrid displayResult={displayResult} />;
 };
 
 export default ResultView;

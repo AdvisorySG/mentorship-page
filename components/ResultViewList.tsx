@@ -5,10 +5,8 @@ import type { DisplayResult } from "./ResultView";
 
 const ResultViewList = ({
   displayResult,
-  isShowReadMore,
 }: {
   displayResult: DisplayResult;
-  isShowReadMore?: boolean;
 }) => {
   const {
     displayName,
@@ -22,8 +20,6 @@ const ResultViewList = ({
     industryColors,
     thumbnailImageUrl,
   } = displayResult;
-
-  const [isReadMore, setIsReadMore] = useState(isShowReadMore ? false : true);
 
   return (
     <div className="sui-result">
@@ -104,31 +100,8 @@ const ResultViewList = ({
               <span
                 className="sui-result__biography"
                 style={{ fontSize: 14 }}
-                dangerouslySetInnerHTML={{
-                  __html: isReadMore ? displayFullBio : displayShortBio,
-                }}
+                dangerouslySetInnerHTML={{ __html: displayFullBio }}
               />
-              {isShowReadMore && (
-                <a
-                  className="sui-result__isReadMore"
-                  style={{ fontSize: 14 }}
-                  href="#isReadMore"
-                  onClick={(e: any) => {
-                    e.preventDefault();
-                    setIsReadMore(!isReadMore);
-                  }}
-                  data-umami-event={
-                    isReadMore
-                      ? "Read less (list view)"
-                      : "Read more (list view)"
-                  }
-                  data-umami-event-name={displayName}
-                  data-umami-event-organisation={displayOrganisation}
-                  data-umami-event-role={displayRole}
-                >
-                  {isReadMore ? "Read Less" : "Read More"}
-                </a>
-              )}
             </li>
           )}
         </ul>
