@@ -29,6 +29,7 @@ const WAVES_INFO = new Map([
     },
   ],
   [4, { tableId: "VJC Mentorship 2023", waveName: "VJC Mentorship 2023" }],
+  [5, { tableId: "2023 Mentorship", waveName: "2023 Wave" }],
 ]);
 
 function* chunks(arr, n) {
