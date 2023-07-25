@@ -29,7 +29,7 @@ const Index = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
   const [isListView, setIsListView] = useState(false);
 
-  const WAVES = [{ waveId: 4, waveName: "VJC Mentorship 2023" }];
+  const WAVES = [{ waveId: 5, waveName: "2023 Wave" }];
   const [currentTabId, setCurrentTabId] = useState(0);
 
   const connector = new AppSearchAPIConnector({

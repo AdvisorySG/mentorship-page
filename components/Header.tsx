@@ -33,6 +33,7 @@ const Header = () => (
               whose fields of expertise range across 48 different industries
               have come aboard in support of this programme.
             </p>
+            {/*
             <p>
               Click{" "}
               <a
@@ -44,6 +45,7 @@ const Header = () => (
               </a>{" "}
               to apply as a mentee.
             </p>
+            */}
             <p>
               Click{" "}
               <a
