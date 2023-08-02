@@ -33,19 +33,17 @@ const Header = () => (
               whose fields of expertise range across 48 different industries
               have come aboard in support of this programme.
             </p>
-            {/*
             <p>
               Click{" "}
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://advisorysg.typeform.com/to/hZuzIUR5#source=mentorsite"
+                href="https://advisorysg.typeform.com/to/Z1MHxaFj#source=mentorsite"
               >
                 here
               </a>{" "}
               to apply as a mentee.
             </p>
-            */}
             <p>
               Click{" "}
               <a
@@ -91,9 +89,9 @@ const Header = () => (
               to view a list of 48 industries to filter mentors by industry.
             </p>
             <p>
-              Do take note that matching will commence on a rolling basis from 5
-              June onwards, and mentors that have been matched will no longer be
-              displayed on the website thereafter.
+              Do take note that matching will commence on a rolling basis from
+              20 August onwards, and mentors that have been matched will no
+              longer be displayed on the website thereafter.
             </p>
           </div>
         </div>
