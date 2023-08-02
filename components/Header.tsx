@@ -29,7 +29,7 @@ const Header = () => (
               with their mentee. Over the past 2 years, the programme delivered
               over 8,000 hours of mentorship to 2,211 students with the
               involvement of 1,826 mentors. This year, we’re excited to share
-              that over 1,600 working professionals and 27 mentorship partners
+              that over 800 working professionals and 28 mentorship partners
               whose fields of expertise range across 48 different industries
               have come aboard in support of this programme.
             </p>
