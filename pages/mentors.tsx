@@ -30,7 +30,10 @@ const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
 
   const [isListView, setIsListView] = useState(false);
-  const WAVES = [{ waveId: 4, waveName: "VJC Mentorship 2023" }];
+  const WAVES = [
+    { waveId: 4, waveName: "VJC Mentorship 2023" },
+    { waveId: 5, waveName: "Wave 2023" },
+  ];
   const [currentTabId, setCurrentTabId] = useState(0);
 
   const connector = new AppSearchAPIConnector({
@@ -90,8 +93,15 @@ const App = () => {
     },
   };
 
-  const handleTabChange = (_: React.ChangeEvent<{}>, tab: number) =>
+  const button = document.querySelector(
+    'input[class="button sui-search-box__submit"]'
+  ) as HTMLButtonElement;
+  const handleTabChange = (_: React.ChangeEvent<{}>, tab: number) => {
     setCurrentTabId(tab);
+    if (button) {
+      button.click();
+    }
+  };
 
   return (
     <div className="results" id="mentors">
