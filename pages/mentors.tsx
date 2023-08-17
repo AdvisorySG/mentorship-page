@@ -93,11 +93,11 @@ const App = () => {
     },
   };
 
-  const button = document.querySelector(
-    'input[class="button sui-search-box__submit"]'
-  ) as HTMLButtonElement;
   const handleTabChange = (_: React.ChangeEvent<{}>, tab: number) => {
     setCurrentTabId(tab);
+    const button = document.querySelector(
+      'input[class="button sui-search-box__submit"]'
+    ) as HTMLButtonElement;
     if (button) {
       button.click();
     }
