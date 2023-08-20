@@ -1,13 +1,14 @@
-import "../styles/index.css";
-
+import React from "react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+
+import "../styles/App.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <title>Advisory Mentorship Programme</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -16,13 +17,13 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
         <meta name="description" content="The Advisory Mentorship Programme" />
         // Google
-        <meta itemprop="name" content="Advisory Mentorship Programme" />
+        <meta itemProp="name" content="Advisory Mentorship Programme" />
         <meta
-          itemprop="description"
+          itemProp="description"
           content="The Advisory Mentorship Programme"
         />
         <meta
-          itemprop="image"
+          itemProp="image"
           content="%PUBLIC_URL%/advisory-mentorship-logo.jpg"
         />
         // Facebook / OpenGraph
@@ -54,13 +55,6 @@ export default function App({ Component, pageProps }: AppProps) {
           data-website-id="2f694eab-769e-420a-bb31-4efcb3662bf5"
         ></script>
       </Head>
-      <style>
-        {`
-      .sui-result + .sui-result {
-        margin-top: 0px;
-      }
-      `}
-      </style>
       <Component {...pageProps} />
     </>
   );

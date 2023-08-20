@@ -1,3 +1,10 @@
+body {
+  margin: 0;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .container {
   height: 100%;
   background-color: white;
@@ -64,6 +71,10 @@
   .material-icons {
     font-size: 16px;
   }
+}
+
+.sui-result + .sui-result {
+  margin-top: 0px;
 }
 
 .sui-layout-sidebar.sui-layout-sidebar--toggled {
