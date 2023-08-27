@@ -34,13 +34,8 @@ const App = () => {
 
   const [isListView, setIsListView] = useState(false);
   const WAVES = [
-    {
-      tabUrl: "/mentors/0",
-      tabId: 0,
-      waveId: 4,
-      waveName: "VJC Mentorship 2023",
-    },
-    { tabUrl: "/mentors/1", tabId: 1, waveId: 5, waveName: "Wave 2023" },
+    { tabId: 0, waveId: 4, waveName: "VJC Mentorship 2023" },
+    { tabId: 1, waveId: 5, waveName: "Wave 2023" },
   ];
 
   const [currentTabId, setCurrentTabId] = useState(0);
@@ -111,7 +106,7 @@ const App = () => {
     }
   }, [currentTabId]);
 
-  const HandleTabChange = (_: React.ChangeEvent<{}>, tab: number) => {
+  const handleTabChange = (_: React.ChangeEvent<{}>, tab: number) => {
     setCurrentTabId(tab);
   };
 
@@ -131,7 +126,7 @@ const App = () => {
                 <br></br>
                 <Tabs
                   value={currentTabId}
-                  onChange={HandleTabChange}
+                  onChange={handleTabChange}
                   variant="scrollable"
                   scrollButtons="auto"
                   textColor="primary"
