@@ -23,7 +23,7 @@ interface Props {
 const URL_APPLY = "/apply";
 const URL_HOME = "https://advisory.sg/";
 const URL_FAQ = "/faq";
-const URL_MENTORS = "/mentors";
+const URL_MENTORS = "/mentors/0";
 
 const ResponsiveDrawer = (props: Props) => {
   const { window } = props;
