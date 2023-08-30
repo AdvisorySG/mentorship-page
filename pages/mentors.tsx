@@ -31,8 +31,8 @@ const App = () => {
 
   const [isListView, setIsListView] = useState(false);
   const WAVES = [
-    { waveId: 4, waveName: "VJC Mentorship 2023" },
     { waveId: 5, waveName: "Wave 2023" },
+    { waveId: 4, waveName: "VJC Mentorship 2023" },
   ];
   const [currentTabId, setCurrentTabId] = useState(0);
 
