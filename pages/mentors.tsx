@@ -95,6 +95,8 @@ const App = () => {
 
   const handleTabChange = (_: React.ChangeEvent<{}>, tab: number) => {
     setCurrentTabId(tab);
+    // FIXME: Hacky solution to identify the search button by Elastic Search UI
+    // and trigger a click to reset search results
     const button = document.querySelector(
       'input[class="button sui-search-box__submit"]'
     ) as HTMLButtonElement;
