@@ -6,7 +6,6 @@ import "../styles/Header.css";
 const Header = () => (
   <div className="header">
     <ResponsiveDrawer />
-    <div className="content-body"></div>
   </div>
 );
 

@@ -2,15 +2,17 @@ import React from "react";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
+import LaunchIcon from "@mui/icons-material/Launch";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import Toolbar from "@mui/material/Toolbar";
-import MenuIcon from "@mui/icons-material/Menu";
 import ListItemButton from "@mui/material/ListItemButton";
-import Button from "@mui/material/Button";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import MenuIcon from "@mui/icons-material/Menu";
+import Toolbar from "@mui/material/Toolbar";
 
 import { advisoryLogo } from "./assets";
 
@@ -58,10 +60,17 @@ const ResponsiveDrawer = (props: Props) => {
           <ListItem disablePadding>
             <ListItemButton
               component="a"
-              href={URL_APPLY}
-              onClick={handleDrawerToggle}
+              href="https://advisorysg.typeform.com/to/Z1MHxaFj#source=mentorsite"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <ListItemText primary="Apply Now" />
+              <ListItemText
+                primary="Apply Now"
+                style={{ flexGrow: "0", marginRight: "0.5rem" }}
+              />
+              <ListItemIcon>
+                <LaunchIcon />
+              </ListItemIcon>
             </ListItemButton>
           </ListItem>
         </List>

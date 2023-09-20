@@ -128,7 +128,11 @@ const App = () => {
                   indicatorColor="primary"
                 >
                   {WAVES.map(({ waveName }) => (
-                    <Tab label={waveName} />
+                    <Tab
+                      key={waveName}
+                      label={waveName}
+                      data-umami-event={`Tab '${waveName}'`}
+                    />
                   ))}
                 </Tabs>
               </div>
