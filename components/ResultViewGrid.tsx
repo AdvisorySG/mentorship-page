@@ -42,6 +42,8 @@ const ResultViewGrid = ({
       className="sui-result"
       style={{
         maxWidth: "165px",
+        width: "100%",
+        height: "auto",
         padding: "0px",
       }}
     >
