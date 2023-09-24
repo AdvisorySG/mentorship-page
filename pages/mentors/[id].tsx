@@ -27,7 +27,30 @@ import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import "../../styles/App.css";
 
 import { useEffect } from "react";
-import { Link } from "@mui/material";
+import { Link, getAccordionDetailsUtilityClass } from "@mui/material";
+
+import type { GetStaticProps, GetStaticPaths } from "next";
+import { useRouter } from "next/router";
+
+// This also gets called at build time
+export const getStaticProps: GetStaticProps = async (context) => {
+  // params contains the mentors page `id`.
+  // If the route is like /mentors/1, then params.id is 1
+  const tabID = context.params?.id;
+
+  // Pass post data to the page via props
+  return { props: {} };
+};
+
+// This function gets called at build time
+export const getStaticPaths: GetStaticPaths = async () => {
+  const pathWithParams = [{ params: { id: "0" } }, { params: { id: "1" } }];
+
+  return {
+    paths: pathWithParams,
+    fallback: true,
+  };
+};
 
 const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
@@ -97,8 +120,10 @@ const App = () => {
     },
   };
 
+  const router = useRouter();
+
   useEffect(() => {
-    const pathname = window.location.pathname;
+    const pathname = router.asPath.slice(0, 10); // slice first 10 char to match the path
     if (pathname === "/mentors/0") {
       setCurrentTabId(0);
     } else if (pathname === "/mentors/1") {
