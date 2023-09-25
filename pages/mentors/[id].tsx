@@ -20,47 +20,17 @@ import IconButton from "@mui/material/IconButton";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
-import ResultView from "../../components/ResultView";
-import Header from "../../components/Header";
+import ResultView from "../components/ResultView";
+import Header from "../components/Header";
 
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
-import "../../styles/App.css";
-
-import { useEffect } from "react";
-import { Link, getAccordionDetailsUtilityClass } from "@mui/material";
-
-import type { GetStaticProps, GetStaticPaths } from "next";
-import { useRouter } from "next/router";
-
-// This also gets called at build time
-export const getStaticProps: GetStaticProps = async (context) => {
-  // params contains the mentors page `id`.
-  // If the route is like /mentors/1, then params.id is 1
-  const tabID = context.params?.id;
-
-  // Pass post data to the page via props
-  return { props: {} };
-};
-
-// This function gets called at build time
-export const getStaticPaths: GetStaticPaths = async () => {
-  const pathWithParams = [{ params: { id: "0" } }, { params: { id: "1" } }];
-
-  return {
-    paths: pathWithParams,
-    fallback: true,
-  };
-};
+import "../styles/App.css";
 
 const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
 
   const [isListView, setIsListView] = useState(false);
-  const WAVES = [
-    { tabId: 0, waveId: 4, waveName: "VJC Mentorship 2023" },
-    { tabId: 1, waveId: 5, waveName: "Wave 2023" },
-  ];
-
+  const WAVES = [{ waveId: 4, waveName: "VJC Mentorship 2023" }];
   const [currentTabId, setCurrentTabId] = useState(0);
 
   const connector = new AppSearchAPIConnector({
@@ -120,20 +90,8 @@ const App = () => {
     },
   };
 
-  const router = useRouter();
-
-  useEffect(() => {
-    const pathname = router.asPath.slice(0, 10); // slice first 10 char to match the path
-    if (pathname === "/mentors/0") {
-      setCurrentTabId(0);
-    } else if (pathname === "/mentors/1") {
-      setCurrentTabId(1);
-    }
-  }, [currentTabId]);
-
-  const handleTabChange = (_: React.ChangeEvent<{}>, tab: number) => {
+  const handleTabChange = (_: React.ChangeEvent<{}>, tab: number) =>
     setCurrentTabId(tab);
-  };
 
   return (
     <div className="results" id="mentors">
@@ -157,8 +115,8 @@ const App = () => {
                   textColor="primary"
                   indicatorColor="primary"
                 >
-                  {WAVES.map(({ waveName, tabId }) => (
-                    <Tab label={waveName} component={Link} href={tabId} />
+                  {WAVES.map(({ waveName }) => (
+                    <Tab label={waveName} />
                   ))}
                 </Tabs>
               </div>

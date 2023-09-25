@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
@@ -51,11 +51,11 @@ const images = [
 
 const maxSteps = testimonials.length;
 
-const App = () => {
+const Index = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
   const theme = useTheme();
 
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -233,4 +233,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Index;

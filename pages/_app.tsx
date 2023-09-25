@@ -11,22 +11,21 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta charSet="utf-8" />
         <title>Advisory Mentorship Programme</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" content="#000000" />
-        <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+        <link rel="apple-touch-icon" href="/logo192.png" />
+        <link rel="manifest" href="/manifest.json" />
         <meta name="description" content="The Advisory Mentorship Programme" />
-        // Google
+
+        {/* Google */}
         <meta itemProp="name" content="Advisory Mentorship Programme" />
         <meta
           itemProp="description"
           content="The Advisory Mentorship Programme"
         />
-        <meta
-          itemProp="image"
-          content="%PUBLIC_URL%/advisory-mentorship-logo.jpg"
-        />
-        // Facebook / OpenGraph
+        <meta itemProp="image" content="/advisory-mentorship-logo.jpg" />
+
+        {/* Facebook / OpenGraph */}
         <meta property="og:url" content="https://mentorship.advisory.sg" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Advisory Mentorship Programme" />
@@ -34,21 +33,16 @@ export default function App({ Component, pageProps }: AppProps) {
           property="og:description"
           content="The Advisory Mentorship Programme"
         />
-        <meta
-          property="og:image"
-          content="%PUBLIC_URL%/advisory-mentorship-logo.jpg"
-        />
-        // Twitter
+        <meta property="og:image" content="/advisory-mentorship-logo.jpg" />
+
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Advisory Mentorship Programme" />
         <meta
           name="twitter:description"
           content="The Advisory Mentorship Programme"
         />
-        <meta
-          name="twitter:image"
-          content="%PUBLIC_URL%/advisory-mentorship-logo.jpg"
-        />
+        <meta name="twitter:image" content="/advisory-mentorship-logo.jpg" />
         <script
           async
           src="https://umami.advisory.sg/script.js"
