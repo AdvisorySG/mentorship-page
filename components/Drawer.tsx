@@ -23,7 +23,8 @@ interface Props {
 }
 
 const URL_APPLY = "/apply";
-const URL_HOME = "https://advisory.sg/";
+const URL_HOME = "/";
+const URL_MAIN = "https://advisory.sg/";
 const URL_FAQ = "/faq";
 const URL_MENTORS = "/mentors/0";
 
@@ -39,6 +40,15 @@ const ResponsiveDrawer = (props: Props) => {
     return (
       <div>
         <List>
+          <ListItem disablePadding>
+            <ListItemButton
+              component="a"
+              href={URL_HOME}
+              onClick={handleDrawerToggle}
+            >
+              <ListItemText primary="Home" />
+            </ListItemButton>
+          </ListItem>
           <ListItem disablePadding>
             <ListItemButton
               component="a"
@@ -83,7 +93,7 @@ const ResponsiveDrawer = (props: Props) => {
       <AppBar style={{ background: "white" }} className="toolbar-component">
         <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
           <Box style={{ display: "flex", justifyContent: "flex-start" }}>
-            <a href={URL_HOME} target="_blank" rel="noopener noreferrer">
+            <a href={URL_MAIN} target="_blank" rel="noopener noreferrer">
               <img className="nav-logo" src={advisoryLogo} alt="Advisory" />
             </a>
           </Box>
@@ -91,6 +101,9 @@ const ResponsiveDrawer = (props: Props) => {
             style={{ justifyContent: "flex-end" }}
             sx={{ display: { xs: "none", sm: "flex", md: "flex" } }}
           >
+            <Button component="a" href={URL_HOME}>
+              Home
+            </Button>
             <Button component="a" href={URL_MENTORS}>
               Find A Mentor
             </Button>
