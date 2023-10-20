@@ -61,8 +61,13 @@ const fillHighlights = (snippet: string | null, full: string): string => {
     return full;
   }
 
-  const snippetRaw = htmlToText(snippet, { wordwrap: false });
-  return full.replace(snippetRaw, snippet);
+  // Replace any existing <em> tags from the snippet to <strong> tag
+  const boldSnippet = snippet.replace(
+    /<em>(.*?)<\/em>/g,
+    "<strong>$1</strong>"
+  );
+  const snippetRaw = htmlToText(boldSnippet, { wordwrap: false });
+  return full.replace(snippetRaw, boldSnippet);
 };
 
 const COLORS = [
