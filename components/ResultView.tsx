@@ -61,13 +61,12 @@ const fillHighlights = (snippet: string | null, full: string): string => {
     return full;
   }
 
-  // Replace any existing <em> tags from the snippet to <strong> tag
-  const boldSnippet = snippet.replace(
-    /<em>(.*?)<\/em>/g,
-    "<strong>$1</strong>"
+  const snippetRaw = htmlToText(snippet, { wordwrap: false });
+  const styledSnippet = snippet.replace(
+    /<em>/g,
+    '<em style= "font-weight: bold; color: #375ae6; font-style: normal; background-color: #edf6fe; padding: 3px; ">'
   );
-  const snippetRaw = htmlToText(boldSnippet, { wordwrap: false });
-  return full.replace(snippetRaw, boldSnippet);
+  return full.replace(snippetRaw, styledSnippet);
 };
 
 const COLORS = [
@@ -113,7 +112,7 @@ const ResultView = ({ result }: { result: SearchResult }) => {
   } = result;
 
   const displayName =
-    name && name.raw ? fillHighlights(name.snippet, name.raw) : null;
+    name && name.raw ? fillHighlights(name.snippet, name.raw.bold()) : null;
 
   const thumbnailImageUrl =
     thumbnail_image_url && thumbnail_image_url.raw
