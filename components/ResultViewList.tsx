@@ -31,12 +31,7 @@ const ResultViewList = ({
           {displayName && (
             <span
               className="sui-result__title"
-              dangerouslySetInnerHTML={{
-                __html: displayName.replace(
-                  /<em[^>]*>/g,
-                  '<em style="background-color: transparent;">'
-                ),
-              }}
+              dangerouslySetInnerHTML={{ __html: displayName }}
             />
           )}
         </div>
@@ -61,12 +56,7 @@ const ResultViewList = ({
                 <span
                   className="sui-result__value"
                   style={{ fontSize: 16, fontWeight: 600 }}
-                  dangerouslySetInnerHTML={{
-                    __html: displayRole.replace(
-                      /<em[^>]*>/g,
-                      '<em style="background-color: transparent;">'
-                    ),
-                  }}
+                  dangerouslySetInnerHTML={{ __html: displayRole }}
                 />
               )}
               {displayRole && displayOrganisation && (
@@ -79,12 +69,7 @@ const ResultViewList = ({
                 <span
                   className="sui-result__value"
                   style={{ fontSize: 16, fontWeight: 600 }}
-                  dangerouslySetInnerHTML={{
-                    __html: displayOrganisation.replace(
-                      /<em[^>]*>/g,
-                      '<em style="background-color: transparent;">'
-                    ),
-                  }}
+                  dangerouslySetInnerHTML={{ __html: displayOrganisation }}
                 />
               )}
             </li>
@@ -95,12 +80,7 @@ const ResultViewList = ({
               <span
                 className="sui-result__value"
                 style={{ fontSize: 16, fontWeight: 600 }}
-                dangerouslySetInnerHTML={{
-                  __html: displayCourseOfStudy.replace(
-                    /<em[^>]*>/g,
-                    '<em style="background-color: transparent;">'
-                  ),
-                }}
+                dangerouslySetInnerHTML={{ __html: displayCourseOfStudy }}
               />
             </li>
           )}
@@ -110,12 +90,7 @@ const ResultViewList = ({
               <span
                 className="sui-result__value"
                 style={{ fontSize: 16, fontWeight: 600 }}
-                dangerouslySetInnerHTML={{
-                  __html: displaySchool.replace(
-                    /<em[^>]*>/g,
-                    '<em style="background-color: transparent;">'
-                  ),
-                }}
+                dangerouslySetInnerHTML={{ __html: displaySchool }}
               />
             </li>
           )}
@@ -125,12 +100,7 @@ const ResultViewList = ({
               <span
                 className="sui-result__biography"
                 style={{ fontSize: 14 }}
-                dangerouslySetInnerHTML={{
-                  __html: displayFullBio.replace(
-                    /<em[^>]*>/g,
-                    '<em style="background-color: transparent;">'
-                  ),
-                }}
+                dangerouslySetInnerHTML={{ __html: displayFullBio }}
               />
             </li>
           )}

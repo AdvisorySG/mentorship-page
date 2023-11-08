@@ -62,11 +62,7 @@ const fillHighlights = (snippet: string | null, full: string): string => {
   }
 
   const snippetRaw = htmlToText(snippet, { wordwrap: false });
-  const styledSnippet = snippet.replace(
-    /<em>/g,
-    '<em style= "font-weight: bold; color: #375ae6; font-style: normal; background-color: #edf6fe; padding: 3px; ">'
-  );
-  return full.replace(snippetRaw, styledSnippet);
+  return full.replace(snippetRaw, snippet);
 };
 
 const COLORS = [
@@ -112,7 +108,7 @@ const ResultView = ({ result }: { result: SearchResult }) => {
   } = result;
 
   const displayName =
-    name && name.raw ? fillHighlights(name.snippet, name.raw.bold()) : null;
+    name && name.raw ? fillHighlights(name.snippet, name.raw) : null;
 
   const thumbnailImageUrl =
     thumbnail_image_url && thumbnail_image_url.raw
