@@ -89,7 +89,7 @@ const ResponsiveDrawer = (props: Props) => {
   };
 
   return (
-    <Box sx={{ display: "flex", paddingBottom: "70px" }}>
+    <Box sx={{ display: "flex" }}>
       <AppBar style={{ background: "white" }} className="toolbar-component">
         <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
           <Box style={{ display: "flex", justifyContent: "flex-start" }}>
