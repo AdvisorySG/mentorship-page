@@ -89,8 +89,11 @@ const ResponsiveDrawer = (props: Props) => {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <AppBar style={{ background: "white" }} className="toolbar-component">
+    <Box sx={{ display: "flex", paddingBottom: "70px" }}>
+      <AppBar
+        style={{ background: "white", boxShadow: "none" }}
+        className="toolbar-component"
+      >
         <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
           <Box style={{ display: "flex", justifyContent: "flex-start" }}>
             <a href={URL_MAIN} target="_blank" rel="noopener noreferrer">
@@ -101,16 +104,49 @@ const ResponsiveDrawer = (props: Props) => {
             style={{ justifyContent: "flex-end" }}
             sx={{ display: { xs: "none", sm: "flex", md: "flex" } }}
           >
-            <Button component="a" href={URL_HOME}>
+            <Button
+              component="a"
+              href={URL_HOME} // You can use 'outlined' for an outlined button
+              sx={{
+                color: "black",
+                fontWeight: "700",
+                margin: "0 1.5rem",
+                whiteSpace: "nowrap",
+              }}
+            >
               Home
             </Button>
-            <Button component="a" href={URL_MENTORS}>
+            <Button
+              component="a"
+              href={URL_MENTORS}
+              sx={{
+                color: "black",
+                fontWeight: "700",
+                whiteSpace: "nowrap",
+              }}
+            >
               Find A Mentor
             </Button>
-            <Button component="a" href={URL_FAQ}>
+            <Button
+              component="a"
+              href={URL_FAQ}
+              sx={{
+                color: "black",
+                fontWeight: "700",
+                whiteSpace: "nowrap",
+              }}
+            >
               FAQ
             </Button>
-            <Button component="a" href={URL_APPLY}>
+            <Button
+              component="a"
+              href={URL_APPLY}
+              sx={{
+                color: "black",
+                fontWeight: "700",
+                whiteSpace: "nowrap",
+              }}
+            >
               Apply Now
             </Button>
           </Box>

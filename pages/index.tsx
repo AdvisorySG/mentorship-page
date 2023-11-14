@@ -18,6 +18,9 @@ import {
   advisoryMentorshipPartners,
 } from "../components/assets";
 import Header from "../components/Header";
+import Logo from "../components/Logo";
+import "../styles/Header.css";
+import "../styles/App.css";
 
 const testimonials = [
   {
@@ -72,35 +75,55 @@ const Index = () => {
     <div className="container">
       <Header />
       <Box component="main">
-        <div className="header-bottom">
-          <img
-            className="header-mentorship-logo"
-            src={advisoryMentorshipLogo}
-            alt="Advisory Mentorship Programme"
-          />
-          <img
-            id="partners"
-            className="header-mentorship-partners"
-            src={advisoryMentorshipPartners}
-            alt="Advisory Mentorship Programme Partners"
-          />
-          <div className="header-mentorship-intro" id="aboutus">
-            <p>
-              The Advisory Mentorship Programme pairs students with working
-              professionals in their fields of interest on a 1-1 basis. Over the
-              course of four months, mentors give an hour each month to meet
-              with their mentee. Over the past 2 years, the programme delivered
-              over 8,000 hours of mentorship to 2,211 students with the
-              involvement of 1,826 mentors. This year, we’re excited to share
-              that over 1,600 working professionals and 27 mentorship partners
-              whose fields of expertise range across 48 different industries
-              have come aboard in support of this programme.
-            </p>
+        <div className="header-bottom container">
+          <div className="logo-and-intro-container container">
+            <img
+              className="header-mentorship-logo container"
+              src={advisoryMentorshipLogo}
+              alt="Advisory Mentorship Programme"
+            />
+            <div className="header-mentorship-intro container" id="aboutus">
+              <p>
+                The Advisory Mentorship Programme pairs students with working
+                professionals in their fields of interest on a 1-1 basis. Over
+                the course of four months, mentors give an hour each month to
+                meet with their mentee.
+              </p>
+              <h2></h2>
+            </div>
           </div>
+          <div className="stats">
+            <div className="hours">
+              <h2>8,000</h2>
+              <p>Hours of Mentorship</p>
+            </div>
+            <div className="students">
+              <h2>2,211</h2>
+              <p>Students</p>
+            </div>
+            <div className="mentors">
+              <h2>1,826</h2>
+              <p>Mentors</p>
+            </div>
+            <div className="industries">
+              <h2>48</h2>
+              <p>Industries</p>
+            </div>
+          </div>
+          <h4
+            style={{
+              color: "var(--brand-color)",
+              textAlign: "left",
+              paddingLeft: "10px",
+            }}
+          >
+            Our Partner Organisations:
+          </h4>
+          <Logo />
         </div>
       </Box>
       <div
-        className="canvas"
+        className="canvas container"
         style={{
           width: isSmall ? "90%" : "80%",
           marginLeft: "auto",
@@ -108,7 +131,7 @@ const Index = () => {
           paddingBottom: "20px",
         }}
       >
-        <p className="disclaimer">
+        <p className="disclaimer container">
           <small>
             The privacy and safety of our mentors is of utmost priority to
             Advisory. Any attempt to approach or contact our mentors outside of
@@ -131,6 +154,7 @@ const Index = () => {
           variant="contained"
           sx={{ textTransform: "none" }}
           style={{
+            alignItems: "center",
             backgroundColor: "#D9D9D9",
             color: "#000000",
           }}
@@ -185,7 +209,7 @@ const Index = () => {
                         alt={step.label2}
                       />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={9}>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       Curabitur et faucibus tortor.
                     </Grid>
