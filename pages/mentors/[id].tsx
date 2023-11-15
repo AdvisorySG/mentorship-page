@@ -22,6 +22,7 @@ import Tab from "@mui/material/Tab";
 
 import ResultView from "../../components/ResultView";
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import "../../styles/App.css";
@@ -145,7 +146,9 @@ const App = () => {
 
   return (
     <div className="results" id="mentors">
-      <Header />
+      <div className="header">
+        <Header />
+      </div>
       <SearchProvider config={configurationOptions}>
         <div className="App">
           <Layout
@@ -237,6 +240,7 @@ const App = () => {
           />
         </div>
       </SearchProvider>
+      <Footer />
     </div>
   );
 };

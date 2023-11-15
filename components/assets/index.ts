@@ -30,3 +30,5 @@ export const sgtech = "/logos/sgtech.png";
 export const ttsh = "/logos/ttsh.png";
 export const we = "/logos/we.png";
 export const google = "/logos/google.png";
+
+export const footerLogo = "/footer-logo.png";

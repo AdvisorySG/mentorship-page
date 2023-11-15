@@ -13,12 +13,10 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 
-import {
-  advisoryMentorshipLogo,
-  advisoryMentorshipPartners,
-} from "../components/assets";
+import { advisoryMentorshipLogo } from "../components/assets";
 import Header from "../components/Header";
 import Logo from "../components/Logo";
+import Footer from "../components/Footer.tsx";
 import "../styles/Header.css";
 import "../styles/App.css";
 
@@ -73,9 +71,9 @@ const Index = () => {
 
   return (
     <div className="container">
-      <Header />
       <Box component="main">
         <div className="header-bottom container">
+          <Header />
           <div className="logo-and-intro-container container">
             <img
               className="header-mentorship-logo container"
@@ -87,30 +85,31 @@ const Index = () => {
                 The Advisory Mentorship Programme pairs students with working
                 professionals in their fields of interest on a 1-1 basis. Over
                 the course of four months, mentors give an hour each month to
-                meet with their mentee.
+                meet with their mentee and give them valuable insights on their
+                industry.
               </p>
               <h2></h2>
             </div>
           </div>
           <div className="stats">
             <div className="hours">
-              <h2>8,000</h2>
+              <h1>8,000</h1>
               <p>Hours of Mentorship</p>
             </div>
             <div className="students">
-              <h2>2,211</h2>
+              <h1>2,211</h1>
               <p>Students</p>
             </div>
             <div className="mentors">
-              <h2>1,826</h2>
+              <h1>1,826</h1>
               <p>Mentors</p>
             </div>
             <div className="industries">
-              <h2>48</h2>
+              <h1>48</h1>
               <p>Industries</p>
             </div>
           </div>
-          <h4
+          <h3
             style={{
               color: "var(--brand-color)",
               textAlign: "left",
@@ -118,141 +117,151 @@ const Index = () => {
             }}
           >
             Our Partner Organisations:
-          </h4>
+          </h3>
           <Logo />
         </div>
-      </Box>
-      <div
-        className="canvas container"
-        style={{
-          width: isSmall ? "90%" : "80%",
-          marginLeft: "auto",
-          marginRight: "auto",
-          paddingBottom: "20px",
-        }}
-      >
-        <p className="disclaimer container">
-          <small>
-            The privacy and safety of our mentors is of utmost priority to
-            Advisory. Any attempt to approach or contact our mentors outside of
-            the parameters of the Advisory Mentorship Programme—whilst claiming
-            affiliation to Advisory, or misrepresenting a relationship to
-            Advisory—will be treated as misrepresentation, even fraudulent
-            misrepresentation, as considered under the Misrepresentation Act.
-            Advisory will take legal action against any individuals or
-            organisations who attempt to deceive, harass, or otherwise request
-            dishonest assistance from our mentors.
-          </small>
-        </p>
-
-        <h2>What can you expect?</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et
-          faucibus tortor.{" "}
-        </p>
-        <Button
-          variant="contained"
-          sx={{ textTransform: "none" }}
+        <div
+          className="canvas container"
           style={{
+            width: "100%",
+            maxWidth: isSmall ? "90%" : "80%",
+            margin: "auto",
+            paddingBottom: "20px",
+            flexDirection: "column",
             alignItems: "center",
-            backgroundColor: "#D9D9D9",
-            color: "#000000",
+            boxSizing: "border-box",
+            textAlign: "center",
+            justifyContent: "center", // Center horizontally
           }}
         >
-          Mentors' Profiles
-        </Button>
-        <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
-          <Paper
-            square
-            elevation={0}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              height: 50,
-              pl: 2,
-              bgcolor: "background.default",
-            }}
+          <p className="disclaimer container">
+            <small>
+              The privacy and safety of our mentors is of utmost priority to
+              Advisory. Any attempt to approach or contact our mentors outside
+              of the parameters of the Advisory Mentorship Programme—whilst
+              claiming affiliation to Advisory, or misrepresenting a
+              relationship to Advisory—will be treated as misrepresentation,
+              even fraudulent misrepresentation, as considered under the
+              Misrepresentation Act. Advisory will take legal action against any
+              individuals or organisations who attempt to deceive, harass, or
+              otherwise request dishonest assistance from our mentors.
+            </small>
+          </p>
+          <div className="testimonial-header container">
+            <h2>What can you expect?</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+              et faucibus tortor.{" "}
+            </p>
+            <Button
+              variant="contained"
+              sx={{ textTransform: "none" }}
+              style={{
+                alignItems: "left",
+                backgroundColor: "#D9D9D9",
+                color: "#000000",
+              }}
+            >
+              Mentors' Profiles
+            </Button>
+          </div>
+          <Box
+            sx={{ maxWidth: 400, flexGrow: 1, margin: "auto" }}
+            className="testimonal-carousel container"
           >
-            <Typography>{images[activeStep].index}</Typography>
-          </Paper>
-          <AutoPlaySwipeableViews
-            axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-            index={activeStep}
-            onChangeIndex={handleStepChange}
-            enableMouseEvents
-          >
-            {images.map((step, index) => (
-              <div key={step.index}>
-                {Math.abs(activeStep - index) <= 2 ? (
-                  <Grid container sx={{ width: "100%" }} spacing={6}>
-                    <Grid item xs={6}>
-                      <Box
-                        component="img"
-                        sx={{
-                          height: "100%",
-                          overflow: "hidden",
-                          width: "100%",
-                        }}
-                        src={"/mentor-thumbnail.png"}
-                        alt={step.label1}
-                      />
+            <Paper
+              square
+              elevation={0}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                height: 50,
+                pl: 2,
+                bgcolor: "background.default",
+              }}
+            >
+              <Typography>{images[activeStep].index}</Typography>
+            </Paper>
+            <AutoPlaySwipeableViews
+              axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+              index={activeStep}
+              onChangeIndex={handleStepChange}
+              enableMouseEvents
+            >
+              {images.map((step, index) => (
+                <div key={step.index}>
+                  {Math.abs(activeStep - index) <= 2 ? (
+                    <Grid container sx={{ width: "100%" }} spacing={6}>
+                      <Grid item xs={6}>
+                        <Box
+                          component="img"
+                          sx={{
+                            height: "100%",
+                            overflow: "hidden",
+                            width: "100%",
+                          }}
+                          src={"/mentor-thumbnail.png"}
+                          alt={step.label1}
+                        />
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Box
+                          component="img"
+                          sx={{
+                            height: "100%",
+                            overflow: "hidden",
+                            width: "100%",
+                          }}
+                          src={"/mentor-thumbnail.png"}
+                          alt={step.label2}
+                        />
+                      </Grid>
+                      <Grid item xs={9}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Curabitur et faucibus tortor.
+                      </Grid>
                     </Grid>
-                    <Grid item xs={6}>
-                      <Box
-                        component="img"
-                        sx={{
-                          height: "100%",
-                          overflow: "hidden",
-                          width: "100%",
-                        }}
-                        src={"/mentor-thumbnail.png"}
-                        alt={step.label2}
-                      />
-                    </Grid>
-                    <Grid item xs={9}>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Curabitur et faucibus tortor.
-                    </Grid>
-                  </Grid>
-                ) : null}
-              </div>
-            ))}
-          </AutoPlaySwipeableViews>
-          <MobileStepper
-            steps={maxSteps}
-            position="static"
-            activeStep={activeStep}
-            nextButton={
-              <Button
-                size="small"
-                onClick={handleNext}
-                disabled={activeStep === maxSteps - 1}
-              >
-                Next
-                {theme.direction === "rtl" ? (
-                  <KeyboardArrowLeft />
-                ) : (
-                  <KeyboardArrowRight />
-                )}
-              </Button>
-            }
-            backButton={
-              <Button
-                size="small"
-                onClick={handleBack}
-                disabled={activeStep === 0}
-              >
-                {theme.direction === "rtl" ? (
-                  <KeyboardArrowRight />
-                ) : (
-                  <KeyboardArrowLeft />
-                )}
-                Back
-              </Button>
-            }
-          />
-        </Box>
-      </div>
+                  ) : null}
+                </div>
+              ))}
+            </AutoPlaySwipeableViews>
+            <MobileStepper
+              steps={maxSteps}
+              position="static"
+              activeStep={activeStep}
+              nextButton={
+                <Button
+                  size="small"
+                  onClick={handleNext}
+                  disabled={activeStep === maxSteps - 1}
+                >
+                  Next
+                  {theme.direction === "rtl" ? (
+                    <KeyboardArrowLeft />
+                  ) : (
+                    <KeyboardArrowRight />
+                  )}
+                </Button>
+              }
+              backButton={
+                <Button
+                  size="small"
+                  onClick={handleBack}
+                  disabled={activeStep === 0}
+                >
+                  {theme.direction === "rtl" ? (
+                    <KeyboardArrowRight />
+                  ) : (
+                    <KeyboardArrowLeft />
+                  )}
+                  Back
+                </Button>
+              }
+            />
+          </Box>
+        </div>
+        <Footer />
+      </Box>
     </div>
   );
 };

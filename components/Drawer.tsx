@@ -2,25 +2,17 @@ import React from "react";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import LaunchIcon from "@mui/icons-material/Launch";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
+import MenuIcon from "@mui/icons-material/Menu";
 
 import { advisoryLogo } from "./assets";
 
 const drawerWidth = 240;
-
-interface Props {
-  window?: () => Window;
-}
 
 const URL_APPLY = "/apply";
 const URL_HOME = "/";
@@ -28,68 +20,92 @@ const URL_MAIN = "https://advisory.sg/";
 const URL_FAQ = "/faq";
 const URL_MENTORS = "/mentors/0";
 
-const ResponsiveDrawer = (props: Props) => {
-  const { window } = props;
+const ResponsiveDrawer = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const LinkList = () => {
-    return (
-      <div>
-        <List>
-          <ListItem disablePadding>
-            <ListItemButton
-              component="a"
-              href={URL_HOME}
-              onClick={handleDrawerToggle}
-            >
-              <ListItemText primary="Home" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton
-              component="a"
-              href={URL_MENTORS}
-              onClick={handleDrawerToggle}
-            >
-              <ListItemText primary="Find A Mentor" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton
-              component="a"
-              href={URL_FAQ}
-              onClick={handleDrawerToggle}
-            >
-              <ListItemText primary="FAQ" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton
-              component="a"
-              href="https://advisorysg.typeform.com/to/Z1MHxaFj#source=mentorsite"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ListItemText
-                primary="Apply Now"
-                style={{ flexGrow: "0", marginRight: "0.5rem" }}
-              />
-              <ListItemIcon>
-                <LaunchIcon />
-              </ListItemIcon>
-            </ListItemButton>
-          </ListItem>
-        </List>
-      </div>
-    );
-  };
+  const LinkList = () => (
+    <div>
+      <List>
+        <ListItem disablePadding>
+          <a
+            href={URL_HOME}
+            onClick={handleDrawerToggle}
+            style={{
+              color: "black",
+              fontWeight: "700",
+              whiteSpace: "nowrap",
+              marginRight: "1rem",
+              cursor: "pointer",
+              textDecoration: "none", // Remove underline
+              display: "inline-block", // Ensure proper spacing
+            }}
+          >
+            Home
+          </a>
+        </ListItem>
+        <ListItem disablePadding>
+          <a
+            href={URL_MENTORS}
+            onClick={handleDrawerToggle}
+            style={{
+              color: "black",
+              fontWeight: "700",
+              whiteSpace: "nowrap",
+              marginRight: "1rem",
+              cursor: "pointer",
+              textDecoration: "none", // Remove underline
+              display: "inline-block", // Ensure proper spacing
+            }}
+          >
+            Find A Mentor
+          </a>
+        </ListItem>
+        <ListItem disablePadding>
+          <a
+            href={URL_FAQ}
+            onClick={handleDrawerToggle}
+            style={{
+              color: "black",
+              fontWeight: "700",
+              whiteSpace: "nowrap",
+              marginRight: "1rem",
+              cursor: "pointer",
+              textDecoration: "none", // Remove underline
+              display: "inline-block", // Ensure proper spacing
+            }}
+          >
+            FAQ
+          </a>
+        </ListItem>
+        <ListItem disablePadding>
+          <a
+            href="https://advisorysg.typeform.com/to/Z1MHxaFj#source=mentorsite"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              color: "black",
+              fontWeight: "700",
+              whiteSpace: "nowrap",
+              marginRight: "1rem",
+              cursor: "pointer",
+              textDecoration: "none", // Remove underline
+              display: "inline-block", // Ensure proper spacing
+            }}
+          >
+            Apply Now
+            <LaunchIcon style={{ marginLeft: "0.5rem" }} />
+          </a>
+        </ListItem>
+      </List>
+    </div>
+  );
 
   return (
-    <Box sx={{ display: "flex", paddingBottom: "70px" }}>
+    <Box sx={{ display: "flex", paddingBottom: "0px" }}>
       <AppBar
         style={{ background: "white", boxShadow: "none" }}
         className="toolbar-component"
@@ -104,51 +120,62 @@ const ResponsiveDrawer = (props: Props) => {
             style={{ justifyContent: "flex-end" }}
             sx={{ display: { xs: "none", sm: "flex", md: "flex" } }}
           >
-            <Button
-              component="a"
-              href={URL_HOME} // You can use 'outlined' for an outlined button
-              sx={{
+            <a
+              href={URL_HOME}
+              style={{
                 color: "black",
                 fontWeight: "700",
-                margin: "0 1.5rem",
                 whiteSpace: "nowrap",
+                marginRight: "1rem",
+                cursor: "pointer",
+                textDecoration: "none", // Remove underline
               }}
+              onClick={handleDrawerToggle}
             >
               Home
-            </Button>
-            <Button
-              component="a"
+            </a>
+            <a
               href={URL_MENTORS}
-              sx={{
+              style={{
                 color: "black",
                 fontWeight: "700",
                 whiteSpace: "nowrap",
+                marginRight: "1rem",
+                cursor: "pointer",
+                textDecoration: "none", // Remove underline
               }}
+              onClick={handleDrawerToggle}
             >
               Find A Mentor
-            </Button>
-            <Button
-              component="a"
+            </a>
+            <a
               href={URL_FAQ}
-              sx={{
+              style={{
                 color: "black",
                 fontWeight: "700",
                 whiteSpace: "nowrap",
+                marginRight: "1rem",
+                cursor: "pointer",
+                textDecoration: "none", // Remove underline
               }}
+              onClick={handleDrawerToggle}
             >
               FAQ
-            </Button>
-            <Button
-              component="a"
+            </a>
+            <a
               href={URL_APPLY}
-              sx={{
+              style={{
                 color: "black",
                 fontWeight: "700",
                 whiteSpace: "nowrap",
+                marginRight: "1rem",
+                cursor: "pointer",
+                textDecoration: "none", // Remove underline
               }}
+              onClick={handleDrawerToggle}
             >
               Apply Now
-            </Button>
+            </a>
           </Box>
           <IconButton
             color="inherit"
@@ -166,9 +193,6 @@ const ResponsiveDrawer = (props: Props) => {
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
       >
         <Drawer
-          container={
-            window !== undefined ? () => window().document.body : undefined
-          }
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
