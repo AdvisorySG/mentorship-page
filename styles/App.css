@@ -37,13 +37,17 @@ body {
   text-rendering: optimizeLegibility;
   word-break: break-word;
   position: relative;
+  box-sizing: border-box;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
-  height: 100%;
+  align-items: center;
   background-color: white;
   width: 100%;
+  flex: 1;
 }
 
 .canvas {
@@ -64,6 +68,7 @@ body {
 
 .results {
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .results-text {
@@ -189,13 +194,24 @@ body {
 }
 
 .header {
+  text-align: center;
   max-width: 70rem;
+  position: inherit;
+  text-align: justify;
+  text-align-last: left;
   max-height: var(--navbar-height);
+  align-items: center;
   width: 100%;
-  margin: auto;
+  margin: 0 auto;
+  overflow: hidden; /* Ensure no overflow */
+  box-sizing: border-box;
 }
 
 #footer {
   display: block;
-  box-sizing: content-box;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
 }

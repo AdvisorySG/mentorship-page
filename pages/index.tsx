@@ -71,9 +71,11 @@ const Index = () => {
 
   return (
     <div className="container">
-      <Box component="main">
-        <div className="header-bottom container">
+      <Box component="main" display="flex" flexDirection="column">
+        <div className="header">
           <Header />
+        </div>
+        <div className="header-bottom container">
           <div className="logo-and-intro-container container">
             <img
               className="header-mentorship-logo container"

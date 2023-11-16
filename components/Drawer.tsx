@@ -105,9 +105,9 @@ const ResponsiveDrawer = () => {
   );
 
   return (
-    <Box sx={{ display: "flex", paddingBottom: "0px" }}>
+    <Box sx={{ display: "flex", paddingBottom: "70px" }}>
       <AppBar
-        style={{ background: "white", boxShadow: "none" }}
+        style={{ background: "white", boxShadow: "none", position: "sticky" }}
         className="toolbar-component"
       >
         <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
@@ -202,6 +202,7 @@ const ResponsiveDrawer = () => {
           sx={{
             display: { xs: "block", sm: "none" },
             "& .MuiDrawer-paper": {
+              position: "inherit",
               boxSizing: "border-box",
               width: drawerWidth,
             },
