@@ -12,16 +12,18 @@ const Footer = () => {
       <div className="w-screen max-w-screen-lg mx-auto grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 justify-items-center pt-16 px-16">
         <div
           className="col-auto max-w-2xl flex flex-col sm:flex-row sm:col-span-3 md:col-span-2 md:flex-col lg:flex-row items-center"
-          style={{ minWidth: "25rem" }}
+          style={{ maxWidth: "25rem" }}
         >
           <img className="h-60 m-auto" src={footerLogo} alt="Footer Logo" />
-          <p
-            className="text-neutral-300 text-center sm:text-left md:text-center lg:text-left"
-            id="desc"
-          >
-            Advisory is a fully youth-led non-profit dedicated to empowering
-            young Singaporeans to make informed decisions about their futures.
-          </p>
+          <div style={{ width: "20rem" }}>
+            <p
+              className="text-neutral-300 text-center sm:text-left md:text-center lg:text-left"
+              id="desc"
+            >
+              Advisory is a fully youth-led non-profit dedicated to empowering
+              young Singaporeans to make informed decisions about their futures.
+            </p>
+          </div>
         </div>
         <div
           className="text-center sm:text-left md:text-center lg:text-left"
