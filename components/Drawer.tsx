@@ -71,13 +71,20 @@ const ResponsiveDrawer = () => {
   );
 
   const LinkListMobile = () => (
-    <List style={{ textAlign: "right" }}>
-      <ListItem disablePadding>
+    <List
+      style={{
+        display: "block",
+        flexDirection: "column",
+        textAlign: "right",
+        paddingLeft: "62vw",
+      }}
+    >
+      <ListItem disablePadding style={{ paddingLeft: "60px" }}>
         <a href={URL_HOME} onClick={handleDrawerToggle} style={mobileLinkStyle}>
           Home
         </a>
       </ListItem>
-      <ListItem disablePadding>
+      <ListItem disablePadding style={{ paddingRight: "70px" }}>
         <a
           href={URL_MENTORS}
           onClick={handleDrawerToggle}
@@ -86,12 +93,12 @@ const ResponsiveDrawer = () => {
           Find A Mentor
         </a>
       </ListItem>
-      <ListItem disablePadding>
+      <ListItem disablePadding style={{ paddingLeft: "70px" }}>
         <a href={URL_FAQ} onClick={handleDrawerToggle} style={mobileLinkStyle}>
           FAQ
         </a>
       </ListItem>
-      <ListItem disablePadding>
+      <ListItem disablePadding style={{ paddingLeft: "20px" }}>
         <a
           href={URL_APPLY}
           onClick={handleDrawerToggle}
@@ -185,11 +192,8 @@ const mobileLinkStyle = {
   whiteSpace: "nowrap",
   cursor: "pointer",
   textDecoration: "none",
-  margin: "auto",
   padding: "0.5rem",
-  minWidth: "100px", // Adjust the value based on your needs
-  display: "inline-block",
-  textAlign: "right",
+  margin: "0px",
 };
 
 export default ResponsiveDrawer;

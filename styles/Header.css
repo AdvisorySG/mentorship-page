@@ -70,9 +70,10 @@
 }
 
 .header-mentorship-logo {
-  max-width: 40rem; /* Ensure the logo doesn't exceed its container */
+  max-width: 30rem; /* Ensure the logo doesn't exceed its container */
   padding-left: 0px;
   margin-left: 0px;
+  flex: 1;
 }
 
 .header-mentorship-intro {
@@ -80,6 +81,7 @@
   padding: 10px;
   align-items: center;
   max-width: 100%;
+  flex: 1;
 }
 
 @media only screen and (max-width: 600px) {
