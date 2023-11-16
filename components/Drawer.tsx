@@ -4,15 +4,15 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import LaunchIcon from "@mui/icons-material/Launch";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Toolbar from "@mui/material/Toolbar";
 import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close"; // Import CloseIcon
 
 import { advisoryLogo } from "./assets";
 
-const drawerWidth = 240;
+const drawerWidth = 600;
 
 const URL_APPLY = "/apply";
 const URL_HOME = "/";
@@ -27,87 +27,91 @@ const ResponsiveDrawer = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const LinkList = () => (
-    <div>
-      <List>
-        <ListItem disablePadding>
-          <a
-            href={URL_HOME}
-            onClick={handleDrawerToggle}
-            style={{
-              color: "black",
-              fontWeight: "700",
-              whiteSpace: "nowrap",
-              marginRight: "1rem",
-              cursor: "pointer",
-              textDecoration: "none", // Remove underline
-              display: "inline-block", // Ensure proper spacing
-            }}
-          >
-            Home
-          </a>
-        </ListItem>
-        <ListItem disablePadding>
-          <a
-            href={URL_MENTORS}
-            onClick={handleDrawerToggle}
-            style={{
-              color: "black",
-              fontWeight: "700",
-              whiteSpace: "nowrap",
-              marginRight: "1rem",
-              cursor: "pointer",
-              textDecoration: "none", // Remove underline
-              display: "inline-block", // Ensure proper spacing
-            }}
-          >
-            Find A Mentor
-          </a>
-        </ListItem>
-        <ListItem disablePadding>
-          <a
-            href={URL_FAQ}
-            onClick={handleDrawerToggle}
-            style={{
-              color: "black",
-              fontWeight: "700",
-              whiteSpace: "nowrap",
-              marginRight: "1rem",
-              cursor: "pointer",
-              textDecoration: "none", // Remove underline
-              display: "inline-block", // Ensure proper spacing
-            }}
-          >
-            FAQ
-          </a>
-        </ListItem>
-        <ListItem disablePadding>
-          <a
-            href="https://advisorysg.typeform.com/to/Z1MHxaFj#source=mentorsite"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              color: "black",
-              fontWeight: "700",
-              whiteSpace: "nowrap",
-              marginRight: "1rem",
-              cursor: "pointer",
-              textDecoration: "none", // Remove underline
-              display: "inline-block", // Ensure proper spacing
-            }}
-          >
-            Apply Now
-            <LaunchIcon style={{ marginLeft: "0.5rem" }} />
-          </a>
-        </ListItem>
-      </List>
-    </div>
+  const LinkListDesktop = () => (
+    <List
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-end",
+      }}
+    >
+      <ListItem disablePadding>
+        <a
+          href={URL_HOME}
+          onClick={handleDrawerToggle}
+          style={desktopLinkStyle}
+        >
+          Home
+        </a>
+      </ListItem>
+      <ListItem disablePadding>
+        <a
+          href={URL_MENTORS}
+          onClick={handleDrawerToggle}
+          style={desktopLinkStyle}
+        >
+          Find A Mentor
+        </a>
+      </ListItem>
+      <ListItem disablePadding>
+        <a href={URL_FAQ} onClick={handleDrawerToggle} style={desktopLinkStyle}>
+          FAQ
+        </a>
+      </ListItem>
+      <ListItem disablePadding>
+        <a
+          href={URL_APPLY}
+          onClick={handleDrawerToggle}
+          style={desktopLinkStyle}
+        >
+          Apply Now
+        </a>
+      </ListItem>
+    </List>
+  );
+
+  const LinkListMobile = () => (
+    <List style={{ textAlign: "right" }}>
+      <ListItem disablePadding>
+        <a href={URL_HOME} onClick={handleDrawerToggle} style={mobileLinkStyle}>
+          Home
+        </a>
+      </ListItem>
+      <ListItem disablePadding>
+        <a
+          href={URL_MENTORS}
+          onClick={handleDrawerToggle}
+          style={mobileLinkStyle}
+        >
+          Find A Mentor
+        </a>
+      </ListItem>
+      <ListItem disablePadding>
+        <a href={URL_FAQ} onClick={handleDrawerToggle} style={mobileLinkStyle}>
+          FAQ
+        </a>
+      </ListItem>
+      <ListItem disablePadding>
+        <a
+          href={URL_APPLY}
+          onClick={handleDrawerToggle}
+          style={mobileLinkStyle}
+        >
+          Apply Now
+        </a>
+      </ListItem>
+    </List>
   );
 
   return (
     <Box sx={{ display: "flex", paddingBottom: "70px" }}>
       <AppBar
-        style={{ background: "white", boxShadow: "none", position: "sticky" }}
+        style={{
+          background: "white",
+          boxShadow: "none",
+          position: "sticky",
+          zIndex: 1300,
+        }}
         className="toolbar-component"
       >
         <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
@@ -120,62 +124,7 @@ const ResponsiveDrawer = () => {
             style={{ justifyContent: "flex-end" }}
             sx={{ display: { xs: "none", sm: "flex", md: "flex" } }}
           >
-            <a
-              href={URL_HOME}
-              style={{
-                color: "black",
-                fontWeight: "700",
-                whiteSpace: "nowrap",
-                marginRight: "1rem",
-                cursor: "pointer",
-                textDecoration: "none", // Remove underline
-              }}
-              onClick={handleDrawerToggle}
-            >
-              Home
-            </a>
-            <a
-              href={URL_MENTORS}
-              style={{
-                color: "black",
-                fontWeight: "700",
-                whiteSpace: "nowrap",
-                marginRight: "1rem",
-                cursor: "pointer",
-                textDecoration: "none", // Remove underline
-              }}
-              onClick={handleDrawerToggle}
-            >
-              Find A Mentor
-            </a>
-            <a
-              href={URL_FAQ}
-              style={{
-                color: "black",
-                fontWeight: "700",
-                whiteSpace: "nowrap",
-                marginRight: "1rem",
-                cursor: "pointer",
-                textDecoration: "none", // Remove underline
-              }}
-              onClick={handleDrawerToggle}
-            >
-              FAQ
-            </a>
-            <a
-              href={URL_APPLY}
-              style={{
-                color: "black",
-                fontWeight: "700",
-                whiteSpace: "nowrap",
-                marginRight: "1rem",
-                cursor: "pointer",
-                textDecoration: "none", // Remove underline
-              }}
-              onClick={handleDrawerToggle}
-            >
-              Apply Now
-            </a>
+            <LinkListDesktop />
           </Box>
           <IconButton
             color="inherit"
@@ -184,15 +133,20 @@ const ResponsiveDrawer = () => {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}
           >
-            <MenuIcon style={{ color: "black" }} />
+            {mobileOpen ? (
+              <CloseIcon style={{ color: "black" }} />
+            ) : (
+              <MenuIcon style={{ color: "black" }} />
+            )}
           </IconButton>
         </Toolbar>
       </AppBar>
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 }, zIndex: 1000 }}
       >
         <Drawer
+          anchor="top"
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
@@ -205,14 +159,37 @@ const ResponsiveDrawer = () => {
               position: "inherit",
               boxSizing: "border-box",
               width: drawerWidth,
+              paddingTop: "70px",
             },
           }}
         >
-          <LinkList />
+          <LinkListMobile />
         </Drawer>
       </Box>
     </Box>
   );
+};
+
+const desktopLinkStyle = {
+  color: "black",
+  fontWeight: "700",
+  whiteSpace: "nowrap",
+  margin: "0.5rem",
+  cursor: "pointer",
+  textDecoration: "none",
+};
+
+const mobileLinkStyle = {
+  color: "black",
+  fontWeight: "700",
+  whiteSpace: "nowrap",
+  cursor: "pointer",
+  textDecoration: "none",
+  margin: "auto",
+  padding: "0.5rem",
+  minWidth: "100px", // Adjust the value based on your needs
+  display: "inline-block",
+  textAlign: "right",
 };
 
 export default ResponsiveDrawer;
