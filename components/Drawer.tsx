@@ -20,89 +20,76 @@ const URL_MAIN = "https://advisory.sg/";
 const URL_FAQ = "/faq";
 const URL_MENTORS = "/mentors/0";
 
+const desktopLinkStyle = {
+  color: "black",
+  fontWeight: "700",
+  whiteSpace: "nowrap",
+  margin: "0.5rem",
+  cursor: "pointer",
+  textDecoration: "none",
+};
+
+const mobileLinkStyle = {
+  color: "black",
+  fontWeight: "700",
+  whiteSpace: "nowrap",
+  cursor: "pointer",
+  textDecoration: "none",
+  padding: "0.5rem",
+  margin: "0px",
+};
+
 const ResponsiveDrawer = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [isMobile, setIsMobile] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+    setIsMobile(!mobileOpen);
   };
 
-  const LinkListDesktop = () => (
+  const LinkList = () => (
     <List
       style={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "flex-end",
+        display: isMobile ? "flex" : "flex",
+        flexDirection: isMobile ? "column" : "row",
+        justifyContent: isMobile ? "flex-start" : "flex-start",
+        textAlign: isMobile ? "right" : "right",
+        paddingLeft: isMobile ? "62vw" : 0,
       }}
     >
-      <ListItem disablePadding>
+      <ListItem disablePadding style={{ paddingLeft: isMobile ? "60px" : 0 }}>
         <a
           href={URL_HOME}
           onClick={handleDrawerToggle}
-          style={desktopLinkStyle}
+          style={isMobile ? mobileLinkStyle : desktopLinkStyle}
         >
           Home
         </a>
       </ListItem>
-      <ListItem disablePadding>
+      <ListItem disablePadding style={{ paddingLeft: isMobile ? 0 : 0 }}>
         <a
           href={URL_MENTORS}
           onClick={handleDrawerToggle}
-          style={desktopLinkStyle}
+          style={isMobile ? mobileLinkStyle : desktopLinkStyle}
         >
           Find A Mentor
         </a>
       </ListItem>
-      <ListItem disablePadding>
-        <a href={URL_FAQ} onClick={handleDrawerToggle} style={desktopLinkStyle}>
+      <ListItem disablePadding style={{ paddingLeft: isMobile ? "70px" : 0 }}>
+        <a
+          href={URL_FAQ}
+          onClick={handleDrawerToggle}
+          style={isMobile ? mobileLinkStyle : desktopLinkStyle}
+        >
           FAQ
         </a>
       </ListItem>
-      <ListItem disablePadding>
+      <ListItem disablePadding style={{ paddingLeft: isMobile ? "20px" : 0 }}>
         <a
           href={URL_APPLY}
           onClick={handleDrawerToggle}
-          style={desktopLinkStyle}
-        >
-          Apply Now
-        </a>
-      </ListItem>
-    </List>
-  );
-
-  const LinkListMobile = () => (
-    <List
-      style={{
-        display: "block",
-        flexDirection: "column",
-        textAlign: "right",
-        paddingLeft: "62vw",
-      }}
-    >
-      <ListItem disablePadding style={{ paddingLeft: "60px" }}>
-        <a href={URL_HOME} onClick={handleDrawerToggle} style={mobileLinkStyle}>
-          Home
-        </a>
-      </ListItem>
-      <ListItem disablePadding style={{ paddingRight: "70px" }}>
-        <a
-          href={URL_MENTORS}
-          onClick={handleDrawerToggle}
-          style={mobileLinkStyle}
-        >
-          Find A Mentor
-        </a>
-      </ListItem>
-      <ListItem disablePadding style={{ paddingLeft: "70px" }}>
-        <a href={URL_FAQ} onClick={handleDrawerToggle} style={mobileLinkStyle}>
-          FAQ
-        </a>
-      </ListItem>
-      <ListItem disablePadding style={{ paddingLeft: "20px" }}>
-        <a
-          href={URL_APPLY}
-          onClick={handleDrawerToggle}
-          style={mobileLinkStyle}
+          style={isMobile ? mobileLinkStyle : desktopLinkStyle}
         >
           Apply Now
         </a>
@@ -131,7 +118,7 @@ const ResponsiveDrawer = () => {
             style={{ justifyContent: "flex-end" }}
             sx={{ display: { xs: "none", sm: "flex", md: "flex" } }}
           >
-            <LinkListDesktop />
+            <LinkList />
           </Box>
           <IconButton
             color="inherit"
@@ -170,30 +157,11 @@ const ResponsiveDrawer = () => {
             },
           }}
         >
-          <LinkListMobile />
+          <LinkList />
         </Drawer>
       </Box>
     </Box>
   );
-};
-
-const desktopLinkStyle = {
-  color: "black",
-  fontWeight: "700",
-  whiteSpace: "nowrap",
-  margin: "0.5rem",
-  cursor: "pointer",
-  textDecoration: "none",
-};
-
-const mobileLinkStyle = {
-  color: "black",
-  fontWeight: "700",
-  whiteSpace: "nowrap",
-  cursor: "pointer",
-  textDecoration: "none",
-  padding: "0.5rem",
-  margin: "0px",
 };
 
 export default ResponsiveDrawer;

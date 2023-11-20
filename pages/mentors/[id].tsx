@@ -146,9 +146,7 @@ const App = () => {
 
   return (
     <div className="results" id="mentors">
-      <div className="header">
-        <Header />
-      </div>
+      <Header />
       <SearchProvider config={configurationOptions}>
         <div className="App">
           <Layout

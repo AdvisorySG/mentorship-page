@@ -87,8 +87,7 @@ const Index = () => {
                 The Advisory Mentorship Programme pairs students with working
                 professionals in their fields of interest on a 1-1 basis. Over
                 the course of four months, mentors give an hour each month to
-                meet with their mentee and give them valuable insights on their
-                industry.
+                meet with their mentee.
               </p>
               <h2></h2>
             </div>
@@ -133,7 +132,7 @@ const Index = () => {
             alignItems: "center",
             boxSizing: "border-box",
             textAlign: "center",
-            justifyContent: "center", // Center horizontally
+            justifyContent: "center",
           }}
         >
           <p className="disclaimer container">

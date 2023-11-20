@@ -125,20 +125,20 @@ body {
 
 .stats {
   display: flex;
-  justify-content: space-between; /* Adjust based on your spacing preferences */
-  align-items: flex-start; /* Align items at the start (top) of the container */
+  justify-content: space-between;
+  align-items: flex-start;
   padding-bottom: 50px;
 }
 
 .stats > div {
-  text-align: center; /* Center text within each stat box */
-  flex: 1; /* Equal width for each stat box */
-  padding: 10px; /* Adjust padding based on your design */
-  margin: 0 10px; /* Adjust margin based on your design */
+  text-align: center;
+  flex: 1;
+  padding: 10px;
+  margin: 0 10px;
 }
 
 .stats h1 {
-  margin-bottom: 5px; /* Adjust margin based on your design */
+  margin-bottom: 5px;
   color: var(--brand-color);
 }
 
@@ -203,12 +203,7 @@ body {
   align-items: center;
   width: 100%;
   margin: 0 auto;
-  overflow: hidden; /* Ensure no overflow */
-  box-sizing: border-box;
-}
-
-#footer {
-  display: block;
+  overflow: hidden;
   box-sizing: border-box;
 }
 

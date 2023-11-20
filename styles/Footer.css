@@ -5,6 +5,10 @@
   padding: 3rem 0 4.5rem;
 }
 
+#logo {
+  height: 11rem;
+}
+
 .social {
   display: flex;
   margin-bottom: 2rem;
@@ -88,4 +92,21 @@ a {
 
 .page-links {
   padding: 5px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: #fff;
+}
+
+footer {
+  background: #181818;
+  height: 100%;
+  min-height: 300px;
+  color: var(--light-gray-color);
+}
+
+#copyright-text {
+  margin: 1 !important;
 }
