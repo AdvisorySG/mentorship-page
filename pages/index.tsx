@@ -5,8 +5,6 @@ import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import { Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import MobileStepper from "@mui/material/MobileStepper";
-import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -22,7 +20,7 @@ import "../styles/App.css";
 
 const testimonials = [
   {
-    person: "Randell Sie",
+    person: "Mr. Randell Sie",
     type: "Mentor",
     role: "Managing Director",
     company: "Persistensie Pte Ltd",
@@ -41,12 +39,12 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const images = [
   {
     index: "",
-    label1: "Mentor",
+    label1: "Mentor: Randall Sie",
     imgPath1: "/mentor-randallsie.png",
   },
   {
     index: "",
-    label1: "Mentee",
+    label1: "Mentee: Clarinda Ong",
     imgPath1: "/mentee-clarindaong.png",
   },
 ];
@@ -134,11 +132,12 @@ const Index = () => {
             boxSizing: "border-box",
             textAlign: "center",
             justifyContent: "center",
+            position: "relative",
           }}
         >
           <p className="disclaimer container">
             <small>
-              The privacy and safety of our mentors is of utmost priority to
+              The privacy and safety of our mentors are of utmost priority to
               Advisory. Any attempt to approach or contact our mentors outside
               of the parameters of the Advisory Mentorship Programme—whilst
               claiming affiliation to Advisory, or misrepresenting a
@@ -154,14 +153,19 @@ const Index = () => {
               style={{
                 color: "var(--brand-color)",
                 textAlign: "left",
-                paddingLeft: "10px",
               }}
             >
               Testimonials
             </h2>
           </div>
           <Box
-            sx={{ maxWidth: 600, flexGrow: 1, margin: "auto" }}
+            sx={{
+              position: "relative",
+              maxWidth: 900,
+              flexGrow: 1,
+              margin: "auto",
+              justifyContent: "center",
+            }}
             className="testimonal-carousel container"
           >
             <AutoPlaySwipeableViews
@@ -175,16 +179,19 @@ const Index = () => {
                   {Math.abs(activeStep - index) <= 2 ? (
                     <Grid
                       container
-                      sx={{ width: "100%" }}
+                      sx={{
+                        width: "100%",
+                        justifyContent: isSmall ? "center" : "flex-start",
+                      }}
                       spacing={2}
                       alignItems="center"
                     >
-                      <Grid item xs={6}>
+                      <Grid item>
                         <Box
                           component="div"
                           sx={{
-                            height: "250px",
-                            width: "250px",
+                            height: isSmall ? "150px" : "250px",
+                            width: isSmall ? "150px" : "250px",
                             borderRadius: "50%",
                             overflow: "hidden",
                           }}
@@ -200,8 +207,8 @@ const Index = () => {
                           />
                         </Box>
                       </Grid>
-                      <Grid item xs={6}>
-                        <Typography>
+                      <Grid item xs={isSmall ? 12 : 7}>
+                        <Typography sx={{ paddingBottom: "20px" }}>
                           {testimonial.type === "Mentor" ? (
                             <>
                               <p>
@@ -218,9 +225,9 @@ const Index = () => {
                                   Mentor
                                 </span>
                                 <div style={{ paddingTop: "10px" }}>
-                                  {testimonial.role}
-                                  <br />
-                                  {testimonial.company}
+                                  <p>
+                                    {testimonial.role} - {testimonial.company}
+                                  </p>
                                 </div>
                               </p>
                               {testimonial.text}
@@ -242,7 +249,7 @@ const Index = () => {
                                 </span>
                                 <br />
                                 <div style={{ paddingTop: "10px" }}>
-                                  {testimonial.school}
+                                  <p>{testimonial.school}</p>
                                 </div>
                               </p>
                               {testimonial.text}
@@ -255,18 +262,20 @@ const Index = () => {
                 </div>
               ))}
             </AutoPlaySwipeableViews>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                marginTop: "10px",
-              }}
-            >
+          </Box>
+          {isSmall ? (
+            <>
               <Button
                 size="small"
                 onClick={handleBack}
                 disabled={activeStep === 0}
-                style={{ marginLeft: "auto" }}
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  zIndex: 1,
+                }}
               >
                 <KeyboardArrowLeft />
               </Button>
@@ -274,12 +283,37 @@ const Index = () => {
                 size="small"
                 onClick={handleNext}
                 disabled={activeStep === maxSteps - 1}
-                style={{ marginRight: "auto" }}
+                style={{
+                  position: "absolute",
+                  right: 0,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  zIndex: 1,
+                }}
               >
                 <KeyboardArrowRight />
               </Button>
-            </Box>
-          </Box>
+            </>
+          ) : (
+            <>
+              <Button
+                size="large"
+                onClick={handleBack}
+                disabled={activeStep === 0}
+                style={{ margin: "20px", backgroundColor: "transparent" }}
+              >
+                <KeyboardArrowLeft />
+              </Button>
+              <Button
+                size="large"
+                onClick={handleNext}
+                disabled={activeStep === maxSteps - 1}
+                style={{ margin: "20px", backgroundColor: "transparent" }}
+              >
+                <KeyboardArrowRight />
+              </Button>
+            </>
+          )}
         </div>
         <Footer />
       </Box>
