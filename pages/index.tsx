@@ -22,14 +22,17 @@ import "../styles/App.css";
 
 const testimonials = [
   {
-    mentor: "Mentor 1",
-    mentee: "Mentee 1",
-    text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et faucibus tortor.`,
+    person: "Randell Sie",
+    type: "Mentor",
+    role: "Managing Director",
+    company: "Persistensie Pte Ltd",
+    text: "I've benefitted from mentorship tremendously in my career. You gain new perspectives, experience and a friendly ear who will not judge. The job of a mentor is to listen and extend your thinking, then let you make the final decision and own it.",
   },
   {
-    mentor: "Mentor 2",
-    mentee: "Mentee 2",
-    text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et faucibus tortor.`,
+    person: "Clarinda Ong",
+    type: "Mentee",
+    school: "Tampines Meridian Junior College",
+    text: "Going into this, I thought I knew what career I wanted. With my mentor's advice and guidance, and Advisory's thought-provoking worksheets, however, I discovered what better suited me. I used to be extremely unsure of my future, so I'm very glad this experience helped me shed light on my path forward. I have learnt more about myself and gained insights into what I want to do professionally.",
   },
 ];
 
@@ -39,14 +42,12 @@ const images = [
   {
     index: "",
     label1: "Mentor",
-    label2: "Mentee",
-    imgPath: "/mentor-thumbnail.png",
+    imgPath1: "/mentor-randallsie.png",
   },
   {
     index: "",
-    label1: "Mentor",
-    label2: "Mentee",
-    imgPath: "/mentor-thumbnail.png",
+    label1: "Mentee",
+    imgPath1: "/mentee-clarindaong.png",
   },
 ];
 
@@ -110,7 +111,7 @@ const Index = () => {
               <p>Industries</p>
             </div>
           </div>
-          <h3
+          <h2
             style={{
               color: "var(--brand-color)",
               textAlign: "left",
@@ -118,7 +119,7 @@ const Index = () => {
             }}
           >
             Our Partner Organisations:
-          </h3>
+          </h2>
           <Logo />
         </div>
         <div
@@ -149,116 +150,135 @@ const Index = () => {
             </small>
           </p>
           <div className="testimonial-header container">
-            <h2>What can you expect?</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              et faucibus tortor.{" "}
-            </p>
-            <Button
-              variant="contained"
-              sx={{ textTransform: "none" }}
+            <h2
               style={{
-                alignItems: "left",
-                backgroundColor: "#D9D9D9",
-                color: "#000000",
+                color: "var(--brand-color)",
+                textAlign: "left",
+                paddingLeft: "10px",
               }}
             >
-              Mentors' Profiles
-            </Button>
+              Testimonials
+            </h2>
           </div>
           <Box
-            sx={{ maxWidth: 400, flexGrow: 1, margin: "auto" }}
+            sx={{ maxWidth: 600, flexGrow: 1, margin: "auto" }}
             className="testimonal-carousel container"
           >
-            <Paper
-              square
-              elevation={0}
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                height: 50,
-                pl: 2,
-                bgcolor: "background.default",
-              }}
-            >
-              <Typography>{images[activeStep].index}</Typography>
-            </Paper>
             <AutoPlaySwipeableViews
               axis={theme.direction === "rtl" ? "x-reverse" : "x"}
               index={activeStep}
               onChangeIndex={handleStepChange}
               enableMouseEvents
             >
-              {images.map((step, index) => (
-                <div key={step.index}>
+              {testimonials.map((testimonial, index) => (
+                <div key={index}>
                   {Math.abs(activeStep - index) <= 2 ? (
-                    <Grid container sx={{ width: "100%" }} spacing={6}>
+                    <Grid
+                      container
+                      sx={{ width: "100%" }}
+                      spacing={2}
+                      alignItems="center"
+                    >
                       <Grid item xs={6}>
                         <Box
-                          component="img"
+                          component="div"
                           sx={{
-                            height: "100%",
+                            height: "250px",
+                            width: "250px",
+                            borderRadius: "50%",
                             overflow: "hidden",
-                            width: "100%",
                           }}
-                          src={"/mentor-thumbnail.png"}
-                          alt={step.label1}
-                        />
+                        >
+                          <img
+                            src={images[index].imgPath1}
+                            alt={images[index].label1}
+                            style={{
+                              height: "100%",
+                              width: "100%",
+                              objectFit: "cover",
+                            }}
+                          />
+                        </Box>
                       </Grid>
                       <Grid item xs={6}>
-                        <Box
-                          component="img"
-                          sx={{
-                            height: "100%",
-                            overflow: "hidden",
-                            width: "100%",
-                          }}
-                          src={"/mentor-thumbnail.png"}
-                          alt={step.label2}
-                        />
-                      </Grid>
-                      <Grid item xs={9}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Curabitur et faucibus tortor.
+                        <Typography>
+                          {testimonial.type === "Mentor" ? (
+                            <>
+                              <p>
+                                <strong style={{ padding: "10px" }}>
+                                  {testimonial.person}
+                                </strong>
+                                <span
+                                  style={{
+                                    background: "var(--brand-color)",
+                                    padding: "5px",
+                                    borderRadius: "100px",
+                                  }}
+                                >
+                                  Mentor
+                                </span>
+                                <div style={{ paddingTop: "10px" }}>
+                                  {testimonial.role}
+                                  <br />
+                                  {testimonial.company}
+                                </div>
+                              </p>
+                              {testimonial.text}
+                            </>
+                          ) : (
+                            <>
+                              <p>
+                                <strong style={{ padding: "10px" }}>
+                                  {testimonial.person}
+                                </strong>
+                                <span
+                                  style={{
+                                    background: "var(--brand-color)",
+                                    padding: "5px",
+                                    borderRadius: "100px",
+                                  }}
+                                >
+                                  Mentee
+                                </span>
+                                <br />
+                                <div style={{ paddingTop: "10px" }}>
+                                  {testimonial.school}
+                                </div>
+                              </p>
+                              {testimonial.text}
+                            </>
+                          )}
+                        </Typography>
                       </Grid>
                     </Grid>
                   ) : null}
                 </div>
               ))}
             </AutoPlaySwipeableViews>
-            <MobileStepper
-              steps={maxSteps}
-              position="static"
-              activeStep={activeStep}
-              nextButton={
-                <Button
-                  size="small"
-                  onClick={handleNext}
-                  disabled={activeStep === maxSteps - 1}
-                >
-                  Next
-                  {theme.direction === "rtl" ? (
-                    <KeyboardArrowLeft />
-                  ) : (
-                    <KeyboardArrowRight />
-                  )}
-                </Button>
-              }
-              backButton={
-                <Button
-                  size="small"
-                  onClick={handleBack}
-                  disabled={activeStep === 0}
-                >
-                  {theme.direction === "rtl" ? (
-                    <KeyboardArrowRight />
-                  ) : (
-                    <KeyboardArrowLeft />
-                  )}
-                  Back
-                </Button>
-              }
-            />
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginTop: "10px",
+              }}
+            >
+              <Button
+                size="small"
+                onClick={handleBack}
+                disabled={activeStep === 0}
+                style={{ marginLeft: "auto" }}
+              >
+                <KeyboardArrowLeft />
+              </Button>
+              <Button
+                size="small"
+                onClick={handleNext}
+                disabled={activeStep === maxSteps - 1}
+                style={{ marginRight: "auto" }}
+              >
+                <KeyboardArrowRight />
+              </Button>
+            </Box>
           </Box>
         </div>
         <Footer />
