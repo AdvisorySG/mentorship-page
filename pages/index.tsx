@@ -96,139 +96,140 @@ const Index = () => {
               whose fields of expertise range across 48 different industries
               have come aboard in support of this programme.
             </p>
+            <h2>What can you expect?</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+              et faucibus tortor.{" "}
+            </p>
+
+            <div
+              className="canvas"
+              style={{
+                width: isSmall ? "90%" : "80%",
+                marginLeft: "0px",
+                marginRight: "auto",
+                paddingBottom: "20px",
+              }}
+            >
+              <Button
+                variant="contained"
+                sx={{ textTransform: "none" }}
+                style={{
+                  backgroundColor: "#D9D9D9",
+                  color: "#000000",
+                }}
+              >
+                Mentors' Profiles
+              </Button>
+              <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
+                <Paper
+                  square
+                  elevation={0}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    height: 50,
+                    pl: 2,
+                    bgcolor: "background.default",
+                  }}
+                >
+                  <Typography>{images[activeStep].index}</Typography>
+                </Paper>
+                <AutoPlaySwipeableViews
+                  axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+                  index={activeStep}
+                  onChangeIndex={handleStepChange}
+                  enableMouseEvents
+                >
+                  {images.map((step, index) => (
+                    <div key={step.index}>
+                      {Math.abs(activeStep - index) <= 2 ? (
+                        <Grid container sx={{ width: "100%" }} spacing={6}>
+                          <Grid item xs={6}>
+                            <Box
+                              component="img"
+                              sx={{
+                                height: "100%",
+                                overflow: "hidden",
+                                width: "100%",
+                              }}
+                              src={"/mentor-thumbnail.png"}
+                              alt={step.label1}
+                            />
+                          </Grid>
+                          <Grid item xs={6}>
+                            <Box
+                              component="img"
+                              sx={{
+                                height: "100%",
+                                overflow: "hidden",
+                                width: "100%",
+                              }}
+                              src={"/mentor-thumbnail.png"}
+                              alt={step.label2}
+                            />
+                          </Grid>
+                          <Grid item xs={6}>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Curabitur et faucibus tortor.
+                          </Grid>
+                        </Grid>
+                      ) : null}
+                    </div>
+                  ))}
+                </AutoPlaySwipeableViews>
+                <MobileStepper
+                  steps={maxSteps}
+                  position="static"
+                  activeStep={activeStep}
+                  nextButton={
+                    <Button
+                      size="small"
+                      onClick={handleNext}
+                      disabled={activeStep === maxSteps - 1}
+                    >
+                      Next
+                      {theme.direction === "rtl" ? (
+                        <KeyboardArrowLeft />
+                      ) : (
+                        <KeyboardArrowRight />
+                      )}
+                    </Button>
+                  }
+                  backButton={
+                    <Button
+                      size="small"
+                      onClick={handleBack}
+                      disabled={activeStep === 0}
+                    >
+                      {theme.direction === "rtl" ? (
+                        <KeyboardArrowRight />
+                      ) : (
+                        <KeyboardArrowLeft />
+                      )}
+                      Back
+                    </Button>
+                  }
+                />
+              </Box>
+            </div>
           </div>
         </div>
       </Box>
-      <div
-        className="canvas"
-        style={{
-          width: isSmall ? "90%" : "80%",
-          marginLeft: "auto",
-          marginRight: "auto",
-          paddingBottom: "20px",
-        }}
-      >
-        <p className="disclaimer">
-          <small>
-            The privacy and safety of our mentors is of utmost priority to
-            Advisory. Any attempt to approach or contact our mentors outside of
-            the parameters of the Advisory Mentorship Programme—whilst claiming
-            affiliation to Advisory, or misrepresenting a relationship to
-            Advisory—will be treated as misrepresentation, even fraudulent
-            misrepresentation, as considered under the Misrepresentation Act.
-            Advisory will take legal action against any individuals or
-            organisations who attempt to deceive, harass, or otherwise request
-            dishonest assistance from our mentors.
-          </small>
-        </p>
 
-        <h2>What can you expect?</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et
-          faucibus tortor.{" "}
-        </p>
-        <Button
-          variant="contained"
-          sx={{ textTransform: "none" }}
-          style={{
-            backgroundColor: "#D9D9D9",
-            color: "#000000",
-          }}
-        >
-          Mentors' Profiles
-        </Button>
-        <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
-          <Paper
-            square
-            elevation={0}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              height: 50,
-              pl: 2,
-              bgcolor: "background.default",
-            }}
-          >
-            <Typography>{images[activeStep].index}</Typography>
-          </Paper>
-          <AutoPlaySwipeableViews
-            axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-            index={activeStep}
-            onChangeIndex={handleStepChange}
-            enableMouseEvents
-          >
-            {images.map((step, index) => (
-              <div key={step.index}>
-                {Math.abs(activeStep - index) <= 2 ? (
-                  <Grid container sx={{ width: "100%" }} spacing={6}>
-                    <Grid item xs={6}>
-                      <Box
-                        component="img"
-                        sx={{
-                          height: "100%",
-                          overflow: "hidden",
-                          width: "100%",
-                        }}
-                        src={"/mentor-thumbnail.png"}
-                        alt={step.label1}
-                      />
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Box
-                        component="img"
-                        sx={{
-                          height: "100%",
-                          overflow: "hidden",
-                          width: "100%",
-                        }}
-                        src={"/mentor-thumbnail.png"}
-                        alt={step.label2}
-                      />
-                    </Grid>
-                    <Grid item xs={6}>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Curabitur et faucibus tortor.
-                    </Grid>
-                  </Grid>
-                ) : null}
-              </div>
-            ))}
-          </AutoPlaySwipeableViews>
-          <MobileStepper
-            steps={maxSteps}
-            position="static"
-            activeStep={activeStep}
-            nextButton={
-              <Button
-                size="small"
-                onClick={handleNext}
-                disabled={activeStep === maxSteps - 1}
-              >
-                Next
-                {theme.direction === "rtl" ? (
-                  <KeyboardArrowLeft />
-                ) : (
-                  <KeyboardArrowRight />
-                )}
-              </Button>
-            }
-            backButton={
-              <Button
-                size="small"
-                onClick={handleBack}
-                disabled={activeStep === 0}
-              >
-                {theme.direction === "rtl" ? (
-                  <KeyboardArrowRight />
-                ) : (
-                  <KeyboardArrowLeft />
-                )}
-                Back
-              </Button>
-            }
-          />
-        </Box>
-      </div>
+      <p className="disclaimer">
+        <small>
+          The privacy and safety of our mentors is of utmost priority to
+          Advisory. Any attempt to approach or contact our mentors outside of
+          the parameters of the Advisory Mentorship Programme—whilst claiming
+          affiliation to Advisory, or misrepresenting a relationship to
+          Advisory—will be treated as misrepresentation, even fraudulent
+          misrepresentation, as considered under the Misrepresentation Act.
+          Advisory will take legal action against any individuals or
+          organisations who attempt to deceive, harass, or otherwise request
+          dishonest assistance from our mentors.
+        </small>
+      </p>
     </div>
   );
 };
