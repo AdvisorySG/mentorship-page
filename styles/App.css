@@ -8,6 +8,7 @@ body {
 .container {
   height: 100%;
   background-color: white;
+  /* I only changed lines 11 and 12 */
   background-color: lightgrey;
   color: black;
 }
