@@ -8,6 +8,7 @@ body {
 .container {
   height: 100%;
   background-color: white;
+  /* MPT-33: changed lines 12 & 13 */
   background-color: lightgrey;
   color: black;
 }
