@@ -1,16 +1,11 @@
-import React, { useState } from "react";
-
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import React, { useRef, useState, useEffect } from "react";
+import Glide from "@glidejs/glide";
+import "@glidejs/glide/dist/css/glide.core.min.css";
+import "@glidejs/glide/dist/css/glide.theme.min.css";
 import { Grid } from "@mui/material";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import SwipeableViews from "react-swipeable-views";
-import { autoPlay } from "react-swipeable-views-utils";
-
 import { advisoryMentorshipLogo } from "../components/assets";
 import Header from "../components/Header";
 import Logo from "../components/Logo";
@@ -24,17 +19,15 @@ const testimonials = [
     type: "Mentor",
     role: "Managing Director",
     company: "Persistensie Pte Ltd",
-    text: "I've benefitted from mentorship tremendously in my career. You gain new perspectives, experience and a friendly ear who will not judge. The job of a mentor is to listen and extend your thinking, then let you make the final decision and own it.",
+    text: "“I've benefitted from mentorship tremendously in my career. You gain new perspectives, experience and a friendly ear who will not judge. The job of a mentor is to listen and extend your thinking, then let you make the final decision and own it.”",
   },
   {
-    person: "Clarinda Ong",
+    person: "Ms. Clarinda Ong",
     type: "Mentee",
     school: "Tampines Meridian Junior College",
-    text: "Going into this, I thought I knew what career I wanted. With my mentor's advice and guidance, and Advisory's thought-provoking worksheets, however, I discovered what better suited me. I used to be extremely unsure of my future, so I'm very glad this experience helped me shed light on my path forward. I have learnt more about myself and gained insights into what I want to do professionally.",
+    text: "“Going into this, I thought I knew what career I wanted. With my mentor's advice and guidance, and Advisory's thought-provoking worksheets, however, I discovered what better suited me. I used to be extremely unsure of my future, so I'm very glad this experience helped me shed light on my path forward. I have learnt more about myself and gained insights into what I want to do professionally.”",
   },
 ];
-
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const images = [
   {
@@ -49,24 +42,92 @@ const images = [
   },
 ];
 
-const maxSteps = testimonials.length;
-
 const Index = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
-  const theme = useTheme();
+  const glideRef = useRef(null);
 
-  const [activeStep, setActiveStep] = useState(0);
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
+  let glideTestimonial;
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+  function initializeGlide() {
+    glideTestimonial = new Glide(glideRef.current, {
+      type: "carousel",
+      autoplay: 10000,
+      perView: 1,
+      breakpoints: {
+        576: { perView: 1 },
+        768: { perView: 1 },
+        992: { perView: 1 },
+        1200: { perView: 1 },
+        1400: { perView: 1 },
+      },
+    });
 
-  const handleStepChange = (step: number) => {
-    setActiveStep(step);
-  };
+    glideTestimonial.on(["mount.after", "run"], function () {
+      glideTestimonial.update({ perView: 1 });
+    });
+
+    glideTestimonial.mount();
+
+    document
+      .querySelector(".glide__arrow--left")
+      .addEventListener("click", function () {
+        glideTestimonial.go("<");
+      });
+
+    document
+      .querySelector(".glide__arrow--right")
+      .addEventListener("click", function () {
+        glideTestimonial.go(">");
+      });
+  }
+
+  function destroyGlide() {
+    if (glideTestimonial && glideTestimonial.root) {
+      glideTestimonial.destroy();
+    }
+  }
+
+  useEffect(() => {
+    initializeGlide();
+
+    return () => destroyGlide();
+  }, []);
+
+  function debounce(func, delay) {
+    let timer;
+    return function () {
+      const context = this;
+      const args = arguments;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        func.apply(context, args);
+      }, delay);
+    };
+  }
+
+  const debouncedResize = debounce(function () {
+    if (glideTestimonial) {
+      glideTestimonial.update({
+        breakpoints: {
+          576: { perView: 1 },
+          768: { perView: 1 },
+          992: { perView: 1 },
+          1200: { perView: 1 },
+          1400: { perView: 1 },
+        },
+        animationDuration: 800,
+      });
+    }
+  }, 200);
+
+  useEffect(() => {
+    window.addEventListener("resize", debouncedResize);
+
+    return () => {
+      window.removeEventListener("resize", debouncedResize);
+      destroyGlide();
+    };
+  }, [debouncedResize]);
 
   return (
     <div className="container">
@@ -88,32 +149,35 @@ const Index = () => {
                 the course of four months, mentors give an hour each month to
                 meet with their mentee.
               </p>
-              <h2></h2>
             </div>
           </div>
           <div className="stats">
-            <div className="hours">
-              <h1>8,000</h1>
-              <p>Hours of Mentorship</p>
+            <div className="stat-1">
+              <div className="hours">
+                <h1>8000</h1>
+                <p>Hours of Mentorship</p>
+              </div>
+              <div className="students">
+                <h1>2211</h1>
+                <p>Students</p>
+              </div>
             </div>
-            <div className="students">
-              <h1>2,211</h1>
-              <p>Students</p>
-            </div>
-            <div className="mentors">
-              <h1>1,826</h1>
-              <p>Mentors</p>
-            </div>
-            <div className="industries">
-              <h1>48</h1>
-              <p>Industries</p>
+            <div className="stats-2">
+              <div className="mentors">
+                <h1>1826</h1>
+                <p>Mentors</p>
+              </div>
+              <div className="industries">
+                <h1>48</h1>
+                <p>Industries</p>
+              </div>
             </div>
           </div>
           <h2
             style={{
               color: "var(--brand-color)",
               textAlign: "left",
-              paddingLeft: "10px",
+              paddingLeft: "20px",
             }}
           >
             Our Partner Organisations:
@@ -124,9 +188,9 @@ const Index = () => {
           className="canvas container"
           style={{
             width: "100%",
-            maxWidth: isSmall ? "90%" : "80%",
+            maxWidth: isSmall ? "90%" : "75%",
             margin: "auto",
-            paddingBottom: "20px",
+            paddingBottom: "50px",
             flexDirection: "column",
             alignItems: "center",
             boxSizing: "border-box",
@@ -135,7 +199,10 @@ const Index = () => {
             position: "relative",
           }}
         >
-          <p className="disclaimer container">
+          <p
+            className="disclaimer container"
+            style={{ paddingLeft: "20px", paddingRight: "20px" }}
+          >
             <small>
               The privacy and safety of our mentors are of utmost priority to
               Advisory. Any attempt to approach or contact our mentors outside
@@ -152,6 +219,8 @@ const Index = () => {
             <h2
               style={{
                 color: "var(--brand-color)",
+                paddingTop: "50px",
+                paddingLeft: "20px",
                 textAlign: "left",
               }}
             >
@@ -159,24 +228,21 @@ const Index = () => {
             </h2>
           </div>
           <Box
-            sx={{
+            ref={glideRef}
+            className="testimonal-carousel container glide"
+            style={{
               position: "relative",
+              paddingLeft: isSmall ? "25px" : "90px",
               maxWidth: 900,
               flexGrow: 1,
               margin: "auto",
               justifyContent: "center",
             }}
-            className="testimonal-carousel container"
           >
-            <AutoPlaySwipeableViews
-              axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-              index={activeStep}
-              onChangeIndex={handleStepChange}
-              enableMouseEvents
-            >
-              {testimonials.map((testimonial, index) => (
-                <div key={index}>
-                  {Math.abs(activeStep - index) <= 2 ? (
+            <div className="glide__track" data-glide-el="track">
+              <ul className="glide__slides">
+                {testimonials.map((testimonial, index) => (
+                  <li key={index} className="glide__slide">
                     <Grid
                       container
                       sx={{
@@ -226,11 +292,15 @@ const Index = () => {
                                 </span>
                                 <div style={{ paddingTop: "10px" }}>
                                   <p>
-                                    {testimonial.role} - {testimonial.company}
+                                    {testimonial.role}
+                                    <br />
+                                    {testimonial.company}
                                   </p>
                                 </div>
                               </p>
-                              {testimonial.text}
+                              <div style={{ textAlign: "left" }}>
+                                {testimonial.text}
+                              </div>
                             </>
                           ) : (
                             <>
@@ -252,68 +322,55 @@ const Index = () => {
                                   <p>{testimonial.school}</p>
                                 </div>
                               </p>
-                              {testimonial.text}
+                              <div style={{ textAlign: "left" }}>
+                                {testimonial.text}
+                              </div>
                             </>
                           )}
                         </Typography>
                       </Grid>
                     </Grid>
-                  ) : null}
-                </div>
-              ))}
-            </AutoPlaySwipeableViews>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </Box>
-          {isSmall ? (
-            <>
-              <Button
-                size="small"
-                onClick={handleBack}
-                disabled={activeStep === 0}
-                style={{
-                  position: "absolute",
-                  left: 0,
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  zIndex: 1,
-                }}
-              >
-                <KeyboardArrowLeft />
-              </Button>
-              <Button
-                size="small"
-                onClick={handleNext}
-                disabled={activeStep === maxSteps - 1}
-                style={{
-                  position: "absolute",
-                  right: 0,
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  zIndex: 1,
-                }}
-              >
-                <KeyboardArrowRight />
-              </Button>
-            </>
-          ) : (
-            <>
-              <Button
-                size="large"
-                onClick={handleBack}
-                disabled={activeStep === 0}
-                style={{ margin: "20px", backgroundColor: "transparent" }}
-              >
-                <KeyboardArrowLeft />
-              </Button>
-              <Button
-                size="large"
-                onClick={handleNext}
-                disabled={activeStep === maxSteps - 1}
-                style={{ margin: "20px", backgroundColor: "transparent" }}
-              >
-                <KeyboardArrowRight />
-              </Button>
-            </>
-          )}
+          <div
+            className="glide__arrows"
+            data-glide-el="controls"
+            style={{ position: "relative" }}
+          >
+            <button
+              className="glide__arrow glide__arrow--left"
+              data-glide-dir="<"
+              style={{
+                background: "transparent",
+                border: "none",
+                fontSize: "24px",
+                color: "var(--brand-color)",
+                margin: "10px",
+                marginLeft: isSmall ? "0" : "300px",
+                position: "absolute",
+              }}
+            >
+              {"<"}
+            </button>
+            <button
+              className="glide__arrow glide__arrow--right"
+              data-glide-dir=">"
+              style={{
+                background: "transparent",
+                border: "none",
+                fontSize: "24px",
+                color: "var(--brand-color)",
+                margin: "10px",
+                position: "absolute",
+                marginRight: isSmall ? "0" : "300px",
+              }}
+            >
+              {">"}
+            </button>
+          </div>
         </div>
         <Footer />
       </Box>

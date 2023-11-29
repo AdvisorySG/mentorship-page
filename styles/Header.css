@@ -78,7 +78,8 @@
 
 .header-mentorship-intro {
   text-align: justify;
-  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
   align-items: center;
   max-width: 100%;
   flex: 1;

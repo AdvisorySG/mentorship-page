@@ -1,5 +1,4 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -9,7 +8,6 @@ import ListItem from "@mui/material/ListItem";
 import Toolbar from "@mui/material/Toolbar";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-
 import { advisoryLogo } from "./assets";
 
 const drawerWidth = 600;
@@ -24,7 +22,7 @@ const desktopLinkStyle = {
   color: "black",
   fontWeight: "700",
   whiteSpace: "nowrap",
-  margin: "0.5rem",
+  margin: "1rem",
   cursor: "pointer",
   textDecoration: "none",
 };
@@ -40,12 +38,37 @@ const mobileLinkStyle = {
 };
 
 const ResponsiveDrawer = () => {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [isMobile, setIsMobile] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 600);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const image = new Image();
+    image.src = advisoryLogo;
+    image.onload = () => {
+      setImageLoaded(true);
+    };
+
+    return () => {
+      image.onload = null; // Clean up the event handler
+    };
+  }, []);
 
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-    setIsMobile(!mobileOpen);
+    setMobileOpen((prevMobileOpen) => !prevMobileOpen);
   };
 
   const LinkList = () => (
@@ -110,9 +133,21 @@ const ResponsiveDrawer = () => {
       >
         <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
           <Box style={{ display: "flex", justifyContent: "flex-start" }}>
-            <a href={URL_MAIN} target="_blank" rel="noopener noreferrer">
-              <img className="nav-logo" src={advisoryLogo} alt="Advisory" />
-            </a>
+            {imageLoaded && (
+              <a href={URL_MAIN} target="_blank" rel="noopener noreferrer">
+                <img
+                  className="nav-logo"
+                  src={advisoryLogo}
+                  alt="Advisory"
+                  style={{
+                    width: "auto",
+                    height: "auto",
+                    marginTop: isMobile ? "10px" : "20px",
+                    marginLeft: "20px",
+                  }}
+                />
+              </a>
+            )}
           </Box>
           <Box
             style={{ justifyContent: "flex-end" }}
