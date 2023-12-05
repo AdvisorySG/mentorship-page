@@ -97,6 +97,8 @@ body {
 
 .sui-layout-header {
   padding-bottom: 0px;
+  width: 75%;
+  margin: auto;
 }
 
 .sui-layout-main-header__inner {
