@@ -62,7 +62,11 @@ const fillHighlights = (snippet: string | null, full: string): string => {
   }
 
   const snippetRaw = htmlToText(snippet, { wordwrap: false });
-  return full.replace(snippetRaw, snippet);
+  const styledSnippet = snippet.replace(
+    /<em>/g,
+    '<em style= "font-weight: bold; color: #375ae6; font-style: normal; background-color: #edf6fe; ">'
+  );
+  return full.replace(snippetRaw, styledSnippet);
 };
 
 const COLORS = [
