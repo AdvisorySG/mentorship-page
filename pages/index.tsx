@@ -1,234 +1,379 @@
-import React, { useState } from "react";
-
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import React, { useRef, useState, useEffect } from "react";
+import Glide from "@glidejs/glide";
+import "@glidejs/glide/dist/css/glide.core.min.css";
+import "@glidejs/glide/dist/css/glide.theme.min.css";
 import { Grid } from "@mui/material";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import MobileStepper from "@mui/material/MobileStepper";
-import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import SwipeableViews from "react-swipeable-views";
-import { autoPlay } from "react-swipeable-views-utils";
-
-import {
-  advisoryMentorshipLogo,
-  advisoryMentorshipPartners,
-} from "../components/assets";
+import { advisoryMentorshipLogo } from "../components/assets";
 import Header from "../components/Header";
+import Logo from "../components/Logo";
+import Footer from "../components/Footer.tsx";
+import "../styles/Header.css";
+import "../styles/App.css";
 
 const testimonials = [
   {
-    mentor: "Mentor 1",
-    mentee: "Mentee 1",
-    text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et faucibus tortor.`,
+    person: "Mr. Randell Sie",
+    type: "Mentor",
+    role: "Managing Director",
+    company: "Persistensie Pte Ltd",
+    text: "“I've benefitted from mentorship tremendously in my career. You gain new perspectives, experience and a friendly ear who will not judge. The job of a mentor is to listen and extend your thinking, then let you make the final decision and own it.”",
   },
   {
-    mentor: "Mentor 2",
-    mentee: "Mentee 2",
-    text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et faucibus tortor.`,
+    person: "Ms. Clarinda Ong",
+    type: "Mentee",
+    school: "Tampines Meridian Junior College",
+    text: "“Going into this, I thought I knew what career I wanted. With my mentor's advice and guidance, and Advisory's thought-provoking worksheets, however, I discovered what better suited me. I used to be extremely unsure of my future, so I'm very glad this experience helped me shed light on my path forward. I have learnt more about myself and gained insights into what I want to do professionally.”",
   },
 ];
-
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const images = [
   {
     index: "",
-    label1: "Mentor",
-    label2: "Mentee",
-    imgPath: "/mentor-thumbnail.png",
+    label1: "Mentor: Randall Sie",
+    imgPath1: "/mentor-randallsie.png",
   },
   {
     index: "",
-    label1: "Mentor",
-    label2: "Mentee",
-    imgPath: "/mentor-thumbnail.png",
+    label1: "Mentee: Clarinda Ong",
+    imgPath1: "/mentee-clarindaong.png",
   },
 ];
 
-const maxSteps = testimonials.length;
-
 const Index = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
-  const theme = useTheme();
+  const glideRef = useRef(null);
 
-  const [activeStep, setActiveStep] = useState(0);
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
+  let glideTestimonial;
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+  function initializeGlide() {
+    glideTestimonial = new Glide(glideRef.current, {
+      type: "carousel",
+      autoplay: 10000,
+      perView: 1,
+      breakpoints: {
+        576: { perView: 1 },
+        768: { perView: 1 },
+        992: { perView: 1 },
+        1200: { perView: 1 },
+        1400: { perView: 1 },
+      },
+    });
 
-  const handleStepChange = (step: number) => {
-    setActiveStep(step);
-  };
+    glideTestimonial.on(["mount.after", "run"], function () {
+      glideTestimonial.update({ perView: 1 });
+    });
+
+    glideTestimonial.mount();
+
+    document
+      .querySelector(".glide__arrow--left")
+      .addEventListener("click", function () {
+        glideTestimonial.go("<");
+      });
+
+    document
+      .querySelector(".glide__arrow--right")
+      .addEventListener("click", function () {
+        glideTestimonial.go(">");
+      });
+  }
+
+  function destroyGlide() {
+    if (glideTestimonial && glideTestimonial.root) {
+      glideTestimonial.destroy();
+    }
+  }
+
+  useEffect(() => {
+    initializeGlide();
+
+    return () => destroyGlide();
+  }, []);
+
+  function debounce(func, delay) {
+    let timer;
+    return function () {
+      const context = this;
+      const args = arguments;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        func.apply(context, args);
+      }, delay);
+    };
+  }
+
+  const debouncedResize = debounce(function () {
+    if (glideTestimonial) {
+      glideTestimonial.update({
+        breakpoints: {
+          576: { perView: 1 },
+          768: { perView: 1 },
+          992: { perView: 1 },
+          1200: { perView: 1 },
+          1400: { perView: 1 },
+        },
+        animationDuration: 800,
+      });
+    }
+  }, 200);
+
+  useEffect(() => {
+    window.addEventListener("resize", debouncedResize);
+
+    return () => {
+      window.removeEventListener("resize", debouncedResize);
+      destroyGlide();
+    };
+  }, [debouncedResize]);
 
   return (
     <div className="container">
-      <Header />
-      <Box component="main">
-        <div className="header-bottom">
-          <img
-            className="header-mentorship-logo"
-            src={advisoryMentorshipLogo}
-            alt="Advisory Mentorship Programme"
-          />
-          <img
-            id="partners"
-            className="header-mentorship-partners"
-            src={advisoryMentorshipPartners}
-            alt="Advisory Mentorship Programme Partners"
-          />
-          <div className="header-mentorship-intro" id="aboutus">
-            <p>
-              The Advisory Mentorship Programme pairs students with working
-              professionals in their fields of interest on a 1-1 basis. Over the
-              course of four months, mentors give an hour each month to meet
-              with their mentee. Over the past 2 years, the programme delivered
-              over 8,000 hours of mentorship to 2,211 students with the
-              involvement of 1,826 mentors. This year, we’re excited to share
-              that over 1,600 working professionals and 27 mentorship partners
-              whose fields of expertise range across 48 different industries
-              have come aboard in support of this programme.
-            </p>
-          </div>
+      <Box component="main" display="flex" flexDirection="column">
+        <div className="header">
+          <Header />
         </div>
-      </Box>
-      <div
-        className="canvas"
-        style={{
-          width: isSmall ? "90%" : "80%",
-          marginLeft: "auto",
-          marginRight: "auto",
-          paddingBottom: "20px",
-        }}
-      >
-        <p className="disclaimer">
-          <small>
-            The privacy and safety of our mentors is of utmost priority to
-            Advisory. Any attempt to approach or contact our mentors outside of
-            the parameters of the Advisory Mentorship Programme—whilst claiming
-            affiliation to Advisory, or misrepresenting a relationship to
-            Advisory—will be treated as misrepresentation, even fraudulent
-            misrepresentation, as considered under the Misrepresentation Act.
-            Advisory will take legal action against any individuals or
-            organisations who attempt to deceive, harass, or otherwise request
-            dishonest assistance from our mentors.
-          </small>
-        </p>
-
-        <h2>What can you expect?</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et
-          faucibus tortor.{" "}
-        </p>
-        <Button
-          variant="contained"
-          sx={{ textTransform: "none" }}
-          style={{
-            backgroundColor: "#D9D9D9",
-            color: "#000000",
-          }}
-        >
-          Mentors' Profiles
-        </Button>
-        <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
-          <Paper
-            square
-            elevation={0}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              height: 50,
-              pl: 2,
-              bgcolor: "background.default",
+        <div className="header-bottom container">
+          <div className="logo-and-intro-container container">
+            <img
+              className="header-mentorship-logo container"
+              src={advisoryMentorshipLogo}
+              alt="Advisory Mentorship Programme"
+            />
+            <div className="header-mentorship-intro container" id="aboutus">
+              <p>
+                The Advisory Mentorship Programme pairs students with working
+                professionals in their fields of interest on a 1-1 basis. Over
+                the course of four months, mentors give an hour each month to
+                meet with their mentee.
+              </p>
+            </div>
+          </div>
+          <div className="stats">
+            <div className="stat-1">
+              <div className="hours">
+                <h1>8000</h1>
+                <p>Hours of Mentorship</p>
+              </div>
+              <div className="students">
+                <h1>2211</h1>
+                <p>Students</p>
+              </div>
+            </div>
+            <div className="stats-2">
+              <div className="mentors">
+                <h1>1826</h1>
+                <p>Mentors</p>
+              </div>
+              <div className="industries">
+                <h1>48</h1>
+                <p>Industries</p>
+              </div>
+            </div>
+          </div>
+          <h2
+            style={{
+              color: "var(--brand-color)",
+              textAlign: "left",
+              paddingLeft: "20px",
             }}
           >
-            <Typography>{images[activeStep].index}</Typography>
-          </Paper>
-          <AutoPlaySwipeableViews
-            axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-            index={activeStep}
-            onChangeIndex={handleStepChange}
-            enableMouseEvents
+            Our Partner Organisations:
+          </h2>
+          <Logo />
+        </div>
+        <div
+          className="canvas container"
+          style={{
+            width: "100%",
+            maxWidth: isSmall ? "90%" : "75%",
+            margin: "auto",
+            paddingBottom: "50px",
+            flexDirection: "column",
+            alignItems: "center",
+            boxSizing: "border-box",
+            textAlign: "center",
+            justifyContent: "center",
+            position: "relative",
+          }}
+        >
+          <p
+            className="disclaimer container"
+            style={{ paddingLeft: "20px", paddingRight: "20px" }}
           >
-            {images.map((step, index) => (
-              <div key={step.index}>
-                {Math.abs(activeStep - index) <= 2 ? (
-                  <Grid container sx={{ width: "100%" }} spacing={6}>
-                    <Grid item xs={6}>
-                      <Box
-                        component="img"
-                        sx={{
-                          height: "100%",
-                          overflow: "hidden",
-                          width: "100%",
-                        }}
-                        src={"/mentor-thumbnail.png"}
-                        alt={step.label1}
-                      />
+            <small>
+              The privacy and safety of our mentors are of utmost priority to
+              Advisory. Any attempt to approach or contact our mentors outside
+              of the parameters of the Advisory Mentorship Programme—whilst
+              claiming affiliation to Advisory, or misrepresenting a
+              relationship to Advisory—will be treated as misrepresentation,
+              even fraudulent misrepresentation, as considered under the
+              Misrepresentation Act. Advisory will take legal action against any
+              individuals or organisations who attempt to deceive, harass, or
+              otherwise request dishonest assistance from our mentors.
+            </small>
+          </p>
+          <div className="testimonial-header container">
+            <h2
+              style={{
+                color: "var(--brand-color)",
+                paddingTop: "50px",
+                paddingLeft: "20px",
+                textAlign: "left",
+              }}
+            >
+              Testimonials
+            </h2>
+          </div>
+          <Box
+            ref={glideRef}
+            className="testimonal-carousel container glide"
+            style={{
+              position: "relative",
+              paddingLeft: isSmall ? "25px" : "90px",
+              maxWidth: 900,
+              flexGrow: 1,
+              margin: "auto",
+              justifyContent: "center",
+            }}
+          >
+            <div className="glide__track" data-glide-el="track">
+              <ul className="glide__slides">
+                {testimonials.map((testimonial, index) => (
+                  <li key={index} className="glide__slide">
+                    <Grid
+                      container
+                      sx={{
+                        width: "100%",
+                        justifyContent: isSmall ? "center" : "flex-start",
+                      }}
+                      spacing={2}
+                      alignItems="center"
+                    >
+                      <Grid item>
+                        <Box
+                          component="div"
+                          sx={{
+                            height: isSmall ? "150px" : "250px",
+                            width: isSmall ? "150px" : "250px",
+                            borderRadius: "50%",
+                            overflow: "hidden",
+                          }}
+                        >
+                          <img
+                            src={images[index].imgPath1}
+                            alt={images[index].label1}
+                            style={{
+                              height: "100%",
+                              width: "100%",
+                              objectFit: "cover",
+                            }}
+                          />
+                        </Box>
+                      </Grid>
+                      <Grid item xs={isSmall ? 12 : 7}>
+                        <Typography sx={{ paddingBottom: "20px" }}>
+                          {testimonial.type === "Mentor" ? (
+                            <>
+                              <p>
+                                <strong style={{ padding: "10px" }}>
+                                  {testimonial.person}
+                                </strong>
+                                <span
+                                  style={{
+                                    background: "var(--brand-color)",
+                                    padding: "5px",
+                                    borderRadius: "100px",
+                                  }}
+                                >
+                                  Mentor
+                                </span>
+                                <div style={{ paddingTop: "10px" }}>
+                                  <p>
+                                    {testimonial.role}
+                                    <br />
+                                    {testimonial.company}
+                                  </p>
+                                </div>
+                              </p>
+                              <div style={{ textAlign: "left" }}>
+                                {testimonial.text}
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              <p>
+                                <strong style={{ padding: "10px" }}>
+                                  {testimonial.person}
+                                </strong>
+                                <span
+                                  style={{
+                                    background: "var(--brand-color)",
+                                    padding: "5px",
+                                    borderRadius: "100px",
+                                  }}
+                                >
+                                  Mentee
+                                </span>
+                                <br />
+                                <div style={{ paddingTop: "10px" }}>
+                                  <p>{testimonial.school}</p>
+                                </div>
+                              </p>
+                              <div style={{ textAlign: "left" }}>
+                                {testimonial.text}
+                              </div>
+                            </>
+                          )}
+                        </Typography>
+                      </Grid>
                     </Grid>
-                    <Grid item xs={6}>
-                      <Box
-                        component="img"
-                        sx={{
-                          height: "100%",
-                          overflow: "hidden",
-                          width: "100%",
-                        }}
-                        src={"/mentor-thumbnail.png"}
-                        alt={step.label2}
-                      />
-                    </Grid>
-                    <Grid item xs={6}>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Curabitur et faucibus tortor.
-                    </Grid>
-                  </Grid>
-                ) : null}
-              </div>
-            ))}
-          </AutoPlaySwipeableViews>
-          <MobileStepper
-            steps={maxSteps}
-            position="static"
-            activeStep={activeStep}
-            nextButton={
-              <Button
-                size="small"
-                onClick={handleNext}
-                disabled={activeStep === maxSteps - 1}
-              >
-                Next
-                {theme.direction === "rtl" ? (
-                  <KeyboardArrowLeft />
-                ) : (
-                  <KeyboardArrowRight />
-                )}
-              </Button>
-            }
-            backButton={
-              <Button
-                size="small"
-                onClick={handleBack}
-                disabled={activeStep === 0}
-              >
-                {theme.direction === "rtl" ? (
-                  <KeyboardArrowRight />
-                ) : (
-                  <KeyboardArrowLeft />
-                )}
-                Back
-              </Button>
-            }
-          />
-        </Box>
-      </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Box>
+          <div
+            className="glide__arrows"
+            data-glide-el="controls"
+            style={{ position: "relative" }}
+          >
+            <button
+              className="glide__arrow glide__arrow--left"
+              data-glide-dir="<"
+              style={{
+                background: "transparent",
+                border: "none",
+                fontSize: "24px",
+                color: "var(--brand-color)",
+                margin: "10px",
+                marginLeft: isSmall ? "0" : "300px",
+                position: "absolute",
+              }}
+            >
+              {"<"}
+            </button>
+            <button
+              className="glide__arrow glide__arrow--right"
+              data-glide-dir=">"
+              style={{
+                background: "transparent",
+                border: "none",
+                fontSize: "24px",
+                color: "var(--brand-color)",
+                margin: "10px",
+                position: "absolute",
+                marginRight: isSmall ? "0" : "300px",
+              }}
+            >
+              {">"}
+            </button>
+          </div>
+        </div>
+        <Footer />
+      </Box>
     </div>
   );
 };

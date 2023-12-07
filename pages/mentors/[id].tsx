@@ -22,6 +22,7 @@ import Tab from "@mui/material/Tab";
 
 import ResultView from "../../components/ResultView";
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import "../../styles/App.css";
@@ -237,6 +238,7 @@ const App = () => {
           />
         </div>
       </SearchProvider>
+      <Footer />
     </div>
   );
 };

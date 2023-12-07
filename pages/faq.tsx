@@ -8,6 +8,8 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 
 import Header from "../components/Header";
+import Footer from "../components/Footer";
+import "../styles/App.css";
 
 // programme structure and timeline questions
 const programmeQuestions = [
@@ -167,8 +169,10 @@ const App = () => {
         }}
       >
         <h1>Frequently Asked Questions</h1>
-        <h2>Programme Structure and Timeline</h2>
-        <div>
+        <h2 style={{ color: "var(--brand-color)" }}>
+          Programme Structure and Timeline
+        </h2>
+        <div className="faq container">
           {programmeQuestions.map(({ question, answer }, index) => (
             <Accordion key={index}>
               <AccordionSummary
@@ -185,28 +189,31 @@ const App = () => {
               </AccordionDetails>
             </Accordion>
           ))}
-        </div>
 
-        <h2>Application Process and Considerations</h2>
-        <div>
-          {applicationQuestions.map(({ question, answer }, index) => (
-            <Accordion key={index}>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <Typography>
-                  <b>{question}</b>
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>{answer}</Typography>
-              </AccordionDetails>
-            </Accordion>
-          ))}
+          <h2 style={{ color: "var(--brand-color)" }}>
+            Application Process and Considerations
+          </h2>
+          <div>
+            {applicationQuestions.map(({ question, answer }, index) => (
+              <Accordion key={index}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography>
+                    <b>{question}</b>
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography>{answer}</Typography>
+                </AccordionDetails>
+              </Accordion>
+            ))}
+          </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

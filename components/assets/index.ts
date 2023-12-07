@@ -1,3 +1,34 @@
 export const advisoryLogo = `/advisory-logo.png`;
 export const advisoryMentorshipLogo = `/advisory-mentorship-logo-2023.png`;
 export const advisoryMentorshipPartners = `/advisory-mentorship-partners.png`;
+
+export const aisp = "/logos/AISP.png";
+export const avanade = "/logos/avanade.png";
+export const basf = "/logos/basf.png";
+export const bcg = "/logos/bcg.jpg";
+export const bigIdea = "/logos/bigIdea.png";
+export const bloomberg = "/logos/bloomberg.png";
+export const citi = "/logos/citi.png";
+export const csa = "/logos/csa.png";
+export const dbs = "/logos/dbs.png";
+export const deloitte = "/logos/deloitte.jpg";
+export const edb = "/logos/edb.png";
+export const edelman = "/logos/edelman.jpg";
+export const ey = "/logos/ey.png";
+export const gic = "/logos/gic.png";
+export const govtech = "/logos/govtech.png";
+export const ipr = "/logos/ipr.png";
+export const kearney = "/logos/kearney.png";
+export const maxeon = "/logos/maxeon.png";
+export const mha = "/logos/mha.png";
+export const nac = "/logos/nac.png";
+export const nvpc = "/logos/nvpc.png";
+export const one = "/logos/one.png";
+export const sap = "/logos/sap.jpg";
+export const sc = "/logos/sc.jpg";
+export const sgtech = "/logos/sgtech.png";
+export const ttsh = "/logos/ttsh.png";
+export const we = "/logos/we.png";
+export const google = "/logos/google.png";
+
+export const footerLogo = "/footer-logo.png";
