@@ -41,7 +41,9 @@ const ResultViewGrid = ({
     <Card
       className="sui-resultgrid"
       style={{
-        width: "180px",
+        maxWidth: "165px",
+        width: "100%",
+        height: "auto",
         padding: "0px",
       }}
     >
