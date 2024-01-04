@@ -18,6 +18,7 @@ jobs:
   build:
     needs: pre_build
     #if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/master') || needs.pre_build.outputs.should_skip != 'true' }}
+    if: ${{ (github.event_name == 'push') }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -37,9 +38,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: export VERSION_AIRTABLE=`node -p -e "require('./package-lock.json').packages['node_modules/airtable'].version"`
+      - run: export VERSION_AWS_SDK=`node -p -e "require('./package-lock.json').packages['node_modules/aws-sdk'].version"`
       - run: export VERSION_ELASTICSEARCH=`node -p -e "require('./package-lock.json').packages['node_modules/@elastic/elasticsearch'].version"`
       - run: rm package.json package-lock.json
-      - run: npm install --no-save airtable@"$VERSION_AIRTABLE" @elastic/elasticsearch@"$VERSION_ELASTICSEARCH"
+      - run: npm install --no-save airtable@"$VERSION_AIRTABLE" aws-sdk@"$VERSION_AWS_SDK" @elastic/elasticsearch@"$VERSION_ELASTICSEARCH"
 
       - run: mkdir lambda
       - run: cp scripts/load_mentors.js lambda/index.js
@@ -54,6 +56,7 @@ jobs:
   deploy:
     needs: build
     #if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
