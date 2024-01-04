@@ -1,6 +1,7 @@
 import React from "react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import Script from "next/script";
 
 import "../styles/App.css";
 import "../styles/globals.css";
@@ -44,12 +45,12 @@ export default function App({ Component, pageProps }: AppProps) {
           content="The Advisory Mentorship Programme"
         />
         <meta name="twitter:image" content="/advisory-mentorship-logo.jpg" />
-        <script
-          async
-          src="https://umami.advisory.sg/script.js"
-          data-website-id="2f694eab-769e-420a-bb31-4efcb3662bf5"
-        ></script>
       </Head>
+      <Script
+        async
+        src="https://umami.advisory.sg/script.js"
+        data-website-id="2f694eab-769e-420a-bb31-4efcb3662bf5"
+      />
       <Component {...pageProps} />
     </>
   );
