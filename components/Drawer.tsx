@@ -1,101 +1,160 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import MenuIcon from "@mui/icons-material/Menu";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import LaunchIcon from "@mui/icons-material/Launch";
-
+import CloseIcon from "@mui/icons-material/Close";
 import { advisoryLogo } from "./assets";
 
-const drawerWidth = 240;
+const drawerWidth = 600;
 
-interface Props {
-  window?: () => Window;
-}
+const URL_APPLY = "/apply";
+const URL_HOME = "/";
+const URL_MAIN = "https://advisory.sg/";
+const URL_FAQ = "/faq";
+const URL_MENTORS = "/mentors/0";
 
-const ResponsiveDrawer = (props: Props) => {
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+const desktopLinkStyle = {
+  color: "black",
+  fontWeight: "700",
+  whiteSpace: "nowrap",
+  margin: "1rem",
+  cursor: "pointer",
+  textDecoration: "none",
+};
+
+const mobileLinkStyle = {
+  color: "black",
+  fontWeight: "700",
+  whiteSpace: "nowrap",
+  cursor: "pointer",
+  textDecoration: "none",
+  padding: "0.5rem",
+  margin: "0px",
+};
+
+const ResponsiveDrawer = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 600);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const image = new Image();
+    image.src = advisoryLogo;
+    image.onload = () => {
+      setImageLoaded(true);
+    };
+
+    return () => {
+      image.onload = null; // Clean up the event handler
+    };
+  }, []);
 
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+    setMobileOpen((prevMobileOpen) => !prevMobileOpen);
   };
 
-  const LinkList = () => {
-    return (
-      <div>
-        <List>
-          <ListItem disablePadding>
-            <ListItemButton component="a" href="https://advisory.sg">
-              <ListItemText
-                primary="Back To Main Site"
-                style={{ flexGrow: "0", marginRight: "0.5rem" }}
-              />
-              <ListItemIcon>
-                <LaunchIcon />
-              </ListItemIcon>
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton
-              component="a"
-              href="#aboutus"
-              onClick={handleDrawerToggle}
-            >
-              <ListItemText primary="About Us" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton
-              component="a"
-              href="#partners"
-              onClick={handleDrawerToggle}
-            >
-              <ListItemText primary="Partners" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton
-              component="a"
-              href="#mentors"
-              onClick={handleDrawerToggle}
-            >
-              <ListItemText primary="Mentors" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton
-              component="a"
-              href="https://advisorysg.typeform.com/to/Z1MHxaFj#source=mentorsite"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ListItemText
-                primary="Apply Now"
-                style={{ flexGrow: "0", marginRight: "0.5rem" }}
-              />
-              <ListItemIcon>
-                <LaunchIcon />
-              </ListItemIcon>
-            </ListItemButton>
-          </ListItem>
-        </List>
-      </div>
-    );
-  };
+  const LinkList = () => (
+    <List
+      style={{
+        display: isMobile ? "flex" : "flex",
+        flexDirection: isMobile ? "column" : "row",
+        justifyContent: isMobile ? "flex-start" : "flex-start",
+        textAlign: isMobile ? "right" : "right",
+        paddingLeft: isMobile ? "62vw" : 0,
+      }}
+    >
+      <ListItem disablePadding style={{ paddingLeft: isMobile ? "60px" : 0 }}>
+        <a
+          href={URL_HOME}
+          onClick={handleDrawerToggle}
+          style={isMobile ? mobileLinkStyle : desktopLinkStyle}
+        >
+          Home
+        </a>
+      </ListItem>
+      <ListItem disablePadding style={{ paddingLeft: isMobile ? 0 : 0 }}>
+        <a
+          href={URL_MENTORS}
+          onClick={handleDrawerToggle}
+          style={isMobile ? mobileLinkStyle : desktopLinkStyle}
+        >
+          Find A Mentor
+        </a>
+      </ListItem>
+      <ListItem disablePadding style={{ paddingLeft: isMobile ? "70px" : 0 }}>
+        <a
+          href={URL_FAQ}
+          onClick={handleDrawerToggle}
+          style={isMobile ? mobileLinkStyle : desktopLinkStyle}
+        >
+          FAQ
+        </a>
+      </ListItem>
+      <ListItem disablePadding style={{ paddingLeft: isMobile ? "20px" : 0 }}>
+        <a
+          href={URL_APPLY}
+          onClick={handleDrawerToggle}
+          style={isMobile ? mobileLinkStyle : desktopLinkStyle}
+        >
+          Apply Now
+        </a>
+      </ListItem>
+    </List>
+  );
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <AppBar style={{ background: "white" }} className="toolbar-component">
-        <Toolbar>
+    <Box sx={{ display: "flex", paddingBottom: "70px" }}>
+      <AppBar
+        style={{
+          background: "white",
+          boxShadow: "none",
+          position: "sticky",
+          zIndex: 1300,
+        }}
+        className="toolbar-component"
+      >
+        <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
+          <Box style={{ display: "flex", justifyContent: "flex-start" }}>
+            {imageLoaded && (
+              <a href={URL_MAIN} target="_blank" rel="noopener noreferrer">
+                <img
+                  className="nav-logo"
+                  src={advisoryLogo}
+                  alt="Advisory"
+                  style={{
+                    width: "auto",
+                    height: "auto",
+                    marginTop: isMobile ? "10px" : "20px",
+                    marginLeft: "20px",
+                  }}
+                />
+              </a>
+            )}
+          </Box>
+          <Box
+            style={{ justifyContent: "flex-end" }}
+            sx={{ display: { xs: "none", sm: "flex", md: "flex" } }}
+          >
+            <LinkList />
+          </Box>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -103,27 +162,20 @@ const ResponsiveDrawer = (props: Props) => {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}
           >
-            <MenuIcon style={{ color: "black" }} />
+            {mobileOpen ? (
+              <CloseIcon style={{ color: "black" }} />
+            ) : (
+              <MenuIcon style={{ color: "black" }} />
+            )}
           </IconButton>
-          <img
-            className="nav-logo"
-            src={advisoryLogo}
-            alt="Advisory"
-            style={{ alignSelf: "center" }}
-          />
-          <a className="nav-back-to-main-site" href="https://advisory.sg">
-            &#x3c; back to main site
-          </a>
         </Toolbar>
       </AppBar>
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 }, zIndex: 1000 }}
       >
         <Drawer
-          container={
-            window !== undefined ? () => window().document.body : undefined
-          }
+          anchor="top"
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
@@ -133,8 +185,10 @@ const ResponsiveDrawer = (props: Props) => {
           sx={{
             display: { xs: "block", sm: "none" },
             "& .MuiDrawer-paper": {
+              position: "inherit",
               boxSizing: "border-box",
               width: drawerWidth,
+              paddingTop: "70px",
             },
           }}
         >

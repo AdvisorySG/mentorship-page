@@ -39,7 +39,7 @@ const ResultViewGrid = ({
 
   return (
     <Card
-      className="sui-result"
+      className="sui-resultgrid"
       style={{
         maxWidth: "165px",
         width: "100%",
@@ -66,7 +66,7 @@ const ResultViewGrid = ({
           image={thumbnailImageUrl}
           style={{
             width: "100%",
-            height: "163px",
+            height: "180px",
           }}
         />
         <CardContent>

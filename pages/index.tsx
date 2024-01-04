@@ -1,188 +1,374 @@
-import React, { useState } from "react";
-
-import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
-import { Layout } from "@elastic/react-search-ui-views";
-import "@elastic/react-search-ui-views/lib/styles/styles.css";
-import {
-  PagingInfo,
-  ResultsPerPage,
-  Paging,
-  Facet,
-  SearchProvider,
-  Results,
-  SearchBox,
-  Sorting,
-} from "@elastic/react-search-ui";
-import { FilterType, SortDirection } from "@elastic/search-ui";
-import IconButton from "@mui/material/IconButton";
+import React, { useRef, useEffect } from "react";
+import Glide from "@glidejs/glide";
+import "@glidejs/glide/dist/css/glide.core.min.css";
+import "@glidejs/glide/dist/css/glide.theme.min.css";
+import { Grid } from "@mui/material";
+import Box from "@mui/material/Box";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import GridViewIcon from "@mui/icons-material/GridView";
-import ViewListIcon from "@mui/icons-material/ViewList";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-
+import { advisoryMentorshipLogo } from "../components/assets";
 import Header from "../components/Header";
-import ResultView from "../components/ResultView";
+import Logo from "../components/Logo";
+import Footer from "../components/Footer.tsx";
+import "../styles/Header.css";
 import "../styles/App.css";
+
+const testimonials = [
+  {
+    person: "Mr. Randell Sie",
+    type: "Mentor",
+    role: "Managing Director",
+    company: "Persistensie Pte Ltd",
+    text: "“I've benefitted from mentorship tremendously in my career. You gain new perspectives, experience and a friendly ear who will not judge. The job of a mentor is to listen and extend your thinking, then let you make the final decision and own it.”",
+  },
+  {
+    person: "Ms. Clarinda Ong",
+    type: "Mentee",
+    school: "Tampines Meridian Junior College",
+    text: "“Going into this, I thought I knew what career I wanted. With my mentor's advice and guidance, and Advisory's thought-provoking worksheets, however, I discovered what better suited me. I used to be extremely unsure of my future, so I'm very glad this experience helped me shed light on my path forward. I have learnt more about myself and gained insights into what I want to do professionally.”",
+  },
+];
+
+const images = [
+  {
+    index: "",
+    label1: "Mentor: Randall Sie",
+    imgPath1: "/mentor-randallsie.png",
+  },
+  {
+    index: "",
+    label1: "Mentee: Clarinda Ong",
+    imgPath1: "/mentee-clarindaong.png",
+  },
+];
 
 const Index = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
+  const glideRef = useRef(null);
 
-  const WAVES = [{ waveId: 5, waveName: "2023 Wave" }];
-  const [currentTabId, setCurrentTabId] = useState(0);
+  let glideTestimonial;
 
-  const connector = new AppSearchAPIConnector({
-    engineName: "mentorship-page",
-    endpointBase: "https://advisorysg.ent.ap-southeast-1.aws.found.io",
-    searchKey: "search-bv3s7kksqjinbswx7g4my9ur",
-  });
+  function initializeGlide() {
+    glideTestimonial = new Glide(glideRef.current, {
+      type: "carousel",
+      autoplay: 10000,
+      perView: 1,
+      breakpoints: {
+        576: { perView: 1 },
+        768: { perView: 1 },
+        992: { perView: 1 },
+        1200: { perView: 1 },
+        1400: { perView: 1 },
+      },
+    });
 
-  const configurationOptions = {
-    alwaysSearchOnInitialLoad: true,
-    apiConnector: connector,
-    autocompleteQuery: {
-      suggestions: {
-        types: {
-          documents: {
-            fields: [
-              "name",
-              "organisation",
-              "role",
-              "school",
-              "course_of_study",
-            ],
-          },
+    glideTestimonial.on(["mount.after", "run"], function () {
+      glideTestimonial.update({ perView: 1 });
+    });
+
+    glideTestimonial.mount();
+
+    document
+      .querySelector(".glide__arrow--left")
+      .addEventListener("click", function () {
+        glideTestimonial.go("<");
+      });
+
+    document
+      .querySelector(".glide__arrow--right")
+      .addEventListener("click", function () {
+        glideTestimonial.go(">");
+      });
+  }
+
+  function destroyGlide() {
+    if (glideTestimonial && glideTestimonial.root) {
+      glideTestimonial.destroy();
+    }
+  }
+
+  useEffect(() => {
+    initializeGlide();
+
+    return () => destroyGlide();
+  }, []);
+
+  function debounce(func, delay) {
+    let timer;
+    return function () {
+      const context = this;
+      const args = arguments;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        func.apply(context, args);
+      }, delay);
+    };
+  }
+
+  const debouncedResize = debounce(function () {
+    if (glideTestimonial) {
+      glideTestimonial.update({
+        breakpoints: {
+          576: { perView: 1 },
+          768: { perView: 1 },
+          992: { perView: 1 },
+          1200: { perView: 1 },
+          1400: { perView: 1 },
         },
-        size: 5,
-      },
-    },
-    initialState: {
-      sort: [{ field: "", direction: "asc" as SortDirection }],
-    },
-    searchQuery: {
-      result_fields: {
-        course_of_study: { raw: {}, snippet: { size: 100 } },
-        full_bio: { raw: {}, snippet: { size: 200, fallback: true } },
-        full_image_url: { raw: {} },
-        industries: { raw: {} },
-        name: { raw: {}, snippet: { size: 100 } },
-        organisation: { raw: {}, snippet: { size: 100 } },
-        role: { raw: {}, snippet: { size: 100 } },
-        school: { raw: {}, snippet: { size: 100 } },
-        thumbnail_image_url: { raw: {} },
-      },
-      filters: [
-        {
-          type: "all" as FilterType,
-          field: "wave_id",
-          values: [WAVES[currentTabId].waveId],
-        },
-      ],
-      disjunctiveFacets: ["organisation", "school", "course_of_study"],
-      facets: {
-        industries: { type: "value", size: 100 },
-        organisation: { type: "value", size: 100 },
-        school: { type: "value", size: 100 },
-        course_of_study: { type: "value", size: 100 },
-      },
-    },
-  };
+        animationDuration: 800,
+      });
+    }
+  }, 200);
 
-  const handleTabChange = (_: React.ChangeEvent<{}>, tab: number) =>
-    setCurrentTabId(tab);
+  useEffect(() => {
+    window.addEventListener("resize", debouncedResize);
+
+    return () => {
+      window.removeEventListener("resize", debouncedResize);
+      destroyGlide();
+    };
+  }, [debouncedResize]);
 
   return (
     <div className="container">
-      <Header />
-      <div className="canvas">
-        <p className="disclaimer">
-          <small>
-            The privacy and safety of our mentors is of utmost priority to
-            Advisory. Any attempt to approach or contact our mentors outside of
-            the parameters of the Advisory Mentorship Programme—whilst claiming
-            affiliation to Advisory, or misrepresenting a relationship to
-            Advisory—will be treated as misrepresentation, even fraudulent
-            misrepresentation, as considered under the Misrepresentation Act.
-            Advisory will take legal action against any individuals or
-            organisations who attempt to deceive, harass, or otherwise request
-            dishonest assistance from our mentors.
-          </small>
-        </p>
-        <div className="results" id="mentors">
-          <SearchProvider config={configurationOptions}>
-            <div className="App">
-              <Layout
-                header={
-                  <div>
-                    <SearchBox
-                      autocompleteSuggestions={true}
-                      searchAsYouType={true}
-                      debounceLength={300}
-                    />
-                    <br></br>
-                    <Tabs
-                      value={currentTabId}
-                      onChange={handleTabChange}
-                      variant="scrollable"
-                      scrollButtons="auto"
-                      textColor="primary"
-                      indicatorColor="primary"
-                    >
-                      {WAVES.map(({ waveName }) => (
-                        <Tab
-                          key={waveName}
-                          label={waveName}
-                          data-umami-event={`Tab '${waveName}'`}
-                        />
-                      ))}
-                    </Tabs>
-                  </div>
-                }
-                bodyContent={
-                  <Results
-                    resultView={({ result }) => <ResultView result={result} />}
-                  />
-                }
-                sideContent={
-                  <div>
-                    <Sorting
-                      label={"Sort by"}
-                      sortOptions={[
-                        { name: "Relevance", value: "", direction: "" },
-                        { name: "Name", value: "name", direction: "asc" },
-                      ]}
-                    />
-                    <Facet field="industries" label="Industries" />
-                    <Facet
-                      field="organisation"
-                      filterType="any"
-                      label="Organisation"
-                    />
-                    <Facet field="school" filterType="any" label="School" />
-                    <Facet
-                      field="course_of_study"
-                      filterType="any"
-                      label="Course of Study"
-                    />
-                  </div>
-                }
-                bodyHeader={
-                  <React.Fragment>
-                    {<PagingInfo />}
-                    <div className="search-config">
-                      <ResultsPerPage />
-                      <span
-                        style={{ display: "flex", justifyContent: "flex-end" }}
-                      ></span>
-                    </div>
-                  </React.Fragment>
-                }
-                bodyFooter={<Paging />}
-              />
-            </div>
-          </SearchProvider>
+      <Box component="main" display="flex" flexDirection="column">
+        <div className="header">
+          <Header />
         </div>
-      </div>
+        <div className="header-bottom container">
+          <div className="logo-and-intro-container container">
+            <img
+              className="header-mentorship-logo container"
+              src={advisoryMentorshipLogo}
+              alt="Advisory Mentorship Programme"
+            />
+            <div className="header-mentorship-intro container" id="aboutus">
+              <p>
+                The Advisory Mentorship Programme pairs students with working
+                professionals in their fields of interest on a 1-1 basis. Over
+                the course of four months, mentors give an hour each month to
+                meet with their mentee.
+              </p>
+            </div>
+          </div>
+          <div className="stats">
+            <div className="stat-1">
+              <div className="hours">
+                <h1>8000</h1>
+                <p>Hours of Mentorship</p>
+              </div>
+              <div className="students">
+                <h1>2211</h1>
+                <p>Students</p>
+              </div>
+            </div>
+            <div className="stats-2">
+              <div className="mentors">
+                <h1>1826</h1>
+                <p>Mentors</p>
+              </div>
+              <div className="industries">
+                <h1>48</h1>
+                <p>Industries</p>
+              </div>
+            </div>
+          </div>
+          <h2
+            style={{
+              color: "var(--brand-color)",
+              textAlign: "left",
+              paddingLeft: "20px",
+            }}
+          >
+            Our Partner Organisations:
+          </h2>
+          <Logo />
+        </div>
+        <div
+          className="canvas container"
+          style={{
+            width: "100%",
+            maxWidth: isSmall ? "90%" : "75%",
+            margin: "auto",
+            paddingBottom: "50px",
+            flexDirection: "column",
+            alignItems: "center",
+            boxSizing: "border-box",
+            textAlign: "center",
+            justifyContent: "center",
+            position: "relative",
+          }}
+        >
+          <p
+            className="disclaimer container"
+            style={{ paddingLeft: "20px", paddingRight: "20px" }}
+          >
+            <small>
+              The privacy and safety of our mentors are of utmost priority to
+              Advisory. Any attempt to approach or contact our mentors outside
+              of the parameters of the Advisory Mentorship Programme—whilst
+              claiming affiliation to Advisory, or misrepresenting a
+              relationship to Advisory—will be treated as misrepresentation,
+              even fraudulent misrepresentation, as considered under the
+              Misrepresentation Act. Advisory will take legal action against any
+              individuals or organisations who attempt to deceive, harass, or
+              otherwise request dishonest assistance from our mentors.
+            </small>
+          </p>
+          <div className="testimonial-header container">
+            <h2
+              style={{
+                color: "var(--brand-color)",
+                paddingTop: "50px",
+                paddingLeft: "20px",
+                textAlign: "left",
+              }}
+            >
+              Testimonials
+            </h2>
+          </div>
+          <Box
+            ref={glideRef}
+            className="testimonal-carousel container glide"
+            style={{
+              position: "relative",
+              paddingLeft: isSmall ? "25px" : "90px",
+              maxWidth: 900,
+              flexGrow: 1,
+              margin: "auto",
+              justifyContent: "center",
+            }}
+          >
+            <div className="glide__track" data-glide-el="track">
+              <ul className="glide__slides">
+                {testimonials.map((testimonial, index) => (
+                  <li key={index} className="glide__slide">
+                    <Grid
+                      container
+                      sx={{
+                        width: "100%",
+                        justifyContent: isSmall ? "center" : "flex-start",
+                      }}
+                      spacing={2}
+                      alignItems="center"
+                    >
+                      <Grid item>
+                        <Box
+                          component="div"
+                          sx={{
+                            height: isSmall ? "150px" : "250px",
+                            width: isSmall ? "150px" : "250px",
+                            borderRadius: "50%",
+                            overflow: "hidden",
+                          }}
+                        >
+                          <img
+                            src={images[index].imgPath1}
+                            alt={images[index].label1}
+                            style={{
+                              height: "100%",
+                              width: "100%",
+                              objectFit: "cover",
+                            }}
+                          />
+                        </Box>
+                      </Grid>
+                      <Grid item xs={isSmall ? 12 : 7}>
+                        <div style={{ paddingBottom: "20px" }}>
+                          {testimonial.type === "Mentor" ? (
+                            <>
+                              <strong style={{ padding: "10px" }}>
+                                {testimonial.person}
+                              </strong>
+                              <span
+                                style={{
+                                  background: "var(--brand-color)",
+                                  padding: "5px",
+                                  borderRadius: "100px",
+                                }}
+                              >
+                                Mentor
+                              </span>
+                              <div style={{ paddingTop: "10px" }}>
+                                <p>
+                                  {testimonial.role}
+                                  <br />
+                                  {testimonial.company}
+                                </p>
+                              </div>
+                              <div style={{ textAlign: "left" }}>
+                                {testimonial.text}
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              <strong style={{ padding: "10px" }}>
+                                {testimonial.person}
+                              </strong>
+                              <span
+                                style={{
+                                  background: "var(--brand-color)",
+                                  padding: "5px",
+                                  borderRadius: "100px",
+                                }}
+                              >
+                                Mentee
+                              </span>
+                              <br />
+                              <div style={{ paddingTop: "10px" }}>
+                                <p>{testimonial.school}</p>
+                              </div>
+                              <div style={{ textAlign: "left" }}>
+                                {testimonial.text}
+                              </div>
+                            </>
+                          )}
+                        </div>
+                      </Grid>
+                    </Grid>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Box>
+          <div
+            className="glide__arrows"
+            data-glide-el="controls"
+            style={{ position: "relative" }}
+          >
+            <button
+              className="glide__arrow glide__arrow--left"
+              data-glide-dir="<"
+              style={{
+                background: "transparent",
+                border: "none",
+                fontSize: "24px",
+                color: "var(--brand-color)",
+                margin: "10px",
+                marginLeft: isSmall ? "0" : "300px",
+                position: "absolute",
+              }}
+            >
+              {"<"}
+            </button>
+            <button
+              className="glide__arrow glide__arrow--right"
+              data-glide-dir=">"
+              style={{
+                background: "transparent",
+                border: "none",
+                fontSize: "24px",
+                color: "var(--brand-color)",
+                margin: "10px",
+                position: "absolute",
+                marginRight: isSmall ? "0" : "300px",
+              }}
+            >
+              {">"}
+            </button>
+          </div>
+        </div>
+        <Footer />
+      </Box>
     </div>
   );
 };
