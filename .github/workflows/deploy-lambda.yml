@@ -21,19 +21,19 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Cache Node modules
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-lambda-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-lambda-
       - name: Setup Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
       - run: export VERSION_AIRTABLE=`node -p -e "require('./package-lock.json').packages['node_modules/airtable'].version"`
@@ -46,7 +46,7 @@ jobs:
       - run: cp -r node_modules/ lambda/
 
       - name: Upload build
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: mentorship-page-lambda-${{ github.sha }}
           path: lambda/
@@ -56,14 +56,14 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
         with:
           name: mentorship-page-lambda-${{ github.sha }}
           path: lambda/
 
       - run: cd lambda && zip -r ../lambda.zip .
       - name: Deploy lambda
-        uses: appleboy/lambda-action@v0.1.5
+        uses: appleboy/lambda-action@v0.1.9
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
