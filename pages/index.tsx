@@ -1,10 +1,9 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import Glide from "@glidejs/glide";
 import "@glidejs/glide/dist/css/glide.core.min.css";
 import "@glidejs/glide/dist/css/glide.theme.min.css";
 import { Grid } from "@mui/material";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { advisoryMentorshipLogo } from "../components/assets";
 import Header from "../components/Header";
@@ -274,60 +273,56 @@ const Index = () => {
                         </Box>
                       </Grid>
                       <Grid item xs={isSmall ? 12 : 7}>
-                        <Typography sx={{ paddingBottom: "20px" }}>
+                        <div style={{ paddingBottom: "20px" }}>
                           {testimonial.type === "Mentor" ? (
                             <>
-                              <p>
-                                <strong style={{ padding: "10px" }}>
-                                  {testimonial.person}
-                                </strong>
-                                <span
-                                  style={{
-                                    background: "var(--brand-color)",
-                                    padding: "5px",
-                                    borderRadius: "100px",
-                                  }}
-                                >
-                                  Mentor
-                                </span>
-                                <div style={{ paddingTop: "10px" }}>
-                                  <p>
-                                    {testimonial.role}
-                                    <br />
-                                    {testimonial.company}
-                                  </p>
-                                </div>
-                              </p>
+                              <strong style={{ padding: "10px" }}>
+                                {testimonial.person}
+                              </strong>
+                              <span
+                                style={{
+                                  background: "var(--brand-color)",
+                                  padding: "5px",
+                                  borderRadius: "100px",
+                                }}
+                              >
+                                Mentor
+                              </span>
+                              <div style={{ paddingTop: "10px" }}>
+                                <p>
+                                  {testimonial.role}
+                                  <br />
+                                  {testimonial.company}
+                                </p>
+                              </div>
                               <div style={{ textAlign: "left" }}>
                                 {testimonial.text}
                               </div>
                             </>
                           ) : (
                             <>
-                              <p>
-                                <strong style={{ padding: "10px" }}>
-                                  {testimonial.person}
-                                </strong>
-                                <span
-                                  style={{
-                                    background: "var(--brand-color)",
-                                    padding: "5px",
-                                    borderRadius: "100px",
-                                  }}
-                                >
-                                  Mentee
-                                </span>
-                                <br />
-                                <div style={{ paddingTop: "10px" }}>
-                                  <p>{testimonial.school}</p>
-                                </div>
-                              </p>
+                              <strong style={{ padding: "10px" }}>
+                                {testimonial.person}
+                              </strong>
+                              <span
+                                style={{
+                                  background: "var(--brand-color)",
+                                  padding: "5px",
+                                  borderRadius: "100px",
+                                }}
+                              >
+                                Mentee
+                              </span>
+                              <br />
+                              <div style={{ paddingTop: "10px" }}>
+                                <p>{testimonial.school}</p>
+                              </div>
                               <div style={{ textAlign: "left" }}>
                                 {testimonial.text}
                               </div>
                             </>
                           )}
-                        </Typography>
+                        </div>
                       </Grid>
                     </Grid>
                   </li>
