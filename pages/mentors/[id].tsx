@@ -13,10 +13,7 @@ import {
   Sorting,
 } from "@elastic/react-search-ui";
 import { FilterType, SortDirection } from "@elastic/search-ui";
-import GridViewIcon from "@mui/icons-material/GridView";
-import ViewListIcon from "@mui/icons-material/ViewList";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import IconButton from "@mui/material/IconButton";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
@@ -28,7 +25,7 @@ import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import "../../styles/App.css";
 
 import { useEffect } from "react";
-import { Link, getAccordionDetailsUtilityClass } from "@mui/material";
+import { Link } from "@mui/material";
 
 import type { GetStaticProps, GetStaticPaths } from "next";
 import { useRouter } from "next/router";
@@ -56,7 +53,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
 
-  const [isListView, setIsListView] = useState(false);
   const WAVES = [
     { tabId: 0, waveId: 5, waveName: "Wave 2023" },
     { tabId: 1, waveId: 4, waveName: "VJC Mentorship 2023" },
@@ -180,9 +176,7 @@ const App = () => {
             }
             bodyContent={
               <Results
-                resultView={({ result }) => (
-                  <ResultView result={result} isListView={isListView} />
-                )}
+                resultView={({ result }) => <ResultView result={result} />}
               />
             }
             sideContent={
@@ -213,24 +207,6 @@ const App = () => {
                 {<PagingInfo />}
                 <div className="search-config">
                   <ResultsPerPage />
-                  <span style={{ display: "flex", justifyContent: "flex-end" }}>
-                    <IconButton
-                      aria-label="grid view"
-                      color={isListView ? "default" : "primary"}
-                      onClick={() => setIsListView(false)}
-                      size={isSmall ? "small" : "medium"}
-                    >
-                      <GridViewIcon />
-                    </IconButton>
-                    <IconButton
-                      aria-label="list view"
-                      color={isListView ? "primary" : "default"}
-                      onClick={() => setIsListView(true)}
-                      size={isSmall ? "small" : "medium"}
-                    >
-                      <ViewListIcon />
-                    </IconButton>
-                  </span>
                 </div>
               </React.Fragment>
             }

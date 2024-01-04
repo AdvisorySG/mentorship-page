@@ -18,7 +18,6 @@ import { SearchResult } from "@elastic/search-ui";
 import { htmlToText } from "html-to-text";
 
 import ResultViewGrid from "./ResultViewGrid";
-import ResultViewList from "./ResultViewList";
 
 // Performs intelligent snippet truncation by removing leading/trailing periods and
 // whitespace, and filling with ellipsis accordingly.
