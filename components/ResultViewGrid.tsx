@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { Modal, Button, CardActionArea } from "@mui/material";
 
 import type { DisplayResult } from "./ResultView";
-import ResultViewList from "./ResultViewList";
+const LazyResultViewList = lazy(() => import("./ResultViewList"));
 
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -128,7 +128,12 @@ const ResultViewGrid = ({
           overflow: "auto",
         }}
       >
-        <ResultViewList displayResult={displayResult} isShowReadMore={false} />
+        <Suspense fallback={null}>
+          <LazyResultViewList
+            displayResult={displayResult}
+            isShowReadMore={false}
+          />
+        </Suspense>
       </Modal>
     </Card>
   );

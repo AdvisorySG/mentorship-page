@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 
 import {
   red,
@@ -17,7 +17,7 @@ import {
 import { SearchResult } from "@elastic/search-ui";
 import { htmlToText } from "html-to-text";
 
-import ResultViewGrid from "./ResultViewGrid";
+const LazyResultViewGrid = lazy(() => import("./ResultViewGrid"));
 
 // Performs intelligent snippet truncation by removing leading/trailing periods and
 // whitespace, and filling with ellipsis accordingly.
@@ -161,7 +161,11 @@ const ResultView = ({ result }: { result: SearchResult }) => {
     thumbnailImageUrl,
   };
 
-  return <ResultViewGrid displayResult={displayResult} />;
+  return (
+    <Suspense fallback={null}>
+      <LazyResultViewGrid displayResult={displayResult} />
+    </Suspense>
+  );
 };
 
 export default ResultView;
