@@ -49,8 +49,6 @@
   }
 
   .sui-result__body {
-    display: flex;
-    flex-direction: column;
     padding-top: 8px;
   }
 
@@ -61,20 +59,16 @@
     height: 160px;
   }
 
-  .sui-result__image img {
-    display: block;
-    object-fit: cover;
-    object-position: center;
-    max-width: 160px;
-    height: 160px;
-    margin: 0 auto;
-  }
-
   .sui-result__industries {
     display: flex;
     flex-wrap: wrap;
-    max-width: 100%;
     justify-content: center;
+  }
+
+  .sui-result__image img {
+    max-width: 160px;
+    height: 160px;
+    margin: 0 auto;
   }
 }
 
@@ -82,7 +76,6 @@
   .sui-result__image {
     width: 200px;
     height: 200px;
-    object-fit: cover;
     padding-top: 10px;
   }
 }
