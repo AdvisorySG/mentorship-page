@@ -1,26 +1,12 @@
-import React, { useState } from "react";
-
+import React from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Button from "@mui/material/Button";
-
+import Box from "@mui/material/Box";
+import { List, ListItem, Link } from "@mui/material";
 import Header from "../components/Header";
-import ResultView from "../components/ResultView";
 import "../styles/App.css";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Link,
-} from "@mui/material";
+import Divider from "@mui/material/Divider";
 
 const links = [
   {
@@ -43,6 +29,7 @@ const links = [
 
 const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
+
   return (
     <div className="container">
       <Header />
@@ -61,37 +48,49 @@ const App = () => {
           <img
             style={{ width: "100%" }}
             src="https://images.template.net/wp-content/uploads/2017/01/16095358/Sample-Blank-Timeline.jpg"
+            alt="Timeline"
           />
         </div>
         <div>
           <h2>Resources</h2>
-          <TableContainer>
-            <Table>
-              <TableBody>
-                {links.map((link, index) => (
-                  <TableRow
-                    key={index}
-                    hover
+          <Box textAlign="center">
+            <List
+              style={{
+                display: "flex",
+                flexDirection: isSmall ? "column" : "row",
+                justifyContent: "center",
+                padding: 0,
+                flexWrap: "wrap",
+              }}
+            >
+              {links.map((link, index) => (
+                <React.Fragment key={index}>
+                  <ListItem
+                    component="li"
                     onClick={() =>
                       window.open(link.url, "_blank", "noopener noreferrer")
                     }
+                    style={{
+                      listStyle: "none",
+                      margin: isSmall ? "0 0 10px 0" : "0 10px",
+                      width: isSmall ? "100%" : "auto",
+                      boxSizing: "border-box",
+                    }}
                   >
-                    <TableCell>
-                      <p style={{ textAlign: "center" }}>
-                        <Link
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {link.text}
-                        </Link>
-                      </p>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                    <Link
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      underline="hover"
+                    >
+                      <Typography variant="body1">{link.text}</Typography>
+                    </Link>
+                  </ListItem>
+                  {index < links.length - 1 && <Divider />}
+                </React.Fragment>
+              ))}
+            </List>
+          </Box>
         </div>
         <div
           style={{
