@@ -6,6 +6,7 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
+import { styled } from "@mui/material/styles";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -154,6 +155,14 @@ const applicationQuestions = [
   },
 ];
 
+const StyledAccordion = styled(Accordion)(({ theme }) => {
+  return {
+    border: `1px solid black`,
+    ".MuiAccordionDetails-root": {},
+    ".MuiAccordionSummary-root": {}, // this apply to Summary
+  };
+});
+
 const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
   return (
@@ -174,7 +183,7 @@ const App = () => {
         </h2>
         <div className="faq container">
           {programmeQuestions.map(({ question, answer }, index) => (
-            <Accordion key={index}>
+            <StyledAccordion key={index}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
@@ -187,7 +196,7 @@ const App = () => {
               <AccordionDetails>
                 <Typography>{answer}</Typography>
               </AccordionDetails>
-            </Accordion>
+            </StyledAccordion>
           ))}
 
           <h2 style={{ color: "var(--brand-color)" }}>
@@ -195,7 +204,7 @@ const App = () => {
           </h2>
           <div>
             {applicationQuestions.map(({ question, answer }, index) => (
-              <Accordion key={index}>
+              <StyledAccordion key={index}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1a-content"
@@ -208,7 +217,7 @@ const App = () => {
                 <AccordionDetails>
                   <Typography>{answer}</Typography>
                 </AccordionDetails>
-              </Accordion>
+              </StyledAccordion>
             ))}
           </div>
         </div>
