@@ -46,7 +46,7 @@
     "@elastic/elasticsearch": "^8.8.0",
     "@next/eslint-plugin-next": "^14.0.4",
     "@types/react": "^18.0.21",
-    "airtable": "^0.11.2",
+    "airtable": "^0.12.2",
     "autoprefixer": "^10.4.16",
     "aws-sdk": "^2.1529.0",
     "husky": "^8.0.3",
