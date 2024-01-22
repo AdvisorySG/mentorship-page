@@ -177,6 +177,10 @@ const Index = () => {
               color: "var(--brand-color)",
               textAlign: "left",
               paddingLeft: "20px",
+              marginLeft: "auto",
+              marginRight: "auto",
+              width: isSmall ? "90vw" : "75vw",
+              maxWidth: isSmall ? "90%" : "100%",
             }}
           >
             Our Partner Organisations:
