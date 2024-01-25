@@ -6,6 +6,8 @@ import Script from "next/script";
 import "../styles/App.css";
 import "../styles/globals.css";
 
+import PrivacyModal from "../components/PrivacyNote.tsx";
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -52,6 +54,7 @@ export default function App({ Component, pageProps }: AppProps) {
         data-website-id="2f694eab-769e-420a-bb31-4efcb3662bf5"
       />
       <Component {...pageProps} />
+      <PrivacyModal />
     </>
   );
 }
