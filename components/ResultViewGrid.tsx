@@ -1,5 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import { Modal, Button, CardActionArea } from "@mui/material";
+import FileCopyIcon from "@mui/icons-material/FileCopy";
 
 import type { DisplayResult } from "./ResultView";
 const LazyResultViewList = lazy(() => import("./ResultViewList"));
@@ -27,6 +28,12 @@ const ResultViewGrid = ({
 
   const handleClose = () => {
     window.history.back();
+  };
+
+  const handleCopyToClipboard = () => {
+    // Implement your copy-to-clipboard logic here
+    // You may use libraries like clipboard.js or the Clipboard API
+    // Example using Clipboard API: navigator.clipboard.writeText(textToCopy);
   };
 
   useEffect(() => {
@@ -111,6 +118,9 @@ const ResultViewGrid = ({
           >
             Read More
           </Button>
+          <Button onClick={handleCopyToClipboard} style={{ fontSize: 12 }}>
+            Share profile
+          </Button>
         </CardActions>
       </CardActionArea>
       <Modal
@@ -128,11 +138,13 @@ const ResultViewGrid = ({
           overflow: "auto",
         }}
       >
+        {/* log modal information */}
         <Suspense fallback={null}>
           <LazyResultViewList
             displayResult={displayResult}
             isShowReadMore={false}
           />
+          {/* Copy to clipboard button within the modal */}
         </Suspense>
       </Modal>
     </Card>
