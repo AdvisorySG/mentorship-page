@@ -44,7 +44,7 @@ const LinkedinBox = () => (
 const Footer = () => {
   return (
     <footer
-      className="flex-col align-center bg-neutral-900 w-screen mt-8"
+      className="flex-col align-center bg-neutral-900 w-screen"
       id="footer"
     >
       <div className="w-screen max-w-screen-lg mx-auto grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 justify-items-center pt-16 px-16">
