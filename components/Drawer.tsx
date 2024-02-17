@@ -109,13 +109,29 @@ const ResponsiveDrawer = () => {
         </a>
       </ListItem>
       <ListItem disablePadding style={{ paddingLeft: isMobile ? "20px" : 0 }}>
-        <a
-          href={URL_APPLY}
-          onClick={handleDrawerToggle}
-          style={isMobile ? mobileLinkStyle : desktopLinkStyle}
+        <button
+          onClick={() => {
+            handleDrawerToggle();
+            window.location.href = URL_APPLY;
+          }}
+          style={{
+            backgroundColor: "var(--brand-color)",
+            color: "#fff",
+            border: "none",
+            padding: "5px 5px",
+            fontSize: "inherit",
+            borderRadius: "5px",
+            cursor: "pointer",
+            fontWeight: "bold",
+            boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
+            width: "100px",
+            display: "flex",
+            justifyContent: "center",
+            margin: "0 16px",
+          }}
         >
           Apply Now
-        </a>
+        </button>
       </ListItem>
     </List>
   );
