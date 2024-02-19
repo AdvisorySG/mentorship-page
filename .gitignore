@@ -9,7 +9,6 @@
 /coverage
 
 # next.js
-/build
 /.next
 /out
 
