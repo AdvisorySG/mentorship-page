@@ -12,7 +12,7 @@
     "@elastic/search-ui": "^1.20.2",
     "@elastic/search-ui-app-search-connector": "^1.20.2",
     "@glidejs/glide": "^3.6.0",
-    "@mui/icons-material": "^5.11.16",
+    "@mui/icons-material": "^5.15.10",
     "@mui/material": "^5.11.16",
     "html-to-text": "^9.0.5",
     "next": "^13.5.5",
