@@ -367,6 +367,45 @@ const Index = () => {
             </button>
           </div>
         </div>
+        <div
+          className="container"
+          style={{
+            width: "100%",
+            marginBottom: "-32px",
+            padding: "20px 50px",
+            backgroundColor: "var(--light-orange-color)",
+          }}
+        >
+          <h1
+            style={{
+              lineHeight: 1.2,
+              textAlign: "center",
+            }}
+          >
+            Start discovering your career interests now!
+          </h1>
+          <p
+            style={{
+              marginTop: "20px",
+              textAlign: "justify",
+              textJustify: "inter-word",
+            }}
+          >
+            Check out our mentors with impressive industry experience on the
+            mentor page and apply today to discover your career interests. Have
+            any questions? Head to our FAQ page to get your burning questions
+            answered!
+          </p>
+          <button
+            className="apply-button"
+            style={{
+              margin: "20px auto",
+              display: "block",
+            }}
+          >
+            <h1>Apply Now</h1>
+          </button>
+        </div>
         <Footer />
       </Box>
     </div>
