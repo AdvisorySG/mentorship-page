@@ -118,15 +118,17 @@ const ResponsiveDrawer = () => {
             backgroundColor: "var(--brand-color)",
             color: "#fff",
             border: "none",
-            padding: "5px 5px",
+            padding: "10px 5px",
             fontSize: "inherit",
             borderRadius: "5px",
             cursor: "pointer",
             fontWeight: "bold",
             boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
             width: "100px",
+            height: "43px",
             display: "flex",
             justifyContent: "center",
+            alignItems: "center",
             margin: "0 16px",
           }}
         >
