@@ -17,7 +17,8 @@ const style = {
   width: "80%",
   maxWidth: "600px",
   bgcolor: "background.paper",
-  border: "2px solid #000",
+  border: "none",
+  outline: "none",
   boxShadow: 24,
   p: 4,
 };
@@ -43,7 +44,6 @@ function PrivacyModal() {
   return (
     <Modal
       open={isOpen}
-      onClose={handleAgree}
       aria-labelledby="privacy-policy-title"
       aria-describedby="privacy-policy-description"
     >
