@@ -403,7 +403,13 @@ const Index = () => {
               display: "block",
             }}
           >
-            <h1>Apply Now</h1>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://advisorysg.typeform.com/to/NQaJmE6j#source=mentorsite"
+            >
+              <h1 style={{color: "black"}}>Apply Now</h1>
+            </a>
           </button>
         </div>
         <Footer />
