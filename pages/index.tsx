@@ -386,7 +386,8 @@ const Index = () => {
           </h1>
           <p
             style={{
-              marginTop: "20px",
+              maxWidth: "1080px",
+              margin: "20px auto",
               textAlign: "justify",
               textJustify: "inter-word",
             }}
@@ -408,7 +409,7 @@ const Index = () => {
               rel="noopener noreferrer"
               href="https://advisorysg.typeform.com/to/NQaJmE6j#source=mentorsite"
             >
-              <h1 style={{color: "black"}}>Apply Now</h1>
+              <h1 style={{ color: "black" }}>Apply Now</h1>
             </a>
           </button>
         </div>
