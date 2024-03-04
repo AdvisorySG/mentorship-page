@@ -15,27 +15,49 @@ const ResultViewGrid = ({
 }: {
   displayResult: DisplayResult;
 }) => {
-  const { displayName, displayOrganisation, displayRole, thumbnailImageUrl } =
-    displayResult;
+  const {
+    displayName,
+    displayOrganisation,
+    displayRole,
+    thumbnailImageUrl,
+    uuid,
+  } = displayResult;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpen = () => {
-    window.history.pushState({}, "");
+    const newUrl = `${window.location.origin}${window.location.pathname}?uid=${uuid}`;
+    window.history.pushState({ uuid }, "", newUrl);
     setIsModalOpen(true);
   };
 
   const handleClose = () => {
-    window.history.back();
+    window.history.pushState({}, "", window.location.pathname);
+    setIsModalOpen(false);
   };
 
   useEffect(() => {
-    if (isModalOpen) {
-      window.onpopstate = () => {
-        setIsModalOpen(false);
-      };
+    const searchParams = new URLSearchParams(window.location.search);
+    const uidFromUrl = searchParams.get("uid");
+    if (uidFromUrl === uuid) {
+      setIsModalOpen(true);
+    } else {
+      setIsModalOpen(false);
     }
-  });
+
+    const handlePopState = () => {
+      const searchParams = new URLSearchParams(window.location.search);
+      const uidFromUrl = searchParams.get("uid");
+      if (uidFromUrl !== uuid) {
+        setIsModalOpen(false);
+      }
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [uuid]);
 
   return (
     <Card

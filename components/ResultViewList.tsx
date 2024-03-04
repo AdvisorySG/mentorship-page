@@ -2,6 +2,14 @@ import React, { Fragment, useState } from "react";
 import { Chip } from "@mui/material";
 
 import type { DisplayResult } from "./ResultView";
+import {
+  Snackbar,
+  SpeedDial,
+  SpeedDialIcon,
+  SpeedDialAction,
+} from "@mui/material";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import ShareIcon from "@mui/icons-material/Share";
 
 const ResultViewList = ({
   displayResult,
@@ -19,7 +27,21 @@ const ResultViewList = ({
     displaySchool,
     industryColors,
     thumbnailImageUrl,
+    uuid,
+    searchName,
   } = displayResult;
+
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+
+  const handleCopyLink = () => {
+    const link = `${window.location.origin}${
+      window.location.pathname
+    }?uid=${uuid}&q=${encodeURIComponent(searchName || "")}`;
+    navigator.clipboard.writeText(link).then(() => {
+      setSnackbarOpen(true);
+      setTimeout(() => setSnackbarOpen(false), 1000);
+    });
+  };
 
   return (
     <div className="sui-result">
@@ -39,6 +61,19 @@ const ResultViewList = ({
               }}
             />
           )}
+          <SpeedDial
+            ariaLabel="Share options"
+            icon={<SpeedDialIcon icon={<ShareIcon />} />}
+            direction="left"
+          >
+            <SpeedDialAction
+              key="copyLink"
+              icon={<ContentCopyIcon />}
+              tooltipTitle="Copy link"
+              onClick={handleCopyLink}
+            />
+          </SpeedDial>
+          <Snackbar open={snackbarOpen} message="Link copied to clipboard" />
         </div>
         <ul className="sui-result__details">
           <li className="sui-result__industries">
