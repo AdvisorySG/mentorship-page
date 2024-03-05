@@ -33,8 +33,9 @@ const App = () => {
 
   return (
     <div className="container">
+      <Header />
       <div
-        className="canvas container"
+        className="canvas"
         style={{
           width: isSmall ? "90%" : "80%",
           marginLeft: "auto",
@@ -42,7 +43,6 @@ const App = () => {
           paddingBottom: "20px",
         }}
       >
-        <Header />
         <h1>Application</h1>
         <div>
           <h2 style={{ color: "var(--brand-color)" }}>Timeline</h2>
