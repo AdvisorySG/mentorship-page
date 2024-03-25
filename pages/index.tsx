@@ -177,6 +177,10 @@ const Index = () => {
               color: "var(--brand-color)",
               textAlign: "left",
               paddingLeft: "20px",
+              marginLeft: "auto",
+              marginRight: "auto",
+              width: isSmall ? "90vw" : "75vw",
+              maxWidth: isSmall ? "90%" : "100%",
             }}
           >
             Our Partner Organisations:
@@ -290,9 +294,7 @@ const Index = () => {
                               </span>
                               <div style={{ paddingTop: "10px" }}>
                                 <p>
-                                  {testimonial.role}
-                                  <br />
-                                  {testimonial.company}
+                                  {testimonial.role} {testimonial.company}
                                 </p>
                               </div>
                               <div style={{ textAlign: "left" }}>
