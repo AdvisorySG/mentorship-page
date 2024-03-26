@@ -157,9 +157,12 @@ const applicationQuestions = [
 
 const StyledAccordion = styled(Accordion)(({ theme }) => {
   return {
-    border: `1px solid black`,
+    border: `1px solid var(--brand-color)`,
+    marginBottom: `10px`,
     ".MuiAccordionDetails-root": {},
-    ".MuiAccordionSummary-root": {}, // this apply to Summary
+    ".MuiAccordionSummary-content": {
+      marginBottom: `0px`,
+    },
   };
 });
 
