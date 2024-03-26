@@ -11,6 +11,7 @@ import Logo from "../components/Logo";
 import Footer from "../components/Footer.tsx";
 import "../styles/Header.css";
 import "../styles/App.css";
+import Statistics from "../components/Statistics.tsx";
 
 const testimonials = [
   {
@@ -38,6 +39,29 @@ const images = [
     index: "",
     label1: "Mentee: Clarinda Ong",
     imgPath1: "/mentee-clarindaong.png",
+  },
+];
+
+const statistics = [
+  {
+    title: "Mentors",
+    value: 2000,
+    icon: "mdi:account",
+  },
+  {
+    title: "Students",
+    value: 200,
+    icon: "mdi:school",
+  },
+  {
+    title: "Industries",
+    value: 48,
+    icon: "mdi:domain",
+  },
+  {
+    title: "Hours of Mentorship",
+    value: 8000,
+    icon: "mdi:clock-time-four-outline",
   },
 ];
 
@@ -150,28 +174,7 @@ const Index = () => {
               </p>
             </div>
           </div>
-          <div className="stats">
-            <div className="stat-1">
-              <div className="hours">
-                <h1>8000</h1>
-                <p>Hours of Mentorship</p>
-              </div>
-              <div className="students">
-                <h1>2211</h1>
-                <p>Students</p>
-              </div>
-            </div>
-            <div className="stats-2">
-              <div className="mentors">
-                <h1>1826</h1>
-                <p>Mentors</p>
-              </div>
-              <div className="industries">
-                <h1>48</h1>
-                <p>Industries</p>
-              </div>
-            </div>
-          </div>
+          <Statistics title="Our Impact" stats={statistics} />
           <h2
             style={{
               color: "var(--brand-color)",
