@@ -1,0 +1,44 @@
+.statistics {
+  margin-top: 20px;
+  padding-left: 20px;
+}
+
+h2 {
+  color: var(--brand-color);
+}
+
+.statistics-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+  padding: 20px;
+  align-items: center;
+}
+
+.section-title {
+  text-align: left;
+  padding-left: 20px;
+}
+
+.statistic {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.value {
+  font-size: 24px;
+}
+
+.title {
+  margin-top: 0px;
+  text-align: left;
+}
+
+.iconify-icon {
+  font-size: 50px;
+  margin-top: 10px;
+}
