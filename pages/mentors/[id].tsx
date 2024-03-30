@@ -11,6 +11,7 @@ import {
   Results,
   SearchBox,
   Sorting,
+  WithSearch,
 } from "@elastic/react-search-ui";
 import { FilterType, SortDirection } from "@elastic/search-ui";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -31,6 +32,7 @@ import type { GetStaticProps, GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 
 import ClearFacets from "../../components/ResetButton";
+import PersonalisationModal from "../../components/PersonalisationModal";
 
 // This also gets called at build time
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -170,9 +172,11 @@ const App = () => {
               </div>
             }
             bodyContent={
-              <Results
-                resultView={({ result }) => <ResultView result={result} />}
-              />
+              <React.Fragment>
+                <Results
+                  resultView={({ result }) => <ResultView result={result} />}
+                />
+              </React.Fragment>
             }
             sideContent={
               <div>
@@ -208,6 +212,21 @@ const App = () => {
             bodyFooter={<Paging />}
           />
         </div>
+        <WithSearch
+          mapContextToProps={({ facets, clearFilters, addFilter }) => ({
+            facets,
+            clearFilters,
+            addFilter,
+          })}
+        >
+          {({ facets, clearFilters, addFilter }) => (
+            <PersonalisationModal
+              industries={facets.industries}
+              clearFilters={clearFilters}
+              addFilter={addFilter}
+            />
+          )}
+        </WithSearch>
       </SearchProvider>
       <Footer />
     </div>
