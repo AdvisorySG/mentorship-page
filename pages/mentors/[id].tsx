@@ -103,7 +103,7 @@ const App = () => {
           values: [WAVES[currentTabId].waveId],
         },
       ],
-      disjunctiveFacets: ["organisation", "course_of_study"],
+      disjunctiveFacets: ["organisation", "course_of_study", "industries"],
       facets: {
         industries: { type: "value", size: 100 },
         organisation: { type: "value", size: 100 },
@@ -183,7 +183,7 @@ const App = () => {
                     { name: "Name", value: "name", direction: "asc" },
                   ]}
                 />
-                <Facet field="industries" label="Industries" />
+                <Facet field="industries" filterType="any" label="Industries" />
                 <Facet
                   field="organisation"
                   filterType="any"
