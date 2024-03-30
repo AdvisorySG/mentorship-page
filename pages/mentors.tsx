@@ -11,6 +11,7 @@ import {
   Results,
   SearchBox,
   Sorting,
+  WithSearch,
 } from "@elastic/react-search-ui";
 import { FilterType, SortDirection } from "@elastic/search-ui";
 
@@ -21,6 +22,7 @@ import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import "../styles/App.css";
 
 import ClearFacets from "../components/ResetButton";
+import PersonalisationModal from "../components/PersonalisationModal";
 
 const App = () => {
   const WAVE = { waveId: 5, waveName: "Wave 2023" };
@@ -132,6 +134,21 @@ const App = () => {
               bodyFooter={<Paging />}
             />
           </div>
+          <WithSearch
+            mapContextToProps={({ facets, clearFilters, addFilter }) => ({
+              facets,
+              clearFilters,
+              addFilter,
+            })}
+          >
+            {({ facets, clearFilters, addFilter }) => (
+              <PersonalisationModal
+                industries={facets.industries}
+                clearFilters={clearFilters}
+                addFilter={addFilter}
+              />
+            )}
+          </WithSearch>
         </SearchProvider>
       </div>
     </Page>
