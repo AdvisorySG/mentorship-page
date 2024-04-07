@@ -11,6 +11,7 @@ import Logo from "../components/Logo";
 import Footer from "../components/Footer.tsx";
 import "../styles/Header.css";
 import "../styles/App.css";
+import Link from "next/link";
 
 const testimonials = [
   {
@@ -404,13 +405,9 @@ const Index = () => {
               display: "block",
             }}
           >
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://advisorysg.typeform.com/to/NQaJmE6j#source=mentorsite"
-            >
+            <Link href="/apply">
               <h1 style={{ color: "black" }}>Apply Now</h1>
-            </a>
+            </Link>
           </button>
         </div>
         <Footer />
