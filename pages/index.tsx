@@ -406,7 +406,7 @@ const Index = () => {
             }}
           >
             <Link href="/apply">
-              <h1 style={{ color: "black" }}>Apply Now</h1>
+              <h2 style={{ color: "black" }}>Apply Now</h2>
             </Link>
           </button>
         </div>
