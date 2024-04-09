@@ -23,7 +23,7 @@ const modalHeaderStyle = {
 const modalTextStyle = {};
 
 const PersonalisationModal = ({ industries, clearFilters, addFilter }) => {
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(true);
 
   // handles toggling of the selected industries
   const [selectedIndustries, setSelectedIndustries] = useState<string[]>([]);
@@ -45,15 +45,7 @@ const PersonalisationModal = ({ industries, clearFilters, addFilter }) => {
       addFilter("industries", industry, "any");
     });
     setOpen(false);
-    localStorage.setItem("ModalClosed", "true");
   };
-
-  // only open the modal if the user hasn't closed it before
-  useEffect(() => {
-    if (localStorage.getItem("ModalClosed") === null) {
-      setOpen(true);
-    }
-  });
 
   return (
     <Modal open={open} onClose={() => setOpen(false)}>
