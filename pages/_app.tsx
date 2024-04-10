@@ -54,7 +54,7 @@ export default function App({ Component, pageProps }: AppProps) {
         data-website-id="2f694eab-769e-420a-bb31-4efcb3662bf5"
       />
       <Component {...pageProps} />
-      <PrivacyModal />
+      {pageProps.statusCode !== 404 && <PrivacyModal />}
     </>
   );
 }
