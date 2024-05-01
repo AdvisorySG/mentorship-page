@@ -101,6 +101,13 @@ body {
   margin: auto;
 }
 
+@media only screen and (max-width: 800px) {
+  .sui-layout-header {
+    width: 100%;
+    padding: 32px 15px !important;
+  }
+}
+
 .sui-layout-main-header__inner {
   gap: 10px;
 }

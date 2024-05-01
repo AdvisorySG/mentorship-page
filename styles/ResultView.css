@@ -2,6 +2,8 @@
 .sui-result {
   display: flex;
   box-sizing: border-box;
+  flex-basis: 165px;
+  flex-grow: 1;
 }
 
 .sui-result + .sui-result {
