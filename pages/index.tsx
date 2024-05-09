@@ -294,7 +294,7 @@ const Index = () => {
                               </span>
                               <div style={{ paddingTop: "10px" }}>
                                 <p>
-                                  {testimonial.role} {testimonial.company}
+                                  {testimonial.role}, {testimonial.company}
                                 </p>
                               </div>
                               <div style={{ textAlign: "left" }}>
