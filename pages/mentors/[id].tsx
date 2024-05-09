@@ -30,6 +30,8 @@ import { Link } from "@mui/material";
 import type { GetStaticProps, GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 
+import ClearFacets from "../../components/ResetButton";
+
 // This also gets called at build time
 export const getStaticProps: GetStaticProps = async (context) => {
   // params contains the mentors page `id`.
@@ -73,13 +75,7 @@ const App = () => {
       suggestions: {
         types: {
           documents: {
-            fields: [
-              "name",
-              "organisation",
-              "role",
-              "school",
-              "course_of_study",
-            ],
+            fields: ["name", "organisation", "role", "course_of_study"],
           },
         },
         size: 5,
@@ -107,11 +103,10 @@ const App = () => {
           values: [WAVES[currentTabId].waveId],
         },
       ],
-      disjunctiveFacets: ["organisation", "school", "course_of_study"],
+      disjunctiveFacets: ["organisation", "course_of_study"],
       facets: {
         industries: { type: "value", size: 100 },
         organisation: { type: "value", size: 100 },
-        school: { type: "value", size: 100 },
         course_of_study: { type: "value", size: 100 },
       },
     },
@@ -194,12 +189,12 @@ const App = () => {
                   filterType="any"
                   label="Organisation"
                 />
-                <Facet field="school" filterType="any" label="School" />
                 <Facet
                   field="course_of_study"
                   filterType="any"
                   label="Course of Study"
                 />
+                <ClearFacets />
               </div>
             }
             bodyHeader={
