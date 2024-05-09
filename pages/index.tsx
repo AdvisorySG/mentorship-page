@@ -346,7 +346,7 @@ const Index = () => {
                 fontSize: "24px",
                 color: "var(--brand-color)",
                 margin: "10px",
-                marginLeft: isSmall ? "0" : "300px",
+                marginLeft: isSmall ? "12.5%" : "25%",
                 position: "absolute",
               }}
             >
@@ -362,7 +362,7 @@ const Index = () => {
                 color: "var(--brand-color)",
                 margin: "10px",
                 position: "absolute",
-                marginRight: isSmall ? "0" : "300px",
+                marginRight: isSmall ? "12.5%" : "25%",
               }}
             >
               {">"}
