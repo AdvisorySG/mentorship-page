@@ -17,12 +17,8 @@ const style = {
   width: "80%",
   maxWidth: "600px",
   bgcolor: "background.paper",
-<<<<<<< HEAD
   border: "none",
   outline: "none",
-=======
-  border: "2px solid #000",
->>>>>>> c9ee53d (feat: new privacy modal based on MPT-53)
   boxShadow: 24,
   p: 4,
 };
@@ -48,10 +44,6 @@ function PrivacyModal() {
   return (
     <Modal
       open={isOpen}
-<<<<<<< HEAD
-=======
-      onClose={handleAgree}
->>>>>>> c9ee53d (feat: new privacy modal based on MPT-53)
       aria-labelledby="privacy-policy-title"
       aria-describedby="privacy-policy-description"
     >
