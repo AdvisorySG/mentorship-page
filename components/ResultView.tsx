@@ -96,6 +96,8 @@ type DisplayResult = {
   displaySchool: string | null;
   industryColors: Map<string, string>;
   thumbnailImageUrl?: string;
+  uuid: string;
+  searchName: string | null;
 };
 
 const ResultView = ({ result }: { result: SearchResult }) => {
@@ -108,6 +110,7 @@ const ResultView = ({ result }: { result: SearchResult }) => {
     role,
     school,
     thumbnail_image_url,
+    id,
   } = result;
 
   const displayName =
@@ -148,6 +151,9 @@ const ResultView = ({ result }: { result: SearchResult }) => {
       ? fillHighlights(fullBio.snippet, fullBio.raw)
       : null;
 
+  const uuid = id.raw;
+  const searchName = name.raw;
+
   const displayResult: DisplayResult = {
     displayCourseOfStudy,
     displayFullBio,
@@ -159,6 +165,8 @@ const ResultView = ({ result }: { result: SearchResult }) => {
     displayShortBio,
     industryColors,
     thumbnailImageUrl,
+    searchName,
+    uuid,
   };
 
   return (
