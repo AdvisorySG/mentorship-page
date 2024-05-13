@@ -108,7 +108,7 @@ const ResponsiveDrawer = () => {
           FAQ
         </a>
       </ListItem>
-      <ListItem disablePadding style={{ paddingLeft: isMobile ? "20px" : 0 }}>
+      <ListItem disablePadding style={{ paddingLeft: isMobile ? 0 : 0 }}>
         <button
           onClick={() => {
             handleDrawerToggle();
@@ -118,14 +118,14 @@ const ResponsiveDrawer = () => {
             backgroundColor: "var(--brand-color)",
             color: "#fff",
             border: "none",
-            padding: "10px 5px",
+            padding: "5px",
             fontSize: "inherit",
             borderRadius: "5px",
             cursor: "pointer",
             fontWeight: "bold",
             boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
-            width: "100px",
-            height: "43px",
+            width: isMobile ? "100px" : "110px",
+            height: "40px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
