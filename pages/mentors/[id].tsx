@@ -44,7 +44,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 // This function gets called at build time
 export const getStaticPaths: GetStaticPaths = async () => {
-  const pathWithParams = [{ params: { id: "0" } }, { params: { id: "1" } }];
+  const pathWithParams = [
+    { params: { id: "vjc-2023" } },
+    { params: { id: "2023" } },
+  ];
 
   return {
     paths: pathWithParams,
@@ -56,8 +59,13 @@ const App = () => {
   const isSmall = useMediaQuery("(max-width: 800px)");
 
   const WAVES = [
-    { tabId: 0, waveId: 5, waveName: "Wave 2023" },
-    { tabId: 1, waveId: 4, waveName: "VJC Mentorship 2023" },
+    { tabId: 0, waveId: 5, waveName: "Wave 2023", waveTag: "2023" },
+    {
+      tabId: 1,
+      waveId: 4,
+      waveName: "VJC Mentorship 2023",
+      waveTag: "vjc-2023",
+    },
   ];
 
   const [currentTabId, setCurrentTabId] = useState(0);
@@ -115,10 +123,10 @@ const App = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const pathname = router.asPath.slice(0, 10); // slice first 10 char to match the path
-    if (pathname === "/mentors/0") {
+    const pathname = router.asPath.split("?")[0];
+    if (pathname === "/mentors/2023") {
       setCurrentTabId(0);
-    } else if (pathname === "/mentors/1") {
+    } else if (pathname === "/mentors/vjc-2023") {
       setCurrentTabId(1);
     }
   }, [currentTabId]);
@@ -157,12 +165,12 @@ const App = () => {
                   textColor="primary"
                   indicatorColor="primary"
                 >
-                  {WAVES.map(({ waveName, tabId }) => (
+                  {WAVES.map(({ waveName, waveTag }) => (
                     <Tab
                       key={waveName}
                       label={waveName}
                       component={Link}
-                      href={tabId}
+                      href={waveTag}
                       data-umami-event={`Tab '${waveName}'`}
                     />
                   ))}
