@@ -72,7 +72,7 @@ const Footer = () => {
       <div className="w-screen max-w-screen-lg mx-auto grid grid-cols-1 sm:grid-cols-2 px-16 pt-0 justify-center sm:justify-between">
         <div className="justify-self-center sm:justify-self-start">
           <p className="text-neutral-300" id="copyright-text">
-            © 2022 Advisory SG
+            © 2024 Advisory Singapore (CLG) Ltd
           </p>
         </div>
         <div className="justify-self-center sm:justify-self-end flex flex-row gap-4 py-3">
