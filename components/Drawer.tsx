@@ -68,7 +68,7 @@ const ResponsiveDrawer = () => {
   const LinkList = () => (
     <List
       style={{
-        display: isMobile ? "flex" : "flex",
+        display: "flex",
         flexDirection: isMobile ? "column" : "row",
         justifyContent: isMobile ? "flex-start" : "flex-start",
         textAlign: isMobile ? "right" : "right",
@@ -102,13 +102,27 @@ const ResponsiveDrawer = () => {
           FAQ
         </a>
       </ListItem>
-      <ListItem disablePadding style={{ paddingLeft: isMobile ? "20px" : 0 }}>
-        <a
-          href={URL_APPLY}
-          onClick={handleDrawerToggle}
-          style={isMobile ? mobileLinkStyle : desktopLinkStyle}
-        >
-          Apply Now
+      <ListItem disablePadding>
+        <a href={URL_APPLY}>
+          <button
+            style={{
+              backgroundColor: "var(--brand-color)",
+              color: "#fff",
+              border: "none",
+              padding: "10px",
+              fontSize: "inherit",
+              borderRadius: "5px",
+              fontWeight: "700",
+              whiteSpace: "nowrap",
+              boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              margin: "0 16px",
+            }}
+          >
+            Apply Now
+          </button>
         </a>
       </ListItem>
     </List>
