@@ -3,8 +3,8 @@
 const path = require("path");
 
 const nextConfig = {
+  output: "export",
   reactStrictMode: true,
-
   swcMinify: true,
 
   // Disable css--modules component styling

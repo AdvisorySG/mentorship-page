@@ -11,7 +11,6 @@
 
 @media only screen and (max-width: 600px) {
   .nav-logo {
-    max-width: 40%;
     margin-top: auto;
     margin-bottom: auto;
     padding-top: 10px;
@@ -21,7 +20,6 @@
 
   .header-mentorship-logo {
     max-width: 100%; /* Ensure the logo doesn't exceed its container */
-    max-height: 1000px;
   }
 
   .nav-back-to-main-site {
@@ -33,7 +31,6 @@
   .nav-logo {
     max-height: 60%;
     position: absolute;
-    left: 3%;
     top: 0;
     bottom: 0;
     margin: auto;
@@ -78,8 +75,6 @@
 
 .header-mentorship-intro {
   text-align: justify;
-  padding-left: 30px;
-  padding-right: 30px;
   align-items: center;
   max-width: 100%;
   flex: 1;

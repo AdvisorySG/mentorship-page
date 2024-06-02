@@ -43,6 +43,16 @@ body {
   flex-direction: column;
 }
 
+h1 h2 h3 h4 h5 h6 {
+  color: var(--brand-color);
+}
+
+a {
+  color: var(--darker-gray-color);
+  text-decoration: none;
+  transition: color 0.1s var(--animation-base);
+}
+
 .container {
   align-items: center;
   background-color: white;
@@ -101,6 +111,13 @@ body {
   margin: auto;
 }
 
+@media only screen and (max-width: 800px) {
+  .sui-layout-header {
+    width: 100%;
+    padding: 32px 15px !important;
+  }
+}
+
 .sui-layout-main-header__inner {
   gap: 10px;
 }
@@ -127,45 +144,6 @@ body {
 
 .sui-layout-sidebar.sui-layout-sidebar--toggled {
   z-index: 1101;
-}
-
-.stats {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding-bottom: 50px;
-}
-
-.stats > div {
-  text-align: center;
-  flex: 1;
-  padding: 10px;
-  margin: 0 10px;
-}
-
-.stats h1 {
-  margin-bottom: 5px;
-  color: var(--brand-color);
-}
-
-.stats p {
-  margin: 0;
-}
-
-@media only screen and (min-width: 1025px) {
-  .stats {
-    padding-left: 100px;
-  }
-
-  .stat-1,
-  .stats-2 {
-    display: flex;
-  }
-
-  .stat-1 > div,
-  .stats-2 > div {
-    padding: 0px 60px 0px 60px;
-  }
 }
 
 .testimonial-header {
@@ -206,20 +184,6 @@ body {
 .sui-search-box__submit {
   background: var(--brand-color) !important;
   font-weight: bold;
-}
-
-.header {
-  text-align: center;
-  max-width: 70rem;
-  position: inherit;
-  text-align: justify;
-  text-align-last: left;
-  max-height: var(--navbar-height);
-  align-items: center;
-  width: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-  box-sizing: border-box;
 }
 
 * {

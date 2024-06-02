@@ -1,5 +1,3 @@
-import Box from "@mui/material/Box";
-
 import ResponsiveDrawer from "./Drawer";
 import "../styles/Header.css";
 import React from "react";
