@@ -19,20 +19,14 @@ const URL_FAQ = "/faq";
 const URL_MENTORS = "/mentors/0";
 
 const desktopLinkStyle = {
-  color: "black",
   fontWeight: "700",
   whiteSpace: "nowrap",
-  margin: "1rem",
-  cursor: "pointer",
-  textDecoration: "none",
+  marginLeft: "2rem",
 };
 
 const mobileLinkStyle = {
-  color: "black",
   fontWeight: "700",
   whiteSpace: "nowrap",
-  cursor: "pointer",
-  textDecoration: "none",
   padding: "0.5rem",
   margin: "0px",
 };
@@ -121,7 +115,13 @@ const ResponsiveDrawer = () => {
   );
 
   return (
-    <Box sx={{ display: "flex", paddingBottom: "70px" }}>
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        height: "var(--navbar-height)",
+      }}
+    >
       <AppBar
         style={{
           background: "white",
@@ -131,7 +131,13 @@ const ResponsiveDrawer = () => {
         }}
         className="toolbar-component"
       >
-        <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
+        <Toolbar
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            padding: "0px",
+          }}
+        >
           <Box style={{ display: "flex", justifyContent: "flex-start" }}>
             {imageLoaded && (
               <a href={URL_MAIN} target="_blank" rel="noopener noreferrer">
@@ -139,12 +145,7 @@ const ResponsiveDrawer = () => {
                   className="nav-logo"
                   src={advisoryLogo}
                   alt="Advisory"
-                  style={{
-                    width: "auto",
-                    height: "auto",
-                    marginTop: isMobile ? "10px" : "20px",
-                    marginLeft: "20px",
-                  }}
+                  style={{ maxHeight: "50px" }}
                 />
               </a>
             )}

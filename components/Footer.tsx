@@ -44,10 +44,10 @@ const LinkedinBox = () => (
 const Footer = () => {
   return (
     <footer
-      className="flex-col align-center bg-neutral-900 w-screen mt-8"
+      className="flex-col align-center bg-neutral-900 w-screen"
       id="footer"
     >
-      <div className="w-screen max-w-screen-lg mx-auto grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 justify-items-center pt-16 px-16">
+      <div className="w-screen max-w-screen-lg mx-auto grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 justify-items-center pt-8">
         <div
           className="col-auto max-w-2xl flex flex-col sm:flex-row sm:col-span-3 md:col-span-2 md:flex-col lg:flex-row items-center"
           style={{ maxWidth: "25rem" }}
@@ -69,7 +69,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="w-screen max-w-screen-lg mx-auto grid grid-cols-1 sm:grid-cols-2 px-16 pt-0 justify-center sm:justify-between">
+      <div className="w-screen max-w-screen-lg mx-auto grid grid-cols-1 sm:grid-cols-2 pt-0 px-8 justify-center sm:justify-between">
         <div className="justify-self-center sm:justify-self-start">
           <p className="text-neutral-300" id="copyright-text">
             © 2024 Advisory Singapore (CLG) Ltd

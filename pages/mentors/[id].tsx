@@ -17,9 +17,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
+import Page from "../../components/Page";
 import ResultView from "../../components/ResultView";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
 
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import "../../styles/App.css";
@@ -48,7 +47,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: pathWithParams,
-    fallback: true,
+    fallback: false,
   };
 };
 
@@ -136,81 +135,81 @@ const App = () => {
   };
 
   return (
-    <div className="results" id="mentors">
-      <Header />
-      <SearchProvider config={configurationOptions}>
-        <div className="App">
-          <Layout
-            header={
-              <div>
-                <SearchBox
-                  autocompleteSuggestions={true}
-                  searchAsYouType={true}
-                  debounceLength={300}
-                />
-                <br></br>
-                <Tabs
-                  value={currentTabId}
-                  onChange={handleTabChange}
-                  variant="scrollable"
-                  scrollButtons="auto"
-                  textColor="primary"
-                  indicatorColor="primary"
-                >
-                  {WAVES.map(({ waveName, tabId }) => (
-                    <Tab
-                      key={waveName}
-                      label={waveName}
-                      component={Link}
-                      href={tabId}
-                      data-umami-event={`Tab '${waveName}'`}
-                    />
-                  ))}
-                </Tabs>
-              </div>
-            }
-            bodyContent={
-              <Results
-                resultView={({ result }) => <ResultView result={result} />}
-              />
-            }
-            sideContent={
-              <div>
-                <Sorting
-                  label={"Sort by"}
-                  sortOptions={[
-                    { name: "Relevance", value: "", direction: "" },
-                    { name: "Name", value: "name", direction: "asc" },
-                  ]}
-                />
-                <Facet field="industries" label="Industries" />
-                <Facet
-                  field="organisation"
-                  filterType="any"
-                  label="Organisation"
-                />
-                <Facet
-                  field="course_of_study"
-                  filterType="any"
-                  label="Course of Study"
-                />
-                <ClearFacets />
-              </div>
-            }
-            bodyHeader={
-              <React.Fragment>
-                {<PagingInfo />}
-                <div className="search-config">
-                  <ResultsPerPage />
+    <Page>
+      <div className="results" id="mentors">
+        <SearchProvider config={configurationOptions}>
+          <div className="App">
+            <Layout
+              header={
+                <div>
+                  <SearchBox
+                    autocompleteSuggestions={true}
+                    searchAsYouType={true}
+                    debounceLength={300}
+                  />
+                  <br></br>
+                  <Tabs
+                    value={currentTabId}
+                    onChange={handleTabChange}
+                    variant="scrollable"
+                    scrollButtons="auto"
+                    textColor="primary"
+                    indicatorColor="primary"
+                  >
+                    {WAVES.map(({ waveName, tabId }) => (
+                      <Tab
+                        key={waveName}
+                        label={waveName}
+                        component={Link}
+                        href={tabId}
+                        data-umami-event={`Tab '${waveName}'`}
+                      />
+                    ))}
+                  </Tabs>
                 </div>
-              </React.Fragment>
-            }
-            bodyFooter={<Paging />}
-          />
-        </div>
-      </SearchProvider>
-      <Footer />
-    </div>
+              }
+              bodyContent={
+                <Results
+                  resultView={({ result }) => <ResultView result={result} />}
+                />
+              }
+              sideContent={
+                <div>
+                  <Sorting
+                    label={"Sort by"}
+                    sortOptions={[
+                      { name: "Relevance", value: "", direction: "" },
+                      { name: "Name", value: "name", direction: "asc" },
+                    ]}
+                  />
+                  <Facet field="industries" label="Industries" />
+                  <Facet
+                    field="organisation"
+                    filterType="any"
+                    label="Organisation"
+                  />
+                  <Facet
+                    field="course_of_study"
+                    filterType="any"
+                    label="Course of Study"
+                  />
+                  <ClearFacets />
+                </div>
+              }
+              bodyHeader={
+                <React.Fragment>
+                  {<PagingInfo />}
+                  <div className="search-config">
+                    <ResultsPerPage />
+                  </div>
+                </React.Fragment>
+              }
+              bodyFooter={<Paging />}
+            />
+          </div>
+        </SearchProvider>
+      </div>
+    </Page>
   );
 };
 
