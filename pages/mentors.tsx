@@ -45,6 +45,7 @@ const App = () => {
       },
     },
     initialState: {
+      resultsPerPage: 80,
       sort: [{ field: "", direction: "asc" as SortDirection }],
     },
     searchQuery: {
@@ -120,7 +121,7 @@ const App = () => {
                 <React.Fragment>
                   {<PagingInfo />}
                   <div className="search-config">
-                    <ResultsPerPage />
+                    <ResultsPerPage options={[20, 40, 80]} />
                   </div>
                 </React.Fragment>
               }
