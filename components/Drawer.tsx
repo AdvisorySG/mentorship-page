@@ -16,7 +16,7 @@ const URL_APPLY = "/apply";
 const URL_HOME = "/";
 const URL_MAIN = "https://advisory.sg/";
 const URL_FAQ = "/faq";
-const URL_MENTORS = "/mentors/0";
+const URL_MENTORS = "/mentors";
 
 const desktopLinkStyle = {
   fontWeight: "700",

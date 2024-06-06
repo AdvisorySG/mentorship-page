@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
 import { Layout } from "@elastic/react-search-ui-views";
@@ -13,53 +13,17 @@ import {
   Sorting,
 } from "@elastic/react-search-ui";
 import { FilterType, SortDirection } from "@elastic/search-ui";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 
-import Page from "../../components/Page";
-import ResultView from "../../components/ResultView";
+import Page from "../components/Page";
+import ResultView from "../components/ResultView";
 
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
-import "../../styles/App.css";
+import "../styles/App.css";
 
-import { useEffect } from "react";
-import { Link } from "@mui/material";
-
-import type { GetStaticProps, GetStaticPaths } from "next";
-import { useRouter } from "next/router";
-
-import ClearFacets from "../../components/ResetButton";
-
-// This also gets called at build time
-export const getStaticProps: GetStaticProps = async (context) => {
-  // params contains the mentors page `id`.
-  // If the route is like /mentors/1, then params.id is 1
-  const tabID = context.params?.id;
-
-  // Pass post data to the page via props
-  return { props: {} };
-};
-
-// This function gets called at build time
-export const getStaticPaths: GetStaticPaths = async () => {
-  const pathWithParams = [{ params: { id: "0" } }, { params: { id: "1" } }];
-
-  return {
-    paths: pathWithParams,
-    fallback: false,
-  };
-};
+import ClearFacets from "../components/ResetButton";
 
 const App = () => {
-  const isSmall = useMediaQuery("(max-width: 800px)");
-
-  const WAVES = [
-    { tabId: 0, waveId: 5, waveName: "Wave 2023" },
-    { tabId: 1, waveId: 4, waveName: "VJC Mentorship 2023" },
-  ];
-
-  const [currentTabId, setCurrentTabId] = useState(0);
+  const WAVE = { waveId: 5, waveName: "Wave 2023" };
 
   const connector = new AppSearchAPIConnector({
     engineName: "mentorship-page",
@@ -99,7 +63,7 @@ const App = () => {
         {
           type: "all" as FilterType,
           field: "wave_id",
-          values: [WAVES[currentTabId].waveId],
+          values: [WAVE.waveId],
         },
       ],
       disjunctiveFacets: ["organisation", "course_of_study"],
@@ -111,29 +75,6 @@ const App = () => {
     },
   };
 
-  const router = useRouter();
-
-  useEffect(() => {
-    const pathname = router.asPath.slice(0, 10); // slice first 10 char to match the path
-    if (pathname === "/mentors/0") {
-      setCurrentTabId(0);
-    } else if (pathname === "/mentors/1") {
-      setCurrentTabId(1);
-    }
-  }, [currentTabId]);
-
-  const handleTabChange = (_: React.ChangeEvent<{}>, tab: number) => {
-    setCurrentTabId(tab);
-    // FIXME: Hacky solution to identify the search button by Elastic Search UI
-    // and trigger a click to reset search results
-    const button = document.querySelector(
-      'input[class="button sui-search-box__submit"]'
-    ) as HTMLButtonElement;
-    if (button) {
-      button.click();
-    }
-  };
-
   return (
     <Page>
       <div className="results" id="mentors">
@@ -141,32 +82,11 @@ const App = () => {
           <div className="App">
             <Layout
               header={
-                <div>
-                  <SearchBox
-                    autocompleteSuggestions={true}
-                    searchAsYouType={true}
-                    debounceLength={300}
-                  />
-                  <br></br>
-                  <Tabs
-                    value={currentTabId}
-                    onChange={handleTabChange}
-                    variant="scrollable"
-                    scrollButtons="auto"
-                    textColor="primary"
-                    indicatorColor="primary"
-                  >
-                    {WAVES.map(({ waveName, tabId }) => (
-                      <Tab
-                        key={waveName}
-                        label={waveName}
-                        component={Link}
-                        href={tabId}
-                        data-umami-event={`Tab '${waveName}'`}
-                      />
-                    ))}
-                  </Tabs>
-                </div>
+                <SearchBox
+                  autocompleteSuggestions={true}
+                  searchAsYouType={true}
+                  debounceLength={300}
+                />
               }
               bodyContent={
                 <Results
