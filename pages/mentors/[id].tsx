@@ -31,6 +31,7 @@ import type { GetStaticProps, GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 
 import ClearFacets from "../../components/ResetButton";
+import { elasticSearch } from "../../scripts/elasticSearch";
 
 // This also gets called at build time
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -115,6 +116,10 @@ const App = () => {
   const router = useRouter();
 
   useEffect(() => {
+    window.addEventListener("click", (e) => {
+      console.log("hello");
+      elasticSearch();
+    });
     const pathname = router.asPath.slice(0, 10); // slice first 10 char to match the path
     if (pathname === "/mentors/0") {
       setCurrentTabId(0);
