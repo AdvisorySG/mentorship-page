@@ -111,8 +111,7 @@ const Index = () => {
   }
 
   useEffect(() => {
-    initializeGlide();
-
+    setTimeout(initializeGlide, 500);
     return () => destroyGlide();
   }, []);
 
