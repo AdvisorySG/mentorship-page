@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Glide from "@glidejs/glide";
 import "@glidejs/glide/dist/css/glide.core.min.css";
 import "@glidejs/glide/dist/css/glide.theme.min.css";
@@ -110,11 +110,6 @@ const Index = () => {
     }
   }
 
-  useEffect(() => {
-    setTimeout(initializeGlide, 500);
-    return () => destroyGlide();
-  }, []);
-
   function debounce(func, delay) {
     let timer;
     return function () {
@@ -126,6 +121,17 @@ const Index = () => {
       }, delay);
     };
   }
+
+  const refreshGlide = debounce(function () {
+    console.log(`Refresh ${isSmall}`);
+    destroyGlide(); // Clear any past instance
+    initializeGlide();
+  }, 500);
+
+  useEffect(() => {
+    refreshGlide();
+    return () => destroyGlide();
+  }, []);
 
   const debouncedResize = debounce(function () {
     if (glideTestimonial) {
