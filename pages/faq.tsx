@@ -179,12 +179,26 @@ const App = () => {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography>
+              <Typography
+                style={{
+                  fontSize: "1.2rem",
+                  textAlign: "justify",
+                  padding: "2%",
+                }}
+              >
                 <b>{question}</b>
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography>{answer}</Typography>
+              <Typography
+                style={{
+                  fontSize: "1.2rem",
+                  textAlign: "justify",
+                  padding: "2%",
+                }}
+              >
+                {answer}
+              </Typography>
             </AccordionDetails>
           </StyledAccordion>
         ))}
@@ -200,12 +214,26 @@ const App = () => {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography>
+                <Typography
+                  style={{
+                    fontSize: "1.2rem",
+                    textAlign: "justify",
+                    padding: "2%",
+                  }}
+                >
                   <b>{question}</b>
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Typography>{answer}</Typography>
+                <Typography
+                  style={{
+                    fontSize: "1.2rem",
+                    textAlign: "justify",
+                    padding: "2%",
+                  }}
+                >
+                  {answer}
+                </Typography>
               </AccordionDetails>
             </StyledAccordion>
           ))}
