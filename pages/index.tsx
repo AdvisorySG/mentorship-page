@@ -123,7 +123,6 @@ const Index = () => {
   }
 
   const refreshGlide = debounce(function () {
-    console.log(`Refresh ${isSmall}`);
     destroyGlide(); // Clear any past instance
     initializeGlide();
   }, 500);
