@@ -47,9 +47,9 @@ const Footer = () => {
       className="flex-col align-center bg-neutral-900 w-screen"
       id="footer"
     >
-      <div className="w-screen max-w-screen-lg mx-auto grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 justify-items-center pt-8">
+      <div className="w-screen max-w-screen-lg mx-auto grid grid-cols-1 sm:grid-cols-3 md:grid-cols-1 lg:grid-cols-5 justify-items-center pt-8">
         <div
-          className="col-auto max-w-2xl flex flex-col sm:flex-row sm:col-span-3 md:col-span-2 md:flex-col lg:flex-row items-center"
+          className="col-auto max-w-2xl flex flex-col sm:flex-row sm:col-span-3 md:col-span-2 md:flex-row lg:flex-row items-center"
           style={{ maxWidth: "25rem" }}
         >
           <img
