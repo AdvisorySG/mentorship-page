@@ -77,17 +77,13 @@
   margin-left: 0.3rem;
 }
 
-h4 {
+.footer h4 {
   padding-top: 25px;
   color: var(--darker-gray-color);
   font-family: var(--font-base);
   font-weight: 800;
   line-height: 1.3;
   margin: 0 0 1.5rem;
-}
-
-a {
-  text-decoration: none;
 }
 
 .page-links {

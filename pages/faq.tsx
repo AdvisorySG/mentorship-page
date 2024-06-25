@@ -1,15 +1,13 @@
 import React from "react";
 
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Page from "../components/Page.tsx";
 import "../styles/App.css";
 
 // programme structure and timeline questions
@@ -167,25 +165,35 @@ const StyledAccordion = styled(Accordion)(({ theme }) => {
 });
 
 const App = () => {
-  const isSmall = useMediaQuery("(max-width: 800px)");
   return (
-    <div className="container">
-      <Header />
-      <div
-        className="canvas"
-        style={{
-          width: isSmall ? "90%" : "80%",
-          marginLeft: "auto",
-          marginRight: "auto",
-          paddingBottom: "20px",
-        }}
-      >
-        <h1>Frequently Asked Questions</h1>
+    <Page>
+      <h1>Frequently Asked Questions</h1>
+      <h2 style={{ color: "var(--brand-color)" }}>
+        Programme Structure and Timeline
+      </h2>
+      <div className="faq container">
+        {programmeQuestions.map(({ question, answer }, index) => (
+          <StyledAccordion key={index}>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Typography>
+                <b>{question}</b>
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>{answer}</Typography>
+            </AccordionDetails>
+          </StyledAccordion>
+        ))}
+
         <h2 style={{ color: "var(--brand-color)" }}>
-          Programme Structure and Timeline
+          Application Process and Considerations
         </h2>
-        <div className="faq container">
-          {programmeQuestions.map(({ question, answer }, index) => (
+        <div>
+          {applicationQuestions.map(({ question, answer }, index) => (
             <StyledAccordion key={index}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
@@ -201,32 +209,9 @@ const App = () => {
               </AccordionDetails>
             </StyledAccordion>
           ))}
-
-          <h2 style={{ color: "var(--brand-color)" }}>
-            Application Process and Considerations
-          </h2>
-          <div>
-            {applicationQuestions.map(({ question, answer }, index) => (
-              <StyledAccordion key={index}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1a-content"
-                  id="panel1a-header"
-                >
-                  <Typography>
-                    <b>{question}</b>
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography>{answer}</Typography>
-                </AccordionDetails>
-              </StyledAccordion>
-            ))}
-          </div>
         </div>
       </div>
-      <Footer />
-    </div>
+    </Page>
   );
 };
 

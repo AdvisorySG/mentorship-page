@@ -18,20 +18,20 @@ const AWS_S3_IMAGE_FOLDER = "images/";
 const PLACEHOLDER_THUMBNAIL_URL = "/mentor-thumbnail.png";
 
 const WAVES_INFO = new Map([
-  ["2021-1", { tableId: "4 Tech", waveName: "2021 Wave 1" }],
-  ["2021-2", { tableId: "5 Tech", waveName: "2021 Wave 2" }],
-  ["2022", { tableId: "2022 Mentorship [Complete]", waveName: "2022 Wave" }],
-  [
-    "institution-specific-wave",
-    {
-      tableId: "Institution-Specific Mentorship",
-      waveName: "Institution-Specific Wave",
-    },
-  ],
-  [
-    "vjc-2023",
-    { tableId: "VJC Mentorship 2023", waveName: "VJC Mentorship 2023" },
-  ],
+  // ["2021-1", { tableId: "4 Tech", waveName: "2021 Wave 1" }],
+  // ["2021-2", { tableId: "5 Tech", waveName: "2021 Wave 2" }],
+  // ["2022", { tableId: "2022 Mentorship [Complete]", waveName: "2022 Wave" }],
+  // [
+  //   "institution-specific-wave",
+  //   {
+  //     tableId: "Institution-Specific Mentorship",
+  //     waveName: "Institution-Specific Wave",
+  //   },
+  // ],
+  // [
+  //   "vjc-2023",
+  //   { tableId: "VJC Mentorship 2023", waveName: "VJC Mentorship 2023" },
+  // ],
   ["2023", { tableId: "2023 Mentorship", waveName: "2023 Wave" }],
 ]);
 
