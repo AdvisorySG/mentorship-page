@@ -22,7 +22,7 @@ const WAVES_INFO = new Map([
   ["2021-2", { tableId: "5 Tech", waveName: "2021 Wave 2" }],
   ["2022", { tableId: "2022 Mentorship [Complete]", waveName: "2022 Wave" }],
   [
-    "institution-specific-wave",
+    "isw",
     {
       tableId: "Institution-Specific Mentorship",
       waveName: "Institution-Specific Wave",
