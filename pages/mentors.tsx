@@ -23,7 +23,7 @@ import "../styles/App.css";
 import ClearFacets from "../components/ResetButton";
 
 const App = () => {
-  const WAVE = { waveId: "2023", waveName: "Wave 2023" };
+  const WAVE = { waveId: "2023", waveName: "2023 Wave" };
 
   const connector = new AppSearchAPIConnector({
     engineName: "mentorship-page",
