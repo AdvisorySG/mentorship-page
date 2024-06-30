@@ -189,3 +189,26 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.apply-button {
+  border: none;
+  text-align: center;
+  text-decoration: default;
+  padding: 0px 20px 0px 20px;
+  cursor: pointer;
+  -webkit-border-radius: 30;
+  -moz-border-radius: 30;
+  border-radius: 30px;
+  -webkit-box-shadow: 2px 2px 8px #666666;
+  -moz-box-shadow: 2px 2px 8px #666666;
+  box-shadow: 2px 2px 8px #666666;
+  background-color: var(--brand-color);
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
