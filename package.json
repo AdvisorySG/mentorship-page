@@ -19,7 +19,7 @@
     "html-to-text": "^9.0.5",
     "js-cookie": "^3.0.5",
     "next": "^14.1.1",
-    "react": "^18.2.0",
+    "react": "^18.3.1",
     "react-dom": "^18.2.0",
     "styled-components": "^6.1.8"
   },
@@ -48,7 +48,7 @@
   "devDependencies": {
     "@elastic/elasticsearch": "^8.8.0",
     "@next/eslint-plugin-next": "^14.0.4",
-    "@types/react": "^18.0.21",
+    "@types/react": "^18.3.3",
     "airtable": "^0.12.2",
     "autoprefixer": "^10.4.16",
     "aws-sdk": "^2.1529.0",
