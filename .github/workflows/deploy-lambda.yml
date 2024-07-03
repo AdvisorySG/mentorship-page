@@ -43,7 +43,7 @@ jobs:
       - run: npm install --no-save airtable@"$VERSION_AIRTABLE" aws-sdk@"$VERSION_AWS_SDK" @elastic/elasticsearch@"$VERSION_ELASTICSEARCH"
 
       - run: mkdir lambda
-      - run: cp scripts/load_mentors.js lambda/index.js scripts/curl.js
+      - run: cp scripts/load_mentors.js lambda/index.js
       - run: cp -r node_modules/ lambda/
 
       - name: Upload build

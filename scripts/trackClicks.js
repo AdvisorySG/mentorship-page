@@ -2,14 +2,12 @@ import { elasticSearch } from "./elasticSearch";
 
 export async function trackClicks(name) {
   if (name == null) {
-    // if no name is taken in as input
-    console.log("no name");
     return;
   }
   var document_id = elasticSearch(name);
   var baseUrl = "https://advisorysg.ent.ap-southeast-1.aws.found.io";
   var engine = "mentorship-page";
-  var ELASTIC_SEARCH_KEY = process.env.REACT_APP_ELASTIC_SEARCH_KEY;
+  const ELASTIC_SEARCH_KEY = process.env.NEXT_PUBLIC_ELASTICSEARCH_KEY;
   var payload = {
     query: name,
     document_id: document_id,
@@ -28,21 +26,21 @@ export async function trackClicks(name) {
     //redirect: "follow", // manual, *follow, error
     //referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     body: JSON.stringify(payload), // body data type must match "Content-Type" header
-  });
-  // .then(function (response) {
-  // 	if (response.status != 200) {
-  // 		console.log("track Status code: " + response.status);
-  // 		return;
-  // 	}
+  })
+    .then(function (response) {
+      if (response.status != 200) {
+        console.log("track Status code: " + response.status);
+        return;
+      }
 
-  // 	// examine text in response
-  // 	response.json().then(function (data) {
-  // 		console.log("trackclicks", data);
-  // 	});
-  // })
-  // .catch(function (err) {
-  // 	console.log("Fetch error :-S", err);
-  // });
+      // examine text in response
+      response.json().then(function (data) {
+        console.log("trackclicks", data);
+      });
+    })
+    .catch(function (err) {
+      console.log("Fetch error :-S", err);
+    });
 
   return response;
 }

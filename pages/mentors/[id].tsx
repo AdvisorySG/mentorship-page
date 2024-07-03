@@ -31,7 +31,6 @@ import type { GetStaticProps, GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 
 import ClearFacets from "../../components/ResetButton";
-import { elasticSearch } from "../../scripts/elasticSearch";
 
 // This also gets called at build time
 export const getStaticProps: GetStaticProps = async (context) => {
