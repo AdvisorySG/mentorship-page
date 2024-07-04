@@ -23,7 +23,7 @@ const testimonials = [
     text: "“I've benefitted from mentorship tremendously in my career. You gain new perspectives, experience and a friendly ear who will not judge. The job of a mentor is to listen and extend your thinking, then let you make the final decision and own it.”",
   },
   {
-    person: "Ms. Clarinda Ong",
+    person: "Clarinda Ong",
     type: "Mentee",
     school: "Tampines Meridian Junior College",
     text: "“Going into this, I thought I knew what career I wanted. With my mentor's advice and guidance, and Advisory's thought-provoking worksheets, however, I discovered what better suited me. I used to be extremely unsure of my future, so I'm very glad this experience helped me shed light on my path forward. I have learnt more about myself and gained insights into what I want to do professionally.”",
