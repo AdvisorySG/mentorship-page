@@ -119,6 +119,7 @@ const ResponsiveDrawer = () => {
               justifyContent: "center",
               alignItems: "center",
               margin: "0 16px",
+              cursor: "pointer",
             }}
           >
             Apply Now
