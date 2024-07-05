@@ -18,21 +18,12 @@ const AWS_S3_IMAGE_FOLDER = "images/";
 const PLACEHOLDER_THUMBNAIL_URL = "/mentor-thumbnail.png";
 
 const WAVES_INFO = new Map([
-  ["2021-1", { tableId: "4 Tech", waveName: "2021 Wave 1" }],
-  ["2021-2", { tableId: "5 Tech", waveName: "2021 Wave 2" }],
-  ["2022", { tableId: "2022 Mentorship [Complete]", waveName: "2022 Wave" }],
-  [
-    "institution-specific-wave",
-    {
-      tableId: "Institution-Specific Mentorship",
-      waveName: "Institution-Specific Wave",
-    },
-  ],
-  [
-    "2023-vjc",
-    { tableId: "VJC Mentorship 2023", waveName: "VJC Mentorship 2023" },
-  ],
-  ["2023", { tableId: "2023 Mentorship", waveName: "2023 Wave" }],
+  ["2021-1", { tableId: "4 Tech" }],
+  ["2021-2", { tableId: "5 Tech" }],
+  ["2022", { tableId: "2022 Mentorship [Complete]" }],
+  ["isw", { tableId: "Institution-Specific Mentorship" }],
+  ["2023-vjc", { tableId: "VJC Mentorship 2023" }],
+  ["2023", { tableId: "2023 Mentorship" }],
 ]);
 
 function* chunks(arr, n) {
@@ -68,8 +59,7 @@ const formatMentor = (id, waveId, fields) => ({
     fields.Photo[0].thumbnails
       ? fields.Photo[0].thumbnails.large.url
       : PLACEHOLDER_THUMBNAIL_URL,
-  wave_id: waveId,
-  wave_name: WAVES_INFO.get(waveId).waveName,
+  wave_id: String(waveId),
   last_modified_time: fields["Last Modified Time"],
 });
 

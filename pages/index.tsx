@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import Link from "next/link";
 import Glide from "@glidejs/glide";
 import "@glidejs/glide/dist/css/glide.core.min.css";
 import "@glidejs/glide/dist/css/glide.theme.min.css";
@@ -8,10 +9,10 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 import { advisoryMentorshipLogo } from "../components/assets";
 import Logo from "../components/Logo";
-import Page from "../components/Page.tsx";
+import Page from "../components/Page";
+import Statistics from "../components/Statistics";
 import "../styles/Header.css";
 import "../styles/App.css";
-import Statistics from "../components/Statistics.tsx";
 
 const testimonials = [
   {
@@ -22,7 +23,7 @@ const testimonials = [
     text: "“I've benefitted from mentorship tremendously in my career. You gain new perspectives, experience and a friendly ear who will not judge. The job of a mentor is to listen and extend your thinking, then let you make the final decision and own it.”",
   },
   {
-    person: "Ms. Clarinda Ong",
+    person: "Clarinda Ong",
     type: "Mentee",
     school: "Tampines Meridian Junior College",
     text: "“Going into this, I thought I knew what career I wanted. With my mentor's advice and guidance, and Advisory's thought-provoking worksheets, however, I discovered what better suited me. I used to be extremely unsure of my future, so I'm very glad this experience helped me shed light on my path forward. I have learnt more about myself and gained insights into what I want to do professionally.”",
@@ -110,12 +111,6 @@ const Index = () => {
     }
   }
 
-  useEffect(() => {
-    initializeGlide();
-
-    return () => destroyGlide();
-  }, []);
-
   function debounce(func, delay) {
     let timer;
     return function () {
@@ -127,6 +122,16 @@ const Index = () => {
       }, delay);
     };
   }
+
+  const refreshGlide = debounce(function () {
+    destroyGlide(); // Clear any past instance
+    initializeGlide();
+  }, 500);
+
+  useEffect(() => {
+    refreshGlide();
+    return () => destroyGlide();
+  }, []);
 
   const debouncedResize = debounce(function () {
     if (glideTestimonial) {
@@ -298,6 +303,51 @@ const Index = () => {
           }}
         >
           {">"}
+        </button>
+      </div>
+      <div
+        className="container"
+        style={{
+          width: "100%",
+          marginTop: "64px",
+          marginBottom: "-32px",
+          padding: "20px 50px",
+        }}
+      >
+        <span
+          style={{
+            lineHeight: 1.2,
+            textAlign: "center",
+            fontSize: "1.5em",
+            fontWeight: "700",
+            color: "var(--brand-color)",
+          }}
+        >
+          Start discovering your career interests now!
+        </span>
+        <p
+          style={{
+            maxWidth: "1080px",
+            margin: "20px auto",
+            textAlign: "justify",
+            textJustify: "inter-word",
+          }}
+        >
+          Check out our mentors with impressive industry experience on the
+          mentor page and apply today to discover your career interests. Have
+          any questions? Head to our FAQ page to get your burning questions
+          answered!
+        </p>
+        <button
+          className="apply-button"
+          style={{
+            margin: "20px auto",
+            display: "block",
+          }}
+        >
+          <Link href="/apply">
+            <h2 style={{ color: "black" }}>Apply Now</h2>
+          </Link>
         </button>
       </div>
     </Page>
