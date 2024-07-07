@@ -86,6 +86,7 @@ const COLORS = [
 const industryColors = new Map();
 
 type DisplayResult = {
+  id: string;
   displayName: string | null;
   displayIndustries: Array<string>;
   displayRole: string | null;
@@ -100,6 +101,7 @@ type DisplayResult = {
 
 const ResultView = ({ result }: { result: SearchResult }) => {
   const {
+    id: idObj,
     course_of_study: courseOfStudy,
     full_bio: fullBio,
     industries,
@@ -109,6 +111,8 @@ const ResultView = ({ result }: { result: SearchResult }) => {
     school,
     thumbnail_image_url,
   } = result;
+
+  const id = idObj.raw;
 
   const displayName =
     name && name.raw ? fillHighlights(name.snippet, name.raw) : null;
@@ -149,6 +153,7 @@ const ResultView = ({ result }: { result: SearchResult }) => {
       : null;
 
   const displayResult: DisplayResult = {
+    id,
     displayCourseOfStudy,
     displayFullBio,
     displayIndustries,

@@ -15,14 +15,24 @@ const ResultViewGrid = ({
 }: {
   displayResult: DisplayResult;
 }) => {
-  const { displayName, displayOrganisation, displayRole, thumbnailImageUrl } =
-    displayResult;
+  const {
+    id,
+    displayName,
+    displayOrganisation,
+    displayRole,
+    thumbnailImageUrl,
+  } = displayResult;
+
+  useEffect(() => {
+    window.umami.track("Impression", { id, env: process.env.NODE_ENV });
+  }, [id]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpen = () => {
     window.history.pushState({}, "");
     setIsModalOpen(true);
+    window.umami.track("Click", { id, env: process.env.NODE_ENV });
   };
 
   const handleClose = () => {
@@ -55,10 +65,6 @@ const ResultViewGrid = ({
           justifyContent: "flex-start",
           height: "100%",
         }}
-        data-umami-event="Read more"
-        data-umami-event-name={displayName}
-        data-umami-event-organisation={displayOrganisation}
-        data-umami-event-role={displayRole}
       >
         <CardMedia
           component="img"
@@ -100,14 +106,7 @@ const ResultViewGrid = ({
         <CardActions
           style={{ display: "flex", flexGrow: 1, alignItems: "flex-end" }}
         >
-          <Button
-            onClick={handleOpen}
-            style={{ fontSize: 12 }}
-            data-umami-event="Read more"
-            data-umami-event-name={displayName}
-            data-umami-event-organisation={displayOrganisation}
-            data-umami-event-role={displayRole}
-          >
+          <Button onClick={handleOpen} style={{ fontSize: 12 }}>
             Read More
           </Button>
         </CardActions>
