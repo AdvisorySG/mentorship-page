@@ -89,7 +89,7 @@ const ResultViewList = ({
               )}
             </li>
           )}
-          {displayCourseOfStudy && (
+          {displayCourseOfStudy && displayCourseOfStudy !== "no info" && (
             <li>
               <span className="sui-result__label">Studied </span>
               <span
@@ -104,7 +104,7 @@ const ResultViewList = ({
               />
             </li>
           )}
-          {displaySchool && (
+          {displaySchool && displaySchool !== "no info" && (
             <li>
               <span className="sui-result__label">Graduated from </span>
               <span
