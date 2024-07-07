@@ -21,7 +21,6 @@ const Canvas = ({ children }) => (
         className="container"
         style={{
           width: "100%",
-          paddingBottom: "100px",
           flexDirection: "column",
           alignItems: "center",
           boxSizing: "border-box",

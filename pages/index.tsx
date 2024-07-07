@@ -310,8 +310,7 @@ const Index = () => {
         style={{
           width: "100%",
           marginTop: "64px",
-          marginBottom: "-32px",
-          padding: "20px 50px",
+          padding: "60px 0",
         }}
       >
         <span
@@ -328,7 +327,7 @@ const Index = () => {
         <p
           style={{
             maxWidth: "1080px",
-            margin: "20px auto",
+            margin: "20px 0",
             textAlign: "justify",
             textJustify: "inter-word",
           }}

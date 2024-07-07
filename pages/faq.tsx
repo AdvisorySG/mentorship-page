@@ -171,7 +171,7 @@ const App = () => {
       <h2 style={{ color: "var(--brand-color)" }}>
         Programme Structure and Timeline
       </h2>
-      <div className="faq container">
+      <div className="faq container" style={{ marginBottom: "64px" }}>
         {programmeQuestions.map(({ question, answer }, index) => (
           <StyledAccordion key={index}>
             <AccordionSummary
