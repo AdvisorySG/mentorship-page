@@ -1,5 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import { Modal, Button, CardActionArea } from "@mui/material";
+import { useInView } from "react-intersection-observer";
 
 import type { DisplayResult } from "./ResultView";
 const LazyResultViewList = lazy(() => import("./ResultViewList"));
@@ -15,6 +16,8 @@ const ResultViewGrid = ({
 }: {
   displayResult: DisplayResult;
 }) => {
+  const { ref, inView } = useInView();
+
   const {
     id,
     displayName,
@@ -25,7 +28,7 @@ const ResultViewGrid = ({
 
   useEffect(() => {
     window.umami.track("Impression", { id, env: process.env.NODE_ENV });
-  }, [id]);
+  }, [id, inView]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -55,6 +58,7 @@ const ResultViewGrid = ({
         height: "auto",
         padding: "0px",
       }}
+      ref={ref}
     >
       <CardActionArea
         onClick={handleOpen}
