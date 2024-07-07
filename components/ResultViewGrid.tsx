@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, Suspense } from "react";
+import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { Modal, Button, CardActionArea } from "@mui/material";
 import { useInView } from "react-intersection-observer";
 
@@ -26,8 +26,12 @@ const ResultViewGrid = ({
     thumbnailImageUrl,
   } = displayResult;
 
+  const inViewRef = useRef(false);
   useEffect(() => {
-    window.umami.track("Impression", { id, env: process.env.NODE_ENV });
+    if (!inViewRef.current && inView) {
+      inViewRef.current = true;
+      window.umami.track("Impression", { id, env: process.env.NODE_ENV });
+    }
   }, [id, inView]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
