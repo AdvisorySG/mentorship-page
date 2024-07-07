@@ -9,7 +9,7 @@
   border-color: #cccccc;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 639px) {
   .nav-logo {
     margin-top: auto;
     margin-bottom: auto;
@@ -27,7 +27,7 @@
   }
 }
 
-@media only screen and (min-width: 601px) {
+@media only screen and (min-width: 640px) {
   .nav-logo {
     max-height: 60%;
     position: absolute;
@@ -80,7 +80,7 @@
   flex: 1;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 639px) {
   .header-mentorship-logo {
     width: 100%;
     position: relative;
