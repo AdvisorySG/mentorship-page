@@ -14,7 +14,7 @@ import {
 } from "@elastic/react-search-ui";
 import { FilterType, SortDirection } from "@elastic/search-ui";
 
-import Page from "../components/Page";
+import Canvas from "../components/Canvas";
 import ResultView from "../components/ResultView";
 
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
@@ -77,7 +77,7 @@ const App = () => {
   };
 
   return (
-    <Page>
+    <Canvas>
       <div className="results" id="mentors">
         <SearchProvider config={configurationOptions}>
           <div className="App">
@@ -130,7 +130,7 @@ const App = () => {
           </div>
         </SearchProvider>
       </div>
-    </Page>
+    </Canvas>
   );
 };
 

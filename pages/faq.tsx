@@ -7,7 +7,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 
-import Page from "../components/Page.tsx";
+import Canvas from "../components/Canvas";
 import "../styles/App.css";
 
 // programme structure and timeline questions
@@ -166,7 +166,7 @@ const StyledAccordion = styled(Accordion)(({ theme }) => {
 
 const App = () => {
   return (
-    <Page>
+    <Canvas>
       <h1>Frequently Asked Questions</h1>
       <h2 style={{ color: "var(--brand-color)" }}>
         Programme Structure and Timeline
@@ -211,7 +211,7 @@ const App = () => {
           ))}
         </div>
       </div>
-    </Page>
+    </Canvas>
   );
 };
 
