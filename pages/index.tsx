@@ -8,8 +8,8 @@ import Box from "@mui/material/Box";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 import { advisoryMentorshipLogo } from "../components/assets";
+import Canvas from "../components/Canvas";
 import Logo from "../components/Logo";
-import Page from "../components/Page";
 import Statistics from "../components/Statistics";
 import "../styles/Header.css";
 import "../styles/App.css";
@@ -158,7 +158,7 @@ const Index = () => {
   }, [debouncedResize]);
 
   return (
-    <Page>
+    <Canvas>
       <div className="logo-and-intro-container">
         <img
           className="header-mentorship-logo container"
@@ -349,7 +349,7 @@ const Index = () => {
           </Link>
         </button>
       </div>
-    </Page>
+    </Canvas>
   );
 };
 
