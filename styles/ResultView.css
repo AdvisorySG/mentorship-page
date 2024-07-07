@@ -1,45 +1,14 @@
-.sui-resultgrid,
-.sui-result {
-  display: flex;
-  box-sizing: border-box;
-  flex-basis: 165px;
-  flex-grow: 1;
-}
-
-.sui-result + .sui-result {
-  margin-top: 0px;
-}
-
-.sui-result__body {
-  display: flex;
-  flex: 4;
-  flex-direction: column;
-}
-
-.sui-result__image {
-  flex: 1;
-}
-
-.sui-result__image img {
-  display: block;
-  object-fit: cover;
-  object-position: center;
-  height: 80%;
-}
+/* Shared */
 
 .sui-result__title {
   font-weight: 600;
-}
-
-.sui-result__biography::after {
-  content: " ";
 }
 
 .sui-result__details {
   padding: 0 24px;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 768px) {
   .sui-resultgrid,
   .sui-result {
     flex-direction: column;
@@ -74,27 +43,104 @@
   }
 }
 
-@media only screen and (min-width: 801px) {
-  .sui-result__image {
-    width: 200px;
-    height: 200px;
-    padding-top: 10px;
-  }
-}
+/* Grid */
 
 .sui-results-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   align-items: stretch;
   gap: 24px;
 }
+
+@media only screen and (min-width: 801px) and (max-width: 900px) {
+  /* This style forces a 3-column layout when Elastic Search UI switches to the sidebar
+  layout. Because 140px is slightly too small (the preferred size is 160px as used in
+  the main grid style), this media query is intended to only apply to a narrow range of
+  screen widths where Elastic Search UI would otherwise display 2-columns in the sidebar
+  layout.
+  */
+  .sui-results-container {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}
+
+/* Modal */
 
 .sui-result__modal {
   display: flex;
   align-items: center;
   margin: auto;
+  width: 90%;
   max-width: 800px;
-  max-height: 80%;
+  max-height: 90%;
   overflow: scroll;
+}
+
+.sui-result {
+  display: flex;
+  box-sizing: border-box;
+  flex: 1 0 160px;
+}
+
+.sui-result__body {
+  display: flex;
+  flex: 4;
+  flex-direction: column;
+}
+
+.sui-result__image {
+  flex: 1;
+}
+
+.sui-result__image img {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  height: 80%;
+}
+
+.sui-result__biography::after {
+  content: " ";
+}
+
+@media only screen and (max-width: 767px) {
+  .sui-result {
+    flex-direction: column;
+  }
+
+  .sui-result__title {
+    text-align: center;
+    width: 100%;
+  }
+
+  .sui-result__body {
+    padding-top: 8px;
+  }
+
+  .sui-result__image {
+    padding-left: 0px;
+    padding-top: 0px;
+    object-position: center;
+    height: 160px;
+  }
+
+  .sui-result__industries {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .sui-result__image img {
+    max-width: 160px;
+    height: 160px;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .sui-result__image {
+    width: 200px;
+    height: 200px;
+    padding-top: 10px;
+  }
 }
