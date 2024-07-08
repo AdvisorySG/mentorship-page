@@ -67,7 +67,7 @@ const statistics = [
 ];
 
 const Index = () => {
-  const isSmall = useMediaQuery("(max-width: 800px)");
+  const isSmall = useMediaQuery("(max-width: 767px)");
   const glideRef = useRef(null);
 
   let glideTestimonial;
@@ -159,7 +159,7 @@ const Index = () => {
 
   return (
     <Canvas>
-      <div className="logo-and-intro-container container">
+      <div className="logo-and-intro-container">
         <img
           className="header-mentorship-logo container"
           src={advisoryMentorshipLogo}
@@ -185,7 +185,7 @@ const Index = () => {
         style={{
           position: "relative",
           paddingLeft: isSmall ? "25px" : "90px",
-          maxWidth: 900,
+          maxWidth: "768px",
           flexGrow: 1,
           margin: "auto",
           justifyContent: "center",
@@ -326,7 +326,7 @@ const Index = () => {
         </span>
         <p
           style={{
-            maxWidth: "1080px",
+            maxWidth: "1024px",
             margin: "20px 0",
             textAlign: "justify",
             textJustify: "inter-word",

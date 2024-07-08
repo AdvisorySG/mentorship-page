@@ -14,11 +14,10 @@ const Canvas = ({ children }) => (
         paddingRight: "4vw",
       }}
     >
-      <div className="container" style={{ maxHeight: "var(--navbar-height)" }}>
+      <div style={{ maxHeight: "var(--navbar-height)" }}>
         <Header />
       </div>
       <div
-        className="container"
         style={{
           width: "100%",
           flexDirection: "column",

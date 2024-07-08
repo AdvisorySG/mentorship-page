@@ -10,7 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { advisoryLogo } from "./assets";
 
-const drawerWidth = 600;
+const drawerWidth = 640;
 
 const URL_APPLY = "/apply";
 const URL_HOME = "/";
@@ -38,7 +38,7 @@ const ResponsiveDrawer = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 600);
+      setIsMobile(window.innerWidth < drawerWidth);
     };
 
     handleResize();
@@ -153,7 +153,7 @@ const ResponsiveDrawer = () => {
             padding: "0px",
           }}
         >
-          <Box style={{ display: "flex", justifyContent: "flex-start" }}>
+          <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
             {imageLoaded && (
               <a href={URL_MAIN} target="_blank" rel="noopener noreferrer">
                 <img
@@ -166,8 +166,10 @@ const ResponsiveDrawer = () => {
             )}
           </Box>
           <Box
-            style={{ justifyContent: "flex-end" }}
-            sx={{ display: { xs: "none", sm: "flex", md: "flex" } }}
+            sx={{
+              display: isMobile ? "none" : "flex",
+              justifyContent: "flex-end",
+            }}
           >
             <LinkList />
           </Box>
@@ -176,7 +178,7 @@ const ResponsiveDrawer = () => {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{ display: isMobile ? "block" : "none", mr: 2 }}
           >
             {mobileOpen ? (
               <CloseIcon style={{ color: "black" }} />
@@ -188,7 +190,10 @@ const ResponsiveDrawer = () => {
       </AppBar>
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 }, zIndex: 1000 }}
+        sx={{
+          zIndex: 1000,
+          ...(isMobile ? { width: drawerWidth, flexShrink: 0 } : {}),
+        }}
       >
         <Drawer
           anchor="top"
@@ -199,7 +204,7 @@ const ResponsiveDrawer = () => {
             keepMounted: false,
           }}
           sx={{
-            display: { xs: "block", sm: "none" },
+            display: isMobile ? "block" : "none",
             "& .MuiDrawer-paper": {
               position: "inherit",
               boxSizing: "border-box",
