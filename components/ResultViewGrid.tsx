@@ -32,7 +32,6 @@ const ResultViewGrid = ({
 
   useEffect(() => {
     if (isModalOpen) {
-      console.log("name", displayName);
       trackClicks(displayName);
       window.onpopstate = () => {
         setIsModalOpen(false);

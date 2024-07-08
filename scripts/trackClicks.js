@@ -1,46 +1,98 @@
-import { elasticSearch } from "./elasticSearch";
+export async function trackClicks(mentor_name) {
+  const ELASTIC_SEARCH_KEY = "search-bv3s7kksqjinbswx7g4my9ur";
+  var baseUrl =
+    "https://advisorysg.ent.ap-southeast-1.aws.found.io/api/as/v1/engines/mentorship-page/search";
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("Authorization", `Bearer ${ELASTIC_SEARCH_KEY}`);
 
-export async function trackClicks(name) {
-  if (name == null) {
-    return;
-  }
-  var document_id = elasticSearch(name);
-  var baseUrl = "https://advisorysg.ent.ap-southeast-1.aws.found.io";
-  var engine = "mentorship-page";
-  const ELASTIC_SEARCH_KEY = process.env.NEXT_PUBLIC_ELASTICSEARCH_KEY;
-  var payload = {
-    query: name,
-    document_id: document_id,
+  // search query retrieves the mentor's info
+  const searchQuery = JSON.stringify({
+    query: mentor_name,
+    filters: {
+      name: [mentor_name],
+    },
+    result_fields: {
+      name: {
+        raw: {},
+      },
+    },
+    page: {
+      size: 1,
+    },
+  });
+
+  // base request options
+  var requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: searchQuery,
+    redirect: "follow",
   };
 
-  const response = await fetch(`${baseUrl}/api/as/v1/engines/${engine}/click`, {
-    method: "POST", // *GET, POST, PUT, DELETE, etc.
-    mode: "no-cors", // no-cors, *cors, same-origin
-    //cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    //credentials: "same-origin", // include, *same-origin, omit
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${ELASTIC_SEARCH_KEY}`,
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    //redirect: "follow", // manual, *follow, error
-    //referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    body: JSON.stringify(payload), // body data type must match "Content-Type" header
-  })
+  // send post request to elasticsearch to retrieve mentor info
+  await fetch(baseUrl, requestOptions)
     .then(function (response) {
+      // if error is found return
       if (response.status != 200) {
-        console.log("track Status code: " + response.status);
+        // console.log("search Status code: " + response.status, response);
         return;
       }
 
       // examine text in response
-      response.json().then(function (data) {
-        console.log("trackclicks", data);
+      response.json().then(function (dataResponse) {
+        const resultsObj = dataResponse["results"][0];
+        const document_id = resultsObj["id"]["raw"];
+
+        // track click increment click count for mentor
+        const trackClickQuery = JSON.stringify({
+          query: mentor_name,
+          document_id: document_id,
+        });
+
+        // update body to trackclickquery
+        requestOptions = {
+          method: "POST",
+          headers: myHeaders,
+          body: trackClickQuery,
+          redirect: "follow",
+        };
+
+        // update baseurl to click instead of search
+        baseUrl =
+          "https://advisorysg.ent.ap-southeast-1.aws.found.io/api/as/v1/engines/mentorship-page/click";
+
+        // send post request to elasticsearch to track click when mentor profile is clicked
+        fetch(baseUrl, requestOptions)
+          .then(function (response) {
+            if (response.status != 200) {
+              // console.log(
+              // 	"fetch Status code: " + response.status,
+              // 	response
+              // );
+              return;
+            } else {
+              // console.log("success");
+              return;
+            }
+          })
+          .then(function (result) {
+            return;
+            console.log(result);
+          })
+          .catch(function (error) {
+            return "error";
+            console.error(error);
+          });
+        return;
       });
     })
-    .catch(function (err) {
-      console.log("Fetch error :-S", err);
+    .then(function (result) {
+      return;
+      console.log(result);
+    })
+    .catch(function (error) {
+      return;
+      console.error(error);
     });
-
-  return response;
 }
