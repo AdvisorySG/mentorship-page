@@ -1,5 +1,6 @@
-import React, { useState, useEffect, lazy, Suspense } from "react";
+import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { Modal, Button, CardActionArea } from "@mui/material";
+import { useInView } from "react-intersection-observer";
 
 import type { DisplayResult } from "./ResultView";
 const LazyResultViewList = lazy(() => import("./ResultViewList"));
@@ -15,14 +16,30 @@ const ResultViewGrid = ({
 }: {
   displayResult: DisplayResult;
 }) => {
-  const { displayName, displayOrganisation, displayRole, thumbnailImageUrl } =
-    displayResult;
+  const { ref, inView } = useInView();
+
+  const {
+    id,
+    displayName,
+    displayOrganisation,
+    displayRole,
+    thumbnailImageUrl,
+  } = displayResult;
+
+  const inViewRef = useRef(false);
+  useEffect(() => {
+    if (!inViewRef.current && inView) {
+      inViewRef.current = true;
+      window.umami.track("Impression", { id, env: process.env.NODE_ENV });
+    }
+  }, [id, inView]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpen = () => {
     window.history.pushState({}, "");
     setIsModalOpen(true);
+    window.umami.track("Click", { id, env: process.env.NODE_ENV });
   };
 
   const handleClose = () => {
@@ -45,6 +62,7 @@ const ResultViewGrid = ({
         height: "auto",
         padding: "0px",
       }}
+      ref={ref}
     >
       <CardActionArea
         onClick={handleOpen}
@@ -55,10 +73,6 @@ const ResultViewGrid = ({
           justifyContent: "flex-start",
           height: "100%",
         }}
-        data-umami-event="Read more"
-        data-umami-event-name={displayName}
-        data-umami-event-organisation={displayOrganisation}
-        data-umami-event-role={displayRole}
       >
         <CardMedia
           component="img"
@@ -100,14 +114,7 @@ const ResultViewGrid = ({
         <CardActions
           style={{ display: "flex", flexGrow: 1, alignItems: "flex-end" }}
         >
-          <Button
-            onClick={handleOpen}
-            style={{ fontSize: 12 }}
-            data-umami-event="Read more"
-            data-umami-event-name={displayName}
-            data-umami-event-organisation={displayOrganisation}
-            data-umami-event-role={displayRole}
-          >
+          <Button onClick={handleOpen} style={{ fontSize: 12 }}>
             Read More
           </Button>
         </CardActions>
