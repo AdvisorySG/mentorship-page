@@ -183,7 +183,7 @@ const App = () => {
                 style={{
                   fontSize: "1.2rem",
                   textAlign: "justify",
-                  padding: "2%",
+                  padding: "1%",
                 }}
               >
                 <b>{question}</b>
@@ -194,7 +194,8 @@ const App = () => {
                 style={{
                   fontSize: "1.2rem",
                   textAlign: "justify",
-                  padding: "2%",
+                  paddingLeft: "1%",
+                  paddingRight: "1%",
                 }}
               >
                 {answer}
