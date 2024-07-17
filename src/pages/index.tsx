@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import Link from "next/link";
+
 import Glide from "@glidejs/glide";
 import "@glidejs/glide/dist/css/glide.core.min.css";
 import "@glidejs/glide/dist/css/glide.theme.min.css";
@@ -7,11 +8,11 @@ import { Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import { advisoryMentorshipLogo } from "../src/assets";
+import { advisoryMentorshipLogo } from "../assets";
 import Canvas from "../components/Canvas";
 import Logo from "../components/Logo";
 import Statistics from "../components/Statistics";
-import { URL_APPLY } from "../src/links";
+import { URL_APPLY } from "../links";
 import "../styles/Header.css";
 import "../styles/App.css";
 

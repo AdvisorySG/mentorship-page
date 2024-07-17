@@ -1,6 +1,7 @@
 import React from "react";
+
+import { footerLogo } from "../assets";
 import "../styles/Footer.css";
-import { footerLogo } from "../src/assets";
 
 const FacebookBox = () => (
   <a href="https://www.facebook.com/advisorysg/">

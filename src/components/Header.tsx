@@ -1,6 +1,7 @@
+import React from "react";
+
 import ResponsiveDrawer from "./Drawer";
 import "../styles/Header.css";
-import React from "react";
 
 const Header = () => (
   <div className="header">

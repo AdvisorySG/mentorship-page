@@ -1,6 +1,8 @@
 import React from "react";
+
 import { Icon } from "@iconify/react";
-import "/styles/Statistics.css";
+
+import "../styles/Statistics.css";
 
 const Statistics = ({ stats }) => {
   return (

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -9,14 +10,8 @@ import Toolbar from "@mui/material/Toolbar";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 
-import {
-  URL_APPLY,
-  URL_FAQ,
-  URL_HOME,
-  URL_MAIN,
-  URL_MENTORS,
-} from "../src/links";
-import { advisoryLogo } from "../src/assets";
+import { advisoryLogo } from "../assets";
+import { URL_APPLY, URL_FAQ, URL_HOME, URL_MAIN, URL_MENTORS } from "../links";
 
 const drawerWidth = 640;
 

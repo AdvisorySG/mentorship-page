@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
+
 import { Chip } from "@mui/material";
 
 import type { DisplayResult } from "./ResultView";

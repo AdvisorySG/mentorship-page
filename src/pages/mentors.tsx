@@ -15,12 +15,10 @@ import {
 import { FilterType, SortDirection } from "@elastic/search-ui";
 
 import Canvas from "../components/Canvas";
+import ClearFacets from "../components/ResetButton";
 import ResultView from "../components/ResultView";
-
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import "../styles/App.css";
-
-import ClearFacets from "../components/ResetButton";
 
 const App = () => {
   const WAVE = { waveId: "2023", waveName: "2023 Wave" };

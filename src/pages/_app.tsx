@@ -3,10 +3,9 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import Script from "next/script";
 
+import PrivacyModal from "../components/PrivacyNote";
 import "../styles/App.css";
 import "../styles/globals.css";
-
-import PrivacyModal from "../components/PrivacyNote.tsx";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

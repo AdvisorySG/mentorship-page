@@ -1,7 +1,7 @@
 import React from "react";
-import "../styles/Logo.css";
 
-import * as logos from "../src/assets";
+import * as logos from "../assets";
+import "../styles/Logo.css";
 
 const Logo: React.FC = () => {
   const logoArray = [

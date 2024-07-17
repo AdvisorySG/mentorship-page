@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import { withSearch } from "@elastic/react-search-ui";
 
 function ClearFacets({ filters, removeFilter }) {

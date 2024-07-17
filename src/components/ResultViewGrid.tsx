@@ -1,14 +1,14 @@
 import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
+
 import { Modal, Button, CardActionArea } from "@mui/material";
-import { useInView } from "react-intersection-observer";
-
-import type { DisplayResult } from "./ResultView";
-const LazyResultViewList = lazy(() => import("./ResultViewList"));
-
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
+import { useInView } from "react-intersection-observer";
+
+import type { DisplayResult } from "./ResultView";
+const LazyResultViewList = lazy(() => import("./ResultViewList"));
 import "../styles/ResultView.css";
 
 const ResultViewGrid = ({
