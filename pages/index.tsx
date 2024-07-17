@@ -7,7 +7,7 @@ import { Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import { advisoryMentorshipLogo } from "../components/assets";
+import { advisoryMentorshipLogo } from "../src/assets";
 import Canvas from "../components/Canvas";
 import Logo from "../components/Logo";
 import Statistics from "../components/Statistics";

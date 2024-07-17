@@ -16,7 +16,7 @@ import {
   URL_MAIN,
   URL_MENTORS,
 } from "../src/links";
-import { advisoryLogo } from "./assets";
+import { advisoryLogo } from "../src/assets";
 
 const drawerWidth = 640;
 
