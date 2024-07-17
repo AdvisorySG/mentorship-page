@@ -1,14 +1,3 @@
-.nav {
-  position: absolute;
-  flex: 2;
-  width: 100%;
-  height: 55px;
-  background-color: white;
-  border-bottom-style: solid;
-  border-width: 1px;
-  border-color: #cccccc;
-}
-
 @media only screen and (max-width: 639px) {
   .nav-logo {
     margin-top: auto;
