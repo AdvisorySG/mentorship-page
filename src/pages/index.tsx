@@ -11,12 +11,27 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { advisoryMentorshipLogo } from "../assets";
 import Canvas from "../components/Canvas";
 import Logo from "../components/Logo";
-import Statistics from "../components/Statistics";
+import Statistics, { Statistic } from "../components/Statistics";
 import { URL_APPLY } from "../links";
 import "../styles/Header.css";
 import "../styles/App.css";
 
-const TESTIMONIALS = [
+interface Testimonial {
+  person: string;
+  type: string;
+  role?: string;
+  company?: string;
+  school?: string;
+  text: string;
+}
+
+interface Image {
+  index: string;
+  label1: string;
+  imgPath1: string;
+}
+
+const TESTIMONIALS: Testimonial[] = [
   {
     person: "Mr. Randell Sie",
     type: "Mentor",
@@ -32,7 +47,7 @@ const TESTIMONIALS = [
   },
 ];
 
-const IMAGES = [
+const IMAGES: Image[] = [
   {
     index: "",
     label1: "Mentor: Randall Sie",
@@ -45,7 +60,7 @@ const IMAGES = [
   },
 ];
 
-const STATS = [
+const STATISTICS: Statistic[] = [
   {
     title: "Mentors",
     value: "2,900+",
@@ -72,7 +87,7 @@ const Index = () => {
   const isSmall = useMediaQuery("(max-width: 767px)");
   const glideRef = useRef(null);
 
-  let glideTestimonial;
+  let glideTestimonial: any;
 
   function initializeGlide() {
     glideTestimonial = new Glide(glideRef.current, {
@@ -96,13 +111,13 @@ const Index = () => {
 
     document
       .querySelector(".glide__arrow--left")
-      .addEventListener("click", function () {
+      ?.addEventListener("click", function () {
         glideTestimonial.go("<");
       });
 
     document
       .querySelector(".glide__arrow--right")
-      .addEventListener("click", function () {
+      ?.addEventListener("click", function () {
         glideTestimonial.go(">");
       });
   }
@@ -113,9 +128,9 @@ const Index = () => {
     }
   }
 
-  function debounce(func, delay) {
-    let timer;
-    return function () {
+  function debounce(func: Function, delay: number) {
+    let timer: any;
+    return function (this: any) {
       const context = this;
       const args = arguments;
       clearTimeout(timer);
@@ -177,7 +192,7 @@ const Index = () => {
         </div>
       </div>
       <h2>Our Impact</h2>
-      <Statistics stats={STATS} />
+      <Statistics stats={STATISTICS} />
       <h2>Our Partner Organisations</h2>
       <Logo />
       <h2>Testimonials</h2>

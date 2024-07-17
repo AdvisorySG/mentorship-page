@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { withSearch } from "@elastic/react-search-ui";
 
-function ClearFacets({ filters, removeFilter }) {
+function ClearFacets({ filters, removeFilter }: any) {
   const handleClearAll = () => {
     for (const filter of filters) {
       removeFilter(filter.field, filter.value);

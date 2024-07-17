@@ -12,7 +12,7 @@ import "../styles/App.css";
 
 interface QNA {
   question: string;
-  answer: React.ReactElement;
+  answer: React.ReactNode;
 }
 
 const PROGRAMME_QUESTIONS: QNA[] = [

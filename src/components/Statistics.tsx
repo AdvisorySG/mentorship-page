@@ -4,7 +4,13 @@ import { Icon } from "@iconify/react";
 
 import "../styles/Statistics.css";
 
-const Statistics = ({ stats }) => {
+export interface Statistic {
+  title: string;
+  value: string;
+  icon: string;
+}
+
+const Statistics = ({ stats }: { stats: Statistic[] }) => {
   return (
     <div className="statistics text-lg">
       <div className="statistics-container">

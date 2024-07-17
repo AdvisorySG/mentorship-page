@@ -38,7 +38,7 @@ function PrivacyModal() {
 
   // Function to change it to true
   const handleAgree = () => {
-    Cookies.set("userAgreedToPrivacyPolicy", true, { expires: 30 });
+    Cookies.set("userAgreedToPrivacyPolicy", "true", { expires: 30 });
     setIsOpen(false);
   };
 

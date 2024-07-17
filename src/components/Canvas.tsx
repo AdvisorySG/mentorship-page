@@ -3,7 +3,7 @@ import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 
-const Canvas = ({ children }) => (
+const Canvas = ({ children }: { children: React.ReactNode }) => (
   <>
     <div
       style={{

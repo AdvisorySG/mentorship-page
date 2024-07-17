@@ -135,10 +135,7 @@ const ResultViewGrid = ({
         }}
       >
         <Suspense fallback={null}>
-          <LazyResultViewList
-            displayResult={displayResult}
-            isShowReadMore={false}
-          />
+          <LazyResultViewList displayResult={displayResult} />
         </Suspense>
       </Modal>
     </Card>
