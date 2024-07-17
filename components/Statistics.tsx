@@ -10,9 +10,7 @@ const Statistics = ({ stats }) => {
           <div className="statistic" key={index}>
             <Icon icon={stat.icon} className="iconify-icon" />
             <div className="statistic-value">
-              <h2 style={{ margin: "0.5rem 0" }}>
-                {stat.value.toLocaleString()}
-              </h2>
+              <h2 style={{ margin: "0.5rem 0" }}>{stat.value}</h2>
             </div>
             <div className="statistic-title">
               <p style={{ margin: 0, textAlign: "center" }}>{stat.title}</p>

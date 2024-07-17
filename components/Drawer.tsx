@@ -8,15 +8,17 @@ import ListItem from "@mui/material/ListItem";
 import Toolbar from "@mui/material/Toolbar";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+
+import {
+  URL_APPLY,
+  URL_FAQ,
+  URL_HOME,
+  URL_MAIN,
+  URL_MENTORS,
+} from "../src/links";
 import { advisoryLogo } from "./assets";
 
 const drawerWidth = 640;
-
-const URL_APPLY = "/apply";
-const URL_HOME = "/";
-const URL_MAIN = "https://advisory.sg/";
-const URL_FAQ = "/faq";
-const URL_MENTORS = "/mentors";
 
 const desktopLinkStyle = {
   fontWeight: "700",

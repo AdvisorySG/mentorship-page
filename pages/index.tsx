@@ -11,10 +11,11 @@ import { advisoryMentorshipLogo } from "../components/assets";
 import Canvas from "../components/Canvas";
 import Logo from "../components/Logo";
 import Statistics from "../components/Statistics";
+import { URL_APPLY } from "../src/links";
 import "../styles/Header.css";
 import "../styles/App.css";
 
-const testimonials = [
+const TESTIMONIALS = [
   {
     person: "Mr. Randell Sie",
     type: "Mentor",
@@ -30,7 +31,7 @@ const testimonials = [
   },
 ];
 
-const images = [
+const IMAGES = [
   {
     index: "",
     label1: "Mentor: Randall Sie",
@@ -43,25 +44,25 @@ const images = [
   },
 ];
 
-const statistics = [
+const STATS = [
   {
     title: "Mentors",
-    value: 2000,
+    value: "2,900+",
     icon: "mdi:account",
   },
   {
     title: "Mentees",
-    value: 200,
+    value: "3,500+",
     icon: "mdi:school",
   },
   {
     title: "Industries",
-    value: 48,
+    value: "48",
     icon: "mdi:domain",
   },
   {
-    title: "Hours of Mentorship",
-    value: 8000,
+    title: "Mentorship Hours",
+    value: "14,000+",
     icon: "mdi:clock-time-four-outline",
   },
 ];
@@ -175,7 +176,7 @@ const Index = () => {
         </div>
       </div>
       <h2>Our Impact</h2>
-      <Statistics stats={statistics} />
+      <Statistics stats={STATS} />
       <h2>Our Partner Organisations</h2>
       <Logo />
       <h2>Testimonials</h2>
@@ -193,7 +194,7 @@ const Index = () => {
       >
         <div className="glide__track" data-glide-el="track">
           <ul className="glide__slides">
-            {testimonials.map((testimonial, index) => (
+            {TESTIMONIALS.map((testimonial, index) => (
               <li key={index} className="glide__slide">
                 <Grid
                   container
@@ -215,8 +216,8 @@ const Index = () => {
                       }}
                     >
                       <img
-                        src={images[index].imgPath1}
-                        alt={images[index].label1}
+                        src={IMAGES[index].imgPath1}
+                        alt={IMAGES[index].label1}
                         style={{
                           height: "100%",
                           width: "100%",
@@ -344,7 +345,7 @@ const Index = () => {
             display: "block",
           }}
         >
-          <Link href="/apply">
+          <Link href={URL_APPLY}>
             <h2 style={{ color: "black" }}>Apply Now</h2>
           </Link>
         </button>
