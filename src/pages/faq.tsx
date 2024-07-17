@@ -99,7 +99,11 @@ const APPLICATION_QUESTIONS: QNA[] = [
           will be prompted to share with us in more than 150 words on why you
           would like to be matched with the particular mentor. (For more
           information on what we look out for in your application, you may refer
-          to our Sample Application Response.
+          to our{" "}
+          <a href="https://drive.google.com/file/d/1aA3l_WQ1ehGO8UBKuRFLqj4URpQbAVzN/view">
+            Sample Application Response
+          </a>
+          .)
         </p>
         <p>
           In the sign-up form, you will also be prompted to indicate three
