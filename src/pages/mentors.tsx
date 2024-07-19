@@ -21,7 +21,7 @@ import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import "../styles/App.css";
 
 const App = () => {
-  const WAVE = { waveId: "2023", waveName: "2023 Wave" };
+  const WAVE = { waveId: "2024", waveName: "2024 Wave" };
 
   const connector = new AppSearchAPIConnector({
     engineName: "mentorship-page",
