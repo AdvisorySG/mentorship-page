@@ -285,7 +285,7 @@ const StyledQNA = ({
         <b>{question}</b>
       </Typography>
     </AccordionSummary>
-    <AccordionDetails style={{ whiteSpace: "pre-wrap" }}>
+    <AccordionDetails style={{ whiteSpace: "pre-wrap", marginTop: "-20px" }}>
       {answer}
     </AccordionDetails>
   </StyledAccordion>
