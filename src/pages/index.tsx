@@ -178,7 +178,7 @@ const Index = () => {
     <Canvas>
       <div className="logo-and-intro-container">
         <img
-          className="header-mentorship-logo container"
+          className="header-mentorship-logo"
           src={advisoryMentorshipLogo}
           alt="Advisory Mentorship Programme"
         />

@@ -1,5 +1,5 @@
-export const advisoryLogo = `/advisory-logo.png`;
-export const advisoryMentorshipLogo = `/advisory-mentorship-logo-2023.png`;
+export const advisoryLogo = "/advisory-logo.png";
+export const advisoryMentorshipLogo = "/advisory-mentorship-logo.png";
 
 export const partnerLogos = [
   ["AiSP", "/logos/01_AiSP.png"],

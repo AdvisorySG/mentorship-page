@@ -56,8 +56,10 @@
 }
 
 .header-mentorship-logo {
-  max-width: 30rem; /* Ensure the logo doesn't exceed its container */
-  padding-left: 0px;
+  display: block;
+  width: 50%;
+  max-width: 30rem;
+  padding: 2rem 2rem 2rem 0;
   margin-left: 0px;
   flex: 1;
 }
@@ -73,7 +75,8 @@
   .header-mentorship-logo {
     width: 100%;
     position: relative;
-    padding-top: 0px;
+    padding: 2rem;
+    margin: 0 auto;
   }
 }
 
