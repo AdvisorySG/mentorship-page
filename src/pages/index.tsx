@@ -361,8 +361,8 @@ const Index = () => {
             display: "block",
           }}
         >
-          <Link href={URL_APPLY}>
-            <h2 style={{ color: "black" }}>Apply Now</h2>
+          <Link href={URL_APPLY} target="_blank">
+            <h2 style={{ color: "white" }}>Apply Now</h2>
           </Link>
         </button>
       </div>

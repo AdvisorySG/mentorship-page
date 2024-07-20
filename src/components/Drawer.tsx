@@ -100,11 +100,11 @@ const ResponsiveDrawer = () => {
         </a>
       </ListItem>
       <ListItem disablePadding>
-        <a href={URL_APPLY}>
+        <a href={URL_APPLY} target="_blank">
           <button
             style={{
               backgroundColor: "var(--brand-color)",
-              color: "#fff",
+              color: "white",
               border: "none",
               padding: "10px",
               fontSize: "inherit",
