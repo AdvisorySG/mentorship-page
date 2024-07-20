@@ -10,7 +10,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 import { advisoryMentorshipLogo } from "../assets";
 import Canvas from "../components/Canvas";
-import Logo from "../components/Logo";
+import Logo from "../components/PartnerLogos";
 import Statistics, { Statistic } from "../components/Statistics";
 import { URL_APPLY } from "../links";
 import "../styles/Header.css";

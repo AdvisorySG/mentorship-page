@@ -7,7 +7,7 @@
   }
 }
 
-.logos {
+.partners {
   overflow: hidden;
   padding: 60px 0;
   background: white;
@@ -15,8 +15,8 @@
   position: relative;
 }
 
-.logos:before,
-.logos:after {
+.partners:before,
+.partners:after {
   position: absolute;
   top: 0;
   width: 250px;
@@ -25,26 +25,27 @@
   z-index: 2;
 }
 
-.logos:before {
+.partners:before {
   left: 0;
   background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
 }
 
-.logos:after {
+.partners:after {
   right: 0;
   background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
 }
 
-.logos:hover .logos-slide {
+.partners:hover .partners-slide {
   animation-play-state: paused;
 }
 
-.logos-slide {
+.partners-slide {
   display: inline-block;
   animation: 50s slide infinite linear;
 }
 
-.logos-slide img {
-  height: 50px;
-  margin: 0 40px;
+.partners-slide img {
+  height: 120px;
+  width: 120px;
+  margin: auto 20px;
 }

@@ -1,34 +1,26 @@
 export const advisoryLogo = `/advisory-logo.png`;
 export const advisoryMentorshipLogo = `/advisory-mentorship-logo-2023.png`;
-export const advisoryMentorshipPartners = `/advisory-mentorship-partners.png`;
 
-export const aisp = "/logos/AISP.png";
-export const avanade = "/logos/avanade.png";
-export const basf = "/logos/basf.png";
-export const bcg = "/logos/bcg.jpg";
-export const bigIdea = "/logos/bigIdea.png";
-export const bloomberg = "/logos/bloomberg.png";
-export const citi = "/logos/citi.png";
-export const csa = "/logos/csa.png";
-export const dbs = "/logos/dbs.png";
-export const deloitte = "/logos/deloitte.jpg";
-export const edb = "/logos/edb.png";
-export const edelman = "/logos/edelman.jpg";
-export const ey = "/logos/ey.png";
-export const gic = "/logos/gic.png";
-export const govtech = "/logos/govtech.png";
-export const ipr = "/logos/ipr.png";
-export const kearney = "/logos/kearney.png";
-export const maxeon = "/logos/maxeon.png";
-export const mha = "/logos/mha.png";
-export const nac = "/logos/nac.png";
-export const nvpc = "/logos/nvpc.png";
-export const one = "/logos/one.png";
-export const sap = "/logos/sap.jpg";
-export const sc = "/logos/sc.jpg";
-export const sgtech = "/logos/sgtech.png";
-export const ttsh = "/logos/ttsh.png";
-export const we = "/logos/we.png";
-export const google = "/logos/google.png";
+export const partnerLogos = [
+  ["AiSP", "/logos/01_AiSP.png"],
+  ["Avanade", "/logos/02_Avanade.png"],
+  ["BASF", "/logos/03_BASF.png"],
+  ["BCG", "/logos/04_BCG.png"],
+  ["BCG X", "/logos/05_BCG X.png"],
+  ["CAG", "/logos/06_CAG.png"],
+  ["Citi", "/logos/07_Citi.png"],
+  ["Deloitte", "/logos/08_Deloitte.png"],
+  ["ECDA", "/logos/09_ECDA.png"],
+  ["EDB", "/logos/10_EDB.png"],
+  ["EY", "/logos/11_EY.png"],
+  ["Forward Dyson", "/logos/12_Forward Dyson.png"],
+  ["GIC", "/logos/13_GIC.png"],
+  ["GovTech", "/logos/14_GovTech.png"],
+  ["IMDA", "/logos/15_IMDA.png"],
+  ["Maxeon", "/logos/16_Maxeon.png"],
+  ["MHA", "/logos/17_MHA.png"],
+  ["NVPC", "/logos/18_NVPC.png"],
+  ["Standard Chartered", "/logos/19_Standard Chartered.png"],
+];
 
 export const footerLogo = "/footer-logo.png";
