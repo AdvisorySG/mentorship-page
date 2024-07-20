@@ -4,8 +4,8 @@ import Link from "next/link";
 import Glide from "@glidejs/glide";
 import "@glidejs/glide/dist/css/glide.core.min.css";
 import "@glidejs/glide/dist/css/glide.theme.min.css";
-import { Grid } from "@mui/material";
-import Box from "@mui/material/Box";
+// import { Grid } from "@mui/material";
+// import Box from "@mui/material/Box";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 import { advisoryMentorshipLogo } from "../assets";
@@ -16,6 +16,7 @@ import { URL_APPLY } from "../links";
 import "../styles/Header.css";
 import "../styles/App.css";
 
+/*
 interface Testimonial {
   person: string;
   type: string;
@@ -24,6 +25,7 @@ interface Testimonial {
   school?: string;
   text: string;
 }
+*/
 
 interface Image {
   index: string;
@@ -31,6 +33,7 @@ interface Image {
   imgPath1: string;
 }
 
+/*
 const TESTIMONIALS: Testimonial[] = [
   {
     person: "Mr. Randell Sie",
@@ -59,6 +62,7 @@ const IMAGES: Image[] = [
     imgPath1: "/mentee-clarindaong.png",
   },
 ];
+*/
 
 const STATISTICS: Statistic[] = [
   {
@@ -85,6 +89,8 @@ const STATISTICS: Statistic[] = [
 
 const Index = () => {
   const isSmall = useMediaQuery("(max-width: 767px)");
+
+  /*
   const glideRef = useRef(null);
 
   let glideTestimonial: any;
@@ -173,6 +179,7 @@ const Index = () => {
       destroyGlide();
     };
   }, [debouncedResize]);
+  */
 
   return (
     <Canvas>
@@ -195,6 +202,7 @@ const Index = () => {
       <Statistics stats={STATISTICS} />
       <h2>Our Partner Organisations</h2>
       <Logo />
+      {/*
       <h2>Testimonials</h2>
       <Box
         ref={glideRef}
@@ -322,12 +330,13 @@ const Index = () => {
           {">"}
         </button>
       </div>
+      */}
       <div
         className="container"
         style={{
           width: "100%",
-          marginTop: "64px",
-          padding: "60px 0",
+          // marginTop: "64px",
+          paddingBottom: "60px",
         }}
       >
         <span
