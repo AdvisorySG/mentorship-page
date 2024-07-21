@@ -24,6 +24,7 @@ const WAVES_INFO = new Map([
   ["isw", { tableId: "Institution-Specific Mentorship" }],
   ["2023-vjc", { tableId: "VJC Mentorship 2023" }],
   ["2023", { tableId: "2023 Mentorship" }],
+  ["2024", { tableId: "2024 Mentorship" }],
 ]);
 
 function* chunks(arr, n) {

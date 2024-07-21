@@ -27,7 +27,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "npx serve@latest out",
     "prepare": "husky install"
   },
   "eslintConfig": {
@@ -49,6 +49,7 @@
   "devDependencies": {
     "@elastic/elasticsearch": "^8.8.0",
     "@next/eslint-plugin-next": "^14.0.4",
+    "@types/js-cookie": "^3.0.6",
     "@types/react": "^18.3.3",
     "airtable": "^0.12.2",
     "autoprefixer": "^10.4.16",
