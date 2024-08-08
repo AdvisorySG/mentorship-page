@@ -6,9 +6,12 @@ export async function trackClicks(mentor_name) {
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append("Authorization", `Bearer ${ELASTIC_SEARCH_KEY}`);
 
+  // retrieve the search term found in the input
+  const search_term = document.getElementById("downshift-1-input").value;
+
   // search query retrieves the mentor's info
   const searchQuery = JSON.stringify({
-    query: mentor_name,
+    query: search_term,
     filters: {
       name: [mentor_name],
     },
