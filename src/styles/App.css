@@ -143,7 +143,7 @@ a {
 }
 
 .sui-layout-sidebar.sui-layout-sidebar--toggled {
-  z-index: 1101;
+  z-index: 9999;
 }
 
 .testimonial-header {
