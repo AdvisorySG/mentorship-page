@@ -30,7 +30,9 @@ const ResultViewGrid = ({
   useEffect(() => {
     if (!inViewRef.current && inView) {
       inViewRef.current = true;
-      window.umami.track("Impression", { id, env: process.env.NODE_ENV });
+      if (window.umami) {
+        window.umami.track("Impression", { id, env: process.env.NODE_ENV });
+      }
     }
   }, [id, inView]);
 
@@ -39,7 +41,9 @@ const ResultViewGrid = ({
   const handleOpen = () => {
     window.history.pushState({}, "");
     setIsModalOpen(true);
-    window.umami.track("Click", { id, env: process.env.NODE_ENV });
+    if (window.umami) {
+      window.umami.track("Click", { id, env: process.env.NODE_ENV });
+    }
   };
 
   const handleClose = () => {
