@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import "../styles/App.css";
+import "../styles/globals.css";
 
 export default function RootLayout({
   children,
