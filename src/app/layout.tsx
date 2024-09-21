@@ -10,6 +10,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <meta itemProp="name" content="Advisory Mentorship Programme" />
+        <meta
+          itemProp="description"
+          content="The Advisory Mentorship Programme"
+        />
+        <meta itemProp="image" content="/advisory-mentorship-logo.jpg" />
+      </head>
       <Script
         async
         src="https://umami.advisory.sg/script.js"
@@ -42,15 +50,6 @@ export const metadata: Metadata = {
 
   // Manifest
   manifest: "/manifest.json",
-
-  // TODO: Add Google metadata
-  // The following needs to be added to the HTML <head> somehow:
-  // <meta itemProp="name" content="Advisory Mentorship Programme" />
-  // <meta
-  //     itemProp="description"
-  //     content="The Advisory Mentorship Programme"
-  // />
-  // <meta itemProp="image" content="/advisory-mentorship-logo.jpg" />
 
   // Facebook / OpenGraph
   openGraph: {
