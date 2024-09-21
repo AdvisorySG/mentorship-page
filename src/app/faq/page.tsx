@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 import Accordion from "@mui/material/Accordion";
@@ -7,8 +8,8 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 
-import Canvas from "../components/Canvas";
-import "../styles/App.css";
+import Canvas from "../../components/Canvas";
+import "../../styles/App.css";
 
 interface QNA {
   question: string;
