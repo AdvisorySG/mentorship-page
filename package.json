@@ -52,7 +52,7 @@
     "@types/js-cookie": "^3.0.6",
     "@types/react": "^18.3.11",
     "airtable": "^0.12.2",
-    "autoprefixer": "^10.4.16",
+    "autoprefixer": "^10.4.20",
     "aws-sdk": "^2.1529.0",
     "eslint-config-next": "^14.2.6",
     "husky": "^9.0.11",
