@@ -35,7 +35,7 @@ const ResultViewList = ({
               dangerouslySetInnerHTML={{
                 __html: displayName.replace(
                   /<em[^>]*>/g,
-                  '<em style="background-color: transparent;">'
+                  '<em style="background-color: transparent;">',
                 ),
               }}
             />
@@ -65,7 +65,7 @@ const ResultViewList = ({
                   dangerouslySetInnerHTML={{
                     __html: displayRole.replace(
                       /<em[^>]*>/g,
-                      '<em style="background-color: transparent;">'
+                      '<em style="background-color: transparent;">',
                     ),
                   }}
                 />
@@ -83,7 +83,7 @@ const ResultViewList = ({
                   dangerouslySetInnerHTML={{
                     __html: displayOrganisation.replace(
                       /<em[^>]*>/g,
-                      '<em style="background-color: transparent;">'
+                      '<em style="background-color: transparent;">',
                     ),
                   }}
                 />
@@ -99,7 +99,7 @@ const ResultViewList = ({
                 dangerouslySetInnerHTML={{
                   __html: displayCourseOfStudy.replace(
                     /<em[^>]*>/g,
-                    '<em style="background-color: transparent;">'
+                    '<em style="background-color: transparent;">',
                   ),
                 }}
               />
@@ -114,7 +114,7 @@ const ResultViewList = ({
                 dangerouslySetInnerHTML={{
                   __html: displaySchool.replace(
                     /<em[^>]*>/g,
-                    '<em style="background-color: transparent;">'
+                    '<em style="background-color: transparent;">',
                   ),
                 }}
               />
@@ -129,7 +129,7 @@ const ResultViewList = ({
                 dangerouslySetInnerHTML={{
                   __html: displayFullBio.replace(
                     /<em[^>]*>/g,
-                    '<em style="background-color: transparent;">'
+                    '<em style="background-color: transparent;">',
                   ),
                 }}
               />
