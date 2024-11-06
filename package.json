@@ -4,7 +4,7 @@
   "homepage": "https://mentorship.advisory.sg/",
   "private": true,
   "engines": {
-    "node": "18.x"
+    "node": "20.x"
   },
   "dependencies": {
     "@elastic/react-search-ui": "^1.21.5",
@@ -28,7 +28,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "npx serve@latest out",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "eslintConfig": {
     "sourceType": "module",
