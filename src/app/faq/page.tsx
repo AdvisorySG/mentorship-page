@@ -258,16 +258,24 @@ const APPLICATION_QUESTIONS: QNA[] = [
   },
 ];
 
-const StyledAccordion = styled(Accordion)(() => {
-  return {
-    border: `1px solid var(--brand-color)`,
+const StyledAccordion = styled(Accordion)(() => ({
+  border: `1px solid var(--brand-color)`,
+  marginBottom: `10px`,
+  borderRadius: `8px`,
+  overflow: "hidden",
+  "&:not(:last-of-type)": {
     marginBottom: `10px`,
-    ".MuiAccordionDetails-root": {},
-    ".MuiAccordionSummary-content": {
-      marginBottom: `0px`,
-    },
-  };
-});
+    borderRadius: `8px`,
+  },
+  "&:last-of-type": {
+    marginBottom: `10px`,
+    borderRadius: `8px`,
+  },
+  ".MuiAccordionDetails-root": {},
+  ".MuiAccordionSummary-content": {
+    marginBottom: `0px`,
+  },
+}));
 
 const StyledQNA = ({
   qna: { question, answer },
