@@ -14,32 +14,38 @@ var Statistics = function (_a) {
       stats.map(function (stat, index) {
         return react_1["default"].createElement(
           "div",
-          { className: "statistic", key: index },
+          {
+            className: "statistic flex flex-row justify-around gap-5",
+            key: index,
+          },
           react_1["default"].createElement(react_2.Icon, {
             icon: stat.icon,
             className: "iconify-icon",
           }),
           react_1["default"].createElement(
             "div",
-            { className: "statistic-value" },
+            { className: "w-fit" },
             react_1["default"].createElement(
               "h2",
-              { style: { margin: "0.5rem 0", fontSize: "2.3rem" } },
-              stat.value
+              {
+                className: "w-fit",
+                style: { margin: "0.5rem 0", fontSize: "2.3rem" },
+              },
+              stat.value,
             ),
             react_1["default"].createElement(
               "div",
               { className: "statistic-title" },
               react_1["default"].createElement(
                 "p",
-                { style: { margin: 0, textAlign: "left" } },
-                stat.title
-              )
-            )
-          )
+                { className: "w-fit", style: { margin: 0, textAlign: "left" } },
+                stat.title,
+              ),
+            ),
+          ),
         );
-      })
-    )
+      }),
+    ),
   );
 };
 exports["default"] = Statistics;
