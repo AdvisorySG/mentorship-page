@@ -276,8 +276,10 @@ const StyledQNA = ({
   qna: QNA;
   index: number;
 }) => (
-  <StyledAccordion key={index}>
+  <StyledAccordion disableGutters key={index}>
     <AccordionSummary
+      sx={{ minHeight: "0px", ".MuiAccordionSummary-content": { margin: 0 } }}
+      className="p-4"
       expandIcon={<ExpandMoreIcon />}
       aria-controls="panel1a-content"
       id="panel1a-header"
@@ -286,7 +288,10 @@ const StyledQNA = ({
         <b>{question}</b>
       </Typography>
     </AccordionSummary>
-    <AccordionDetails style={{ whiteSpace: "pre-wrap", marginTop: "-20px" }}>
+    <AccordionDetails
+      className="p-4 text-justify mr-5"
+      style={{ whiteSpace: "pre-wrap", marginTop: "-20px" }}
+    >
       {answer}
     </AccordionDetails>
   </StyledAccordion>
