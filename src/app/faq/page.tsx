@@ -281,13 +281,29 @@ const StyledQNA = ({
       expandIcon={<ExpandMoreIcon />}
       aria-controls="panel1a-content"
       id="panel1a-header"
+      style={{ marginTop: "-12px" }}
     >
-      <Typography>
+      <Typography
+        style={{
+          fontSize: "1.2rem",
+          textAlign: "justify",
+          padding: "1%",
+        }}
+      >
         <b>{question}</b>
       </Typography>
     </AccordionSummary>
-    <AccordionDetails style={{ whiteSpace: "pre-wrap", marginTop: "-20px" }}>
-      {answer}
+    <AccordionDetails style={{ padding: "0px 16px", marginTop: "-20px" }}>
+      <div
+        style={{
+          fontSize: "1.2rem",
+          textAlign: "justify",
+          paddingLeft: "1%",
+          paddingRight: "1%",
+        }}
+      >
+        {answer}
+      </div>
     </AccordionDetails>
   </StyledAccordion>
 );
