@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 import Accordion from "@mui/material/Accordion";
@@ -7,8 +8,8 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 
-import Canvas from "../components/Canvas";
-import "../styles/App.css";
+import Canvas from "../../components/Canvas";
+import "../../styles/App.css";
 
 interface QNA {
   question: string;
@@ -257,16 +258,24 @@ const APPLICATION_QUESTIONS: QNA[] = [
   },
 ];
 
-const StyledAccordion = styled(Accordion)(() => {
-  return {
-    border: `1px solid var(--brand-color)`,
+const StyledAccordion = styled(Accordion)(() => ({
+  border: `1px solid var(--brand-color)`,
+  marginBottom: `10px`,
+  borderRadius: `8px`,
+  overflow: "hidden",
+  "&:not(:last-of-type)": {
     marginBottom: `10px`,
-    ".MuiAccordionDetails-root": {},
-    ".MuiAccordionSummary-content": {
-      marginBottom: `0px`,
-    },
-  };
-});
+    borderRadius: `8px`,
+  },
+  "&:last-of-type": {
+    marginBottom: `10px`,
+    borderRadius: `8px`,
+  },
+  ".MuiAccordionDetails-root": {},
+  ".MuiAccordionSummary-content": {
+    marginBottom: `0px`,
+  },
+}));
 
 const StyledQNA = ({
   qna: { question, answer },
@@ -280,13 +289,29 @@ const StyledQNA = ({
       expandIcon={<ExpandMoreIcon />}
       aria-controls="panel1a-content"
       id="panel1a-header"
+      style={{ marginTop: "-12px" }}
     >
-      <Typography>
+      <Typography
+        style={{
+          fontSize: "1.2rem",
+          textAlign: "justify",
+          padding: "1%",
+        }}
+      >
         <b>{question}</b>
       </Typography>
     </AccordionSummary>
-    <AccordionDetails style={{ whiteSpace: "pre-wrap", marginTop: "-20px" }}>
-      {answer}
+    <AccordionDetails style={{ padding: "0px 16px", marginTop: "-20px" }}>
+      <div
+        style={{
+          fontSize: "1.2rem",
+          textAlign: "justify",
+          paddingLeft: "1%",
+          paddingRight: "1%",
+        }}
+      >
+        {answer}
+      </div>
     </AccordionDetails>
   </StyledAccordion>
 );

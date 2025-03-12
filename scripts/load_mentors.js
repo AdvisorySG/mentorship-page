@@ -47,7 +47,7 @@ const formatMentor = (id, waveId, fields) => ({
         fields["Industry 1"] ?? [],
         fields["Industry 2"] ?? [],
         fields["Industry 3"] ?? [],
-      ].flat()
+      ].flat(),
     ),
   ],
   name: fields.Name,
@@ -97,11 +97,13 @@ exports.handler = async (event) => {
         .select({ sort: [{ field: "First Name", direction: "asc" }] })
         .eachPage((records, fetchNextPage) => {
           mentors.push(
-            ...records.map(({ id, fields }) => formatMentor(id, waveId, fields))
+            ...records.map(({ id, fields }) =>
+              formatMentor(id, waveId, fields),
+            ),
           );
           fetchNextPage();
-        })
-    )
+        }),
+    ),
   );
 
   const mentorMap = new Map(mentors.map((mentor) => [mentor.id, mentor]));
@@ -131,7 +133,7 @@ exports.handler = async (event) => {
   }
 
   const indexMentors = [...mentorMap.entries()].filter(
-    ([mentorId, mentor]) => !unmodifiedMentorIds.has(mentorId) && mentor.name
+    ([mentorId, mentor]) => !unmodifiedMentorIds.has(mentorId) && mentor.name,
   );
 
   console.log(`No. of Elasticsearch mentors: ${count}`);
@@ -144,7 +146,7 @@ exports.handler = async (event) => {
       ["full", "thumbnail"].map((imageSize) => {
         s3.deleteObject(
           generateAWSBucketKey(mentorId, imageSize),
-          function (err, data) {}
+          function (err, data) {},
         );
       });
     });
@@ -170,7 +172,7 @@ exports.handler = async (event) => {
               if (imageURL === PLACEHOLDER_THUMBNAIL_URL) {
                 s3.deleteObject(
                   generateAWSBucketKey(id, imageSize),
-                  function (err, data) {}
+                  function (err, data) {},
                 );
                 return [{ index: { _index: ELASTIC_INDEX, _id: id } }, mentor];
               }
@@ -186,13 +188,13 @@ exports.handler = async (event) => {
                 })
                 .promise();
               newMentorObject[objectProperty] = uploadedImage.Location;
-            })
+            }),
           );
           return [
             { index: { _index: ELASTIC_INDEX, _id: id } },
             newMentorObject,
           ];
-        })
+        }),
       )
     ).flat();
     await elasticClient.bulk({ refresh: true, body: indexBody });

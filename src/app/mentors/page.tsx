@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
@@ -14,11 +15,11 @@ import {
 } from "@elastic/react-search-ui";
 import { FilterType, SortDirection } from "@elastic/search-ui";
 
-import Canvas from "../components/Canvas";
-import ClearFacets from "../components/ResetButton";
-import ResultView from "../components/ResultView";
+import Canvas from "../../components/Canvas";
+import ClearFacets from "../../components/ResetButton";
+import ResultView from "../../components/ResultView";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
-import "../styles/App.css";
+import "../../styles/App.css";
 
 const App = () => {
   const WAVE = { waveId: "2024", waveName: "2024 Wave" };
