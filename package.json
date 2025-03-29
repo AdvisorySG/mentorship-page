@@ -7,6 +7,7 @@
     "node": "20.x"
   },
   "dependencies": {
+    "@elastic/apm-rum-react": "^2.0.5",
     "@elastic/react-search-ui": "^1.21.5",
     "@elastic/react-search-ui-views": "^1.21.5",
     "@elastic/search-ui": "^1.21.5",
