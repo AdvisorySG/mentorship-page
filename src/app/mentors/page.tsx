@@ -15,6 +15,7 @@ import {
 } from "@elastic/react-search-ui";
 import { FilterType, SortDirection } from "@elastic/search-ui";
 
+import ApmTransaction from "../../components/ApmTransaction";
 import Canvas from "../../components/Canvas";
 import ClearFacets from "../../components/ResetButton";
 import ResultView from "../../components/ResultView";
@@ -77,58 +78,60 @@ const App = () => {
 
   return (
     <Canvas>
-      <div className="results" id="mentors">
-        <SearchProvider config={configurationOptions}>
-          <div className="App">
-            <Layout
-              header={
-                <SearchBox
-                  autocompleteSuggestions={true}
-                  searchAsYouType={true}
-                  debounceLength={300}
-                />
-              }
-              bodyContent={
-                <Results
-                  resultView={({ result }) => <ResultView result={result} />}
-                />
-              }
-              sideContent={
-                <div>
-                  <Sorting
-                    label={"Sort by"}
-                    sortOptions={[
-                      { name: "Relevance", value: "", direction: "" },
-                      { name: "Name", value: "name", direction: "asc" },
-                    ]}
+      <ApmTransaction>
+        <div className="results" id="mentors">
+          <SearchProvider config={configurationOptions}>
+            <div className="App">
+              <Layout
+                header={
+                  <SearchBox
+                    autocompleteSuggestions={true}
+                    searchAsYouType={true}
+                    debounceLength={300}
                   />
-                  <Facet field="industries" label="Industries" />
-                  <Facet
-                    field="organisation"
-                    filterType="any"
-                    label="Organisation"
+                }
+                bodyContent={
+                  <Results
+                    resultView={({ result }) => <ResultView result={result} />}
                   />
-                  <Facet
-                    field="course_of_study"
-                    filterType="any"
-                    label="Course of Study"
-                  />
-                  <ClearFacets />
-                </div>
-              }
-              bodyHeader={
-                <React.Fragment>
-                  {<PagingInfo />}
-                  <div className="search-config">
-                    <ResultsPerPage options={[20, 40, 80]} />
+                }
+                sideContent={
+                  <div>
+                    <Sorting
+                      label={"Sort by"}
+                      sortOptions={[
+                        { name: "Relevance", value: "", direction: "" },
+                        { name: "Name", value: "name", direction: "asc" },
+                      ]}
+                    />
+                    <Facet field="industries" label="Industries" />
+                    <Facet
+                      field="organisation"
+                      filterType="any"
+                      label="Organisation"
+                    />
+                    <Facet
+                      field="course_of_study"
+                      filterType="any"
+                      label="Course of Study"
+                    />
+                    <ClearFacets />
                   </div>
-                </React.Fragment>
-              }
-              bodyFooter={<Paging />}
-            />
-          </div>
-        </SearchProvider>
-      </div>
+                }
+                bodyHeader={
+                  <React.Fragment>
+                    {<PagingInfo />}
+                    <div className="search-config">
+                      <ResultsPerPage options={[20, 40, 80]} />
+                    </div>
+                  </React.Fragment>
+                }
+                bodyFooter={<Paging />}
+              />
+            </div>
+          </SearchProvider>
+        </div>
+      </ApmTransaction>
     </Canvas>
   );
 };
