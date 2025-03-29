@@ -37,7 +37,7 @@ const App = () => {
       suggestions: {
         types: {
           documents: {
-            fields: ["name", "organisation", "role", "course_of_study"],
+            fields: ["name", "role", "course_of_study"],
           },
         },
         size: 5,
@@ -54,7 +54,6 @@ const App = () => {
         full_image_url: { raw: {} },
         industries: { raw: {} },
         name: { raw: {}, snippet: { size: 100 } },
-        organisation: { raw: {}, snippet: { size: 100 } },
         role: { raw: {}, snippet: { size: 100 } },
         school: { raw: {}, snippet: { size: 100 } },
         thumbnail_image_url: { raw: {} },
@@ -66,10 +65,9 @@ const App = () => {
           values: [WAVE.waveId],
         },
       ],
-      disjunctiveFacets: ["organisation", "course_of_study"],
+      disjunctiveFacets: ["course_of_study"],
       facets: {
         industries: { type: "value", size: 100 },
-        organisation: { type: "value", size: 100 },
         course_of_study: { type: "value", size: 100 },
       },
     },
@@ -103,11 +101,6 @@ const App = () => {
                     ]}
                   />
                   <Facet field="industries" label="Industries" />
-                  <Facet
-                    field="organisation"
-                    filterType="any"
-                    label="Organisation"
-                  />
                   <Facet
                     field="course_of_study"
                     filterType="any"
