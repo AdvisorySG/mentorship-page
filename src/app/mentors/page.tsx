@@ -1,7 +1,5 @@
 "use client";
 import React from "react";
-
-import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
 import { Layout } from "@elastic/react-search-ui-views";
 import {
   PagingInfo,
@@ -20,14 +18,18 @@ import ClearFacets from "../../components/ResetButton";
 import ResultView from "../../components/ResultView";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import "../../styles/App.css";
+import ElasticsearchAPIConnector from "@elastic/search-ui-elasticsearch-connector";
 
 const App = () => {
   const WAVE = { waveId: "2024", waveName: "2024 Wave" };
 
-  const connector = new AppSearchAPIConnector({
-    engineName: "mentorship-page",
-    endpointBase: "https://advisorysg.ent.ap-southeast-1.aws.found.io",
-    searchKey: "search-bv3s7kksqjinbswx7g4my9ur",
+  const connector = new ElasticsearchAPIConnector({
+    cloud: {
+      id: "My_deployment:YXAtc291dGhlYXN0LTEuYXdzLmZvdW5kLmlvJGZmM2E4NzcwZmM2YzRiYTZiMDcwZmZiNzQzM2ExMDk0JDgwZDc3ZGY2NGQxODQwMjNiNDkxOWQ0YWEwNWVjZjRm",
+    },
+    // Ensure that this is a READ ONLY API key as it is exposed to the client.
+    apiKey: "Slp3MDVwVUJpOWRNZTZnQmdrbU46YTU5RTBtdVlTVXVpMS1qYWdKSUljQQ==",
+    index: "mentorship-page",
   });
 
   const configurationOptions = {
