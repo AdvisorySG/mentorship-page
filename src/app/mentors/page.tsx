@@ -29,7 +29,7 @@ const App = () => {
     },
     // Ensure that this is a READ ONLY API key as it is exposed to the client.
     apiKey: "Slp3MDVwVUJpOWRNZTZnQmdrbU46YTU5RTBtdVlTVXVpMS1qYWdKSUljQQ==",
-    index: "mentorship-page",
+    index: "mentorship-current",
   });
 
   const configurationOptions = {
@@ -39,7 +39,12 @@ const App = () => {
       suggestions: {
         types: {
           documents: {
-            fields: ["name", "organisation", "role", "course_of_study"],
+            fields: [
+              "name.suggest",
+              "organisation.suggest",
+              "role.suggest",
+              "course_of_study.suggest",
+            ],
           },
         },
         size: 5,
@@ -68,11 +73,11 @@ const App = () => {
           values: [WAVE.waveId],
         },
       ],
-      disjunctiveFacets: ["organisation", "course_of_study"],
+      disjunctiveFacets: ["organisation.keyword", "course_of_study.keyword"],
       facets: {
         industries: { type: "value", size: 100 },
-        organisation: { type: "value", size: 100 },
-        course_of_study: { type: "value", size: 100 },
+        "organisation.keyword": { type: "value", size: 100 },
+        "course_of_study.keyword": { type: "value", size: 100 },
       },
     },
   };
@@ -98,20 +103,20 @@ const App = () => {
               sideContent={
                 <div>
                   <Sorting
-                    label={"Sort by"}
+                    label="Sort by"
                     sortOptions={[
                       { name: "Relevance", value: "", direction: "" },
-                      { name: "Name", value: "name", direction: "asc" },
+                      { name: "Name", value: "name.keyword", direction: "asc" },
                     ]}
                   />
                   <Facet field="industries" label="Industries" />
                   <Facet
-                    field="organisation"
+                    field="organisation.keyword"
                     filterType="any"
                     label="Organisation"
                   />
                   <Facet
-                    field="course_of_study"
+                    field="course_of_study.keyword"
                     filterType="any"
                     label="Course of Study"
                   />

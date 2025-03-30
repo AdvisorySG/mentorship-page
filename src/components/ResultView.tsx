@@ -114,8 +114,34 @@ const ResultView = ({ result }: { result: SearchResult }) => {
 
   const id = idObj.raw;
 
-  const displayName =
-    name && name.raw ? fillHighlights(name.snippet, name.raw) : null;
+  const fillEllipsisIfPossible = (txt: {
+    raw: string;
+    snippet?: string[];
+  }): string | null => {
+    if (!txt) {
+      return null;
+    }
+
+    if (txt.snippet) {
+      return fillEllipsis(txt.snippet[0], txt.raw);
+    }
+
+    return txt.raw;
+  };
+  const fillHighlightsIfPossible = (txt: {
+    raw: string;
+    snippet?: string[];
+  }): string | null => {
+    if (!txt) {
+      return null;
+    }
+    if (txt.snippet) {
+      return fillHighlights(txt.snippet[0], txt.raw);
+    }
+    return txt.raw;
+  };
+
+  const displayName = fillHighlightsIfPossible(name);
 
   const thumbnailImageUrl =
     thumbnail_image_url && thumbnail_image_url.raw
@@ -130,27 +156,12 @@ const ResultView = ({ result }: { result: SearchResult }) => {
     }
   });
 
-  const displayRole =
-    role && role.raw ? fillHighlights(role.snippet, role.raw) : null;
-  const displayOrganisation =
-    organisation && organisation.raw
-      ? fillHighlights(organisation.snippet, organisation.raw)
-      : null;
-
-  const displayCourseOfStudy =
-    courseOfStudy && courseOfStudy.raw
-      ? fillHighlights(courseOfStudy.snippet, courseOfStudy.raw)
-      : null;
-
-  const displaySchool =
-    school && school.raw ? fillHighlights(school.snippet, school.raw) : null;
-
-  const displayShortBio =
-    fullBio && fullBio.raw ? fillEllipsis(fullBio.snippet, fullBio.raw) : null;
-  const displayFullBio =
-    fullBio && fullBio.raw
-      ? fillHighlights(fullBio.snippet, fullBio.raw)
-      : null;
+  const displayRole = fillHighlightsIfPossible(role);
+  const displayOrganisation = fillHighlightsIfPossible(organisation);
+  const displayCourseOfStudy = fillHighlightsIfPossible(courseOfStudy);
+  const displaySchool = fillHighlightsIfPossible(school);
+  const displayShortBio = fillEllipsisIfPossible(fullBio);
+  const displayFullBio = fillHighlightsIfPossible(fullBio);
 
   const displayResult: DisplayResult = {
     id,
