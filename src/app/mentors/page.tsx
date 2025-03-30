@@ -29,7 +29,7 @@ const App = () => {
     },
     // Ensure that this is a READ ONLY API key as it is exposed to the client.
     apiKey: "Slp3MDVwVUJpOWRNZTZnQmdrbU46YTU5RTBtdVlTVXVpMS1qYWdKSUljQQ==",
-    index: "mentorship-current",
+    index: "mentorship-page-current",
   });
 
   const configurationOptions = {
