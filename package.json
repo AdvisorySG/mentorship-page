@@ -31,10 +31,6 @@
     "start": "next start",
     "prepare": "husky"
   },
-  "eslintConfig": {
-    "sourceType": "module",
-    "extends": "plugin:@next/next/recommended"
-  },
   "browserslist": {
     "production": [
       ">0.2%",
