@@ -12,13 +12,13 @@ import {
   Sorting,
 } from "@elastic/react-search-ui";
 import { FilterType, SortDirection } from "@elastic/search-ui";
+import ElasticsearchAPIConnector from "@elastic/search-ui-elasticsearch-connector";
 
 import Canvas from "../../components/Canvas";
 import ClearFacets from "../../components/ResetButton";
 import ResultView from "../../components/ResultView";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import "../../styles/App.css";
-import ElasticsearchAPIConnector from "@elastic/search-ui-elasticsearch-connector";
 
 const App = () => {
   const WAVE = { waveId: "2024", waveName: "2024 Wave" };
