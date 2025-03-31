@@ -20,16 +20,19 @@ import ResultView from "../../components/ResultView";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import "../../styles/App.css";
 
+const ELASTIC_CLOUD_ID =
+  "My_deployment:YXAtc291dGhlYXN0LTEuYXdzLmZvdW5kLmlvJGZmM2E4NzcwZmM2YzRiYTZiMDcwZmZiNzQzM2ExMDk0JDgwZDc3ZGY2NGQxODQwMjNiNDkxOWQ0YWEwNWVjZjRm";
+const ELASTIC_APIKEY =
+  "Slp3MDVwVUJpOWRNZTZnQmdrbU46YTU5RTBtdVlTVXVpMS1qYWdKSUljQQ=="; // exposed to client! should be read-only
+const ELASTIC_INDEX = "mentorship-page-current";
+
 const App = () => {
   const WAVE = { waveId: "2024", waveName: "2024 Wave" };
 
   const connector = new ElasticsearchAPIConnector({
-    cloud: {
-      id: "My_deployment:YXAtc291dGhlYXN0LTEuYXdzLmZvdW5kLmlvJGZmM2E4NzcwZmM2YzRiYTZiMDcwZmZiNzQzM2ExMDk0JDgwZDc3ZGY2NGQxODQwMjNiNDkxOWQ0YWEwNWVjZjRm",
-    },
-    // Ensure that this is a READ ONLY API key as it is exposed to the client.
-    apiKey: "Slp3MDVwVUJpOWRNZTZnQmdrbU46YTU5RTBtdVlTVXVpMS1qYWdKSUljQQ==",
-    index: "mentorship-page-current",
+    cloud: { id: ELASTIC_CLOUD_ID },
+    apiKey: ELASTIC_APIKEY,
+    index: ELASTIC_INDEX,
   });
 
   const configurationOptions = {
