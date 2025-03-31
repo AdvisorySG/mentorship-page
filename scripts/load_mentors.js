@@ -8,9 +8,9 @@ const AIRTABLE_BASE = "appDfSlmYKDyuAj51";
 const AWS_REGION = "ap-southeast-1";
 const AWS_SECRET_AIRTABLE_NAME = "airtable_api_key";
 const AWS_SECRET_ELASTIC_NAME = "elasticsearch_api_key";
-const ELASTIC_ENDPOINT =
-  "https://advisorysg.es.ap-southeast-1.aws.found.io:9243";
-const ELASTIC_INDEX = ".ent-search-engine-documents-mentorship-page";
+const ELASTIC_CLOUD_ID =
+  "My_deployment:YXAtc291dGhlYXN0LTEuYXdzLmZvdW5kLmlvJGZmM2E4NzcwZmM2YzRiYTZiMDcwZmZiNzQzM2ExMDk0JDgwZDc3ZGY2NGQxODQwMjNiNDkxOWQ0YWEwNWVjZjRm";
+const ELASTIC_INDEX = "mentorship-page-current";
 const ELASTIC_CHUNK_SIZE = 200;
 const AWS_S3_BUCKET_NAME = "advisorysg-mentorship";
 const AWS_S3_IMAGE_FOLDER = "images/";
@@ -85,7 +85,7 @@ exports.handler = async (event) => {
     .promise()
     .then((data) => JSON.parse(data.SecretString)["APIKey"]);
   const elasticClient = new Client({
-    node: ELASTIC_ENDPOINT,
+    cloud: { id: ELASTIC_CLOUD_ID },
     auth: { apiKey: elasticApiKey },
   });
 

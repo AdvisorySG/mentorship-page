@@ -1,7 +1,5 @@
 "use client";
 import React from "react";
-
-import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
 import { Layout } from "@elastic/react-search-ui-views";
 import {
   PagingInfo,
@@ -14,6 +12,7 @@ import {
   Sorting,
 } from "@elastic/react-search-ui";
 import { FilterType, SortDirection } from "@elastic/search-ui";
+import ElasticsearchAPIConnector from "@elastic/search-ui-elasticsearch-connector";
 
 import Canvas from "../../components/Canvas";
 import ClearFacets from "../../components/ResetButton";
@@ -21,13 +20,19 @@ import ResultView from "../../components/ResultView";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import "../../styles/App.css";
 
+const ELASTIC_CLOUD_ID =
+  "My_deployment:YXAtc291dGhlYXN0LTEuYXdzLmZvdW5kLmlvJGZmM2E4NzcwZmM2YzRiYTZiMDcwZmZiNzQzM2ExMDk0JDgwZDc3ZGY2NGQxODQwMjNiNDkxOWQ0YWEwNWVjZjRm";
+const ELASTIC_APIKEY =
+  "Slp3MDVwVUJpOWRNZTZnQmdrbU46YTU5RTBtdVlTVXVpMS1qYWdKSUljQQ=="; // exposed to client! should be read-only
+const ELASTIC_INDEX = "mentorship-page-current";
+
 const App = () => {
   const WAVE = { waveId: "2024", waveName: "2024 Wave" };
 
-  const connector = new AppSearchAPIConnector({
-    engineName: "mentorship-page",
-    endpointBase: "https://advisorysg.ent.ap-southeast-1.aws.found.io",
-    searchKey: "search-bv3s7kksqjinbswx7g4my9ur",
+  const connector = new ElasticsearchAPIConnector({
+    cloud: { id: ELASTIC_CLOUD_ID },
+    apiKey: ELASTIC_APIKEY,
+    index: ELASTIC_INDEX,
   });
 
   const configurationOptions = {
@@ -37,7 +42,12 @@ const App = () => {
       suggestions: {
         types: {
           documents: {
-            fields: ["name", "organisation", "role", "course_of_study"],
+            fields: [
+              "name.suggest",
+              "organisation.suggest",
+              "role.suggest",
+              "course_of_study.suggest",
+            ],
           },
         },
         size: 5,
@@ -66,11 +76,11 @@ const App = () => {
           values: [WAVE.waveId],
         },
       ],
-      disjunctiveFacets: ["organisation", "course_of_study"],
+      disjunctiveFacets: ["organisation.keyword", "course_of_study.keyword"],
       facets: {
         industries: { type: "value", size: 100 },
-        organisation: { type: "value", size: 100 },
-        course_of_study: { type: "value", size: 100 },
+        "organisation.keyword": { type: "value", size: 100 },
+        "course_of_study.keyword": { type: "value", size: 100 },
       },
     },
   };
@@ -96,20 +106,20 @@ const App = () => {
               sideContent={
                 <div>
                   <Sorting
-                    label={"Sort by"}
+                    label="Sort by"
                     sortOptions={[
                       { name: "Relevance", value: "", direction: "" },
-                      { name: "Name", value: "name", direction: "asc" },
+                      { name: "Name", value: "name.keyword", direction: "asc" },
                     ]}
                   />
                   <Facet field="industries" label="Industries" />
                   <Facet
-                    field="organisation"
+                    field="organisation.keyword"
                     filterType="any"
                     label="Organisation"
                   />
                   <Facet
-                    field="course_of_study"
+                    field="course_of_study.keyword"
                     filterType="any"
                     label="Course of Study"
                   />
