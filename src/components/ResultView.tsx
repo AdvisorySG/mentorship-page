@@ -121,13 +121,9 @@ const ResultView = ({ result }: { result: SearchResult }) => {
     if (!txt) {
       return null;
     }
-
-    if (txt.snippet) {
-      return fillEllipsis(txt.snippet[0], txt.raw);
-    }
-
-    return txt.raw;
+    return txt.snippet ? fillEllipsis(txt.snippet[0], txt.raw) : txt.raw;
   };
+
   const fillHighlightsIfPossible = (txt: {
     raw: string;
     snippet?: string[];
@@ -135,10 +131,7 @@ const ResultView = ({ result }: { result: SearchResult }) => {
     if (!txt) {
       return null;
     }
-    if (txt.snippet) {
-      return fillHighlights(txt.snippet[0], txt.raw);
-    }
-    return txt.raw;
+    return txt.snippet ? fillHighlights(txt.snippet[0], txt.raw) : txt.raw;
   };
 
   const displayName = fillHighlightsIfPossible(name);
