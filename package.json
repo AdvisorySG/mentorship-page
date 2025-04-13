@@ -13,7 +13,7 @@
     "@elastic/search-ui-elasticsearch-connector": "^1.23.0",
     "@emotion/styled": "^11.11.0",
     "@glidejs/glide": "^3.6.0",
-    "@iconify/react": "^5.0.1",
+    "@iconify/react": "^5.2.1",
     "@mui/icons-material": "^5.15.11",
     "@mui/material": "^5.16.7",
     "html-to-text": "^9.0.5",
