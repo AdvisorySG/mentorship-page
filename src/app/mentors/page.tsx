@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Layout } from "@elastic/react-search-ui-views";
 import {
   PagingInfo,
@@ -11,8 +11,9 @@ import {
   SearchBox,
   Sorting,
 } from "@elastic/react-search-ui";
-import { FilterType, SortDirection } from "@elastic/search-ui";
+import { FilterType, RequestState, SortDirection } from "@elastic/search-ui";
 import ElasticsearchAPIConnector from "@elastic/search-ui-elasticsearch-connector";
+import queryString from "../../lib/queryString";
 
 import Canvas from "../../components/Canvas";
 import ClearFacets from "../../components/ResetButton";
@@ -29,15 +30,57 @@ const ELASTIC_INDEX = "mentorship-page-current";
 const App = () => {
   const WAVE = { waveId: "2024", waveName: "2024 Wave" };
 
+  const preserveMentorParameter = (urlStr: string): string => {
+    // Parse the URL using Elasticsearch's URL parser
+    // Note: Their parser will remove the `mentor` query parameter
+    const parsedUrl = queryString.parse(urlStr);
+
+    // Parse the URL using the qs library
+    // Note: qs will keep the `mentor` query parameter
+    const currentParams =
+      typeof window !== "undefined"
+        ? queryString.parse(window.location.search)
+        : {};
+
+    // Preserve mentor parameter if it exists in current URL
+    if (currentParams.mentor && !parsedUrl.mentor) {
+      parsedUrl.mentor = currentParams.mentor;
+    }
+
+    // Reconstruct the URL string
+    return queryString.stringify(parsedUrl);
+  };
+
   const connector = new ElasticsearchAPIConnector({
     cloud: { id: ELASTIC_CLOUD_ID },
     apiKey: ELASTIC_APIKEY,
     index: ELASTIC_INDEX,
   });
 
+  // Custom routing options to preserve the mentor parameter
+  const customRoutingOptions = {
+    writeUrl: (
+      url: string,
+      { replaceUrl = false }: { replaceUrl?: boolean } = {},
+    ) => {
+      if (typeof window !== "undefined") {
+        const newUrl = preserveMentorParameter(url);
+        const navigationMethod = replaceUrl ? "replaceState" : "pushState";
+
+        window.history[navigationMethod]({}, "", `?${newUrl}`);
+      }
+    },
+
+    stateToUrl: (state: RequestState) => {
+      const url = queryString.stringify(state);
+      return preserveMentorParameter(url);
+    },
+  };
+
   const configurationOptions = {
     alwaysSearchOnInitialLoad: true,
     apiConnector: connector,
+    routingOptions: customRoutingOptions,
     autocompleteQuery: {
       suggestions: {
         types: {
