@@ -26,16 +26,17 @@ import {
   trackSearch,
   trackSearchClick,
 } from "@elastic/behavioral-analytics-javascript-tracker";
-import AnalyticsPlugin from "@elastic/search-ui-analytics-plugin";
 
 const ELASTIC_CLOUD_ID =
   "My_deployment:YXAtc291dGhlYXN0LTEuYXdzLmZvdW5kLmlvJGZmM2E4NzcwZmM2YzRiYTZiMDcwZmZiNzQzM2ExMDk0JDgwZDc3ZGY2NGQxODQwMjNiNDkxOWQ0YWEwNWVjZjRm";
+const ELASTIC_ENDPOINT =
+  "https://ff3a8770fc6c4ba6b070ffb7433a1094.ap-southeast-1.aws.found.io:443";
 const ELASTIC_APIKEY =
   "Slp3MDVwVUJpOWRNZTZnQmdrbU46YTU5RTBtdVlTVXVpMS1qYWdKSUljQQ=="; // exposed to client! should be read-only
 const ELASTIC_INDEX = "mentorship-page-current";
 
 createTracker({
-  endpoint: ELASTIC_CLOUD_ID,
+  endpoint: ELASTIC_ENDPOINT,
   collectionName: process.env.NODE_ENV,
   apiKey: ELASTIC_APIKEY,
 });
@@ -97,7 +98,6 @@ const App = () => {
         "course_of_study.keyword": { type: "value", size: 100 },
       },
     },
-    plugins: [AnalyticsPlugin()],
   };
 
   return (

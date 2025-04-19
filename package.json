@@ -11,7 +11,6 @@
     "@elastic/react-search-ui": "^1.23.0",
     "@elastic/react-search-ui-views": "^1.23.0",
     "@elastic/search-ui": "^1.23.0",
-    "@elastic/search-ui-analytics-plugin": "^1.23.0",
     "@elastic/search-ui-elasticsearch-connector": "^1.23.0",
     "@emotion/styled": "^11.11.0",
     "@glidejs/glide": "^3.6.0",
