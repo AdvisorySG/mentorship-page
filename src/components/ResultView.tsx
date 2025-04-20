@@ -99,7 +99,13 @@ type DisplayResult = {
   thumbnailImageUrl?: string;
 };
 
-const ResultView = ({ result }: { result: SearchResult }) => {
+const ResultView = ({
+  result,
+  onClick,
+}: {
+  result: SearchResult;
+  onClick: (resultId: string, query: string) => void;
+}) => {
   const {
     id: idObj,
     course_of_study: courseOfStudy,
@@ -170,9 +176,15 @@ const ResultView = ({ result }: { result: SearchResult }) => {
     thumbnailImageUrl,
   };
 
+  const handleClick = () => {
+    onClick(id, name);
+  };
+
   return (
     <Suspense fallback={null}>
-      <LazyResultViewGrid displayResult={displayResult} />
+      <div onClick={handleClick}>
+        <LazyResultViewGrid displayResult={displayResult} />
+      </div>
     </Suspense>
   );
 };

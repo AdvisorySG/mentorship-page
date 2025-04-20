@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Layout } from "@elastic/react-search-ui-views";
 import {
   PagingInfo,
@@ -100,6 +100,29 @@ const App = () => {
     },
   };
 
+  useEffect(() => {
+    trackPageView({ document: { id: "Mentors Search Page", index: "pages" } });
+  }, []);
+
+  // Track search when query is entered
+  const handleSearchQuery = (query: string) => {
+    // Call trackSearch when a search query is entered
+    trackSearch({ search: { query } });
+  };
+
+  // Track search click when a result is clicked
+  const handleSearchClick = (id: string, query: string) => {
+    trackSearchClick({
+      document: {
+        id: id,
+        index: "mentors",
+      },
+      search: {
+        query: query,
+      },
+    });
+  };
+
   return (
     <Canvas>
       <div className="results" id="mentors">
@@ -111,11 +134,14 @@ const App = () => {
                   autocompleteSuggestions={true}
                   searchAsYouType={true}
                   debounceLength={300}
+                  onSubmit={handleSearchQuery}
                 />
               }
               bodyContent={
                 <Results
-                  resultView={({ result }) => <ResultView result={result} />}
+                  resultView={({ result }) => (
+                    <ResultView result={result} onClick={handleSearchClick} />
+                  )}
                 />
               }
               sideContent={
@@ -123,8 +149,16 @@ const App = () => {
                   <Sorting
                     label="Sort by"
                     sortOptions={[
-                      { name: "Relevance", value: "", direction: "" },
-                      { name: "Name", value: "name.keyword", direction: "asc" },
+                      {
+                        name: "Relevance",
+                        value: "",
+                        direction: "",
+                      },
+                      {
+                        name: "Name",
+                        value: "name.keyword",
+                        direction: "asc",
+                      },
                     ]}
                   />
                   <Facet field="industries" label="Industries" />
