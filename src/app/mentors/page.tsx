@@ -1,7 +1,5 @@
 "use client";
 import React from "react";
-import { init as initApm } from "@elastic/apm-rum";
-import { withTransaction } from "@elastic/apm-rum-react";
 import { Layout } from "@elastic/react-search-ui-views";
 import {
   PagingInfo,
@@ -30,14 +28,6 @@ const ELASTIC_INDEX = "mentorship-page-current";
 
 const App = () => {
   const WAVE = { waveId: "2024", waveName: "2024 Wave" };
-
-  initApm({
-    serviceName: "mentorship-page",
-    serverUrl:
-      "https://8dd263e7f7024f9086fd4aa060ae4d79.apm.ap-southeast-1.aws.cloud.es.io:443",
-    serviceVersion: "",
-    environment: process.env.NODE_ENV,
-  });
 
   const connector = new ElasticsearchAPIConnector({
     cloud: { id: ELASTIC_CLOUD_ID },
@@ -153,4 +143,4 @@ const App = () => {
   );
 };
 
-export default withTransaction("App", "component")(App);
+export default App;

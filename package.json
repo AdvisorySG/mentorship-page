@@ -7,7 +7,6 @@
     "node": "20.x"
   },
   "dependencies": {
-    "@elastic/apm-rum-react": "^2.0.5",
     "@elastic/react-search-ui": "^1.23.0",
     "@elastic/react-search-ui-views": "^1.23.0",
     "@elastic/search-ui": "^1.23.0",
@@ -30,6 +29,10 @@
     "build": "next build",
     "start": "next start",
     "prepare": "husky"
+  },
+  "eslintConfig": {
+    "sourceType": "module",
+    "extends": "plugin:@next/next/recommended"
   },
   "browserslist": {
     "production": [
