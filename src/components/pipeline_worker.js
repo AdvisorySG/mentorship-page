@@ -36,6 +36,6 @@ self.addEventListener("message", async (event) => {
   // Send the output back to the main thread
   self.postMessage({
     status: "complete",
-    output: output.ort_tensor.cpuData,
+    output: Array.from(output.ort_tensor.cpuData),
   });
 });
