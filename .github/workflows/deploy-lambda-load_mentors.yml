@@ -1,4 +1,4 @@
-name: Deploy Lambda
+name: Deploy Lambda (Load Mentors)
 on:
   pull_request:
   push:
