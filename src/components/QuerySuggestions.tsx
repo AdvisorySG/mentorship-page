@@ -99,11 +99,13 @@ const QuerySuggestions = ({ resultSearchTerm }: any) => {
   return (
     <div id="query-suggestions">
       <p>Query Suggestions for {resultSearchTerm}:</p>
-      <ul>
-        {suggestions.map((suggestion) => (
-          <li>{suggestion}</li>
-        ))}
-      </ul>
+      {workerReady && (
+        <ul>
+          {suggestions.map((suggestion) => (
+            <li>{suggestion}</li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
