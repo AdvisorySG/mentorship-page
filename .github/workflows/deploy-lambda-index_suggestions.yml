@@ -36,11 +36,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-      - run: export VERSION_AIRTABLE=`node -p -e "require('./package-lock.json').packages['node_modules/airtable'].version"`
       - run: export VERSION_AWS_SDK=`node -p -e "require('./package-lock.json').packages['node_modules/aws-sdk'].version"`
       - run: export VERSION_ELASTICSEARCH=`node -p -e "require('./package-lock.json').packages['node_modules/@elastic/elasticsearch'].version"`
+      - run: export VERSION_TRANSFORMERS=`node -p -e "require('./package-lock.json').packages['node_modules/@huggingface/transformers'].version"`
       - run: rm package.json package-lock.json
-      - run: npm install --no-save airtable@"$VERSION_AIRTABLE" aws-sdk@"$VERSION_AWS_SDK" @elastic/elasticsearch@"$VERSION_ELASTICSEARCH"
+      - run: npm install --no-save aws-sdk@"$VERSION_AWS_SDK" @elastic/elasticsearch@"$VERSION_ELASTICSEARCH" @huggingface/transformers@"$VERSION_TRANSFORMERS"
 
       - run: mkdir lambda
       - run: cp scripts/index_suggestions.js lambda/index.js
@@ -50,7 +50,7 @@ jobs:
       - name: Upload build
         uses: actions/upload-artifact@v4
         with:
-          name: mentorship-page-lambda-${{ github.sha }}
+          name: mentorship-page-lambda-index_suggestions-${{ github.sha }}
           path: lambda/
 
   deploy:
@@ -60,7 +60,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: mentorship-page-lambda-${{ github.sha }}
+          name: mentorship-page-lambda-index_suggestions-${{ github.sha }}
           path: lambda/
 
       - run: cd lambda && zip -r ../lambda.zip .
@@ -70,5 +70,5 @@ jobs:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: ${{ secrets.AWS_REGION }}
-          function_name: load_mentors
+          function_name: index_suggestions
           zip_file: lambda.zip
