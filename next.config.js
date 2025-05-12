@@ -23,6 +23,13 @@ const nextConfig = {
       }
     });
 
+    // see https://huggingface.co/docs/transformers.js/en/tutorials/next#step-2-install-and-configure-transformersjs
+    config.resolve.alias = {
+        ...config.resolve.alias,
+        "sharp$": false,
+        "onnxruntime-node$": false,
+    };
+
     return config;
   },
 };
