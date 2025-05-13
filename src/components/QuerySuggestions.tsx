@@ -11,6 +11,10 @@ const ELASTIC_APIKEY =
   "Slp3MDVwVUJpOWRNZTZnQmdrbU46YTU5RTBtdVlTVXVpMS1qYWdKSUljQQ=="; // exposed to client! should be read-only
 const ELASTIC_INDEX = "query-suggestions";
 
+const MIN_HITS = 5;
+const MAX_HITS = 40;
+const NUM_CANDIDATES = 100;
+
 const QuerySuggestions = ({ resultSearchTerm }: any) => {
   const [workerResult, setWorkerResult] = useState(null);
   const [workerReady, setWorkerReady] = useState(null);
@@ -73,12 +77,11 @@ const QuerySuggestions = ({ resultSearchTerm }: any) => {
             knn: {
               field: "embedding",
               query_vector: embedding,
-              k: 5,
-              num_candidates: 5,
-              similarity: 0.6,
+              k: NUM_CANDIDATES,
+              num_candidates: NUM_CANDIDATES,
             },
           },
-          fields: ["suggestion"],
+          fields: ["suggestion", "num_hits"],
           _source: false,
         },
         {
@@ -89,7 +92,13 @@ const QuerySuggestions = ({ resultSearchTerm }: any) => {
         },
       );
       setSuggestions(
-        response.data.hits.hits.map((hit) => hit.fields.suggestion[0]),
+        response.data.hits.hits
+          .filter(
+            (hit) =>
+              hit.fields.num_hits >= MIN_HITS &&
+              hit.fields.num_hits <= MAX_HITS,
+          )
+          .map((hit) => hit.fields.suggestion[0]),
       );
     }
 

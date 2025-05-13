@@ -9,15 +9,19 @@ load_dotenv()
 
 ELASTIC_API_KEY = os.getenv("ELASTIC_API_KEY")
 ELASTIC_CLOUD_ID = os.getenv("ELASTIC_CLOUD_ID")
-ELASTIC_INDEX = "query-suggestions"
+ELASTIC_MENTORS_INDEX = "mentorship-page-current"
+ELASTIC_SUGGESTIONS_INDEX = "query-suggestions"
 
 SBERT_MODEL = "Xenova/paraphrase-MiniLM-L3-v2"
+
+CURRENT_WAVE_ID = "2024"
+HIT_FIELDS = ("full_bio", "course_of_study", "organisation", "industries")
 
 
 def main():
     client = Elasticsearch(cloud_id=ELASTIC_CLOUD_ID, api_key=ELASTIC_API_KEY)
     client.delete_by_query(
-        index=ELASTIC_INDEX,
+        index=ELASTIC_SUGGESTIONS_INDEX,
         query={"match_all": {}}
     )
 
@@ -31,10 +35,32 @@ def main():
 
     def generate_docs():
         for suggestion in tqdm(suggestions):
+            num_hits = client.count(
+                index=ELASTIC_MENTORS_INDEX,
+                body={
+                    "query": {
+                        "bool": {
+                            "filter": [
+                                {"term": {"wave_id": CURRENT_WAVE_ID}},
+                            ],
+                            "should": [
+                                {"match_phrase": {field: suggestion}}
+                                for field in HIT_FIELDS
+                            ],
+                            "minimum_should_match": 1,
+                        }
+                    }
+                }
+            )["count"]
+
+            if num_hits == 0:
+                continue
+
             yield {
-                "_index": ELASTIC_INDEX,
+                "_index": ELASTIC_SUGGESTIONS_INDEX,
                 "suggestion": suggestion,
                 "embedding": model.encode(suggestion).tolist(),
+                "num_hits": num_hits,
             }
     
     helpers.bulk(client, generate_docs())
