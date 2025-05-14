@@ -68,6 +68,14 @@ const App = () => {
       sort: [{ field: "", direction: "asc" as SortDirection }],
     },
     searchQuery: {
+      search_fields: {
+        name: { weight: 10 },
+        organisation: { weight: 5 },
+        role: { weight: 3 },
+        course_of_study: { weight: 2 },
+        school: { weight: 1 },
+        full_bio: { weight: 1 },
+      },
       result_fields: {
         course_of_study: { raw: {}, snippet: { size: 100 } },
         full_bio: { raw: {}, snippet: { size: 200, fallback: true } },
