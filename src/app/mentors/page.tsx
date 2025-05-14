@@ -68,6 +68,14 @@ const App = () => {
       sort: [{ field: "", direction: "asc" as SortDirection }],
     },
     searchQuery: {
+      search_fields: {
+        name: { weight: 10 },
+        organisation: { weight: 5 },
+        role: { weight: 3 },
+        course_of_study: { weight: 2 },
+        school: { weight: 1 },
+        full_bio: { weight: 1 },
+      },
       result_fields: {
         course_of_study: { raw: {}, snippet: { size: 100 } },
         full_bio: { raw: {}, snippet: { size: 200, fallback: true } },
@@ -79,19 +87,14 @@ const App = () => {
         school: { raw: {}, snippet: { size: 100 } },
         thumbnail_image_url: { raw: {} },
       },
-      filters: [
-        {
-          type: "all" as FilterType,
-          field: "wave_id",
-          values: [WAVE.waveId],
-        },
-      ],
-      disjunctiveFacets: ["organisation.keyword", "course_of_study.keyword"],
+      // FIXME: see https://github.com/AdvisorySG/mentorship-page/issues/918
+      //filters: [{ type: "all" as FilterType, field: "wave_id", values: [WAVE.waveId] }],
       facets: {
         industries: { type: "value", size: 100 },
         "organisation.keyword": { type: "value", size: 100 },
         "course_of_study.keyword": { type: "value", size: 100 },
       },
+      disjunctiveFacets: ["organisation.keyword", "course_of_study.keyword"],
     },
   };
 

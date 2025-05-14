@@ -18,12 +18,13 @@ const AWS_S3_IMAGE_FOLDER = "images/";
 const PLACEHOLDER_THUMBNAIL_URL = "/mentor-thumbnail.png";
 
 const WAVES_INFO = new Map([
-  ["2021-1", { tableId: "4 Tech" }],
-  ["2021-2", { tableId: "5 Tech" }],
-  ["2022", { tableId: "2022 Mentorship [Complete]" }],
-  ["isw", { tableId: "Institution-Specific Mentorship" }],
-  ["2023-vjc", { tableId: "VJC Mentorship 2023" }],
-  ["2023", { tableId: "2023 Mentorship" }],
+  // FIXME: see https://github.com/AdvisorySG/mentorship-page/issues/918
+  // ["2021-1", { tableId: "4 Tech" }],
+  // ["2021-2", { tableId: "5 Tech" }],
+  // ["2022", { tableId: "2022 Mentorship [Complete]" }],
+  // ["isw", { tableId: "Institution-Specific Mentorship" }],
+  // ["2023-vjc", { tableId: "VJC Mentorship 2023" }],
+  // ["2023", { tableId: "2023 Mentorship" }],
   ["2024", { tableId: "2024 Mentorship" }],
 ]);
 
