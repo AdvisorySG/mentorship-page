@@ -68,12 +68,12 @@ const IMAGES: Image[] = [
 const STATISTICS: Statistic[] = [
   {
     title: "Mentors",
-    value: "2,900+",
+    value: "3200+",
     icon: "mdi:account",
   },
   {
     title: "Mentees",
-    value: "3,500+",
+    value: "3800+",
     icon: "mdi:school",
   },
   {
@@ -83,7 +83,7 @@ const STATISTICS: Statistic[] = [
   },
   {
     title: "Mentorship Hours",
-    value: "14,000+",
+    value: "15,000+",
     icon: "mdi:clock-time-four-outline",
   },
 ];
