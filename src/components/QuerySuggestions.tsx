@@ -13,7 +13,8 @@ const ELASTIC_INDEX = "query-suggestions";
 
 const MIN_HITS = 5;
 const MAX_HITS = 40;
-const NUM_CANDIDATES = 100;
+const NUM_CANDIDATES = 5;
+const MIN_SIMILARITY = 0.6;
 
 const QuerySuggestions = ({ resultSearchTerm }: any) => {
   const [workerResult, setWorkerResult] = useState(null);
@@ -79,6 +80,7 @@ const QuerySuggestions = ({ resultSearchTerm }: any) => {
               query_vector: embedding,
               k: NUM_CANDIDATES,
               num_candidates: NUM_CANDIDATES,
+              similarity: MIN_SIMILARITY,
             },
           },
           fields: ["suggestion", "num_hits"],
@@ -96,7 +98,9 @@ const QuerySuggestions = ({ resultSearchTerm }: any) => {
           .filter(
             (hit) =>
               hit.fields.num_hits >= MIN_HITS &&
-              hit.fields.num_hits <= MAX_HITS,
+              hit.fields.num_hits <= MAX_HITS &&
+              hit.fields.suggestion[0].toLowerCase().trim() !=
+                resultSearchTerm.toLowerCase().trim(),
           )
           .map((hit) => hit.fields.suggestion[0]),
       );
