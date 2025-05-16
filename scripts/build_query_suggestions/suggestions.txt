@@ -22,6 +22,7 @@ biomedical
 brand, brands, campaigns => branding
 business administration, business development, business management, businesses, master of business administration, mba => business
 business analytics
+Cambridge University
 capital
 change management
 Changi Airport Group
@@ -53,6 +54,7 @@ Deloitte
 designer, designing => design
 digital marketing
 digital transformation
+Duke-NUS
 economic, economy => economics
 ecosystem
 educational, educator => education
@@ -77,15 +79,18 @@ governance
 government
 GovTech
 Great Eastern
+Harvard
 health => healthcare
 history
 hotel
 human capital, people development, recruitment => human resources
 impact
+Imperial College London
 inclusion
 information security
 information systems
 innovation
+INSEAD
 insights
 insurance
 intelligence
@@ -95,7 +100,9 @@ KPMG
 language
 law, laws => legal
 lecturer
+lkyspp => Lee Kuan Yew School of Public Policy
 LinkedIn
+London School of Economics
 logistics
 machine learning
 management consultant
@@ -109,8 +116,13 @@ medical
 Meta
 Microsoft
 ministry
+Murdoch University
+nyp => Nanyang Polytechnic
+ntu => Nanyang Technological University
+nus => National University of Singapore
 non-profit
 Oracle
+Oxford University
 partner
 payments => fintech
 pharmacy => pharmaceutical
@@ -137,8 +149,11 @@ retail
 risk management
 sales
 SAP
+Sea Limited
 security
 service
+sim => Singapore Institute of Management
+smu => Singapore Management University
 SingHealth
 Singtel
 social media
@@ -152,11 +167,14 @@ strategic partnerships
 strategic planning
 supply chain
 teacher, teachers => teaching
+tp => Temasek Polytechnic
 trading
 travel
 trust & safety
+ucl => University College London
 Unilever
 uob => United Overseas Bank
+uol => University of London
 venture
 volunteer, volunteers => volunteering
 youth
