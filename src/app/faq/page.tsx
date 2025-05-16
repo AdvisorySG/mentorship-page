@@ -7,6 +7,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
+import Link from "next/link";
 
 import Canvas from "../../components/Canvas";
 import "../../styles/App.css";
@@ -101,9 +102,9 @@ const APPLICATION_QUESTIONS: QNA[] = [
           would like to be matched with the particular mentor. (For more
           information on what we look out for in your application, you may refer
           to our{" "}
-          <a href="https://drive.google.com/file/d/1aA3l_WQ1ehGO8UBKuRFLqj4URpQbAVzN/view">
+          <Link href="https://drive.google.com/file/d/1kzw63YbMDn_bLb0T7uEkEQTr6lcvhhw3/view?usp=sharing">
             Sample Application Response
-          </a>
+          </Link>
           .)
         </p>
         <p>
@@ -230,12 +231,12 @@ const APPLICATION_QUESTIONS: QNA[] = [
           If you had previously submitted a response and would like to re-submit
           a new application, we would appreciate it if you could kindly drop us
           an email at{" "}
-          <a href="mailto:mentoring@advisory.sg">mentoring@advisory.sg</a> so
-          that we can remove your previous application from our records, before
-          you submit your new one. That being said, we would really encourage
-          you to consider your choices thoroughly before submitting your
-          application, to save yourself the hassle of having to re-submit later
-          on.
+          <Link href="mailto:mentoring@advisory.sg">mentoring@advisory.sg</Link>{" "}
+          so that we can remove your previous application from our records,
+          before you submit your new one. That being said, we would really
+          encourage you to consider your choices thoroughly before submitting
+          your application, to save yourself the hassle of having to re-submit
+          later on.
         </p>
       </>
     ),
@@ -251,9 +252,33 @@ const APPLICATION_QUESTIONS: QNA[] = [
           c) one who has spent a significant amount of time in or has a
           significant connection to Singapore. If you’d like us to bring
           Advisory to your country, do drop us an email at{" "}
-          <a href="mailto:contact@advisory.sg">contact@advisory.sg</a>!
+          <Link href="mailto:contact@advisory.sg">contact@advisory.sg</Link>!
         </p>
       </>
+    ),
+  },
+];
+
+const RESOURCE_QUESTIONS: QNA[] = [
+  {
+    question:
+      "Are there any resources that I can reference in preparing my application?",
+    answer: (
+      <p>
+        Yes! You may click on the following links to view:{" "}
+        <ul>
+          <li>
+            <Link href="https://drive.google.com/file/d/1nagKk3jhOBY86oG9hMvDbXwiFMN0S-dN/view?usp=sharing">
+              Resources for mentees and how to write a resume/CV
+            </Link>
+          </li>
+          <li>
+            <Link href="https://drive.google.com/file/d/1kzw63YbMDn_bLb0T7uEkEQTr6lcvhhw3/view?usp=sharing">
+              Sample Application Response
+            </Link>
+          </li>
+        </ul>
+      </p>
     ),
   },
 ];
@@ -271,7 +296,11 @@ const StyledAccordion = styled(Accordion)(() => ({
     marginBottom: `10px`,
     borderRadius: `8px`,
   },
-  ".MuiAccordionDetails-root": {},
+  ".MuiAccordionDetails-root a": {
+    color: "#f49200",
+    fontWeight: 700,
+    textDecoration: "underline",
+  },
   ".MuiAccordionSummary-content": {
     marginBottom: `0px`,
   },
@@ -331,6 +360,10 @@ const App = () => {
       </h2>
       <div className="faq container" style={{ marginBottom: "32px" }}>
         {APPLICATION_QUESTIONS.map((qna, index) => StyledQNA({ qna, index }))}
+      </div>
+      <h2 style={{ color: "var(--brand-color)" }}>Resources</h2>
+      <div className="faq container" style={{ marginBottom: "32px" }}>
+        {RESOURCE_QUESTIONS.map((qna, index) => StyledQNA({ qna, index }))}
       </div>
     </Canvas>
   );
