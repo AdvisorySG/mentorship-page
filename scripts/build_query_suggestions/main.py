@@ -15,7 +15,7 @@ ELASTIC_MENTORS_INDEX = "mentorship-page-current"
 ELASTIC_SUGGESTIONS_INDEX = "query-suggestions"
 ELASTIC_SYNONYM_SET = "suggestion-synonyms"
 
-SBERT_MODEL = "Xenova/all-MiniLM-L12-v2"
+SBERT_MODEL = "Xenova/all-MiniLM-L6-v2"
 
 CURRENT_WAVE_ID = "2024"
 HIT_FIELDS = ("full_bio", "course_of_study", "organisation", "industries")
