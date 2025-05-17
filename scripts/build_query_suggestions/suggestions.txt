@@ -49,9 +49,7 @@ energy
 engineering
 entrepreneurship
 esg, climate, sustainable => sustainability
-financial planning
-financial services
-financing
+financing, financial services, financial planning => finance
 food
 fraud
 fundraising

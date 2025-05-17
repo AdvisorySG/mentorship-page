@@ -17,7 +17,7 @@ ELASTIC_SYNONYM_SET = "suggestion-synonyms"
 
 SBERT_MODEL = "Xenova/paraphrase-MiniLM-L6-v2"
 
-CURRENT_WAVE_ID = "2024"
+CURRENT_WAVE_ID = "2025"
 HIT_FIELDS = ("full_bio", "course_of_study", "organisation", "industries")
 
 

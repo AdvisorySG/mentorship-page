@@ -11,8 +11,8 @@ const ELASTIC_APIKEY =
   "Slp3MDVwVUJpOWRNZTZnQmdrbU46YTU5RTBtdVlTVXVpMS1qYWdKSUljQQ=="; // exposed to client! should be read-only
 const ELASTIC_INDEX = "query-suggestions";
 
-const MIN_HITS = 5;
-const MAX_HITS = 40;
+const MIN_HITS = 1;
+const MAX_HITS = 80;
 const NUM_CANDIDATES = 10;
 
 const QuerySuggestions = ({ resultSearchTerm }: any) => {
