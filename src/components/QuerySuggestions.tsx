@@ -108,18 +108,20 @@ const QuerySuggestions = ({ resultSearchTerm }: any) => {
   }, [workerResult]);
 
   return (
-    <div id="query-suggestions">
-      <p>Query Suggestions for {resultSearchTerm}:</p>
+    <>
       {workerReady && (
-        <ul>
-          {suggestions.map(([suggestion, score]) => (
-            <li>
-              {suggestion} ({score})
-            </li>
-          ))}
-        </ul>
+        <div id="query-suggestions">
+          <p>Query Suggestions for {resultSearchTerm}:</p>
+          <ul>
+            {suggestions.map(([suggestion, score]) => (
+              <li>
+                {suggestion} ({score})
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

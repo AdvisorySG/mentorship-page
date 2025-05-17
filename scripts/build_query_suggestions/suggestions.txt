@@ -1,34 +1,24 @@
 academic
-Accenture
 accountant, accounting, bachelor of accountancy, chartered accountant => accountancy
 account manager
 acquisition
 advertising
 advisor => advisory
-Amazon
 analysis, analyst => analytics
 architect => architecture
 art => arts
 artificial intelligence
-asset
 assurance
 audit => auditing
 automation
-Avanade
-Bain & Company
 banks => banking
-bcg => Boston Consulting Group
 biomedical
 brand, brands, campaigns => branding
 business administration, business development, business management, businesses, master of business administration, mba => business
 business analytics
-Cambridge University
 capital
 change management
-Changi Airport Group
 chemical engineering
-Cisco
-Citibank
 clinical
 cloud
 coach
@@ -42,28 +32,22 @@ computer science
 consultancy, consultant => consulting
 consumer products
 creative
-Credit Suisse
 crime
 cultural => culture
 cyber security => cybersecurity
 data analyst => data analytics
 data scientist => data science
-DBS Bank
 defence
-Deloitte
 designer, designing => design
 digital marketing
 digital transformation
-Duke-NUS
 economic, economy => economics
 ecosystem
 educational, educator => education
 electronics => electrical engineering
 energy
 engineering
-Enterprise Singapore
 entrepreneurship
-Ernst & Young
 esg, climate, sustainable => sustainability
 financial planning
 financial services
@@ -73,36 +57,24 @@ fraud
 fundraising
 gas, oil => natural resources
 general manager
-GIC
-Google
 governance
 government
-GovTech
-Great Eastern
-Harvard
 health => healthcare
 history
 hotel
 human capital, people development, recruitment => human resources
 impact
-Imperial College London
 inclusion
 information security
 information systems
 innovation
-INSEAD
 insights
 insurance
 intelligence
 investors, portfolio manager => investment
-Johnson & Johnson
-KPMG
 language
 law, laws => legal
 lecturer
-lkyspp => Lee Kuan Yew School of Public Policy
-LinkedIn
-London School of Economics
 logistics
 machine learning
 management consultant
@@ -113,16 +85,8 @@ mathematics
 mechanical engineering
 media
 medical
-Meta
-Microsoft
 ministry
-Murdoch University
-nyp => Nanyang Polytechnic
-ntu => Nanyang Technological University
-nus => National University of Singapore
 non-profit
-Oracle
-Oxford University
 partner
 payments => fintech
 pharmacy => pharmaceutical
@@ -140,7 +104,6 @@ public affairs
 public policy
 public relations
 public sector
-PwC
 real estate
 regulations => regulatory
 relations, relationship, relationships => relationship management
@@ -148,33 +111,21 @@ reporting
 retail
 risk management
 sales
-SAP
-Sea Limited
 security
 service
-sim => Singapore Institute of Management
-smu => Singapore Management University
-SingHealth
-Singtel
 social media
 society
 sociology
 software development, software engineer => software developer
 solution architect
-Standard Chartered Bank
 start-up, start up, start ups, startups => startup
 strategic partnerships
 strategic planning
 supply chain
 teacher, teachers => teaching
-tp => Temasek Polytechnic
 trading
 travel
 trust & safety
-ucl => University College London
-Unilever
-uob => United Overseas Bank
-uol => University of London
 venture
 volunteer, volunteers => volunteering
 youth
