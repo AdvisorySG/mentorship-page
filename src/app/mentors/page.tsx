@@ -53,6 +53,7 @@ const App = () => {
         types: {
           documents: {
             fields: [
+              "name.suggest",
               "organisation.suggest",
               "role.suggest",
               "course_of_study.suggest",
