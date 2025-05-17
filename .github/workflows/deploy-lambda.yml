@@ -13,7 +13,7 @@ jobs:
         uses: fkirc/skip-duplicate-actions@v5
         with:
           concurrent_skipping: "same_content_newer"
-          paths: '["scripts/**/*"]'
+          paths: '["scripts/**/*", ".github/workflows/**/*"]'
 
   build:
     needs: pre_build

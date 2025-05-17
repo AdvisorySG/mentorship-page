@@ -19,6 +19,7 @@ import ElasticsearchAPIConnector from "@elastic/search-ui-elasticsearch-connecto
 import Canvas from "../../components/Canvas";
 import ClearFacets from "../../components/ResetButton";
 import ResultView from "../../components/ResultView";
+import QuerySuggestions from "../../components/QuerySuggestions";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import "../../styles/App.css";
 
@@ -105,11 +106,13 @@ const App = () => {
           <div className="App">
             <Layout
               header={
-                <SearchBox
-                  autocompleteSuggestions={true}
-                  searchAsYouType={true}
-                  debounceLength={300}
-                />
+                <div>
+                  <SearchBox
+                    autocompleteSuggestions={true}
+                    searchAsYouType={false}
+                  />
+                  <QuerySuggestions />
+                </div>
               }
               bodyContent={
                 <Results
