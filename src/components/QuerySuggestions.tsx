@@ -2,7 +2,15 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import axios from "axios";
+import { LRUCache } from "lru-cache";
 import { withSearch } from "@elastic/react-search-ui";
+import Switch from "@mui/material/Switch";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormGroup from "@mui/material/FormGroup";
+import Alert from "@mui/material/Alert";
+import Button from "@mui/material/Button";
+import CircularProgress from "@mui/material/CircularProgress";
+import { Typography } from "@mui/material";
 
 // FIXME: make these globals
 const ELASTIC_ENDPOINT =
@@ -14,10 +22,12 @@ const ELASTIC_INDEX = "query-suggestions";
 const MIN_HITS = 1;
 const MAX_HITS = 80;
 const NUM_CANDIDATES = 10;
+const NUM_SUGGESTIONS = 5;
+const cache = new LRUCache({ max: 100 });
 
-const QuerySuggestions = ({ resultSearchTerm }: any) => {
+const QuerySuggestionsList = ({ resultSearchTerm, setSearchTerm }: any) => {
+  const [suggestions, setSuggestions] = useState(null);
   const [workerResult, setWorkerResult] = useState(null);
-  const [workerReady, setWorkerReady] = useState(null);
   const worker = useRef(null);
 
   useEffect(() => {
@@ -32,12 +42,6 @@ const QuerySuggestions = ({ resultSearchTerm }: any) => {
 
     const onMessageReceived = (e) => {
       switch (e.data.status) {
-        case "initiate":
-          setWorkerReady(false);
-          break;
-        case "ready":
-          setWorkerReady(true);
-          break;
         case "complete":
           setWorkerResult(e.data.output);
           break;
@@ -50,7 +54,14 @@ const QuerySuggestions = ({ resultSearchTerm }: any) => {
   });
 
   useEffect(() => {
-    if (/^\s*$/.test(resultSearchTerm)) {
+    if (/^\s*$/.test(resultSearchTerm) || resultSearchTerm.length <= 2) {
+      setSuggestions([]);
+      return;
+    }
+
+    if (cache.has(resultSearchTerm)) {
+      setSuggestions(cache.get(resultSearchTerm));
+      setWorkerResult(null);
       return;
     }
 
@@ -59,11 +70,8 @@ const QuerySuggestions = ({ resultSearchTerm }: any) => {
     }
   }, [resultSearchTerm]);
 
-  const [suggestions, setSuggestions] = useState([]);
-
   useEffect(() => {
     if (!workerResult) {
-      setSuggestions([]);
       return;
     }
 
@@ -91,40 +99,86 @@ const QuerySuggestions = ({ resultSearchTerm }: any) => {
           },
         },
       );
-      setSuggestions(
-        response.data.hits.hits
-          .filter(
-            (hit) =>
-              hit.fields.num_hits >= MIN_HITS &&
-              hit.fields.num_hits <= MAX_HITS &&
-              hit.fields.suggestion[0].toLowerCase().trim() !=
-                resultSearchTerm.toLowerCase().trim(),
-          )
-          .map((hit) => [hit.fields.suggestion[0], hit._score]),
-      );
+      const suggestions_arr = response.data.hits.hits
+        .filter(
+          (hit) =>
+            hit.fields.num_hits >= MIN_HITS &&
+            hit.fields.num_hits <= MAX_HITS &&
+            hit.fields.suggestion[0].toLowerCase().trim() !=
+              resultSearchTerm.toLowerCase().trim(),
+        )
+        .map((hit) => hit.fields.suggestion[0]);
+      cache.set(resultSearchTerm, suggestions_arr);
+      setSuggestions(suggestions_arr);
     }
 
     setTopSuggestions();
   }, [workerResult]);
 
-  return (
+  if (suggestions === null) {
+    return <CircularProgress />;
+  }
+  return suggestions.length == 0 ? (
+    <Typography style={{ marginBottom: "0.5rem" }}>
+      No suggestions available.
+    </Typography>
+  ) : (
     <>
-      {workerReady && (
-        <div id="query-suggestions">
-          <p>Query Suggestions for {resultSearchTerm}:</p>
-          <ul>
-            {suggestions.map(([suggestion, score]) => (
-              <li>
-                {suggestion} ({score})
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      {suggestions.slice(0, NUM_SUGGESTIONS).map((suggestion, index) => (
+        <Button
+          key={index}
+          variant="outlined"
+          style={{ marginRight: "0.5rem", marginBottom: "0.5rem" }}
+          onClick={() => {
+            setSuggestions(null);
+            setSearchTerm(suggestion);
+          }}
+        >
+          {suggestion}
+        </Button>
+      ))}
     </>
   );
 };
 
-export default withSearch(({ resultSearchTerm }) => ({
+const QuerySuggestions = ({ resultSearchTerm, setSearchTerm }: any) => {
+  const [isEnabled, setIsEnabled] = useState(false);
+  return (
+    <div
+      id="query-suggestions"
+      style={{ marginTop: "0.5rem", marginBottom: "0.5rem" }}
+    >
+      <FormGroup>
+        <FormControlLabel
+          control={
+            <Switch
+              checked={isEnabled}
+              onChange={(e) => setIsEnabled(e.target.checked)}
+            />
+          }
+          label="AI Suggestions"
+        />
+      </FormGroup>
+      {isEnabled && (
+        <>
+          <Alert severity="warning" style={{ marginBottom: "1rem" }}>
+            The "AI Suggestions" feature is experimental and automatically
+            generated using artificial intelligence. Advisory does not guarantee
+            the accuracy or relevance of the information provided, and in no way
+            do we assume any liability for the use or interpretation of this
+            content.
+          </Alert>
+          <QuerySuggestionsList
+            resultSearchTerm={resultSearchTerm}
+            setSearchTerm={setSearchTerm}
+          />
+        </>
+      )}
+    </div>
+  );
+};
+
+export default withSearch(({ resultSearchTerm, setSearchTerm }) => ({
   resultSearchTerm,
+  setSearchTerm,
 }))(QuerySuggestions);
