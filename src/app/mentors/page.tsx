@@ -29,8 +29,6 @@ const ELASTIC_APIKEY =
 const ELASTIC_INDEX = "mentorship-page-current";
 
 const App = () => {
-  const WAVE = { waveId: "2024", waveName: "2024 Wave" };
-
   initApm({
     serviceName: "mentorship-page",
     serverUrl:
@@ -64,7 +62,7 @@ const App = () => {
       },
     },
     initialState: {
-      resultsPerPage: 80,
+      resultsPerPage: 200,
       sort: [{ field: "", direction: "asc" as SortDirection }],
     },
     searchQuery: {
@@ -143,7 +141,7 @@ const App = () => {
                 <React.Fragment>
                   {<PagingInfo />}
                   <div className="search-config">
-                    <ResultsPerPage options={[20, 40, 80]} />
+                    <ResultsPerPage options={[50, 100, 200]} />
                   </div>
                 </React.Fragment>
               }
