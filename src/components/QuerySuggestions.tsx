@@ -130,6 +130,11 @@ const QuerySuggestionsList = ({ resultSearchTerm, setSearchTerm }: any) => {
           variant="outlined"
           style={{ marginRight: "0.5rem", marginBottom: "0.5rem" }}
           onClick={() => {
+            window.umami.track("Suggestion", {
+              oldQuery: resultSearchTerm,
+              newQuery: suggestion,
+              env: process.env.NODE_ENV,
+            });
             setSuggestions(null);
             setSearchTerm(suggestion);
           }}
