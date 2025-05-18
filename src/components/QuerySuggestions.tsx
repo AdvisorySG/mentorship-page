@@ -10,7 +10,10 @@ import FormGroup from "@mui/material/FormGroup";
 import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
-import { Typography } from "@mui/material";
+import Tooltip from "@mui/material/Tooltip";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import { Warning } from "@mui/icons-material";
 
 // FIXME: make these globals
 const ELASTIC_ENDPOINT =
@@ -24,6 +27,9 @@ const MAX_HITS = 200;
 const NUM_SUGGESTIONS = 8;
 const NUM_CANDIDATES = NUM_SUGGESTIONS * 5;
 const cache = new LRUCache({ max: 100 });
+
+const AI_DISCLAIMER =
+  'The "AI Search for Related Terms" feature is experimental and automatically generated using artificial intelligence (AI). Advisory does not guarantee the accuracy or relevance of the information provided, and in no way do we assume any liability for the use or interpretation of this content.';
 
 const QuerySuggestionsList = ({ resultSearchTerm, setSearchTerm }: any) => {
   const [suggestions, setSuggestions] = useState(null);
@@ -118,8 +124,9 @@ const QuerySuggestionsList = ({ resultSearchTerm, setSearchTerm }: any) => {
   if (suggestions === null) {
     return <CircularProgress />;
   }
+
   return suggestions.length == 0 ? (
-    <Typography style={{ marginBottom: "0.5rem" }}>
+    <Typography style={{ marginBottom: "1rem" }}>
       No suggestions available.
     </Typography>
   ) : (
@@ -148,6 +155,7 @@ const QuerySuggestionsList = ({ resultSearchTerm, setSearchTerm }: any) => {
 
 const QuerySuggestions = ({ resultSearchTerm, setSearchTerm }: any) => {
   const [isEnabled, setIsEnabled] = useState(false);
+
   return (
     <div
       id="query-suggestions"
@@ -156,28 +164,30 @@ const QuerySuggestions = ({ resultSearchTerm, setSearchTerm }: any) => {
       <FormGroup>
         <FormControlLabel
           control={
-            <Switch
-              checked={isEnabled}
-              onChange={(e) => setIsEnabled(e.target.checked)}
-            />
+            <>
+              <Switch
+                checked={isEnabled}
+                onChange={(e) => setIsEnabled(e.target.checked)}
+              />
+            </>
           }
-          label="AI Search for Related Terms"
+          label={
+            <Typography>
+              AI Search for Related Terms
+              <Tooltip title={AI_DISCLAIMER} placement="right">
+                <IconButton>
+                  <Warning />
+                </IconButton>
+              </Tooltip>
+            </Typography>
+          }
         />
       </FormGroup>
       {isEnabled && (
-        <>
-          <Alert severity="warning" style={{ marginBottom: "1rem" }}>
-            The "AI Search for Related Terms" feature is experimental and
-            automatically generated using artificial intelligence (AI). Advisory
-            does not guarantee the accuracy or relevance of the information
-            provided, and in no way do we assume any liability for the use or
-            interpretation of this content.
-          </Alert>
-          <QuerySuggestionsList
-            resultSearchTerm={resultSearchTerm}
-            setSearchTerm={setSearchTerm}
-          />
-        </>
+        <QuerySuggestionsList
+          resultSearchTerm={resultSearchTerm}
+          setSearchTerm={setSearchTerm}
+        />
       )}
     </div>
   );
