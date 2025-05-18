@@ -161,17 +161,17 @@ const QuerySuggestions = ({ resultSearchTerm, setSearchTerm }: any) => {
               onChange={(e) => setIsEnabled(e.target.checked)}
             />
           }
-          label="AI Suggestions"
+          label="AI Search for Related Terms"
         />
       </FormGroup>
       {isEnabled && (
         <>
           <Alert severity="warning" style={{ marginBottom: "1rem" }}>
-            The "AI Suggestions" feature is experimental and automatically
-            generated using artificial intelligence. Advisory does not guarantee
-            the accuracy or relevance of the information provided, and in no way
-            do we assume any liability for the use or interpretation of this
-            content.
+            The "AI Search for Related Terms" feature is experimental and
+            automatically generated using artificial intelligence (AI). Advisory
+            does not guarantee the accuracy or relevance of the information
+            provided, and in no way do we assume any liability for the use or
+            interpretation of this content.
           </Alert>
           <QuerySuggestionsList
             resultSearchTerm={resultSearchTerm}
