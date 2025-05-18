@@ -138,12 +138,13 @@ const App = () => {
                 </div>
               }
               bodyHeader={
-                <React.Fragment>
-                  {<PagingInfo />}
+                <>
+                  <PagingInfo />
+                  <Paging />
                   <div className="search-config">
                     <ResultsPerPage options={[50, 100, 200]} />
                   </div>
-                </React.Fragment>
+                </>
               }
               bodyFooter={<Paging />}
             />
