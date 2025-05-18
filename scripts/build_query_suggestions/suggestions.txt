@@ -49,7 +49,8 @@ energy
 engineering
 entrepreneurship
 esg, climate, sustainable => sustainability
-financing, financial services, financial planning => finance
+financing, financial services => finance
+financial planning
 food
 fraud
 fundraising
@@ -60,7 +61,6 @@ government
 health => healthcare
 history
 hotel
-human capital, people development, recruitment => human resources
 impact
 inclusion
 information security
@@ -78,7 +78,7 @@ machine learning
 management consultant
 managing director
 manufacturing
-marketer, marketing communications, marketing manager, markets => marketing
+marketer, marketing communications, marketing manager => marketing
 mathematics
 mechanical engineering
 media
@@ -87,6 +87,7 @@ ministry
 non-profit
 partner
 payments => fintech
+people development => human capital
 pharmacy => pharmaceutical
 philosophy
 political science
@@ -103,6 +104,7 @@ public policy
 public relations
 public sector
 real estate
+recruitment => human resources
 regulations => regulatory
 relations, relationship, relationships => relationship management
 reporting
@@ -114,7 +116,8 @@ service
 social media
 society
 sociology
-software development, software engineer => software developer
+software development => software developer
+software engineer
 solution architect
 start-up, start up, start ups, startups => startup
 strategic partnerships
