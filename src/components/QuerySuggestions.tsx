@@ -20,7 +20,7 @@ const ELASTIC_APIKEY =
 const ELASTIC_INDEX = "query-suggestions";
 
 const MIN_HITS = 1;
-const MAX_HITS = 40;
+const MAX_HITS = 200;
 const NUM_SUGGESTIONS = 8;
 const NUM_CANDIDATES = NUM_SUGGESTIONS * 5;
 const cache = new LRUCache({ max: 100 });
