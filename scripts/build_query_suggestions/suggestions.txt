@@ -1,0 +1,132 @@
+academic
+accountant, accounting, bachelor of accountancy, chartered accountant => accountancy
+account manager
+acquisition
+advertising
+advisor => advisory
+analysis, analyst => analytics
+architect => architecture
+art => arts
+artificial intelligence
+assurance
+audit => auditing
+automation
+banks => banking
+biomedical
+brand, brands, campaigns => branding
+business administration, business development, business management, businesses, master of business administration, mba => business
+business analytics
+capital
+change management
+chemical engineering
+clinical
+cloud
+coach
+commerce
+communication, communication studies => communications
+communities => community
+compliance
+computer => computing
+computer engineering
+computer science
+consultancy, consultant => consulting
+consumer products
+creative
+crime
+cultural => culture
+cyber security => cybersecurity
+data analyst => data analytics
+data scientist => data science
+defence
+designer, designing => design
+digital marketing
+digital transformation
+economic, economy => economics
+ecosystem
+educational, educator => education
+electronics => electrical engineering
+energy
+engineering
+entrepreneurship
+esg, climate, sustainable => sustainability
+financing, financial services => finance
+financial planning
+food
+fraud
+fundraising
+gas, oil => natural resources
+general manager
+governance
+government
+health => healthcare
+history
+hotel
+impact
+inclusion
+information security
+information systems
+innovation
+insights
+insurance
+intelligence
+investors, portfolio manager => investment
+language
+law, laws => legal
+lecturer
+logistics
+machine learning
+management consultant
+managing director
+manufacturing
+marketer, marketing communications, marketing manager => marketing
+mathematics
+mechanical engineering
+media
+medical
+ministry
+non-profit
+partner
+payments => fintech
+people development => human capital
+pharmacy => pharmaceutical
+philosophy
+political science
+preschool => early childhood
+private equity
+product development
+product manager => product management
+professor
+program manager, programme manager => programme management
+project manager => project management
+psychology
+public affairs
+public policy
+public relations
+public sector
+real estate
+recruitment => human resources
+regulations => regulatory
+relations, relationship, relationships => relationship management
+reporting
+retail
+risk management
+sales
+security
+service
+social media
+society
+sociology
+software development => software developer
+software engineer
+solution architect
+start-up, start up, start ups, startups => startup
+strategic partnerships
+strategic planning
+supply chain
+teacher, teachers => teaching
+trading
+travel
+trust & safety
+venture
+volunteer, volunteers => volunteering
+youth
