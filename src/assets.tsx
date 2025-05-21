@@ -7,7 +7,6 @@ export const partnerLogos = [
   ["BASF", "/logos/03_BASF.png"],
   ["BCG", "/logos/04_BCG.png"],
   ["BCG X", "/logos/05_BCG X.png"],
-  ["Citi", "/logos/07_Citi.png"],
   ["ECDA", "/logos/09_ECDA.png"],
   ["EY", "/logos/11_EY.png"],
   ["Forward Dyson", "/logos/12_Forward_Dyson.png"],
