@@ -277,6 +277,11 @@ const RESOURCE_QUESTIONS: QNA[] = [
               Sample Application Response
             </Link>
           </li>
+          <li>
+            <Link href="https://drive.google.com/file/d/1NvNZPocMUbnCm2ywoZ0S4Fx8f2qwj279/view?usp=sharing">
+              Infosheet on The Advisory Mentorship Programme
+            </Link>
+          </li>
         </ul>
       </p>
     ),
