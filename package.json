@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@elastic/elasticsearch": "^8.18.2",
-    "@next/eslint-plugin-next": "^15.2.4",
+    "@next/eslint-plugin-next": "^15.4.2",
     "@types/js-cookie": "^3.0.6",
     "@types/react": "^18.3.11",
     "airtable": "^0.12.2",
