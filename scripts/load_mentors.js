@@ -9,25 +9,13 @@ const AWS_REGION = "ap-southeast-1";
 const AWS_SECRET_AIRTABLE_NAME = "airtable_api_key";
 const AWS_SECRET_ELASTIC_NAME = "elasticsearch_api_key";
 const ELASTIC_CLOUD_ID =
-  "My_deployment:YXAtc291dGhlYXN0LTEuYXdzLmZvdW5kLmlvJGZmM2E4NzcwZmM2YzRiYTZiMDcwZmZiNzQzM2ExMDk0JDgwZDc3ZGY2NGQxODQwMjNiNDkxOWQ0YWEwNWVjZjRm";
-const ELASTIC_INDEX = "mentorship-page-current";
+  "advisorysg-mentorship:YXAtc291dGhlYXN0LTEuYXdzLmZvdW5kLmlvOjQ0MyQ2ZmEzOTc4MzA5YWE0ZjNjOTkyMDZlOWZkZjI0Y2MwYSRmYTMwNDgzZDk4Mjk0YjNkYjQ2M2QzMTNiZWM2ZmZlZA==";
 const ELASTIC_CHUNK_SIZE = 200;
+const ELASTIC_INDEX_PREFIX = "mentorship-page.";
 const AWS_S3_BUCKET_NAME = "advisorysg-mentorship";
 const AWS_S3_IMAGE_FOLDER = "images/";
 
 const PLACEHOLDER_THUMBNAIL_URL = "/mentor-thumbnail.png";
-
-const WAVES_INFO = new Map([
-  // FIXME: see https://github.com/AdvisorySG/mentorship-page/issues/918
-  // ["2021-1", { tableId: "4 Tech" }],
-  // ["2021-2", { tableId: "5 Tech" }],
-  // ["2022", { tableId: "2022 Mentorship [Complete]" }],
-  // ["isw", { tableId: "Institution-Specific Mentorship" }],
-  // ["2023-vjc", { tableId: "VJC Mentorship 2023" }],
-  // ["2023", { tableId: "2023 Mentorship" }],
-  // ["2024", { tableId: "2024 Mentorship" }],
-  ["2025", { tableId: "2025 Mentorship" }],
-]);
 
 function* chunks(arr, n) {
   for (let i = 0; i < arr.length; i += n) {
@@ -71,8 +59,8 @@ const generateAWSBucketKey = (id, size) => ({
   Key: `${AWS_S3_IMAGE_FOLDER}${id}-${size}`,
 });
 
-exports.handler = async (event) => {
-  const mentors = [];
+const indexWave = async (waveId, tableId) => {
+  console.log(`=== Wave ${waveId} (Table ${tableId}) ===`);
 
   const awsClient = new AWS.SecretsManager({ region: AWS_REGION });
   const airtableApiKey = await awsClient
@@ -93,20 +81,17 @@ exports.handler = async (event) => {
 
   const s3 = new AWS.S3();
 
-  await Promise.all(
-    [...WAVES_INFO.entries()].map(async ([waveId, { tableId }]) =>
-      base(tableId)
-        .select({ sort: [{ field: "First Name", direction: "asc" }] })
-        .eachPage((records, fetchNextPage) => {
-          mentors.push(
-            ...records.map(({ id, fields }) =>
-              formatMentor(id, waveId, fields),
-            ),
-          );
-          fetchNextPage();
-        }),
-    ),
-  );
+  const mentors = [];
+  const elasticIndex = `${ELASTIC_INDEX_PREFIX}${waveId}`;
+
+  await base(tableId)
+    .select({ sort: [{ field: "First Name", direction: "asc" }] })
+    .eachPage((records, fetchNextPage) => {
+      mentors.push(
+        ...records.map(({ id, fields }) => formatMentor(id, waveId, fields)),
+      );
+      fetchNextPage();
+    });
 
   const mentorMap = new Map(mentors.map((mentor) => [mentor.id, mentor]));
   const deletedMentorIds = [];
@@ -116,7 +101,7 @@ exports.handler = async (event) => {
 
   let count = 0;
   const scrollSearch = await elasticClient.helpers.scrollDocuments({
-    index: ELASTIC_INDEX,
+    index: elasticIndex,
     query: { match_all: {} },
   });
   for await (const result of scrollSearch) {
@@ -153,7 +138,7 @@ exports.handler = async (event) => {
       });
     });
     const deleteBody = [...deletedMentorIds].map((mentorId) => ({
-      delete: { _index: ELASTIC_INDEX, _id: mentorId },
+      delete: { _index: elasticIndex, _id: mentorId },
     }));
     await elasticClient.bulk({ refresh: true, body: deleteBody });
   }
@@ -176,7 +161,7 @@ exports.handler = async (event) => {
                   generateAWSBucketKey(id, imageSize),
                   function (err, data) {},
                 );
-                return [{ index: { _index: ELASTIC_INDEX, _id: id } }, mentor];
+                return [{ index: { _index: elasticIndex, _id: id } }, mentor];
               }
               const res = await fetch(imageURL);
               const contentType = res.headers.get("Content-Type");
@@ -192,8 +177,9 @@ exports.handler = async (event) => {
               newMentorObject[objectProperty] = uploadedImage.Location;
             }),
           );
+          console.log(newMentorObject);
           return [
-            { index: { _index: ELASTIC_INDEX, _id: id } },
+            { index: { _index: elasticIndex, _id: id } },
             newMentorObject,
           ];
         }),
@@ -201,4 +187,22 @@ exports.handler = async (event) => {
     ).flat();
     await elasticClient.bulk({ refresh: true, body: indexBody });
   }
+};
+
+/*
+ * An index template has been created for `mentorship-page.*` on ElasticSearch.
+ * To index a wave, first manually create indexes named with the waveId, e.g.
+ * `mentorship-page.2025`.
+ * Then pass the list of waves in this form:
+ * {
+ *   "waves": [
+ *     {"waveId": "2025", "tableId": "2025 Mentorship"}
+ *   ]
+ * }
+ * A list of historical waves is available in the test events on AWS Lambda.
+ */
+exports.handler = async (event) => {
+  await Promise.all(
+    event.waves.map(({ waveId, tableId }) => indexWave(waveId, tableId)),
+  );
 };

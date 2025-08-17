@@ -13,7 +13,7 @@ import {
   SearchBox,
   Sorting,
 } from "@elastic/react-search-ui";
-import { FilterType, SortDirection } from "@elastic/search-ui";
+import { SortDirection } from "@elastic/search-ui";
 import ElasticsearchAPIConnector from "@elastic/search-ui-elasticsearch-connector";
 
 import Canvas from "../../components/Canvas";
@@ -24,16 +24,15 @@ import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import "../../styles/App.css";
 
 const ELASTIC_CLOUD_ID =
-  "My_deployment:YXAtc291dGhlYXN0LTEuYXdzLmZvdW5kLmlvJGZmM2E4NzcwZmM2YzRiYTZiMDcwZmZiNzQzM2ExMDk0JDgwZDc3ZGY2NGQxODQwMjNiNDkxOWQ0YWEwNWVjZjRm";
+  "advisorysg-mentorship:YXAtc291dGhlYXN0LTEuYXdzLmZvdW5kLmlvOjQ0MyQ2ZmEzOTc4MzA5YWE0ZjNjOTkyMDZlOWZkZjI0Y2MwYSRmYTMwNDgzZDk4Mjk0YjNkYjQ2M2QzMTNiZWM2ZmZlZA==";
 const ELASTIC_APIKEY =
-  "Slp3MDVwVUJpOWRNZTZnQmdrbU46YTU5RTBtdVlTVXVpMS1qYWdKSUljQQ=="; // exposed to client! should be read-only
+  "SXR2d3RwZ0JTU3k1WVE3YzFFTzM6T2pCbEFlNFJyUXNHbTNUTkxCV3lyQQ=="; // exposed to client! should be read-only
 const ELASTIC_INDEX = "mentorship-page-current";
 
 const App = () => {
   initApm({
     serviceName: "mentorship-page",
-    serverUrl:
-      "https://8dd263e7f7024f9086fd4aa060ae4d79.apm.ap-southeast-1.aws.cloud.es.io:443",
+    serverUrl: "https://advisorysg-mentorship.apm.ap-southeast-1.aws.found.io",
     serviceVersion: "",
     environment: process.env.NODE_ENV,
   });
@@ -86,8 +85,6 @@ const App = () => {
         school: { raw: {}, snippet: { size: 100 } },
         thumbnail_image_url: { raw: {} },
       },
-      // FIXME: see https://github.com/AdvisorySG/mentorship-page/issues/918
-      //filters: [{ type: "all" as FilterType, field: "wave_id", values: [WAVE.waveId] }],
       facets: {
         industries: { type: "value", size: 100 },
         "organisation.keyword": { type: "value", size: 100 },
