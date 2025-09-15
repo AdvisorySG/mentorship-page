@@ -18,7 +18,7 @@
     "@iconify/react": "^6.0.0",
     "@mui/icons-material": "^5.15.11",
     "@mui/material": "^5.16.7",
-    "axios": "^1.9.0",
+    "axios": "^1.12.2",
     "html-to-text": "^9.0.5",
     "js-cookie": "^3.0.5",
     "lru-cache": "^11.1.0",
