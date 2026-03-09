@@ -15,7 +15,7 @@ const nextConfig = {
 
   // Source: https://cwtuan.blogspot.com/2022/10/disable-css-module-in-nextjs-v1231-sept.html
 
-  webpack(config) {
+  turbopack(config) {
     config.module.rules.forEach((rule) => {
       const { oneOf } = rule;
 
