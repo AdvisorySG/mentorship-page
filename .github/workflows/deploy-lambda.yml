@@ -33,7 +33,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-lambda-
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
       - run: export VERSION_AIRTABLE=`node -p -e "require('./package-lock.json').packages['node_modules/airtable'].version"`
