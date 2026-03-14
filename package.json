@@ -55,7 +55,7 @@
     "@types/react": "^18.3.11",
     "airtable": "^0.12.2",
     "autoprefixer": "^10.4.20",
-    "aws-sdk": "^2.1529.0",
+    "aws-sdk": "^2.1693.0",
     "eslint-config-prettier": "^10.1.1",
     "husky": "^9.1.7",
     "postcss": "^8.4.35",
