@@ -166,12 +166,10 @@ const QuerySuggestions = ({ resultSearchTerm, setSearchTerm }: any) => {
       <FormGroup>
         <FormControlLabel
           control={
-            <>
-              <Switch
-                checked={isEnabled}
-                onChange={(e) => setIsEnabled(e.target.checked)}
-              />
-            </>
+            <Switch
+              checked={isEnabled}
+              onChange={(e) => setIsEnabled(e.target.checked)}
+            />
           }
           label={
             <Typography>
