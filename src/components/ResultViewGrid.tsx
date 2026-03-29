@@ -1,5 +1,6 @@
 import { Suspense, lazy, useEffect, useRef, useState } from "react";
 
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import {
   Button,
   Card,
@@ -7,7 +8,9 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  IconButton,
   Modal,
+  Tooltip,
 } from "@mui/material";
 import { useInView } from "react-intersection-observer";
 
@@ -42,8 +45,19 @@ const ResultViewGrid = ({
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Open modal if URL contains "mentor" query parameter (i.e. it was a copied link)
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const mentorId = urlParams.get("mentor");
+    if (mentorId === id) {
+      setIsModalOpen(true);
+    }
+  }, [id]);
+
   const handleOpen = () => {
-    window.history.pushState({}, "");
+    const url = new URL(window.location.href);
+    url.searchParams.set("mentor", id);
+    window.history.pushState({}, "", url.toString());
     setIsModalOpen(true);
     if (window.umami) {
       window.umami.track("Click", { id, env: process.env.NODE_ENV });
@@ -51,16 +65,32 @@ const ResultViewGrid = ({
   };
 
   const handleClose = () => {
-    window.history.back();
+    const url = new URL(window.location.href);
+    url.searchParams.delete("mentor");
+    window.history.pushState({}, "", url.toString());
+    setIsModalOpen(false);
+  };
+
+  const handleCopyLink = () => {
+    const url = new URL(window.location.href);
+    url.searchParams.set("mentor", id);
+    navigator.clipboard.writeText(url.toString()).catch((err) => {
+      console.error("Could not copy text: ", err);
+    });
   };
 
   useEffect(() => {
-    if (isModalOpen) {
-      window.onpopstate = () => {
-        setIsModalOpen(false);
-      };
-    }
-  });
+    const handlePopState = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const mentorId = urlParams.get("mentor");
+      setIsModalOpen(mentorId === id);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [id]);
 
   return (
     <>
@@ -144,9 +174,28 @@ const ResultViewGrid = ({
           overflow: "auto",
         }}
       >
-        <Suspense fallback={null}>
-          <LazyResultViewList displayResult={displayResult} />
-        </Suspense>
+        <div style={{ position: "relative", width: "100%" }}>
+          <Suspense fallback={null}>
+            <LazyResultViewList displayResult={displayResult} />
+          </Suspense>
+          <Tooltip title="Copy link to this mentor" placement="top">
+            <IconButton
+              onClick={handleCopyLink}
+              size="medium"
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "10px",
+                backgroundColor: "var(--brand-color)",
+                color: "white",
+                boxShadow: "2px 2px 8px rgba(0,0,0,0.2)",
+              }}
+              aria-label="copy link"
+            >
+              <ContentCopyIcon />
+            </IconButton>
+          </Tooltip>
+        </div>
       </Modal>
     </>
   );
