@@ -1,13 +1,17 @@
 "use client";
-import React from "react";
 import { init as initApm } from "@elastic/apm-rum";
 import { withTransaction } from "@elastic/apm-rum-react";
-import { Layout } from "@elastic/react-search-ui-views";
 import {
+  FacetViewProps,
+  Layout,
+  MultiCheckboxFacet,
+} from "@elastic/react-search-ui-views";
+
+import {
+  Facet,
   PagingInfo,
   ResultsPerPage,
   Paging,
-  Facet,
   SearchProvider,
   Results,
   SearchBox,
@@ -28,6 +32,31 @@ const ELASTIC_CLOUD_ID =
 const ELASTIC_APIKEY =
   "SXR2d3RwZ0JTU3k1WVE3YzFFTzM6T2pCbEFlNFJyUXNHbTNUTkxCV3lyQQ=="; // exposed to client! should be read-only
 const ELASTIC_INDEX = "mentorship-page-current";
+
+const CustomSortFacetView: React.FC<FacetViewProps> = (props) => {
+  const { options } = props;
+
+  const sortedOptions = [...options].sort((a, b) => {
+    console.log(a);
+
+    // First: checked items come first
+    if (a.selected && !b.selected) return -1;
+    if (!a.selected && b.selected) return 1;
+
+    // Second: sort by count descending
+    if (a.count !== b.count) {
+      return b.count - a.count;
+    }
+
+    // Tiebreaker: alphabetical order by value
+    if (typeof a.value === "string" && typeof b.value === "string") {
+      return a.value.localeCompare(b.value);
+    }
+    return 0;
+  });
+
+  return <MultiCheckboxFacet {...props} options={sortedOptions} />;
+};
 
 const App = () => {
   initApm({
@@ -124,16 +153,22 @@ const App = () => {
                       { name: "Name", value: "name.keyword", direction: "asc" },
                     ]}
                   />
-                  <Facet field="industries" label="Industries" />
+                  <Facet
+                    field="industries"
+                    label="Industries"
+                    view={CustomSortFacetView}
+                  />
                   <Facet
                     field="organisation.keyword"
                     filterType="any"
                     label="Organisation"
+                    view={CustomSortFacetView}
                   />
                   <Facet
                     field="course_of_study.keyword"
                     filterType="any"
                     label="Course of Study"
+                    view={CustomSortFacetView}
                   />
                   <ClearFacets />
                 </div>
