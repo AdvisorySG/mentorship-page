@@ -66,6 +66,7 @@ const App = () => {
       sort: [{ field: "", direction: "asc" as SortDirection }],
     },
     searchQuery: {
+      fuzziness: true,
       search_fields: {
         name: { weight: 10 },
         organisation: { weight: 5 },
