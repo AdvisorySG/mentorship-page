@@ -37,8 +37,6 @@ const CustomSortFacetView: React.FC<FacetViewProps> = (props) => {
   const { options } = props;
 
   const sortedOptions = [...options].sort((a, b) => {
-    console.log(a);
-
     // First: checked items come first
     if (a.selected && !b.selected) return -1;
     if (!a.selected && b.selected) return 1;
