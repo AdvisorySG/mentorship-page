@@ -1,10 +1,14 @@
-import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
+import { Suspense, lazy, useEffect, useRef, useState } from "react";
 
-import { Modal, Button, CardActionArea } from "@mui/material";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
+import {
+  Button,
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Modal,
+} from "@mui/material";
 import { useInView } from "react-intersection-observer";
 
 import type { DisplayResult } from "./ResultView";
@@ -59,70 +63,72 @@ const ResultViewGrid = ({
   });
 
   return (
-    <Card
-      className="sui-resultgrid"
-      style={{
-        width: "100%",
-        height: "auto",
-        padding: "0px",
-      }}
-      ref={ref}
-    >
-      <CardActionArea
+    <>
+      <Card
+        className="sui-resultgrid"
         onClick={handleOpen}
         style={{
           display: "flex",
           flexFlow: "column nowrap",
-          alignItems: "stretch",
-          justifyContent: "flex-start",
-          height: "100%",
+          width: "100%",
+          height: "auto",
+          padding: "0px",
         }}
+        ref={ref}
       >
-        <CardMedia
-          component="img"
-          image={thumbnailImageUrl}
+        <CardActionArea
           style={{
-            width: "100%",
-            height: "180px",
+            display: "flex",
+            flexFlow: "column nowrap",
+            alignItems: "stretch",
+            justifyContent: "flex-start",
+            height: "100%",
           }}
-        />
-        <CardContent>
-          {displayName && (
-            <span
-              className="sui-result__title"
-              style={{ fontSize: 18 }}
-              dangerouslySetInnerHTML={{ __html: displayName }}
-            />
-          )}
-          <ul className="sui-result__details" style={{ padding: 0 }}>
-            {displayOrganisation && (
-              <li style={{ margin: "5px 0" }}>
-                <span
-                  className="sui-result__value"
-                  style={{ fontSize: 14 }}
-                  dangerouslySetInnerHTML={{ __html: displayOrganisation }}
-                />
-              </li>
+        >
+          <CardMedia
+            component="img"
+            image={thumbnailImageUrl}
+            style={{
+              width: "100%",
+              height: "180px",
+            }}
+          />
+          <CardContent>
+            {displayName && (
+              <span
+                className="sui-result__title"
+                style={{ fontSize: 18 }}
+                dangerouslySetInnerHTML={{ __html: displayName }}
+              />
             )}
-            {displayRole && (
-              <li style={{ margin: "5px 0" }}>
-                <span
-                  className="sui-result__value"
-                  style={{ fontSize: 14 }}
-                  dangerouslySetInnerHTML={{ __html: displayRole }}
-                />
-              </li>
-            )}
-          </ul>
-        </CardContent>
+            <ul className="sui-result__details" style={{ padding: 0 }}>
+              {displayOrganisation && (
+                <li style={{ margin: "5px 0" }}>
+                  <span
+                    className="sui-result__value"
+                    style={{ fontSize: 14 }}
+                    dangerouslySetInnerHTML={{ __html: displayOrganisation }}
+                  />
+                </li>
+              )}
+              {displayRole && (
+                <li style={{ margin: "5px 0" }}>
+                  <span
+                    className="sui-result__value"
+                    style={{ fontSize: 14 }}
+                    dangerouslySetInnerHTML={{ __html: displayRole }}
+                  />
+                </li>
+              )}
+            </ul>
+          </CardContent>
+        </CardActionArea>
         <CardActions
           style={{ display: "flex", flexGrow: 1, alignItems: "flex-end" }}
         >
-          <Button onClick={handleOpen} style={{ fontSize: 12 }}>
-            Read More
-          </Button>
+          <Button style={{ fontSize: 12 }}>Read More</Button>
         </CardActions>
-      </CardActionArea>
+      </Card>
       <Modal
         className="sui-result__modal"
         open={isModalOpen}
@@ -142,7 +148,7 @@ const ResultViewGrid = ({
           <LazyResultViewList displayResult={displayResult} />
         </Suspense>
       </Modal>
-    </Card>
+    </>
   );
 };
 
