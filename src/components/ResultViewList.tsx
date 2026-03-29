@@ -45,6 +45,7 @@ const ResultViewList = ({
           <li className="sui-result__industries">
             {displayIndustries.map((industry: string) => (
               <Chip
+                key={industry}
                 style={{
                   backgroundColor: industryColors.get(industry),
                   fontSize: "0.8rem",
