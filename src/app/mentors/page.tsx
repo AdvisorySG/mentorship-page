@@ -135,7 +135,7 @@ const App = () => {
                     autocompleteSuggestions={true}
                     searchAsYouType={false}
                   />
-                  <QuerySuggestions />
+                  {/* <QuerySuggestions /> */}
                 </div>
               }
               bodyContent={
