@@ -107,6 +107,7 @@ const App = () => {
         full_bio: { raw: {}, snippet: { size: 200, fallback: true } },
         full_image_url: { raw: {} },
         industries: { raw: {} },
+        competencies: { raw: {} },
         name: { raw: {}, snippet: { size: 100 } },
         organisation: { raw: {}, snippet: { size: 100 } },
         role: { raw: {}, snippet: { size: 100 } },
