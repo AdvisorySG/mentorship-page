@@ -12,6 +12,7 @@ const ResultViewList = ({
   const {
     displayName,
     displayIndustries,
+    displayCompetencies,
     displayRole,
     displayOrganisation,
     displayCourseOfStudy,
@@ -19,6 +20,7 @@ const ResultViewList = ({
     displayShortBio,
     displaySchool,
     industryColors,
+    competencyColors,
     thumbnailImageUrl,
   } = displayResult;
 
@@ -54,6 +56,22 @@ const ResultViewList = ({
                   marginBottom: 7,
                 }}
                 label={industry}
+              />
+            ))}
+          </li>
+          <li className="sui-result__competencies">
+            {displayCompetencies.map((competency: string) => (
+              <Chip
+                key={competency}
+                style={{
+                  borderColor: competencyColors.get(competency),
+                  fontSize: "0.8rem",
+                  fontWeight: 500,
+                  marginRight: 10,
+                  marginBottom: 7,
+                }}
+                label={competency}
+                variant="outlined"
               />
             ))}
           </li>
