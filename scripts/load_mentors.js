@@ -40,6 +40,15 @@ const formatMentor = (id, waveId, fields) => ({
       ].flat(),
     ),
   ],
+  competencies: [
+    ...new Set(
+      [
+        fields["Competency 1"] ?? [],
+        fields["Competency 2"] ?? [],
+        fields["Competency 3"] ?? [],
+      ].flat(),
+    ),
+  ],
   name: fields.Name,
   organisation: fields.Organisation,
   role: fields["Job Title"],
@@ -192,11 +201,11 @@ const indexWave = async (waveId, tableId) => {
 /*
  * An index template has been created for `mentorship-page.*` on ElasticSearch.
  * To index a wave, first manually create indexes named with the waveId, e.g.
- * `mentorship-page.2025`.
+ * `mentorship-page.2026`.
  * Then pass the list of waves in this form:
  * {
  *   "waves": [
- *     {"waveId": "2025", "tableId": "2025 Mentorship"}
+ *     {"waveId": "2026", "tableId": "2026 Mentorship"}
  *   ]
  * }
  * A list of historical waves is available in the test events on AWS Lambda.
