@@ -84,7 +84,6 @@ const COLORS = [
 ].map((color) => color[200]);
 
 const industryColors = new Map();
-const competencyColors = new Map();
 
 type DisplayResult = {
   id: string;
@@ -98,7 +97,6 @@ type DisplayResult = {
   displayShortBio: string | null;
   displaySchool: string | null;
   industryColors: Map<string, string>;
-  competencyColors: Map<string, string>;
   thumbnailImageUrl?: string;
 };
 
@@ -155,14 +153,6 @@ const ResultView = ({ result }: { result: SearchResult }) => {
 
   const displayCompetencies =
     competencies && Array.isArray(competencies.raw) ? competencies.raw : [];
-  displayCompetencies.forEach((competency: string) => {
-    if (!competencyColors.has(competency)) {
-      competencyColors.set(
-        competency,
-        COLORS[competencyColors.size % COLORS.length],
-      );
-    }
-  });
 
   const displayRole = fillHighlightsIfPossible(role);
   const displayOrganisation = fillHighlightsIfPossible(organisation);
@@ -183,7 +173,6 @@ const ResultView = ({ result }: { result: SearchResult }) => {
     displaySchool,
     displayShortBio,
     industryColors,
-    competencyColors,
     thumbnailImageUrl,
   };
 
