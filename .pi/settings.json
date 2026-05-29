@@ -1,5 +1,4 @@
 {
-  "autoRunSkills": true,
-  "steeringMode": "one-at-a-time",
-  "followUpMode": "one-at-a-time"
+  "defaultProvider": "deepseek",
+  "defaultModel": "deepseek-v4-flash"
 }
