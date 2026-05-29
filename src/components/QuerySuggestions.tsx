@@ -14,13 +14,11 @@ import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import { Warning } from "@mui/icons-material";
-
-// FIXME: make these globals
-const ELASTIC_ENDPOINT =
-  "https://ff3a8770fc6c4ba6b070ffb7433a1094.ap-southeast-1.aws.found.io:443";
-const ELASTIC_APIKEY =
-  "Slp3MDVwVUJpOWRNZTZnQmdrbU46YTU5RTBtdVlTVXVpMS1qYWdKSUljQQ=="; // exposed to client! should be read-only
-const ELASTIC_INDEX = "query-suggestions";
+import {
+  QUERY_SUGGESTIONS_ELASTIC_ENDPOINT,
+  QUERY_SUGGESTIONS_ELASTIC_APIKEY,
+  QUERY_SUGGESTIONS_ELASTIC_INDEX,
+} from "../lib/elasticsearch";
 
 const MIN_HITS = 1;
 const MAX_HITS = 200;
@@ -85,7 +83,7 @@ const QuerySuggestionsList = ({ resultSearchTerm, setSearchTerm }: any) => {
 
     async function setTopSuggestions() {
       const response = await axios.post(
-        `${ELASTIC_ENDPOINT}/${ELASTIC_INDEX}/_search`,
+        `${QUERY_SUGGESTIONS_ELASTIC_ENDPOINT}/${QUERY_SUGGESTIONS_ELASTIC_INDEX}/_search`,
         {
           retriever: {
             knn: {
@@ -100,7 +98,7 @@ const QuerySuggestionsList = ({ resultSearchTerm, setSearchTerm }: any) => {
         },
         {
           headers: {
-            Authorization: `ApiKey ${ELASTIC_APIKEY}`,
+            Authorization: `ApiKey ${QUERY_SUGGESTIONS_ELASTIC_APIKEY}`,
             "Content-Type": "application/json",
           },
         },

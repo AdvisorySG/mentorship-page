@@ -24,14 +24,13 @@ import Canvas from "../../components/Canvas";
 import ClearFacets from "../../components/ResetButton";
 import ResultView from "../../components/ResultView";
 import QuerySuggestions from "../../components/QuerySuggestions";
+import {
+  MENTORS_ELASTIC_CLOUD_ID,
+  MENTORS_ELASTIC_APIKEY,
+  MENTORS_ELASTIC_INDEX,
+} from "../../lib/elasticsearch";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import "../../styles/App.css";
-
-const ELASTIC_CLOUD_ID =
-  "advisorysg-mentorship:YXAtc291dGhlYXN0LTEuYXdzLmZvdW5kLmlvOjQ0MyQ2ZmEzOTc4MzA5YWE0ZjNjOTkyMDZlOWZkZjI0Y2MwYSRmYTMwNDgzZDk4Mjk0YjNkYjQ2M2QzMTNiZWM2ZmZlZA==";
-const ELASTIC_APIKEY =
-  "SXR2d3RwZ0JTU3k1WVE3YzFFTzM6T2pCbEFlNFJyUXNHbTNUTkxCV3lyQQ=="; // exposed to client! should be read-only
-const ELASTIC_INDEX = "mentorship-page-current";
 
 const CustomSortFacetView: React.FC<FacetViewProps> = (props) => {
   const { options } = props;
@@ -65,9 +64,9 @@ const App = () => {
   });
 
   const connector = new ElasticsearchAPIConnector({
-    cloud: { id: ELASTIC_CLOUD_ID },
-    apiKey: ELASTIC_APIKEY,
-    index: ELASTIC_INDEX,
+    cloud: { id: MENTORS_ELASTIC_CLOUD_ID },
+    apiKey: MENTORS_ELASTIC_APIKEY,
+    index: MENTORS_ELASTIC_INDEX,
   });
 
   const configurationOptions = {
