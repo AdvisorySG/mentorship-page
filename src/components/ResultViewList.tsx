@@ -124,7 +124,7 @@ const ResultViewList = ({
           )}
           {displayCompetencies && displayCompetencies.length > 0 && (
             <li className="sui-result__competencies">
-              Ask me about:{" "}
+              Key Competencies:{" "}
               {displayCompetencies.map((competency: string, index: number) => (
                 <Fragment key={competency}>
                   {index > 0 && " · "}
