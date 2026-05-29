@@ -8,4 +8,7 @@ RUN apt-get install -y curl \
     && apt-get install -y nodejs python3-setuptools \
     && node -v  # verify Node installation
 
+# Install pi coding agent globally
+RUN npm install -g --ignore-scripts @earendil-works/pi-coding-agent
+
 USER vscode
