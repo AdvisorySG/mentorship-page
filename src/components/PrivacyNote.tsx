@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
@@ -26,17 +26,10 @@ const style = {
 
 function PrivacyModal() {
   // Default assume the person has the cookie so don't need privacy banner
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(
+    () => !Cookies.get("userAgreedToPrivacyPolicy"),
+  );
 
-  // Check if the cookie is true
-  useEffect(() => {
-    const hasAgreed = Cookies.get("userAgreedToPrivacyPolicy");
-    if (!hasAgreed) {
-      setIsOpen(true);
-    }
-  }, []);
-
-  // Function to change it to true
   const handleAgree = () => {
     Cookies.set("userAgreedToPrivacyPolicy", "true", { expires: 30 });
     setIsOpen(false);

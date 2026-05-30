@@ -2,9 +2,11 @@ import React from "react";
 
 import Header from "./Header";
 import Footer from "./Footer";
+import PrivacyModal from "./PrivacyNote";
 
 const Canvas = ({ children }: { children: React.ReactNode }) => (
   <>
+    <PrivacyModal />
     <div
       style={{
         marginLeft: "auto",
