@@ -14,7 +14,9 @@ function ClearFacets({ filters, removeFilter }: any) {
   const buttonStyle = {
     backgroundColor: "#fff",
     color: "#333",
-    border: "1px solid #ccc",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "#ccc",
     borderRadius: "4px",
     padding: "10px 20px",
     fontSize: "14px",

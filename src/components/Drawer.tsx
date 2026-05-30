@@ -28,6 +28,76 @@ const mobileLinkStyle = {
   margin: "0px",
 };
 
+const LinkList = ({
+  isMobile,
+  onToggle,
+}: {
+  isMobile: boolean;
+  onToggle: () => void;
+}) => (
+  <List
+    style={{
+      display: "flex",
+      flexDirection: isMobile ? "column" : "row",
+      justifyContent: isMobile ? "flex-start" : "flex-start",
+      textAlign: isMobile ? "right" : "right",
+      paddingLeft: isMobile ? "62vw" : 0,
+    }}
+  >
+    <ListItem disablePadding style={{ paddingLeft: isMobile ? "60px" : 0 }}>
+      <a
+        href={URL_HOME}
+        onClick={onToggle}
+        style={isMobile ? mobileLinkStyle : desktopLinkStyle}
+      >
+        Home
+      </a>
+    </ListItem>
+    <ListItem disablePadding style={{ paddingLeft: isMobile ? 0 : 0 }}>
+      <a
+        href={URL_MENTORS}
+        onClick={onToggle}
+        style={isMobile ? mobileLinkStyle : desktopLinkStyle}
+      >
+        Find A Mentor
+      </a>
+    </ListItem>
+    <ListItem disablePadding style={{ paddingLeft: isMobile ? "70px" : 0 }}>
+      <a
+        href={URL_FAQ}
+        onClick={onToggle}
+        style={isMobile ? mobileLinkStyle : desktopLinkStyle}
+      >
+        FAQ
+      </a>
+    </ListItem>
+    <ListItem disablePadding>
+      <a href={URL_APPLY} target="_blank">
+        <button
+          style={{
+            backgroundColor: "var(--brand-color)",
+            color: "white",
+            border: "none",
+            padding: "10px",
+            fontSize: "inherit",
+            borderRadius: "5px",
+            fontWeight: "700",
+            whiteSpace: "nowrap",
+            boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            margin: "0 16px",
+            cursor: "pointer",
+          }}
+        >
+          Apply Now
+        </button>
+      </a>
+    </ListItem>
+  </List>
+);
+
 const ResponsiveDrawer = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -61,70 +131,6 @@ const ResponsiveDrawer = () => {
   const handleDrawerToggle = () => {
     setMobileOpen((prevMobileOpen) => !prevMobileOpen);
   };
-
-  const LinkList = () => (
-    <List
-      style={{
-        display: "flex",
-        flexDirection: isMobile ? "column" : "row",
-        justifyContent: isMobile ? "flex-start" : "flex-start",
-        textAlign: isMobile ? "right" : "right",
-        paddingLeft: isMobile ? "62vw" : 0,
-      }}
-    >
-      <ListItem disablePadding style={{ paddingLeft: isMobile ? "60px" : 0 }}>
-        <a
-          href={URL_HOME}
-          onClick={handleDrawerToggle}
-          style={isMobile ? mobileLinkStyle : desktopLinkStyle}
-        >
-          Home
-        </a>
-      </ListItem>
-      <ListItem disablePadding style={{ paddingLeft: isMobile ? 0 : 0 }}>
-        <a
-          href={URL_MENTORS}
-          onClick={handleDrawerToggle}
-          style={isMobile ? mobileLinkStyle : desktopLinkStyle}
-        >
-          Find A Mentor
-        </a>
-      </ListItem>
-      <ListItem disablePadding style={{ paddingLeft: isMobile ? "70px" : 0 }}>
-        <a
-          href={URL_FAQ}
-          onClick={handleDrawerToggle}
-          style={isMobile ? mobileLinkStyle : desktopLinkStyle}
-        >
-          FAQ
-        </a>
-      </ListItem>
-      <ListItem disablePadding>
-        <a href={URL_APPLY} target="_blank">
-          <button
-            style={{
-              backgroundColor: "var(--brand-color)",
-              color: "white",
-              border: "none",
-              padding: "10px",
-              fontSize: "inherit",
-              borderRadius: "5px",
-              fontWeight: "700",
-              whiteSpace: "nowrap",
-              boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              margin: "0 16px",
-              cursor: "pointer",
-            }}
-          >
-            Apply Now
-          </button>
-        </a>
-      </ListItem>
-    </List>
-  );
 
   return (
     <Box
@@ -168,7 +174,7 @@ const ResponsiveDrawer = () => {
               justifyContent: "flex-end",
             }}
           >
-            <LinkList />
+            <LinkList isMobile={isMobile} onToggle={handleDrawerToggle} />
           </Box>
           <IconButton
             color="inherit"
@@ -210,7 +216,7 @@ const ResponsiveDrawer = () => {
             },
           }}
         >
-          <LinkList />
+          <LinkList isMobile={isMobile} onToggle={handleDrawerToggle} />
         </Drawer>
       </Box>
     </Box>

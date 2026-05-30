@@ -1,14 +1,6 @@
-import { FlatCompat } from "@eslint/eslintrc";
+import nextConfig from "eslint-config-next";
+import prettierConfig from "eslint-config-prettier";
 
-const compat = new FlatCompat({
-  // import.meta.dirname is available after Node.js v20.11.0
-  baseDirectory: import.meta.dirname,
-});
-
-const eslintConfig = [
-  ...compat.config({
-    extends: ["next/core-web-vitals", "next/typescript", "prettier"],
-  }),
-];
+const eslintConfig = [...nextConfig, prettierConfig];
 
 export default eslintConfig;

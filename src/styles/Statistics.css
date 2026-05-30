@@ -15,20 +15,6 @@ h2 {
   justify-items: center;
 }
 
-@media only screen and (max-width: 1024px) {
-  .sui-layout-header {
-    width: 100%;
-    padding: 32px 15px !important;
-  }
-}
-
-.statistic-value {
-  display: flex;
-  flex-direction: column;
-  margin-left: 15px;
-  min-width: 144px;
-}
-
 .statistic {
   background-color: #f4f4f4;
   padding: 20px;
@@ -41,11 +27,6 @@ h2 {
   max-width: 350px;
   width: 100%;
   justify-content: center;
-}
-
-.title {
-  margin-top: 0px;
-  text-align: left;
 }
 
 .iconify-icon {
