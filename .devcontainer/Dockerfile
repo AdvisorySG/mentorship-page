@@ -9,6 +9,6 @@ RUN apt-get install -y curl \
     && node -v  # verify Node installation
 
 # Install pi coding agent globally
-RUN npm install -g --ignore-scripts @earendil-works/pi-coding-agent
+RUN npm install -g --ignore-scripts @earendil-works/pi-coding-agent@0.78
 
 USER vscode
