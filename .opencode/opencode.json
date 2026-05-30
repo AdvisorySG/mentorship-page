@@ -1,0 +1,16 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {},
+  "model": "deepseek/deepseek-v4-pro",
+  "small_model": "deepseek/deepseek-v4-flash",
+  "autoupdate": "notify",
+  "formatter": true,
+  "lsp": true,
+  "permission": {
+    "read": {
+      "*.env*": "deny"
+    },
+    "bash": "ask",
+    "webfetch": "ask"
+  }
+}
