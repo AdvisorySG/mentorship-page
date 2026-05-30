@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
 {
-  "name": "Ubuntu 24.04",
+  "name": "TypeScript Node 22",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
   "build": { "dockerfile": "Dockerfile" },
 
@@ -15,8 +15,7 @@
     "REPO": "/workspaces/mentorship-page"
   },
 
-  "postCreateCommand": "npm install",
-  "postStartCommand": "npm run prepare",
+  "postCreateCommand": "npm install && npm run prepare",
   "postAttachCommand": "npm run dev"
 
   // Configure tool-specific properties.

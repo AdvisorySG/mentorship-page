@@ -1,14 +1,3 @@
-FROM mcr.microsoft.com/devcontainers/base:ubuntu
+FROM mcr.microsoft.com/devcontainers/typescript-node:22
 
-# Node v22 setup - refer to below URL for details
-# https://github.com/nodesource/distributions?tab=readme-ov-file#using-ubuntu-nodejs-20
-RUN apt-get install -y curl \
-    && curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh \
-    && bash nodesource_setup.sh \
-    && apt-get install -y nodejs python3-setuptools \
-    && node -v  # verify Node installation
-
-# Install pi coding agent globally
-RUN npm install -g --ignore-scripts @earendil-works/pi-coding-agent@0.78
-
-USER vscode
+RUN npm install -g opencode-ai
