@@ -60,45 +60,9 @@ a {
   flex: 1;
 }
 
-.canvas {
-  max-width: 70rem;
-  min-height: 200px;
-  width: 100%;
-  margin: auto;
-}
-
-.disclaimer {
-  margin: 8px auto;
-  max-width: 70rem;
-  text-align: justify;
-  text-align-last: left;
-  align-items: center;
-  width: 100%;
-}
-
 .results {
   min-height: 100vh;
   box-sizing: border-box;
-}
-
-.results-text {
-  font-style: italic;
-  text-align: center;
-}
-
-.placeholder-text {
-  font-style: italic;
-  text-align: center;
-}
-
-.tabs-container {
-  margin: auto;
-}
-
-.card-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
 }
 
 .sui-result__label {
@@ -146,29 +110,6 @@ a {
   z-index: 9999;
 }
 
-.testimonial-header {
-  text-align: left;
-  margin: 8px auto;
-  max-width: 70rem;
-  text-align: justify;
-  text-align-last: left;
-  align-items: center;
-  width: 100%;
-}
-
-.testimonial-carousel {
-  margin: 8px auto;
-  max-width: 70rem;
-  text-align: center;
-  text-align-last: left;
-  align-items: center;
-  width: 100%;
-}
-
-.resources {
-  align-items: center;
-}
-
 .faq {
   max-width: 70rem;
   width: 100%;
@@ -203,12 +144,4 @@ a {
   -moz-box-shadow: 2px 2px 8px #666666;
   box-shadow: 2px 2px 8px #666666;
   background-color: var(--brand-color);
-}
-
-.vertical-center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
 }

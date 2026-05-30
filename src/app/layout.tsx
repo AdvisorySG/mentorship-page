@@ -17,7 +17,7 @@ export default function RootLayout({
           itemProp="description"
           content="The Advisory Mentorship Programme"
         />
-        <meta itemProp="image" content="/advisory-mentorship-logo.jpg" />
+        <meta itemProp="image" content="/advisory-mentorship-logo.png" />
       </head>
       <Script
         async
@@ -46,7 +46,6 @@ export const metadata: Metadata = {
   // Icons
   icons: {
     icon: [{ url: "/favicon.ico" }],
-    apple: [{ url: "/logo192.png" }],
   },
 
   // Manifest
@@ -58,7 +57,7 @@ export const metadata: Metadata = {
     type: "website",
     title: "Advisory Mentorship Programme",
     description: "The Advisory Mentorship Programme",
-    images: [{ url: "/advisory-mentorship-logo.jpg" }],
+    images: [{ url: "/advisory-mentorship-logo.png" }],
   },
 
   // Twitter
@@ -66,6 +65,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Advisory Mentorship Programme",
     description: "The Advisory Mentorship Programme",
-    images: [{ url: "/advisory-mentorship-logo.jpg" }],
+    images: [{ url: "/advisory-mentorship-logo.png" }],
   },
 };

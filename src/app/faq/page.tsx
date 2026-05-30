@@ -65,9 +65,9 @@ const PROGRAMME_QUESTIONS: QNA[] = [
           to arrange internships for their mentees, our mentors are not obliged
           to provide any internships or other forms of employment to their
           mentees. This should not be an expectation going into the programme,
-          and we ultimately leave it to the individual mentor's discretion as to
-          how they would like to tailor their guidance and support to their
-          mentees.
+          and we ultimately leave it to the individual mentor&rsquo;s discretion
+          as to how they would like to tailor their guidance and support to
+          their mentees.
         </p>
       </>
     ),
@@ -264,8 +264,8 @@ const RESOURCE_QUESTIONS: QNA[] = [
     question:
       "Are there any resources that I can reference in preparing my application?",
     answer: (
-      <p>
-        Yes! You may click on the following links to view:{" "}
+      <div>
+        <p>Yes! You may click on the following links to view:</p>
         <ul>
           <li>
             <Link href="https://drive.google.com/file/d/1nagKk3jhOBY86oG9hMvDbXwiFMN0S-dN/view?usp=sharing">
@@ -283,7 +283,7 @@ const RESOURCE_QUESTIONS: QNA[] = [
             </Link>
           </li>
         </ul>
-      </p>
+      </div>
     ),
   },
 ];
@@ -311,14 +311,8 @@ const StyledAccordion = styled(Accordion)(() => ({
   },
 }));
 
-const StyledQNA = ({
-  qna: { question, answer },
-  index,
-}: {
-  qna: QNA;
-  index: number;
-}) => (
-  <StyledAccordion key={index}>
+const StyledQNA = ({ qna: { question, answer } }: { qna: QNA }) => (
+  <StyledAccordion>
     <AccordionSummary
       expandIcon={<ExpandMoreIcon />}
       aria-controls="panel1a-content"
@@ -358,17 +352,23 @@ const App = () => {
         Programme Structure and Timeline
       </h2>
       <div className="faq container" style={{ marginBottom: "32px" }}>
-        {PROGRAMME_QUESTIONS.map((qna, index) => StyledQNA({ qna, index }))}
+        {PROGRAMME_QUESTIONS.map((qna, index) => (
+          <StyledQNA qna={qna} key={index} />
+        ))}
       </div>
       <h2 style={{ color: "var(--brand-color)" }}>
         Application Process and Considerations
       </h2>
       <div className="faq container" style={{ marginBottom: "32px" }}>
-        {APPLICATION_QUESTIONS.map((qna, index) => StyledQNA({ qna, index }))}
+        {APPLICATION_QUESTIONS.map((qna, index) => (
+          <StyledQNA qna={qna} key={index} />
+        ))}
       </div>
       <h2 style={{ color: "var(--brand-color)" }}>Resources</h2>
       <div className="faq container" style={{ marginBottom: "32px" }}>
-        {RESOURCE_QUESTIONS.map((qna, index) => StyledQNA({ qna, index }))}
+        {RESOURCE_QUESTIONS.map((qna, index) => (
+          <StyledQNA qna={qna} key={index} />
+        ))}
       </div>
     </Canvas>
   );
