@@ -6,7 +6,7 @@ export const partnerLogos = [
   ["Allen & Glendhill", "/logos/02_Allen_Glendhill.png"],
   ["BASF", "/logos/03_BASF.png"],
   ["BCG", "/logos/04_BCG.png"],
-  ["BCG X", "/logos/05_BCG X.png"],
+  ["BCG X", "/logos/05_BCG_X.png"],
   ["ECDA", "/logos/09_ECDA.png"],
   ["EDB", "/logos/10_EDB.png"],
   ["EY", "/logos/11_EY.png"],
