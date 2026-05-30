@@ -23,7 +23,6 @@ import ElasticsearchAPIConnector from "@elastic/search-ui-elasticsearch-connecto
 import Canvas from "../../components/Canvas";
 import ClearFacets from "../../components/ResetButton";
 import ResultView from "../../components/ResultView";
-import QuerySuggestions from "../../components/QuerySuggestions";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import "../../styles/App.css";
 
@@ -135,7 +134,6 @@ const App = () => {
                     autocompleteSuggestions={true}
                     searchAsYouType={false}
                   />
-                  {/* <QuerySuggestions /> */}
                 </div>
               }
               bodyContent={
