@@ -2,12 +2,15 @@ name: Prettier
 on:
   pull_request:
   push:
+permissions:
+  contents: read
+  actions: read
 jobs:
   prettier:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [22.x]
     steps:
       - uses: actions/checkout@v6
 
