@@ -2,6 +2,9 @@ name: Deploy Lambda
 on:
   pull_request:
   push:
+permissions:
+  contents: read
+  actions: read
 jobs:
   pre_build:
     continue-on-error: true
