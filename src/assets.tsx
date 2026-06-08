@@ -2,20 +2,29 @@ export const advisoryLogo = "/advisory-logo.png";
 export const advisoryMentorshipLogo = "/advisory-mentorship-logo.png";
 
 export const partnerLogos = [
-  ["AiSP", "/logos/01_AiSP.png"],
-  ["Allen & Glendhill", "/logos/02_Allen_Glendhill.png"],
-  ["BASF", "/logos/03_BASF.png"],
-  ["BCG", "/logos/04_BCG.png"],
-  ["BCG X", "/logos/05_BCG_X.png"],
-  ["ECDA", "/logos/09_ECDA.png"],
-  ["EDB", "/logos/10_EDB.png"],
-  ["EY", "/logos/11_EY.png"],
-  ["Forward Dyson", "/logos/12_Forward_Dyson.png"],
-  ["GIC", "/logos/13_GIC.png"],
-  ["IMDA", "/logos/15_IMDA.png"],
-  ["MHA", "/logos/17_MHA.png"],
-  ["ONE", "/logos/18_ONE.png"],
-  ["Standard Chartered", "/logos/19_Standard_Chartered.png"],
+  ["AiSP", "/logos/2026/2026_Mentorships_Partners_Logo/AISP.jpeg"],
+  [
+    "Allen & Gledhill",
+    "/logos/2026/2026_Mentorships_Partners_Logo/allen%26gledhill.png",
+  ],
+  ["BASF", "/logos/2026/2026_Mentorships_Partners_Logo/basf.png"],
+  ["BCG", "/logos/2026/2026_Mentorships_Partners_Logo/BCG_logo_new.jpg"],
+  ["BCG X", "/logos/2026/2026_Mentorships_Partners_Logo/BCG_X.jpg"],
+  ["ByteDance", "/logos/2026/2026_Mentorships_Partners_Logo/ByteDance.png"],
+  ["Deloitte", "/logos/2026/2026_Mentorships_Partners_Logo/Deloitte.png"],
+  ["Edelman", "/logos/2026/2026_Mentorships_Partners_Logo/Edelman-logo.png"],
+  ["EY", "/logos/2026/2026_Mentorships_Partners_Logo/EY.png"],
+  ["GIC", "/logos/2026/2026_Mentorships_Partners_Logo/gic.png"],
+  ["IMDA", "/logos/2026/2026_Mentorships_Partners_Logo/imda.png"],
+  ["MHA", "/logos/2026/2026_Mentorships_Partners_Logo/mha.jpg"],
+  ["NVPC", "/logos/2026/2026_Mentorships_Partners_Logo/nvpc.png"],
+  ["ONE", "/logos/2026/2026_Mentorships_Partners_Logo/one.jpeg"],
+  ["PRCA", "/logos/2026/2026_Mentorships_Partners_Logo/prca_1.jpg"],
+  ["PRCA", "/logos/2026/2026_Mentorships_Partners_Logo/prca_2.jpg"],
+  [
+    "Standard Chartered",
+    "/logos/2026/2026_Mentorships_Partners_Logo/Standard-Chartered.png",
+  ],
 ];
 
 export const footerLogo = "/footer-logo.png";
