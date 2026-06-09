@@ -2,29 +2,22 @@ export const advisoryLogo = "/advisory-logo.png";
 export const advisoryMentorshipLogo = "/advisory-mentorship-logo.png";
 
 export const partnerLogos = [
-  ["AiSP", "/logos/2026/2026_Mentorships_Partners_Logo/AISP.jpeg"],
-  [
-    "Allen & Gledhill",
-    "/logos/2026/2026_Mentorships_Partners_Logo/allen%26gledhill.png",
-  ],
-  ["BASF", "/logos/2026/2026_Mentorships_Partners_Logo/basf.png"],
-  ["BCG", "/logos/2026/2026_Mentorships_Partners_Logo/BCG_logo_new.jpg"],
-  ["BCG X", "/logos/2026/2026_Mentorships_Partners_Logo/BCG_X.jpg"],
-  ["ByteDance", "/logos/2026/2026_Mentorships_Partners_Logo/ByteDance.png"],
-  ["Deloitte", "/logos/2026/2026_Mentorships_Partners_Logo/Deloitte.png"],
-  ["Edelman", "/logos/2026/2026_Mentorships_Partners_Logo/Edelman-logo.png"],
-  ["EY", "/logos/2026/2026_Mentorships_Partners_Logo/EY.png"],
-  ["GIC", "/logos/2026/2026_Mentorships_Partners_Logo/gic.png"],
-  ["IMDA", "/logos/2026/2026_Mentorships_Partners_Logo/imda.png"],
-  ["MHA", "/logos/2026/2026_Mentorships_Partners_Logo/mha.jpg"],
-  ["NVPC", "/logos/2026/2026_Mentorships_Partners_Logo/nvpc.png"],
-  ["ONE", "/logos/2026/2026_Mentorships_Partners_Logo/one.jpeg"],
-  ["PRCA", "/logos/2026/2026_Mentorships_Partners_Logo/prca_1.jpg"],
-  ["PRCA", "/logos/2026/2026_Mentorships_Partners_Logo/prca_2.jpg"],
-  [
-    "Standard Chartered",
-    "/logos/2026/2026_Mentorships_Partners_Logo/Standard-Chartered.png",
-  ],
+  ["AiSP", "/logos/01_AiSP.png"],
+  ["Allen & Gledhill", "/logos/2026/02_Allen_Glendhill.png"],
+  ["BASF", "/logos/03_BASF.png"],
+  ["BCG", "/logos/04_BCG.png"],
+  ["BCG X", "/logos/05_BCG_X.png"],
+  ["ByteDance", "/logos/06_ByteDance.webp"],
+  ["Deloitte", "/logos/07_Deloitte.webp"],
+  ["Edelman", "/logos/08_Edelman.webp"],
+  ["EY", "/logos/09_EY.png"],
+  ["GIC", "/logos/10_GIC.png"],
+  ["IMDA", "/logos/11_IMDA.png"],
+  ["MHA", "/logos/12_MHA.png"],
+  ["NVPC", "/logos/13_NVPC.webp"],
+  ["ONE", "/logos/14_ONE.png"],
+  ["PRCA", "/logos/15_PRCA.webp"],
+  ["Standard Chartered", "/logos/16_Standard_Chartered.png"],
 ];
 
 export const footerLogo = "/footer-logo.png";
