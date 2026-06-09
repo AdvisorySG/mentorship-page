@@ -3,7 +3,7 @@ export const advisoryMentorshipLogo = "/advisory-mentorship-logo.png";
 
 export const partnerLogos = [
   ["AiSP", "/logos/01_AiSP.png"],
-  ["Allen & Gledhill", "/logos/2026/02_Allen_Glendhill.png"],
+  ["Allen & Gledhill", "/logos/02_Allen_Glendhill.png"],
   ["BASF", "/logos/03_BASF.png"],
   ["BCG", "/logos/04_BCG.png"],
   ["BCG X", "/logos/05_BCG_X.png"],
