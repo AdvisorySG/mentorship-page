@@ -45,7 +45,11 @@
 }
 
 .partners-slide img {
-  height: 120px;
-  width: 120px;
+  max-height: 120px;
+  max-width: 220px;
+  width: auto;
+  height: auto;
   margin: auto 20px;
+  object-fit: contain;
+  vertical-align: middle;
 }
