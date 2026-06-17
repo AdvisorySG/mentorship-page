@@ -19,18 +19,17 @@ import {
 } from "@elastic/react-search-ui";
 import { SortDirection } from "@elastic/search-ui";
 import ElasticsearchAPIConnector from "@elastic/search-ui-elasticsearch-connector";
+import {
+  ELASTIC_APIKEY,
+  ELASTIC_CLOUD_ID,
+  ELASTIC_INDEX,
+} from "../../lib/elastic";
 
 import Canvas from "../../components/Canvas";
 import ClearFacets from "../../components/ResetButton";
 import ResultView from "../../components/ResultView";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import "../../styles/App.css";
-
-const ELASTIC_CLOUD_ID =
-  "advisorysg-mentorship:YXAtc291dGhlYXN0LTEuYXdzLmZvdW5kLmlvOjQ0MyQ2ZmEzOTc4MzA5YWE0ZjNjOTkyMDZlOWZkZjI0Y2MwYSRmYTMwNDgzZDk4Mjk0YjNkYjQ2M2QzMTNiZWM2ZmZlZA==";
-const ELASTIC_APIKEY =
-  "SXR2d3RwZ0JTU3k1WVE3YzFFTzM6T2pCbEFlNFJyUXNHbTNUTkxCV3lyQQ=="; // exposed to client! should be read-only
-const ELASTIC_INDEX = "mentorship-page-current";
 
 const CustomSortFacetView: React.FC<FacetViewProps> = (props) => {
   const { options } = props;
