@@ -28,6 +28,7 @@ import {
 import Canvas from "../../components/Canvas";
 import ClearFacets from "../../components/ResetButton";
 import ResultView from "../../components/ResultView";
+import SharedMentorModal from "../../components/SharedMentorModal";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import "../../styles/App.css";
 
@@ -123,6 +124,7 @@ const App = () => {
 
   return (
     <Canvas>
+      <SharedMentorModal />
       <div className="results" id="mentors">
         <SearchProvider config={configurationOptions}>
           <div className="App">
