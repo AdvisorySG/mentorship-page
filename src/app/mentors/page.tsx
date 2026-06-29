@@ -72,6 +72,20 @@ const App = () => {
   const configurationOptions = {
     alwaysSearchOnInitialLoad: true,
     apiConnector: connector,
+    // Preserve any URL hash (e.g. a `#mentor=<id>` shared link) that search-ui
+    // would otherwise drop when it serializes its own state to the query string.
+    // search-ui only reads the query string, never the hash, so keeping the
+    // hash here cannot trigger a re-query.
+    routingOptions: {
+      writeUrl: (
+        url: string,
+        { replaceUrl = false }: { replaceUrl?: boolean } = {},
+      ) => {
+        if (typeof window === "undefined") return;
+        const method = replaceUrl ? "replaceState" : "pushState";
+        window.history[method]({}, "", `?${url}${window.location.hash}`);
+      },
+    },
     autocompleteQuery: {
       suggestions: {
         types: {
