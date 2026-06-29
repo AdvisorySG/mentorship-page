@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
   Button,
@@ -7,12 +7,11 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  Modal,
 } from "@mui/material";
 import { useInView } from "react-intersection-observer";
 
+import MentorModal from "./MentorModal";
 import type { DisplayResult } from "./ResultView";
-const LazyResultViewList = lazy(() => import("./ResultViewList"));
 import "../styles/ResultView.css";
 
 const ResultViewGrid = ({
@@ -43,7 +42,12 @@ const ResultViewGrid = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpen = () => {
-    window.history.pushState({}, "");
+    // Reflect the open mentor in the URL (preserving search-ui's query string)
+    // so the address bar is shareable. pushState fires neither hashchange nor
+    // popstate, so SharedMentorModal stays inert and no extra fetch happens.
+    const url = new URL(window.location.href);
+    url.hash = `mentor=${id}`;
+    window.history.pushState({}, "", url.toString());
     setIsModalOpen(true);
     if (window.umami) {
       window.umami.track("Click", { id, env: process.env.NODE_ENV });
@@ -129,25 +133,11 @@ const ResultViewGrid = ({
           <Button style={{ fontSize: 12 }}>Read More</Button>
         </CardActions>
       </Card>
-      <Modal
-        className="sui-result__modal"
+      <MentorModal
+        displayResult={displayResult}
         open={isModalOpen}
         onClose={handleClose}
-        aria-labelledby="modal-title"
-        aria-describedby="modal-description"
-        style={{
-          display: "flex",
-          alignItems: "flex-start",
-          margin: "auto",
-          maxWidth: "800px",
-          maxHeight: "80%",
-          overflow: "auto",
-        }}
-      >
-        <Suspense fallback={null}>
-          <LazyResultViewList displayResult={displayResult} />
-        </Suspense>
-      </Modal>
+      />
     </>
   );
 };
