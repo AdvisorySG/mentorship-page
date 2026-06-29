@@ -42,7 +42,12 @@ const ResultViewGrid = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpen = () => {
-    window.history.pushState({}, "");
+    // Reflect the open mentor in the URL (preserving search-ui's query string)
+    // so the address bar is shareable. pushState fires neither hashchange nor
+    // popstate, so SharedMentorModal stays inert and no extra fetch happens.
+    const url = new URL(window.location.href);
+    url.hash = `mentor=${id}`;
+    window.history.pushState({}, "", url.toString());
     setIsModalOpen(true);
     if (window.umami) {
       window.umami.track("Click", { id, env: process.env.NODE_ENV });
