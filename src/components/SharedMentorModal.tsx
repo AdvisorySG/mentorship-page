@@ -6,6 +6,10 @@ import MentorModal from "./MentorModal";
 import type { DisplayResult } from "./ResultView";
 import { displayResultFromSource, fetchMentorById } from "../lib/mentorApi";
 
+// Set on history entries pushed by opening a card modal, marking that the
+// previous entry is this page and `history.back()` is safe.
+export const MENTOR_MODAL_HISTORY_KEY = "mentorModal";
+
 // Reads `#mentor=<id>` from the URL hash.
 const getMentorIdFromHash = (): string | null => {
   if (typeof window === "undefined") return null;
@@ -61,13 +65,20 @@ const SharedMentorModal = () => {
     };
   }, [mentorId]);
 
-  // Clear the hash without risking navigation away from the site.
+  // Close without destroying the `#mentor=` history entry, so back/forward can
+  // return to it. If a card click pushed this entry, step back over it like the
+  // card modal does. Otherwise the page was opened from a shared link and the
+  // previous entry may be off-site, so push a hash-free entry instead.
   const handleClose = () => {
-    window.history.replaceState(
-      null,
-      "",
-      window.location.pathname + window.location.search,
-    );
+    if (window.history.state?.[MENTOR_MODAL_HISTORY_KEY]) {
+      window.history.back();
+    } else {
+      window.history.pushState(
+        null,
+        "",
+        window.location.pathname + window.location.search,
+      );
+    }
     setMentorId(null);
   };
 

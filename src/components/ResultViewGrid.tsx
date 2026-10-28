@@ -11,6 +11,7 @@ import {
 import { useInView } from "react-intersection-observer";
 
 import MentorModal from "./MentorModal";
+import { MENTOR_MODAL_HISTORY_KEY } from "./SharedMentorModal";
 import type { DisplayResult } from "./ResultView";
 import "../styles/ResultView.css";
 
@@ -47,7 +48,11 @@ const ResultViewGrid = ({
     // popstate, so SharedMentorModal stays inert and no extra fetch happens.
     const url = new URL(window.location.href);
     url.hash = `mentor=${id}`;
-    window.history.pushState({}, "", url.toString());
+    window.history.pushState(
+      { [MENTOR_MODAL_HISTORY_KEY]: true },
+      "",
+      url.toString(),
+    );
     setIsModalOpen(true);
     if (window.umami) {
       window.umami.track("Click", { id, env: process.env.NODE_ENV });
