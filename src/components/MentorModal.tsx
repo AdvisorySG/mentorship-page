@@ -9,7 +9,8 @@ const LazyResultViewList = lazy(() => import("./ResultViewList"));
 
 // The mentor detail modal, shared by the per-card (in-memory) path and the
 // shared-link (fetched) path. The Modal's direct child must be a DOM element
-// so MUI can attach its ref — hence the wrapping <div>.
+// so MUI can attach its ref — hence the wrapping <div>. MUI focuses that <div>
+// on open, so its outline is hidden to avoid a focus ring around the modal.
 const MentorModal = ({
   displayResult,
   open,
@@ -35,7 +36,7 @@ const MentorModal = ({
         overflow: "auto",
       }}
     >
-      <div style={{ position: "relative", width: "100%" }}>
+      <div style={{ position: "relative", width: "100%", outline: "none" }}>
         <Suspense fallback={null}>
           <LazyResultViewList displayResult={displayResult} />
         </Suspense>
