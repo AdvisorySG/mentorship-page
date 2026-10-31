@@ -1,6 +1,6 @@
 import { Suspense, lazy } from "react";
 
-import { Modal } from "@mui/material";
+import { CircularProgress, Modal } from "@mui/material";
 
 import CopyLinkButton from "./CopyLinkButton";
 import type { DisplayResult } from "./ResultView";
@@ -37,10 +37,26 @@ const MentorModal = ({
       }}
     >
       <div style={{ position: "relative", width: "100%", outline: "none" }}>
-        <Suspense fallback={null}>
+        {/* The copy button sits inside Suspense so it appears together with
+            the details rather than floating in an empty modal while the
+            ResultViewList chunk loads. */}
+        <Suspense
+          fallback={
+            <div
+              style={{
+                background: "white",
+                padding: "2rem",
+                borderRadius: "8px",
+                textAlign: "center",
+              }}
+            >
+              <CircularProgress />
+            </div>
+          }
+        >
           <LazyResultViewList displayResult={displayResult} />
+          <CopyLinkButton mentorId={displayResult.id} />
         </Suspense>
-        <CopyLinkButton mentorId={displayResult.id} />
       </div>
     </Modal>
   );
