@@ -1,20 +1,7 @@
 import React, { lazy, Suspense } from "react";
 
-import {
-  red,
-  pink,
-  deepPurple,
-  indigo,
-  blue,
-  cyan,
-  teal,
-  lightGreen,
-  yellow,
-  deepOrange,
-  brown,
-  blueGrey,
-} from "@mui/material/colors";
 import { SearchResult } from "@elastic/search-ui";
+import { assignIndustryColors } from "../lib/industryColors";
 import { htmlToText } from "html-to-text";
 
 const LazyResultViewGrid = lazy(() => import("./ResultViewGrid"));
@@ -67,23 +54,6 @@ const fillHighlights = (snippet: string | null, full: string): string => {
   );
   return full.replace(snippetRaw, styledSnippet);
 };
-
-const COLORS = [
-  red,
-  pink,
-  deepPurple,
-  indigo,
-  blue,
-  cyan,
-  teal,
-  lightGreen,
-  yellow,
-  deepOrange,
-  brown,
-  blueGrey,
-].map((color) => color[200]);
-
-const industryColors = new Map();
 
 type DisplayResult = {
   id: string;
@@ -145,11 +115,7 @@ const ResultView = ({ result }: { result: SearchResult }) => {
 
   const displayIndustries =
     industries && Array.isArray(industries.raw) ? industries.raw : [];
-  displayIndustries.forEach((industry: string) => {
-    if (!industryColors.has(industry)) {
-      industryColors.set(industry, COLORS[industryColors.size % COLORS.length]);
-    }
-  });
+  const industryColors = assignIndustryColors(displayIndustries);
 
   const displayCompetencies =
     competencies && Array.isArray(competencies.raw) ? competencies.raw : [];

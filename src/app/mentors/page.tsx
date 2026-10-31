@@ -19,18 +19,18 @@ import {
 } from "@elastic/react-search-ui";
 import { SortDirection } from "@elastic/search-ui";
 import ElasticsearchAPIConnector from "@elastic/search-ui-elasticsearch-connector";
+import {
+  ELASTIC_APIKEY,
+  ELASTIC_CLOUD_ID,
+  ELASTIC_INDEX,
+} from "../../lib/elastic";
 
 import Canvas from "../../components/Canvas";
 import ClearFacets from "../../components/ResetButton";
 import ResultView from "../../components/ResultView";
+import SharedMentorModal from "../../components/SharedMentorModal";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import "../../styles/App.css";
-
-const ELASTIC_CLOUD_ID =
-  "advisorysg-mentorship:YXAtc291dGhlYXN0LTEuYXdzLmZvdW5kLmlvOjQ0MyQ2ZmEzOTc4MzA5YWE0ZjNjOTkyMDZlOWZkZjI0Y2MwYSRmYTMwNDgzZDk4Mjk0YjNkYjQ2M2QzMTNiZWM2ZmZlZA==";
-const ELASTIC_APIKEY =
-  "SXR2d3RwZ0JTU3k1WVE3YzFFTzM6T2pCbEFlNFJyUXNHbTNUTkxCV3lyQQ=="; // exposed to client! should be read-only
-const ELASTIC_INDEX = "mentorship-page-current";
 
 const CustomSortFacetView: React.FC<FacetViewProps> = (props) => {
   const { options } = props;
@@ -72,6 +72,20 @@ const App = () => {
   const configurationOptions = {
     alwaysSearchOnInitialLoad: true,
     apiConnector: connector,
+    // Preserve any URL hash (e.g. a `#mentor=<id>` shared link) that search-ui
+    // would otherwise drop when it serializes its own state to the query string.
+    // search-ui only reads the query string, never the hash, so keeping the
+    // hash here cannot trigger a re-query.
+    routingOptions: {
+      writeUrl: (
+        url: string,
+        { replaceUrl = false }: { replaceUrl?: boolean } = {},
+      ) => {
+        if (typeof window === "undefined") return;
+        const method = replaceUrl ? "replaceState" : "pushState";
+        window.history[method]({}, "", `?${url}${window.location.hash}`);
+      },
+    },
     autocompleteQuery: {
       suggestions: {
         types: {
@@ -124,6 +138,7 @@ const App = () => {
 
   return (
     <Canvas>
+      <SharedMentorModal />
       <div className="results" id="mentors">
         <SearchProvider config={configurationOptions}>
           <div className="App">
